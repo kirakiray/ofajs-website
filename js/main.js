@@ -6,5 +6,9 @@ ofa = async () => {
         }
     });
 
-    
+    $("#startLoading").class.add("hide");
+
+    setTimeout(() => {
+        $("#startLoading").remove();
+    }, 300);
 }

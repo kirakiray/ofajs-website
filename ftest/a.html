@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>frame</title>
+</head>
+
+<body>
+    <iframe src="./frame.html" frameborder="1" width="400" height="200px" id="frame"></iframe>
+    <button id="btn">测试发送到iframe内</button>
+    <script>
+        document.querySelector("#btn").addEventListener("click", e => {
+            let frame = document.querySelector("#frame");
+
+            frame.contentWindow.postMessage("test data", "*");
+        });
+
+
+        window.addEventListener("message", e => {
+            console.log("self get message => ", e.data);
+        });
+    </script>
+</body>
+
+</html>
