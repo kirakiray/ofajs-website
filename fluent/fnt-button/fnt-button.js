@@ -1,9 +1,11 @@
 Component({
     tag: "fnt-button",
     temp: true,
+    css: true,
     attrs: ["color"],
     data: {
         color: "",
+        // 是否深色模式（深色模式字体为白色，背景叠加色更深一点）
         deepmode: 0
     },
     watch: {
