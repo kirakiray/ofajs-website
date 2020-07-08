@@ -1,10 +1,5 @@
 ofa = async () => {
-    ofa.config({
-        paths: {
-            "@c/": "components/",
-            "@p": "pages/"
-        }
-    });
+    await load("components/ofa-nav -p", "components/ofa-aside -p");
 
     $("#startLoading").class.add("hide");
 
