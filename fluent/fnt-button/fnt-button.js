@@ -2,16 +2,17 @@ Component({
     tag: "fnt-button",
     temp: true,
     css: true,
-    attrs: ["color"],
+    attrs: ["color", "circular"],
     data: {
-        color: "",
+        circular: null,
+        // color: null,
         // 是否深色模式（深色模式字体为白色，背景叠加色更深一点）
         deepmode: 0
     },
     watch: {
         color(e, color) {
+            let styleObj = this.$shadow.$('.btn').style;
             if (color) {
-                let styleObj = this.$shadow.$('.btn').style;
                 Object.assign(styleObj, {
                     backgroundColor: color,
                     borderColor: color
@@ -31,6 +32,12 @@ Component({
                 });
 
                 this.deepmode = isDeep;
+            } else {
+                Object.assign(styleObj, {
+                    backgroundColor: "",
+                    borderColor: ""
+                });
+                this.deepmode = 0;
             }
         }
     },
