@@ -1,9 +1,9 @@
 :host {
   position: relative;
   display: inline-block;
-  font-size: 12px;
+  font-size: 13px;
   color: #252423;
-  cursor: pointer;
+  font-weight: 500;
   user-select: none;
   min-height: 29px;
   min-width: 29px;
@@ -21,14 +21,26 @@
   border: #e1dfdd solid 1px;
   border-radius: 2px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0.4em 0.8em -0.14em;
+  cursor: pointer;
   transition: all ease 0.15s;
   /* background-color: #585a96; */
 }
-.btn[circular] {
-  border-radius: 50% 50%;
+.btn[type="circle"] {
+  border-radius: 1000px;
 }
-.btn[circular] .bg {
-  border-radius: 50% 50%;
+.btn[type="circle"] .bg {
+  border-radius: 1000px;
+}
+.btn[disabled] {
+  color: #c8c6c4;
+  background-color: #edebe9;
+  border-color: #edebe9;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+.btn[disabled]:hover .bg,
+.btn[disabled]:active .bg {
+  background-color: transparent;
 }
 .bg {
   z-index: 1;

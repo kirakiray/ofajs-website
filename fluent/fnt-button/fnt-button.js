@@ -2,10 +2,12 @@ Component({
     tag: "fnt-button",
     temp: true,
     css: true,
-    attrs: ["color", "circular"],
+    attrs: ["color", "disabled", "type"],
     data: {
-        circular: null,
-        // color: null,
+        disabled: null,
+        // 默认null为按钮     circle 圆形模式    text 文本模式     Inverted 颠倒模式
+        type: null,
+        color: null,
         // 是否深色模式（深色模式字体为白色，背景叠加色更深一点）
         deepmode: 0
     },
@@ -41,4 +43,11 @@ Component({
             }
         }
     },
+    proto: {
+        clickBtn(e) {
+            if (this.disabled != undefined && this.disabled != null) {
+                e.bubble = false;
+            }
+        }
+    }
 });
