@@ -3,7 +3,8 @@
     display: inline-block;
     font-size: 13px;
     color: #252423;
-    font-weight: 500;;
+    font-weight: 500;
+    -webkit-user-select: none;
     user-select: none;
     min-height: 29px;
     min-width: 29px;
@@ -34,6 +35,20 @@
         }
     }
 
+    &[type="text"] {
+        box-shadow: none;
+        border: none;
+
+        &.bg {
+            background-color: transparent;
+        }
+
+        &:hover .bg,
+        &:active .bg {
+            background-color: transparent;
+        }
+    }
+
     &[disabled] {
         color: #c8c6c4;
         background-color: #edebe9;
@@ -46,6 +61,10 @@
             background-color: transparent;
         }
     }
+
+    &[icononly] {
+        padding: 0 !important;
+    }
 }
 
 .bg {
@@ -56,7 +75,6 @@
     top: 0;
     width: 100%;
     height: 100%;
-    transition: all ease .1s;
 }
 
 .btn_container {

@@ -8,28 +8,95 @@
     <title>fnt-demo</title>
     <script src="../../js/ofa.js"> </script>
     <script>
-        load("./fnt-button")
+        load('@ofa/comp-view -p', "./fnt-button");
     </script>
 </head>
 
 <body>
+    <comp-view id="targetView">
+        <fnt-button>Click me</fnt-button>
+    </comp-view>
+    <script>
+        $("#targetView").on("renderend", e => {
+            $("#targetView").options = {
+                props: {
+                    color: {
+                        options: [{
+                            name: "空",
+                            value: null
+                        }, {
+                            value: "#6264a7"
+                        }, {
+                            value: "#ff0000"
+                        }]
+                    },
+                    type: {
+                        options: [{
+                            name: "空",
+                            value: null
+                        }, {
+                            value: "circle"
+                        }, {
+                            value: "text"
+                        }, {
+                            value: "outlined"
+                        }]
+                    },
+                    disabled: {
+                        options: [{
+                            name: "false",
+                            value: null
+                        }, {
+                            name: "true",
+                            value: ""
+                        }]
+                    },
+                    "icon-only": {
+                        options: [{
+                            name: "false",
+                            valu: null
+                        }, {
+                            name: "true",
+                            value: ""
+                        }]
+                    }
+                }
+            };
+        })
+    </script>
+    <br>
+    <br>
     <fnt-button>Click me</fnt-button>
     <br>
     <br>
-    <fnt-button color="#6264a7">Click me</fnt-button>
+    <fnt-button color="#6264a7">Color one</fnt-button>
     <br>
     <br>
-    <fnt-button color="#697cc4">Click me</fnt-button>
+    <fnt-button color="#697cc4">Color two</fnt-button>
     <br>
     <br>
     <fnt-button type="circle">+</fnt-button>
-    <fnt-button type="circle">Click me</fnt-button>
+    <fnt-button type="circle">Type circle</fnt-button>
     <br>
     <br>
-    <fnt-button disabled>Click me</fnt-button>
+    <fnt-button disabled>Disabled button</fnt-button>
     <br>
     <br>
-    <fnt-button text>Click me</fnt-button>
+    <fnt-button type="text">Type text</fnt-button>
+    <br>
+    <br>
+    <fnt-button type="text" color="#6264a7">Type color text</fnt-button>
+    <br>
+    <br>
+    <div style="background-color: #33344a;">
+        <fnt-button type="outlined" style="margin: 20px;">Type outlined</fnt-button>
+    </div>
+    <br>
+    <br>
+    <fnt-button type="outlined" color="#6264a7">Type color outlined</fnt-button>
+    <br>
+    <br>
+    <fnt-button icon-only>icon-only</fnt-button>
 </body>
 
 </html>
