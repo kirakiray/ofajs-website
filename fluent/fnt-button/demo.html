@@ -9,6 +9,7 @@
     <script src="../../js/ofa.js"> </script>
     <script>
         load('@ofa/comp-view -p', "./fnt-button");
+        // load('http://127.0.0.1:5502/lib/comp-view/comp-view.js', "./fnt-button");
     </script>
 </head>
 
@@ -19,6 +20,7 @@
     <script>
         $("#targetView").on("renderend", e => {
             $("#targetView").options = {
+                slotInput: true,
                 props: {
                     color: {
                         options: [{
