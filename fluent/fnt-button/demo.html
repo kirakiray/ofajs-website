@@ -20,21 +20,30 @@
     <script>
         $("#targetView").on("renderend", e => {
             $("#targetView").options = {
+                selector: "fnt-button",
                 slotInput: true,
                 props: {
                     color: {
                         options: [{
-                            name: "空",
+                            name: "null",
                             value: null
                         }, {
-                            value: "#6264a7"
+                            value: "primary"
                         }, {
-                            value: "#ff0000"
+                            value: "success"
+                        }, {
+                            value: "warn"
+                        }, {
+                            value: "danger"
+                        }, {
+                            value: "#fb4747"
+                        }, {
+                            value: "rgb(255,0,0)"
                         }]
                     },
                     type: {
                         options: [{
-                            name: "空",
+                            name: "null",
                             value: null
                         }, {
                             value: "circle"
@@ -46,7 +55,7 @@
                     },
                     disabled: {
                         options: [{
-                            name: "false",
+                            name: "null",
                             value: null
                         }, {
                             name: "true",
@@ -55,7 +64,7 @@
                     },
                     "icon-only": {
                         options: [{
-                            name: "false",
+                            name: "null",
                             valu: null
                         }, {
                             name: "true",

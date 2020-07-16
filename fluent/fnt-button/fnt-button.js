@@ -25,6 +25,11 @@ Component({
         refreshUI() {
             let color = this.color;
 
+            if (color && !/^rgb/.test(color.trim()) && !/^#/.test(color.trim())) {
+                // 不是颜色开头的，设置变量色
+                color = `var(--fnt-${color})`;
+            }
+
             let colorStyleEle = this.$colorStyle;
             colorStyleEle.html = "";
 
