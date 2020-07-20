@@ -11,14 +11,27 @@ Component(async (load) => {
             // 颜色
             color: null,
             // 是否反色模式
-            inverted: null
+            inverted: null,
+            // 线的颜色
+            lineColor: null
         },
         watch: {
             vertical() {
                 $.nextTick(() => {
                     this.refreshLine();
                 });
-            }
+            },
+            lineColor(e, color) {
+                if (color) {
+                    if (color && !/^rgb/.test(color.trim()) && !/^#/.test(color.trim())) {
+                        // 不是颜色开头的，设置变量色
+                        color = `var(--fnt-${color})`;
+                    }
+                    this.$line.style.backgroundColor = color;
+                } else {
+                    this.$line.style.backgroundColor = "";
+                }
+            },
         },
         proto: {
             // 刷新UI的激活线

@@ -10,6 +10,8 @@
 .container {
     position: relative;
     display: flex;
+    --hover-item-color: rgba(0, 0, 0, .04);
+    --active-item-color: rgba(0, 0, 0, .08);
 
     &[vertical] {
         flex-direction: column;
@@ -20,6 +22,12 @@
         }
     }
 
+    &[inverted] {
+        color: #fff;
+        --hover-item-color: rgba(255, 255, 255, .1);
+        --active-item-color: rgba(255, 255, 255, .2);
+    }
+
     .line {
         position: absolute;
         left: 0;
@@ -28,5 +36,7 @@
         height: 2px;
         background-color: var(--fnt-primary);
         transition: all ease .2s;
+        // transition: all ease .2s, left cubic-bezier(0.25, 0.1, 0.38, 1.26) 0.3s, top cubic-bezier(0.25, 0.1, 0.38, 1.26) 0.3s;
+
     }
 }

@@ -8,8 +8,8 @@
     <title>fnt-menu test</title>
     <script src="../../js/ofa.js"> </script>
     <script>
-        // load("./fnt-menu", '@ofa/comp-view -p');
-        load("./fnt-menu", 'http://127.0.0.1:5502/lib/comp-view/comp-view');
+        load("./fnt-menu", '@ofa/comp-view -p');
+        // load("./fnt-menu", 'http://127.0.0.1:5502/lib/comp-view/comp-view');
     </script>
 </head>
 
@@ -35,7 +35,32 @@
         $('#targetView').on("renderend", e => {
             $('#targetView').options = {
                 props: {
+                    lineColor: {
+                        options: [{
+                            name: "null",
+                            value: null
+                        }, {
+                            value: "success"
+                        }, {
+                            value: "warn"
+                        }, {
+                            value: "danger"
+                        }, {
+                            value: "#fb4747"
+                        }, {
+                            value: "rgb(255,0,0)"
+                        }]
+                    },
                     vertical: {
+                        options: [{
+                            name: "null",
+                            value: null
+                        }, {
+                            name: "true",
+                            value: ""
+                        }]
+                    },
+                    inverted: {
                         options: [{
                             name: "null",
                             value: null
