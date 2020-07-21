@@ -10,7 +10,7 @@ Component({
         // 占位
         placeholder: null,
         // 下面的颜色
-        lineColor: null,
+        theme: null,
         // 是否可清除
         clearable: null,
         // 无效
@@ -26,7 +26,7 @@ Component({
         value: ""
     },
     watch: {
-        lineColor(e, color) {
+        theme(e, color) {
             if (color) {
                 if (color && !/^rgb/.test(color.trim()) && !/^#/.test(color.trim())) {
                     // 不是颜色开头的，设置变量色

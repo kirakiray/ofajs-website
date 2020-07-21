@@ -2,19 +2,19 @@ Component({
     tag: "fnt-button",
     temp: true,
     css: true,
-    attrs: ["color", "disabled", "type", "iconOnly"],
+    attrs: ["theme", "disabled", "type", "iconOnly"],
     data: {
         disabled: null,
         // 默认null为按钮     circle 圆形模式    text 文本模式     outlined 颠倒模式
         type: null,
-        color: null,
+        theme: null,
         // 是否深色模式（深色模式字体为白色，背景叠加色更深一点）
         deepmode: 0,
         // 没有边距的模式
         iconOnly: null
     },
     watch: {
-        color() {
+        theme() {
             this.refreshUI();
         },
         type() {
@@ -23,7 +23,7 @@ Component({
     },
     proto: {
         refreshUI() {
-            let color = this.color;
+            let color = this.theme;
 
             if (color && !/^rgb/.test(color.trim()) && !/^#/.test(color.trim())) {
                 // 不是颜色开头的，设置变量色

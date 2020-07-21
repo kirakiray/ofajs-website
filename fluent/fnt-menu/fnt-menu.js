@@ -13,7 +13,7 @@ Component(async (load) => {
             // 是否反色模式
             inverted: null,
             // 线的颜色
-            lineColor: null
+            theme: null
         },
         watch: {
             vertical() {
@@ -21,7 +21,7 @@ Component(async (load) => {
                     this.refreshLine();
                 });
             },
-            lineColor(e, color) {
+            theme(e, color) {
                 if (color) {
                     if (color && !/^rgb/.test(color.trim()) && !/^#/.test(color.trim())) {
                         // 不是颜色开头的，设置变量色
