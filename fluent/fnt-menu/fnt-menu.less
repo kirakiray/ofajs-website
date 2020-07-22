@@ -10,28 +10,29 @@
 .container {
     position: relative;
     display: flex;
-    --hover-item-color: rgba(0, 0, 0, .04);
-    --active-item-color: rgba(0, 0, 0, .08);
+    --hover-item-color: rgba(0, 0, 0, .05);
+    // --active-item-color: rgba(0, 0, 0, .08);
 
     &[vertical] {
         flex-direction: column;
 
         .line {
             left: 5px;
-            bottom: auto;
+            // bottom: auto;
         }
     }
 
     &[inverted] {
         color: #fff;
-        --hover-item-color: rgba(255, 255, 255, .1);
-        --active-item-color: rgba(255, 255, 255, .2);
+        --hover-item-color: rgba(255, 255, 255, .15);
+        // --active-item-color: rgba(255, 255, 255, .2);
     }
 
     .line {
         position: absolute;
         left: 0;
-        bottom: 0;
+        top: 100%;
+        // bottom: 0;
         width: 2px;
         height: 2px;
         background-color: var(--fnt-primary);

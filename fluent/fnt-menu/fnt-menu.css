@@ -8,25 +8,22 @@
 .container {
   position: relative;
   display: flex;
-  --hover-item-color: rgba(0, 0, 0, 0.04);
-  --active-item-color: rgba(0, 0, 0, 0.08);
+  --hover-item-color: rgba(0, 0, 0, 0.05);
 }
 .container[vertical] {
   flex-direction: column;
 }
 .container[vertical] .line {
   left: 5px;
-  bottom: auto;
 }
 .container[inverted] {
   color: #fff;
-  --hover-item-color: rgba(255, 255, 255, 0.1);
-  --active-item-color: rgba(255, 255, 255, 0.2);
+  --hover-item-color: rgba(255, 255, 255, 0.15);
 }
 .container .line {
   position: absolute;
   left: 0;
-  bottom: 0;
+  top: 100%;
   width: 2px;
   height: 2px;
   background-color: var(--fnt-primary);
