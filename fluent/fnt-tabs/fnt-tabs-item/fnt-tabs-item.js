@@ -1,5 +1,5 @@
 Component({
-    tag: "fnt-menu-item",
+    tag: "fnt-tabs-item",
     temp: true,
     attrs: {
         // 是否激活状态

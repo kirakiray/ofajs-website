@@ -5,33 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>fnt-menu test</title>
+    <title>fnt-tabs test</title>
     <script src="../../js/ofa.js"> </script>
     <script>
-        load("./fnt-menu", '@ofa/comp-view -p');
-        // load("./fnt-menu", 'http://127.0.0.1:5502/lib/comp-view/comp-view');
+        load("./fnt-tabs", '@ofa/comp-view -p');
+        // load("./fnt-tabs", 'http://127.0.0.1:5502/lib/comp-view/comp-view');
     </script>
 </head>
 
 <body>
     <comp-view id="targetView">
-        <fnt-menu>
-            <fnt-menu-item>
+        <fnt-tabs>
+            <fnt-tabs-item>
                 Profile
-            </fnt-menu-item>
-            <fnt-menu-item active>
+            </fnt-tabs-item>
+            <fnt-tabs-item active>
                 My account
-            </fnt-menu-item>
-            <fnt-menu-item>
+            </fnt-tabs-item>
+            <fnt-tabs-item>
                 Messages
-            </fnt-menu-item>
-            <fnt-menu-item>
+            </fnt-tabs-item>
+            <fnt-tabs-item>
                 Logout
-            </fnt-menu-item>
-        </fnt-menu>
+            </fnt-tabs-item>
+        </fnt-tabs>
     </comp-view>
     <script>
-
         $('#targetView').on("renderend", e => {
             $('#targetView').options = {
                 props: {
@@ -73,6 +72,26 @@
             };
         })
     </script>
+
+    <fnt-tabs vertical>
+        <fnt-tabs-item>
+            Profile
+        </fnt-tabs-item>
+        <fnt-tabs-item active>
+            My account
+        </fnt-tabs-item>
+        <fnt-tabs-item>
+            Messages
+            <ul >
+                <li>msg1</li>
+                <li>msg2</li>
+                <li>msg3</li>
+            </ul>
+        </fnt-tabs-item>
+        <fnt-tabs-item>
+            Logout
+        </fnt-tabs-item>
+    </fnt-tabs>
 </body>
 
 </html>

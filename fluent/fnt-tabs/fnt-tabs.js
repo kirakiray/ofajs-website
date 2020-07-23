@@ -1,8 +1,8 @@
 Component(async (load) => {
-    await load("./fnt-menu-item -p");
+    await load("./fnt-tabs-item -p");
 
     return {
-        tag: "fnt-menu",
+        tag: "fnt-tabs",
         temp: true,
         css: true,
         attrs: {
@@ -36,7 +36,7 @@ Component(async (load) => {
         proto: {
             // 刷新UI的激活线
             refreshLine() {
-                let activeItem = this.$("fnt-menu-item[active]");
+                let activeItem = this.$("fnt-tabs-item[active]");
 
                 // 清空默认样式
                 Object.assign(this.$line.style, {
@@ -51,6 +51,9 @@ Component(async (load) => {
             },
             // 设置激活line样式
             _setActiveLine(activeItem) {
+                if (!(activeItem && this.includes(activeItem))) {
+                    return;
+                }
                 if (this.vertical === null) {
                     Object.assign(this.$line.style, {
                         width: activeItem.width + "px",
@@ -65,6 +68,9 @@ Component(async (load) => {
             },
             // 设置line为非激活状态
             _setUnActiveLine(activeItem) {
+                if (!(activeItem && this.includes(activeItem))) {
+                    return;
+                }
                 if (this.vertical === null) {
                     Object.assign(this.$line.style, {
                         width: activeItem.width - 16 + "px",
@@ -79,8 +85,8 @@ Component(async (load) => {
             }
         },
         ready() {
-            this.on("click", "fnt-menu-item", e => {
-                this.all(`fnt-menu-item[active]`).forEach(e => e.attrs.active = null);
+            this.on("click", "fnt-tabs-item", e => {
+                this.all(`fnt-tabs-item[active]`).forEach(e => e.attrs.active = null);
                 e.target.attrs.active = "";
                 this.refreshLine();
                 this._setActiveLine(e.target);
@@ -92,9 +98,9 @@ Component(async (load) => {
             }, 100);
 
             // hover更新宽度
-            this.on("mouseover", "fnt-menu-item", e => {
+            this.on("mouseover", "fnt-tabs-item", e => {
                 // 横向
-                let activeItem = this.$("fnt-menu-item[active]");
+                let activeItem = this.$("fnt-tabs-item[active]");
 
                 // 判断是否跟激活状态相等，是的话就进行下划线修正
                 if (e.target === activeItem) {
@@ -102,8 +108,8 @@ Component(async (load) => {
                 }
             });
 
-            this.on("mouseout", "fnt-menu-item", e => {
-                let activeItem = this.$("fnt-menu-item[active]");
+            this.on("mouseout", "fnt-tabs-item", e => {
+                let activeItem = this.$("fnt-tabs-item[active]");
 
                 if (e.target === activeItem) {
                     this._setUnActiveLine(activeItem);
