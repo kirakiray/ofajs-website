@@ -8,5 +8,12 @@ Component({
     data: {
         // 是否竖的方向，默认横向
         vertical: null
+    },
+    watch: {
+        active() {
+            if (this.parent.is("fnt-tabs") && this.parent.refreshLine) {
+                this.parent.refreshLine();
+            }
+        }
     }
 })

@@ -1,10 +1,24 @@
 <style>
     :host {
         display: block;
-        width: 245px;
+        padding-top: 64px;
+        height: 100%;
         box-shadow: rgba(0, 0, 0, .1) 0 0 6px;
+        background-color: rgba(0, 0, 0, .1);
+    }
+
+    .aside_con {
+        width: 245px;
+        opacity: 1;
+        overflow: hidden;
+        transition: all ease .2s;
+    }
+
+    .aside_con[hide] {
+        width: 0;
+        opacity: 0;
     }
 </style>
-<div>
-    ofa-aside
+<div class="aside_con" :hide="hide">
+    <slot></slot>
 </div>

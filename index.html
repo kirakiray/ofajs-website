@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ofajs</title>
+    <link rel="stylesheet" href="css/o-page-anime.css">
     <link rel="stylesheet" href="css/public.css">
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/o-page-anime.css">
     <script src="js/ofa.js" async></script>
     <script src="js/main.js" async></script>
     <!-- <script>
@@ -24,13 +24,20 @@
 
 <body>
     <div class="container">
-        <ofa-nav></ofa-nav>
-        <div class="main">
-            <ofa-aside></ofa-aside>
-            <o-app>
-                <o-page src="pages/start/start.js"></o-page>
-            </o-app>
-        </div>
+        <ofa-nav>
+            <div slot="logo" class="logo">
+                <img src="img/ofa_logo.svg" height="30" alt="logo"> OFAJS
+            </div>
+            <fnt-tabs style="font-size:16px;">
+                <fnt-tabs-item data-src="pages/feature/feature">特性</fnt-tabs-item>
+                <fnt-tabs-item data-src="pages/docs/docs">文档</fnt-tabs-item>
+                <fnt-tabs-item data-src="pages/sources/sources">资源</fnt-tabs-item>
+            </fnt-tabs>
+        </ofa-nav>
+        <ofa-aside hide>ofa-aside</ofa-aside>
+        <o-app router="1">
+            <o-page src="pages/start/start.js"></o-page>
+        </o-app>
     </div>
 
     <div id="startLoading" class="loading_con">

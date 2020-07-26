@@ -46,6 +46,14 @@ Component(async (load) => {
                     top: ""
                 });
 
+                if (!activeItem) {
+                    // 初次设置
+                    Object.assign(this.$line.style, {
+                        width: 0 + "px",
+                        height: 0 + "px"
+                    });
+                }
+
                 // 设置非激活状态
                 this._setUnActiveLine(activeItem);
             },
@@ -86,10 +94,15 @@ Component(async (load) => {
         },
         ready() {
             this.on("click", "fnt-tabs-item", e => {
+                if (e.target.is(`fnt-tabs-item[active]`)) {
+                    // 如果已经是激活状态，就不用需要继续
+                    return;
+                }
                 this.all(`fnt-tabs-item[active]`).forEach(e => e.attrs.active = null);
                 e.target.attrs.active = "";
                 this.refreshLine();
                 this._setActiveLine(e.target);
+                this.emitHandler("changeTab", e.target);
             });
 
             // 延迟更新ui
