@@ -45,9 +45,11 @@ ofa = async () => {
         }
     }, true);
 
-    // 去掉loading
-    $("#startLoading").class.add("hide");
     setTimeout(() => {
-        $("#startLoading").remove();
-    }, 500);
+        // 去掉loading
+        $("#startLoading").class.add("hide");
+        setTimeout(() => {
+            $("#startLoading").remove();
+        }, 500);
+    }, 200);
 }
