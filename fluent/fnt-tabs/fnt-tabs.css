@@ -1,5 +1,6 @@
 @import url(../common/common.css);
 :host {
+  position: relative;
   display: flex;
   color: #484644;
   user-select: none;

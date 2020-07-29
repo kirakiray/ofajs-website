@@ -4,7 +4,6 @@ Component(async (load) => {
     return {
         tag: "fnt-tabs",
         temp: true,
-        css: true,
         attrs: {
             // 是否锤子
             vertical: null,
@@ -36,6 +35,8 @@ Component(async (load) => {
         proto: {
             // 刷新UI的激活线
             refreshLine() {
+                // await this.finish;
+
                 let activeItem = this.$("fnt-tabs-item[active]");
 
                 // 清空默认样式
@@ -65,12 +66,12 @@ Component(async (load) => {
                 if (this.vertical === null) {
                     Object.assign(this.$line.style, {
                         width: activeItem.width + "px",
-                        left: activeItem.ele.offsetLeft + "px",
+                        left: activeItem.position.left + "px",
                     });
                 } else {
                     Object.assign(this.$line.style, {
                         height: activeItem.height + "px",
-                        top: activeItem.ele.offsetTop + "px"
+                        top: activeItem.position.top + "px"
                     });
                 }
             },
@@ -82,17 +83,17 @@ Component(async (load) => {
                 if (this.vertical === null) {
                     Object.assign(this.$line.style, {
                         width: activeItem.width - 16 + "px",
-                        left: activeItem.ele.offsetLeft + 8 + "px",
+                        left: activeItem.position.left + 8 + "px",
                     });
                 } else {
                     Object.assign(this.$line.style, {
                         height: activeItem.height - 16 + "px",
-                        top: activeItem.ele.offsetTop + 8 + "px",
+                        top: activeItem.position.top + 8 + "px",
                     });
                 }
             }
         },
-        ready() {
+        async ready() {
             this.on("click", "fnt-tabs-item", e => {
                 if (e.target.is(`fnt-tabs-item[active]`)) {
                     // 如果已经是激活状态，就不用需要继续
@@ -101,14 +102,13 @@ Component(async (load) => {
                 this.all(`fnt-tabs-item[active]`).forEach(e => e.attrs.active = null);
                 e.target.attrs.active = "";
                 this.refreshLine();
-                this._setActiveLine(e.target);
+                $.nextTick(() => this._setActiveLine(e.target));
                 this.emitHandler("changeTab", e.target);
             });
 
-            // 延迟更新ui
             setTimeout(() => {
                 this.refreshLine();
-            }, 100);
+            }, 300);
 
             // hover更新宽度
             this.on("mouseover", "fnt-tabs-item", e => {
@@ -117,7 +117,7 @@ Component(async (load) => {
 
                 // 判断是否跟激活状态相等，是的话就进行下划线修正
                 if (e.target === activeItem) {
-                    this._setActiveLine(activeItem);
+                    $.nextTick(() => this._setActiveLine(activeItem));
                 }
             });
 

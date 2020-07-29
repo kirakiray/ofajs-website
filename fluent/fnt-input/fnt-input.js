@@ -1,7 +1,6 @@
 Component({
     tag: "fnt-input",
     temp: true,
-    css: true,
     attrs: {
         // 类型
         type: "text",

@@ -1,7 +1,6 @@
 Component({
     tag: "fnt-button",
     temp: true,
-    css: true,
     attrs: ["theme", "disabled", "type", "iconOnly"],
     data: {
         disabled: null,

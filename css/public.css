@@ -42,3 +42,23 @@ body {
         transform: rotate(360deg)
     }
 }
+
+[xv-ele]:not([xv-ele="1"]) {
+    display: none !important;
+}
+
+[xv-ele="1"] {
+    animation: custom_ele_fadein ease .3s;
+}
+
+@keyframes custom_ele_fadein {
+    0% {
+        transform: translate(10px, 0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
