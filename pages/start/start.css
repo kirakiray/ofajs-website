@@ -1,14 +1,24 @@
 .container {
+  box-sizing: border-box;
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  overflow-y: auto;
+  height: 100%;
+}
+.info {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  padding: 100px 0 30px;
 }
 article {
   display: flex;
-  margin-top: 20px;
+  flex-wrap: wrap;
 }
 article > div {
-  margin: 0 20px;
+  margin: 20px;
 }
 article h3 {
   margin: 1em 0;

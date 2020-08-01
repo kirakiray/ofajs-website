@@ -1,3 +1,45 @@
+:root {
+    /* 手机和pad界限 */
+    --phone-width: 414;
+    /* pad和pc界限 */
+    --pad-width: 768;
+    /* 其他的都是电脑宽度了 */
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    color: #444;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+[xv-ele]:not([xv-ele="1"]) {
+    display: none !important;
+}
+
+[xv-ele="1"] {
+    animation: custom_ele_fadein ease .3s;
+}
+
+@keyframes custom_ele_fadein {
+    0% {
+        transform: translate(10px, 0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+
 .container {
     position: relative;
     box-sizing: border-box;
@@ -11,25 +53,35 @@
     text-rendering: optimizeLegibility;
 }
 
-.logo{
+.logo {
     display: contents;
 }
 
 .logo img {
+    height: 30px;
     padding: 0 10px;
 }
 
 o-app {
     box-sizing: border-box;
-    padding-top: 64px;
+    margin-top: 64px;
     width: auto;
-    height: 100%;
+    height: calc(100% - 64px);
     flex: 1;
 }
 
 ofa-nav {
     // background-color: rgba(0, 0, 255, .1);
     background-color: #fff;
+
+    .logo img {
+        height: 20px;
+    }
+
+    fnt-tabs {
+        margin-right: 10px;
+        margin-left: auto;
+    }
 
     fnt-tabs-item {
         margin: 0 10px;
@@ -38,4 +90,10 @@ ofa-nav {
 
 ofa-aside {
     // background-color: rgba(0, 255, 0, .1);
+}
+
+@media screen and (max-width:414px) {
+    o-app {
+        margin-top: 40px;
+    }
 }

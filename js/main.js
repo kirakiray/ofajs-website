@@ -29,7 +29,8 @@ ofa = async () => {
             let src = app.currentPage.src;
 
             nav.all("fnt-tabs-item").forEach(e => {
-                if (e.data.src == src) {
+                let reg = new RegExp(`^${e.data.tab}`);
+                if (reg.test(src)) {
                     e.attrs.active = "";
                 } else {
                     e.attrs.active = null;
@@ -37,7 +38,7 @@ ofa = async () => {
             });
 
             // 文档状态下，允许出现侧边栏
-            if (src == "pages/docs/docs") {
+            if (/pages\/docs\//.test(src)) {
                 aside.hide = null;
             } else {
                 aside.hide = "";
