@@ -34,7 +34,20 @@
                 <fnt-tabs-item data-src="pages/sources/sources" data-tab="pages/sources/">资源</fnt-tabs-item>
             </fnt-tabs>
         </ofa-nav>
-        <ofa-aside hide>ofa-aside</ofa-aside>
+        <ofa-aside hide>
+            <aside-item data-reg="pages/docs/guide">ofajs介绍
+                <a href="#pages/docs/guide" slot="child">起步</a>
+            </aside-item>
+            <aside-item data-reg="pages/docs/stage0">stage0:使用组件
+                <a href="#pages/docs/stage0/use_components" slot="child">如何使用ofajs封装的组件</a>
+                <a href="#pages/docs/stage0/read_md" slot="child">使用markdown解析组件</a>
+                <a href="#pages/docs/stage0/md_edit" slot="child">5分钟制作markdown编辑器</a>
+            </aside-item>
+            <aside-item>stage1:使用ofa api</aside-item>
+            <aside-item>stage2:组件的开发</aside-item>
+            <aside-item>stage3:页面的开发</aside-item>
+            <aside-item>stage4:app的开发</aside-item>
+        </ofa-aside>
         <o-app router="1">
             <o-page src="pages/start/start.js"></o-page>
         </o-app>

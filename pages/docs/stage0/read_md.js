@@ -1,0 +1,3 @@
+Page(async (load) => {
+    return {};
+});

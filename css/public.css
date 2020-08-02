@@ -29,3 +29,7 @@
         transform: rotate(360deg)
     }
 }
+
+[xv-ele]:not([xv-ele="1"]) {
+    display: none !important;
+}

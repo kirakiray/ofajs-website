@@ -4,6 +4,7 @@
     /* pad和pc界限 */
     --pad-width: 768;
     /* 其他的都是电脑宽度了 */
+    --primary-color: #6264a7;
 }
 
 html,
@@ -18,26 +19,6 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
-}
-
-[xv-ele]:not([xv-ele="1"]) {
-    display: none !important;
-}
-
-[xv-ele="1"] {
-    animation: custom_ele_fadein ease .3s;
-}
-
-@keyframes custom_ele_fadein {
-    0% {
-        transform: translate(10px, 0);
-        opacity: 0;
-    }
-
-    100% {
-        transform: translate(0, 0);
-        opacity: 1;
-    }
 }
 
 .container {

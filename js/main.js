@@ -1,4 +1,6 @@
 ofa = async () => {
+    ofa.globalcss = "css/public.css";
+
     // 顶部和侧边栏组件
     await load("components/ofa-nav -p", "components/ofa-aside -p", "fluent/fnt-tabs -p");
 

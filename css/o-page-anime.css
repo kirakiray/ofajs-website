@@ -18,6 +18,9 @@ o-app>o-page {
 }
 
 o-page[o-loading="1"]:before {
+    position: absolute;
+    left: calc(50% - 18px);
+    top: calc(50% - 18px);
     display: block;
     content: "";
     width: 36px;
@@ -38,9 +41,7 @@ o-page[o-loading="1"]:before {
 }
 
 [o-page-anime] {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;
     transition: all ease .3s;
 }
 
@@ -70,7 +71,6 @@ o-page[o-loading="1"]:before {
 }
 
 [o-page-anime="active"] {
-    display: flex;
     transform: translate3d(0, 0, 0);
     opacity: 1;
 }

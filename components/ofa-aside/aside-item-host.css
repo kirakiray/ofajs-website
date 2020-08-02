@@ -1,0 +1,46 @@
+aside-item a {
+    position: relative;
+    display: block;
+    height: 0;
+    opacity: 0;
+    line-height: 40px;
+    padding-left: 40px;
+    font-size: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: all ease .25s;
+}
+
+aside-item a:hover {
+    background-color: rgba(0, 0, 0, .05);
+    cursor: pointer;
+}
+
+aside-item[open] a {
+    height: 40px;
+    opacity: 1;
+    color: rgb(58, 58, 58);
+}
+
+aside-item a[active] {
+    color: var(--primary-color);
+}
+
+aside-item a:before {
+    display: block;
+    position: absolute;
+    left: 30px;
+    /* top: 10px; */
+    top: 50%;
+    width: 2px;
+    /* height: 20px; */
+    height: 0;
+    content: "";
+    background-color: var(--primary-color);
+    transition: all ease .3s;
+}
+
+aside-item a[active]:before {
+    top: 10px;
+    height: 20px;
+}
