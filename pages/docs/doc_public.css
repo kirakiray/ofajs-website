@@ -4,6 +4,13 @@
   align-items: flex-start;
   overflow-y: auto;
 }
+.code_span {
+  padding: 0 4px;
+  display: inline-block;
+  color: #6264a7;
+  background-color: #eee;
+  font-family: monospace;
+}
 .docs_con {
   display: block;
   box-sizing: border-box;

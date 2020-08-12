@@ -1,5 +1,5 @@
 /*!
- * ofa v2.5.3
+ * ofa v2.6.0
  * https://github.com/kirakiray/ofa.js
  * 
  * (c) 2018-2020 YAO
@@ -825,6 +825,32 @@
                         this.splice(parseInt(key), 1);
                     }
                 }
+            }
+
+            /**
+             *  深度清除当前对象，所有子对象数据也会被深度清除
+             */
+            deepClear() {
+                // 清除非数字键
+                Object.keys(this).forEach(key => {
+                    if (/\D/.test(key)) {
+                        let obj = this[key];
+
+                        if (obj instanceof XData) {
+                            obj.deepClear();
+                        }
+                    }
+                });
+
+                // 数组键内深度清除对象
+                this.forEach(obj => {
+                    if (obj instanceof XData) {
+                        obj.deepClear();
+                    }
+                });
+
+                // 清除自身
+                clearXData(this);
             }
 
             /**
@@ -3349,7 +3375,11 @@ with(this){
                                     event.bubble = false;
                                 }
 
-                                func.call(xhearEle[PROXYTHIS], event, data);
+                                if (isFunction(func)) {
+                                    func.call(xhearEle[PROXYTHIS], event, data);
+                                } else if (!func) {
+                                    console.warn(xhearEle[PROXYTHIS], `bind ${functionName} is not function`);
+                                }
                             });
                         }
                     });
@@ -6330,7 +6360,10 @@ with(this){
 
     drill.config({
         paths: {
-            "@ofa/": "https://kirakiray.github.io/ofa.js/lib/"
+            // 有功能和质量要求的官方仓库
+            "@ofa/": "https://kirakiray.github.io/ofa.js/lib/",
+            // 无功能和质量限制的官方仓库
+            "@libs/": "https://kirakiray.github.io/ofa_lib/v2/"
         }
     });
 
@@ -6369,8 +6402,8 @@ with(this){
             </div>
             `;
         },
-        v: 2005003,
-        version: "2.5.3"
+        v: 2006000,
+        version: "2.6.0"
     };
 
     let oldOfa = glo.ofa;
