@@ -21,7 +21,7 @@ ofa = async () => {
     // 点击logo返回
     $(".logo").on("click", e => {
         if (!/^pages\/start\/start/.test($("o-app").currentPage.src)) {
-            app.navigate("pages/start/start");
+            app.back("home");
         }
     });
 
