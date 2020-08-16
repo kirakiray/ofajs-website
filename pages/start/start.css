@@ -19,9 +19,12 @@ article {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
 }
 article > div {
   margin: 20px;
+  width: 400px;
+  text-align: center;
 }
 article h3 {
   margin: 1em 0;
