@@ -12,12 +12,14 @@
         width: 245px;
         opacity: 1;
         overflow: hidden;
-        transition: all ease .2s;
+        transition: all ease .3s;
+        transition-delay: .4s;
     }
 
     .aside_con[hide] {
         width: 0;
         opacity: 0;
+        transition: all ease .2s;
     }
 </style>
 <div class="aside_con" :hide="hide">
