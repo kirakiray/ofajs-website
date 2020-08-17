@@ -1,9 +1,5 @@
 Page(async (load) => {
-    await load("fluent/fnt-button -p");
+    await load("fntui/fnt-button -p");
 
-    return {
-        data: {
-            haha: "hahahahahha"
-        }
-    };
+    return {};
 });

@@ -2,7 +2,7 @@ ofa = async () => {
     ofa.globalcss = "css/public.css";
 
     // 顶部和侧边栏组件
-    await load("components/ofa-nav -p", "components/ofa-aside -p", "fluent/fnt-tabs -p");
+    await load("components/ofa-nav -p", "components/ofa-aside -p", "fntui/fnt-tabs -p");
 
     // 主app
     const app = $("o-app"), nav = $("ofa-nav"), aside = $("ofa-aside");

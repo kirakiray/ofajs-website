@@ -1,6 +1,12 @@
 <link rel="stylesheet" href="../doc_public.css">
 <div class="docs_con">
     <h1>组件的使用</h1>
-    <p>使用组件只需要学会 <span class="code_span">load</span> 方法即可。</p>
-    <p>还有查看相应组件的开发文档，后会将 ofajs 封装的组件，称之为 ofa component；</p>
+    <p>使用 <span class="csp">ofajs</span> 开发的组件，称之为 ofa component。</p>
+    <p>使用 ofa component，只需学会 <span class="code_span">load</span> 方法即可。</p>
+    <h2>load 的使用</h2>
+    <p> <span class="csp">load</span> 方法是 <b>模块加载器</b> ，作用跟ES6的 <span class="csp">import</span> 和 nodejs的<span
+            class="csp">require</span>相似。但 <b>load</b> 得到的是一个 <a class="csp"
+            href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise"
+            target="_blank">Promise</a> 对象，当操作成功后，会从then内返回当前模块的内容。</p>
+    <p>请搭配 es7 的 async function 使用，效果更佳； </p>
 </div>
