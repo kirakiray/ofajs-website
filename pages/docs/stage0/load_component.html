@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="../doc_public.css">
+<div class="docs_con">
+    <h1>组件的使用</h1>
+    <p>基于 <span class="csp">ofajs</span> 开发的组件，称之为 <b>ofa Component</b> 。</p>
+    <p>要使用 ofa Component，需先学会 <span class="code_span">load</span> 方法。</p>
+    <h2>load 的入门教程</h2>
+    <p>当引入 <b>ofa.js</b> 文件成功后，会在全局变量内添加一个 <span class="csp">load</span>方法 </p>
+    <p> <span class="csp">load</span> 方法是 <b>模块加载器</b> ，作用跟ES6的 <span class="csp">import</span> 和 nodejs的<span
+            class="csp">require</span>相似。但使用 <b>load</b> 方法返回的是 <a class="csp"
+            href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise"
+            target="_blank">Promise</a> 对象，当操作成功后，会从then内返回当前模块的内容。</p>
+    <o-code>
+        <template>
+            <script>
+                load("https://ofajs.com/fntui/fnt-button/fnt-button.js").then(() => {
+                    console.log("fnt-button 加载完成!");
+                });
+            </script>
+        </template>
+    </o-code>
+    <p>async function 使用，效果更佳； </p>
+    <o-code>
+        <template>
+            <script>
+                (async () => {
+                    await load("https://ofajs.com/fntui/fnt-button/fnt-button.js");
+
+                    console.log("fnt-button 加载完成!");
+                })();
+            </script>
+        </template>
+    </o-code>
+    <p>后续的添加脚本请使用 <span class="csp">load</span> 方法；不要再使用 <span class="csp">&lt;script&gt;</span> 标签添加脚本； </p>
+    <p> load模块化系统其实还有很多内容，对于stage0不是必学内容，可选择自行学习。 </p>
+    <fnt-button @click="navigate('pages/docs/drill/guide')">ofa模块化系统</fnt-button>
+</div>
