@@ -18,7 +18,7 @@
             </script>
         </template>
     </o-code>
-    <p>async function 使用，效果更佳； </p>
+    <p>搭配async function 使用，效果更佳； </p>
     <o-code>
         <template>
             <script>
@@ -30,7 +30,28 @@
             </script>
         </template>
     </o-code>
+    <p>当加载的文件和目录同名时，可以在目录前添加 <div class="csp">-p</div> 参数，就能省略文件名;</p>
+    <o-code lang="javascript">
+        <template>
+            // await load("https://ofajs.com/fntui/fnt-button/fnt-button.js");
+            await load("https://ofajs.com/fntui/fnt-button -p");
+        </template>
+    </o-code>
     <p>后续的添加脚本请使用 <span class="csp">load</span> 方法；不要再使用 <span class="csp">&lt;script&gt;</span> 标签添加脚本； </p>
-    <p> load模块化系统其实还有很多内容，对于stage0不是必学内容，可选择自行学习。 </p>
-    <fnt-button @click="navigate('pages/docs/drill/guide')">ofa模块化系统</fnt-button>
+    <p> load模块化系统还有很多内容，在stage0范围内不是必学内容，你可选择自行学习。 </p>
+    <fnt-button @click="navigate('pages/docs/drill/guide')">ofa模块化系统(load)</fnt-button>
+    <h2>使用ofa Component</h2>
+    <p>已开发完成的 ofa Component 都会有相应的使用文档，并且都可以直接用浏览器打开查看。下面就以当前网站使用的按钮组件为例。</p>
+    <p>使用文档在 <b>fntui</b>目录内 <a href="/fntui/fnt-button/demo.html" target="_blank">fnt-button使用文档</a></p>
+    <o-code>
+        <template>
+            <script src="ofa.js"></script>
+            <script>
+                load("fntui/fnt-button -p");
+            </script>
+        </template>
+    </o-code>
+    <p> <b>fntui</b> 是本站根据微软的 <a href="https://developer.microsoft.com/en-us/fluentui/" target="_blank">Fluent UI</a>
+        的规范制作的前端UI组件库，包含按钮、输入框和切换栏等；后期有时间会补充更多组件； </p>
+
 </div>
