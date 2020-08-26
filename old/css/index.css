@@ -1,0 +1,66 @@
+:root {
+  /* 手机和pad界限 */
+  --phone-width: 414;
+  /* pad和pc界限 */
+  --pad-width: 768;
+  /* 其他的都是电脑宽度了 */
+  --primary-color: #6264a7;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+.container {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.logo {
+  display: contents;
+}
+.logo img {
+  height: 30px;
+  padding: 0 10px;
+}
+o-app {
+  box-sizing: border-box;
+  margin-top: 64px;
+  width: auto;
+  height: calc(100% - 64px);
+  flex: 1;
+}
+ofa-nav {
+  background-color: #fff;
+}
+ofa-nav .logo img {
+  height: 20px;
+}
+ofa-nav fnt-tabs {
+  margin-right: 10px;
+  margin-left: auto;
+}
+ofa-nav fnt-tabs-item {
+  margin: 0 10px;
+}
+@media screen and (max-width: 414px) {
+  o-app {
+    margin-top: 40px;
+  }
+}
+.aside_sub_title {
+  margin: 10px 0 5px 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
