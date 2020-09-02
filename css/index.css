@@ -1,31 +1,54 @@
 @import url('base.css');
-@import url('./o-page-anime.css');
-
+@import url('o-page-anime.css');
 :root {
-    --primary-color: #6264a7;
+  --primary-color: #6264a7;
 }
-
 html,
 body {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
-
 .ob_container {
-    display: flex;
-    width: 100%;
-    height: 100%;
+  display: flex;
+  width: 100%;
+  height: 100%;
 }
-
-.ob_container_left {
-    width: 200px;
-    padding-left: 10px;
+.ob_container .ob_container_left {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  padding-left: 0;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 0 15px;
 }
-
-.ob_container_left book-aside {
-    width: 100%;
+.ob_container .ob_container_left .ob_left_main {
+  flex: 1;
+  overflow-y: auto;
 }
-
-.ob_container_main {
-    flex: 1;
+.ob_container .ob_container_left .ob_left_main:after {
+  display: block;
+  content: "";
+  height: 1em;
+}
+.ob_container .ob_container_left book-aside {
+  width: 100%;
+}
+.ob_container .ob_container_left .ob_left_title {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 20px 0 20px 10px;
+}
+.ob_container .ob_container_left .ob_left_title2 {
+  font-size: 13px;
+  font-weight: bold;
+  margin: 1em 0 0.5em 10px;
+}
+.ob_container .ob_container_left hr {
+  margin: 0;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 0.8em;
+  height: 10px;
+}
+.ob_container .ob_container_main {
+  flex: 1;
 }

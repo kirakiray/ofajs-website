@@ -2,6 +2,12 @@ Component(async (load) => {
     return {
         tag: "ba-item",
         temp: true,
+        proto: {
+            clickItem() {
+                // 模拟点击
+                this.emit("click-item");
+            }
+        },
         attrs: {
             // 当前项的名字
             name: "",

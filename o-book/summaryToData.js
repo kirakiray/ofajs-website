@@ -13,15 +13,22 @@ define(() => {
 
     // summary 转 data
     function summaryToData(summary) {
+        // 将换行转回数组数据，后面根据数组数据进行转换
         let su_data = summary.split(/\n/g).filter(e => !!e);
 
-        if (su_data[0] == '# Summary' || su_data[0] == '# summary') {
-            // 去除第一个标题summary的标识
+        // 获取大标题
+        let title = su_data[0];
+        if (title && /^# .+/.test(title)) {
+            title = title.replace(/^# (.+)/, "$1");
             su_data.splice(0, 1);
+        } else {
+            title = "";
         }
 
         // 装一级分项的数组
         const items = [];
+
+        const reData = { title, items };
 
         // 记录树状结构的父对象
         const treeParents = [];
@@ -88,7 +95,7 @@ define(() => {
             }
         });
 
-        return items;
+        return reData;
     }
 
     return { getNAndP, summaryToData };

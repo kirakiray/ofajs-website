@@ -5,7 +5,7 @@ Component(async (load) => {
         tag: "book-aside",
         temp: true,
         ready() {
-            this.on("click", "ba-item", e => {
+            this.on("click-item", "ba-item", e => {
                 let { delegateTarget } = e;
 
                 // 去掉已激活的item
