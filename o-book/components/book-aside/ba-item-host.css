@@ -1,0 +1,8 @@
+ba-item {
+    opacity: .7;
+    cursor: default;
+}
+
+ba-item[path] {
+    opacity: 1;
+}

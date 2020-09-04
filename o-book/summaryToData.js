@@ -2,7 +2,7 @@ define(() => {
     // 获取选项名和地址
     function getNAndP(str) {
         let name = str.replace(/ *\* \[(.+)\].+/, "$1");
-        let path = str.replace(/ *\* \[.+\]\((.+)\)/, "$1");
+        let path = str.replace(/ *\* \[.+\]\((.*)\)/, "$1");
 
         return {
             type: "item",

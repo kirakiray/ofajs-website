@@ -2,7 +2,6 @@
 
 ## 主要
 * [ofajs介绍](docs/guide.md)
-    * [起步]()
 * [stage0:使用组件]()
     * [学会load函数和查看组件文档]()
     * [使用markdown组件]()
@@ -14,12 +13,11 @@
 * [$ API]()
 
 ## 高级
-* [模块化]()
-    * [简介]()
-    * [基础使用]()
-    * [define模块详细使用]()
-    * [task模块详细使用]()
-    * [ofa.js模块化进阶]()
+* [模块化](docs/drill/guide.md)
+    * [基础使用](docs/drill/base_use.md)
+    * [define模块详细使用](docs/drill/define.md)
+    * [task模块详细使用](docs/drill/task.md)
+    * [ofa.js模块化进阶](docs/drill/more.md)
 * [数据同步系统]()
 * [组件化]()
 
