@@ -48,4 +48,4 @@ stage 3 完成后，能够快速开发功能页面；
 
 stage4完成后，你就能开发全平台通用的高体验应用程序（PWA or Webapp）。
 
-[下一步：组件的使用](docs/readme.md)
+[下一步：组件的使用](docs/stage0/start.md)

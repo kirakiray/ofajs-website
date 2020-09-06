@@ -67,6 +67,8 @@ define(async (load, exports, modules, { DIR }) => {
         fixLeftSide();
     });
 
+    setTimeout(() => { fixLeftSide() }, 1000);
+
     // 左侧点击后，跳转到相应地址
     aside.on("active-item", (e, { target }) => {
         let path = target.path;

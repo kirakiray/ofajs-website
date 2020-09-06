@@ -1,3 +1,0 @@
-Page(async () => {
-    return {};
-});
