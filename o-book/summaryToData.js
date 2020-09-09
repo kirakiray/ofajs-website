@@ -27,8 +27,9 @@ define(() => {
 
         // 装一级分项的数组
         const items = [];
+        const links = [];
 
-        const reData = { title, items };
+        const reData = { title, items, links };
 
         // 记录树状结构的父对象
         const treeParents = [];
@@ -73,6 +74,9 @@ define(() => {
 
                     treeParents.splice(0, 1000, ...c_treeParent)
                 }
+
+                // 一级列表，方便查找next
+                links.push(data);
 
                 beforeSpace = spaceStr;
                 treeParents.push(data);

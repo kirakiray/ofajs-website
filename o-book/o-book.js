@@ -4,7 +4,7 @@ define(async (load, exports, modules, { DIR }) => {
     await load('./css/index.css');
 
     // 加载关键组件
-    await load("./components/book-aside -p");
+    await load("./components/book-aside -p", "./bc/articleAside -p");
 
     ofa.config({
         paths: {
@@ -13,20 +13,20 @@ define(async (load, exports, modules, { DIR }) => {
     });
 
     // 加载 book.json
-    const book = await load("book.json");
+    const [book, pubData] = await load("book.json", "./data");
     const { summaryToData } = await load("./summaryToData");
     const { transToItem } = await load("./util");
 
     // 加载summary
     let summary = await load(book.SUMMARY);
 
-    let data = summaryToData(summary);
+    let summaryData = pubData.summary = summaryToData(summary);
     const aside = $("#aside");
 
-    $(".ob_left_title").text = data.title;
+    $(".ob_left_title").text = summaryData.title;
 
     // 填充侧边栏
-    data.items.forEach(e => {
+    summaryData.items.forEach(e => {
         let ele;
         switch (e.type) {
             case "item":

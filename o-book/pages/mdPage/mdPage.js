@@ -2,6 +2,8 @@ Page(async (load) => {
     // md解析器
     await load("./marked.min.js", "./highlight.min.js");
 
+    const pubData = await load("../../data");
+
     return {
         async ready() {
             // 还原loading
@@ -29,6 +31,24 @@ Page(async (load) => {
                 });
             }
 
+            // 查找下一篇文章的地址
+            let inItem = false;
+            let nextItem;
+            pubData.summary.links.some(e => {
+                if (e.type == "item") {
+                    if (e.path == url) {
+                        inItem = true;
+                    } else if (inItem) {
+                        nextItem = e;
+                        return true;
+                    }
+                }
+            });
+
+            if (nextItem && nextItem.path) {
+                // 存在下一节的，设置下一页按钮
+                mdText += `\n\n<a href="${nextItem.path}">⏭️ ${nextItem.name}</a>`;
+            }
 
             this.$article.html = mdText;
 
