@@ -1,7 +1,6 @@
-define(async (load, exports, modules, { DIR }) => {
+Component(async (load, { DIR }) => {
     // 加载全局样式
-    ofa.globalcss = await load('./css/public.css -getLink');
-    await load('./css/index.css');
+    // ofa.globalcss = await load('./css/public.css -getLink');
 
     // 加载关键组件
     await load("./components/book-aside -p", "./bc/articleAside -p");
@@ -12,72 +11,77 @@ define(async (load, exports, modules, { DIR }) => {
         }
     });
 
-    // 加载 book.json
-    const [book, pubData] = await load("book.json", "./data");
-    const { summaryToData } = await load("./summaryToData");
-    const { transToItem } = await load("./util");
+    return {
+        tag: "o-book",
+        temp: true,
+        hostcss: "./css/host.css",
+        async ready() {
+            // 加载 book.json
+            const [book, pubData] = await load("book.json", "./data");
+            const { summaryToData } = await load("./summaryToData");
+            const { transToItem } = await load("./util");
 
-    // 加载summary
-    let summary = await load(book.SUMMARY);
+            // 加载summary
+            let summary = await load(book.SUMMARY);
 
-    let summaryData = pubData.summary = summaryToData(summary);
-    const aside = $("#aside");
+            let summaryData = pubData.summary = summaryToData(summary);
+            const aside = this.$shadow.$("#aside");
 
-    $(".ob_left_title").text = summaryData.title;
+            this.$shadow.$(".ob_left_title").text = summaryData.title;
 
-    // 填充侧边栏
-    summaryData.items.forEach(e => {
-        let ele;
-        switch (e.type) {
-            case "item":
-                ele = transToItem(e);
-                break;
-            case "title":
-                ele = $(`
-                <h2 class="ob_left_title2">${e.text}</h2>
-                `);
-                break;
-            case "line":
-                ele = $(`<hr />`);
-                break;
-        }
-        ele && aside.push(ele);
-    });
+            // 填充侧边栏
+            summaryData.items.forEach(e => {
+                let ele;
+                switch (e.type) {
+                    case "item":
+                        ele = transToItem(e);
+                        break;
+                    case "title":
+                        ele = $(`<h2 class="ob_left_title2">${e.text}</h2>`);
+                        break;
+                    case "line":
+                        ele = $(`<hr />`);
+                        break;
+                }
+                ele && aside.push(ele);
+            });
 
-    // 首页设置
-    const app = $('o-app');
+            // 首页设置
+            const app = this.$shadow.$('o-app');
 
-    // 使用路由模式
-    app.router = "1";
+            // 使用路由模式
+            app.router = "1";
 
-    // 添加首页
-    app.push(`<o-page src="@obook/pages/mdPage/mdPage?url=${book.index}"></o-page>`);
+            // 添加首页
+            app.push(`<o-page src="@obook/pages/mdPage/mdPage?url=${book.index}"></o-page>`);
 
-    // 修正左侧激活状态
-    function fixLeftSide() {
-        // 去掉旧的激活
-        $.all("ba-item[active]").forEach(item => item.active = null);
+            // 修正左侧激活状态
+            const fixLeftSide = () => {
+                // 去掉旧的激活
+                this.$shadow.all("ba-item[active]").forEach(item => item.active = null);
 
-        let activeItem = $(`ba-item[path="${app.currentPage.params.url}"]`);
-        activeItem && (activeItem.active = 2);
-    }
+                let activeItem = this.$shadow.$(`ba-item[path="${app.currentPage.params.url}"]`);
+                activeItem && (activeItem.active = 2);
+            }
 
-    // 路由跳转时更换
-    app.on("navigate", (e, data) => {
-        fixLeftSide();
-    });
+            // 路由跳转时更换
+            app.on("navigate", (e, data) => {
+                fixLeftSide();
+            });
 
-    setTimeout(() => { fixLeftSide() }, 1000);
+            setTimeout(() => { fixLeftSide() }, 1000);
 
-    // 左侧点击后，跳转到相应地址
-    aside.on("active-item", (e, { target }) => {
-        let path = target.path;
+            // 左侧点击后，跳转到相应地址
+            aside.on("active-item", (e, { target }) => {
+                let path = target.path;
 
-        if (path) {
-            app.navigate({
-                type: app.currents.length > 1 ? "replace" : "to",
-                src: `@obook/pages/mdPage/mdPage?url=${path}`
+                if (path) {
+                    app.navigate({
+                        type: app.currents.length > 1 ? "replace" : "to",
+                        src: `@obook/pages/mdPage/mdPage?url=${path}`
+                    });
+                }
             });
         }
-    });
+    };
 });
