@@ -28,10 +28,33 @@
         display: block;
         padding: 1em;
         border-radius: 4px;
-        line-height: 1.2em;
+        line-height: 1.4em;
         font-size: 13px;
+    }
+
+    .article_bottom {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 0;
+        margin: 0 80px 30px;
+        border-top: #eee solid 1px;
+    }
+
+    .bottom_left span,
+    .bottom_right span {
+        color: var(--primary-color);
+        cursor: pointer;
+        font-weight: bold;
     }
 </style>
 <div class="container">
     <article $="article"></article>
+    <div class="article_bottom">
+        <div class="bottom_left" xv-show="prevPageName">
+            ← <span>{{prevPageName}}</span>
+        </div>
+        <div class="bottom_right" v-show="nextPageName">
+            <span>{{nextPageName}}</span> →
+        </div>
+    </div>
 </div>

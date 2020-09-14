@@ -1,6 +1,6 @@
 Component(async (load, { DIR }) => {
     // 加载全局样式
-    // ofa.globalcss = await load('./css/public.css -getLink');
+    ofa.globalcss = await load('./css/public.css -getLink');
 
     // 加载关键组件
     await load("./components/book-aside -p", "./bc/articleAside -p");
@@ -15,17 +15,29 @@ Component(async (load, { DIR }) => {
         tag: "o-book",
         temp: true,
         hostcss: "./css/host.css",
+        attrs: {
+            src: "book.json"
+        },
+        data: {
+            loaded: 0
+        },
         async ready() {
             // 加载 book.json
-            const [book, pubData] = await load("book.json", "./data");
+            const [book, pubData] = await load(this.src, "./data");
             const { summaryToData } = await load("./summaryToData");
             const { transToItem } = await load("./util");
+
+            this.loaded = 1;
 
             // 加载summary
             let summary = await load(book.SUMMARY);
 
+            this.loaded = 2;
+
             let summaryData = pubData.summary = summaryToData(summary);
             const aside = this.$shadow.$("#aside");
+
+            this.emit("summary-loaded");
 
             this.$shadow.$(".ob_left_title").text = summaryData.title;
 
@@ -82,6 +94,8 @@ Component(async (load, { DIR }) => {
                     });
                 }
             });
+
+            this.loaded = 'ok';
         }
     };
 });

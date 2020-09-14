@@ -5,6 +5,10 @@ Page(async (load) => {
     const pubData = await load("../../data");
 
     return {
+        data: {
+            prevPageName: "上一篇",
+            nextPageName: "下一篇"
+        },
         async ready() {
             // 还原loading
             this.attrs.oLoading = 1;
@@ -45,10 +49,10 @@ Page(async (load) => {
                 }
             });
 
-            if (nextItem && nextItem.path) {
-                // 存在下一节的，设置下一页按钮
-                mdText += `\n\n<a href="${nextItem.path}">⏭️ ${nextItem.name}</a>`;
-            }
+            // if (nextItem && nextItem.path) {
+            //     // 存在下一节的，设置下一页按钮
+            //     mdText += `\n\n<a href="${nextItem.path}">⏭️ ${nextItem.name}</a>`;
+            // }
 
             this.$article.html = mdText;
 
