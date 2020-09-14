@@ -51,10 +51,11 @@
     <article $="article"></article>
     <div class="article_bottom">
         <div class="bottom_left" xv-show="prevPageName">
-            ← <span>{{prevPageName}}</span>
+            ← <span @click="navigate({type:'replace',src:prevPagePath})">{{prevPageName}}</span>
         </div>
-        <div class="bottom_right" v-show="nextPageName">
-            <span>{{nextPageName}}</span> →
+        <div style="flex:1;"></div>
+        <div class="bottom_right" xv-show="nextPageName">
+            <span @click="navigate({type:'replace',src:nextPagePath})">{{nextPageName}}</span> →
         </div>
     </div>
 </div>

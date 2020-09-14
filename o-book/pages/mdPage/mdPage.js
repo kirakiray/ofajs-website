@@ -6,8 +6,10 @@ Page(async (load) => {
 
     return {
         data: {
-            prevPageName: "上一篇",
-            nextPageName: "下一篇"
+            prevPageName: "",
+            prevPagePath: "",
+            nextPageName: "",
+            nextPagePath: ""
         },
         async ready() {
             // 还原loading
@@ -37,7 +39,7 @@ Page(async (load) => {
 
             // 查找下一篇文章的地址
             let inItem = false;
-            let nextItem;
+            let nextItem, prevItem;
             pubData.summary.links.some(e => {
                 if (e.type == "item") {
                     if (e.path == url) {
@@ -45,14 +47,22 @@ Page(async (load) => {
                     } else if (inItem) {
                         nextItem = e;
                         return true;
+                    } else {
+                        prevItem = e;
                     }
                 }
             });
 
-            // if (nextItem && nextItem.path) {
-            //     // 存在下一节的，设置下一页按钮
-            //     mdText += `\n\n<a href="${nextItem.path}">⏭️ ${nextItem.name}</a>`;
-            // }
+            if (nextItem && nextItem.path) {
+                // 存在下一节的，设置下一页按钮
+                this.nextPageName = nextItem.name
+                this.nextPagePath = `@obook/pages/mdPage/mdPage?url=${nextItem.path}`;
+            }
+
+            if (prevItem && prevItem.path) {
+                this.prevPageName = prevItem.name
+                this.prevPagePath = `@obook/pages/mdPage/mdPage?url=${prevItem.path}`;
+            }
 
             this.$article.html = mdText;
 
