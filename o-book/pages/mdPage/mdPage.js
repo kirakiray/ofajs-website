@@ -9,7 +9,8 @@ Page(async (load) => {
             prevPageName: "",
             prevPagePath: "",
             nextPageName: "",
-            nextPagePath: ""
+            nextPagePath: "",
+            initMd: 0
         },
         async ready() {
             // 还原loading
@@ -96,6 +97,18 @@ Page(async (load) => {
                     aEle.attrs.target = "_blank";
                 }
             });
+
+            this.initMd = 1;
+
+            // let titleArr = [];
+            // // 根据正文内容，更新右侧边栏
+            // this.$article.all("h1,h2,h3,h4,h5").forEach(titleEle => {
+            //     titleArr.push({
+            //         t: titleEle.tag.replace("h", ""),
+            //         v: titleEle.text
+            //     });
+            // });
+            // this.$host.$articleAside.initItems(titleArr);
 
             this.attrs.oLoading = null;
         }

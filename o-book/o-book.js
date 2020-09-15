@@ -76,12 +76,35 @@ Component(async (load, { DIR }) => {
                 activeItem && (activeItem.active = 2);
             }
 
+            // 修正右侧的数据
+            const fixRightSide = async () => {
+                // await this.$shadow.$("o-app").currentPage.loaded;
+                await this.$shadow.$("o-app").currentPage.watchUntil('initMd == 1');
+
+                let article = this.$shadow.$("o-app").currentPage.$article
+
+                let titles = [];
+                // 根据正文内容，更新右侧边栏
+                article.all("h1,h2,h3,h4,h5").forEach(titleEle => {
+                    titles.push({
+                        t: titleEle.tag.replace("h", ""),
+                        v: titleEle.text
+                    });
+                });
+
+                this.$articleAside.initItems(titles);
+            }
+
             // 路由跳转时更换
             app.on("navigate", (e, data) => {
                 fixLeftSide();
+                fixRightSide();
             });
 
-            setTimeout(() => { fixLeftSide() }, 1000);
+            setTimeout(() => {
+                fixLeftSide();
+                fixRightSide();
+            }, 1000);
 
             // 左侧点击后，跳转到相应地址
             aside.on("active-item", (e, { target }) => {

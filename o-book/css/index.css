@@ -9,7 +9,7 @@
   flex-direction: column;
   width: 250px;
   padding-left: 0;
-  box-shadow: rgba(0, 0, 0, 0.1) 0 0 15px;
+  border-right: #eee solid 1px;
 }
 .ob_container .ob_container_left .ob_left_main {
   flex: 1;

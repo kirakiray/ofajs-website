@@ -49,7 +49,7 @@
 </style>
 <div class="container">
     <article $="article"></article>
-    <div class="article_bottom">
+    <div class="article_bottom" xv-show="prevPageName || nextPageName">
         <div class="bottom_left" xv-show="prevPageName">
             ← <span @click="navigate({type:'replace',src:prevPagePath})">{{prevPageName}}</span>
         </div>
