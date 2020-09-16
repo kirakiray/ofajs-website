@@ -1,4 +1,4 @@
-# `load`的入门教程
+# ofajs模块化系统——`load`的入门教程
 
 当引入 **ofa.js** 文件成功后，会在全局变量内添加一个 `load` 方法
 
@@ -12,7 +12,7 @@
 </script>
 ```
 
-搭配async function 使用，效果更佳； 
+搭配async function 使用，效果更佳；
 
 ```html
 <script>
@@ -45,11 +45,14 @@
 当加载的文件和目录同名时，可以在目录前后添加 `-p` 参数，就能省略文件名;
 
 ```javascript
- // await load("https://ofajs.com/fntui/fnt-button/fnt-button.js");
- // await load("https://ofajs.com/fntui/fnt-button/fnt-button");
+// 下面三行效果都是一样的
+// await load("https://ofajs.com/fntui/fnt-button/fnt-button.js");
+// await load("https://ofajs.com/fntui/fnt-button/fnt-button");
 await load("https://ofajs.com/fntui/fnt-button -p");
 ```
 
 后续的添加脚本请使用 `load` 方法；不要再使用 `script` 标签添加脚本；`ofajs` 的 `load` 提供异步加载普通`js`文件的功能；
 
-load模块化系统还有很多内容，在stage0范围内不是必学内容，你可选择自行学习。
+ofajs模块化系统还有很多内容，在stage0范围内不是必学内容，你可选择自行学习。
+
+[ofajs的模块化系统](docs/drill/guide.md)
