@@ -39,7 +39,10 @@ Component(async (load, { DIR }) => {
 
             this.emit("summary-loaded");
 
-            this.$shadow.$(".ob_left_title").text = summaryData.title;
+            this.$mainTitle.text = summaryData.title;
+            this.$mainTitle.on("click", e => {
+                this.$app.back("home");
+            });
 
             // 填充侧边栏
             summaryData.items.forEach(e => {
@@ -78,7 +81,6 @@ Component(async (load, { DIR }) => {
 
             // 修正右侧的数据
             const fixRightSide = async () => {
-                // await this.$shadow.$("o-app").currentPage.loaded;
                 await this.$shadow.$("o-app").currentPage.watchUntil('initMd == 1');
 
                 let article = this.$shadow.$("o-app").currentPage.$article

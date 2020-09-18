@@ -14,17 +14,33 @@
 
 点击链接进入 [fnt-button的使用文档](https://kirakiray.github.io/ofa_lib/v2/fntui/fnt-button/demo.html)
 
-
-
-
-
-<!-- 面就以当前网站使用的按钮组件为例。
-
-使用文档在 **fntui**目录内 [fnt-button使用文档](https://kirakiray.github.io/ofa_lib/v2/fntui/fnt-button/demo.html)
+将 `ofa.js` 引入后，用 `load` 方法加载 `fnt-button`（已经下载到本地）;
 
 ```html
 <script src="ofa.js"></script>
 <script>
     load("fntui/fnt-button -p");
 </script>
-``` -->
+``` 
+
+然后就能直接使用了
+
+```html
+<fnt-button>我是fnt-button</fnt-button>
+```
+
+<fnt-button>我是fnt-button</fnt-button>
+
+现在来尝试使用教程里提供的属性。
+
+```html
+<fnt-button theme="primary">Button1</fnt-button>
+<fnt-button theme="success" type="circle">Button2</fnt-button>
+<fnt-button theme="danger" type="outlined">Button3</fnt-button>
+```
+<fnt-button theme="primary">Button1</fnt-button>
+<fnt-button theme="success" type="circle">Button2</fnt-button>
+<fnt-button theme="danger" type="outlined">Button3</fnt-button>
+
+使用组件太简单了，应该没有什么要讲的了；
+

@@ -4,19 +4,24 @@
         width: 100vw;
         height: 100vh;
     }
+
+    .ob_left_title {
+        cursor: pointer;
+        user-select: none;
+    }
 </style>
 <link rel="stylesheet" href="./css/index.css">
 <div class="ob_container">
     <div class="ob_container_left">
         <div class="ob_left_top"></div>
         <div class="ob_left_main">
-            <h1 class="ob_left_title"></h1>
+            <h1 class="ob_left_title" $="mainTitle"></h1>
             <book-aside id="aside"></book-aside>
         </div>
         <div class="ob_left_bottom"></div>
     </div>
     <div class="ob_container_main">
-        <o-app></o-app>
+        <o-app $="app"></o-app>
         <div class="main_right">
             <article-aside $="articleAside"></article-aside>
         </div>

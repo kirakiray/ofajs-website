@@ -100,6 +100,10 @@ Page(async (load) => {
 
             this.initMd = 1;
 
+            this.$article.on("scroll", e => {
+                console.log("scroll =>", e);
+            });
+
             // let titleArr = [];
             // // 根据正文内容，更新右侧边栏
             // this.$article.all("h1,h2,h3,h4,h5").forEach(titleEle => {

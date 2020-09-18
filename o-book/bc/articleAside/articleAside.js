@@ -10,9 +10,6 @@ Component(async (load) => {
                 let html = "";
 
                 listData.forEach(e => {
-                    // html += `
-                    // <fnt-tabs-item title="${e.v}"> <span style="font-size:${16 - e.t}px;">${e.v}</span> </fnt-tabs-item>
-                    // `;
                     html += `
                     <fnt-tabs-item title="${e.v}"> ${e.v} </fnt-tabs-item>
                     `;
@@ -23,7 +20,19 @@ Component(async (load) => {
             // 设置激活状态
             setActiveItem(d) {
                 let { name } = d;
+
+                
             }
+        },
+        ready() {
+            this.$tabs.on("click", 'fnt-tabs-item', e => {
+                let title = e.delegateTarget.attrs.title;
+
+                let targetTitle = this.$host.$app.currentPage.$article.all('h1,h2,h3,h4,h5').find(e => e.text == title);
+                targetTitle.ele.scrollIntoView({
+                    behavior: "smooth", block: "center", inline: "nearest"
+                });
+            });
         }
     };
 })
