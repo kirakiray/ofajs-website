@@ -1,6 +1,23 @@
 <style>
     fnt-tabs-item {
         white-space: nowrap;
+        animation: item_anime ease .3s;
+    }
+
+    fnt-tabs-item[active]{
+        color: var(--fnt-booktheme);
+    }
+
+    @keyframes item_anime {
+        0% {
+            opacity: 0;
+            transform: translate(30px, 0);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
     }
 </style>
 

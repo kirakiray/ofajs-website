@@ -17,7 +17,7 @@ Component(async (load) => {
         watch: {
             vertical() {
                 $.nextTick(() => {
-                    this.refreshLine();
+                    this._refreshLine();
                 });
             },
             theme(e, color) {
@@ -33,10 +33,21 @@ Component(async (load) => {
             },
         },
         proto: {
-            // 刷新UI的激活线
-            refreshLine() {
-                // await this.finish;
+            // 设置激活状态
+            setActive(index) {
+                let target = this[index];
 
+                this.all(`fnt-tabs-item[active]`).forEach(e => e.attrs.active = null);
+                target.attrs.active = "";
+                this._refreshLine();
+                this.emitHandler("changeTab", target);
+
+                if (this._hoverTarget === target) {
+                    $.nextTick(() => this._setActiveLine(target));
+                }
+            },
+            // 刷新UI的激活线
+            _refreshLine() {
                 let activeItem = this.$("fnt-tabs-item[active]");
 
                 // 清空默认样式
@@ -99,19 +110,18 @@ Component(async (load) => {
                     // 如果已经是激活状态，就不用需要继续
                     return;
                 }
-                this.all(`fnt-tabs-item[active]`).forEach(e => e.attrs.active = null);
-                e.target.attrs.active = "";
-                this.refreshLine();
-                $.nextTick(() => this._setActiveLine(e.target));
-                this.emitHandler("changeTab", e.target);
+
+                this.setActive(e.target.index);
             });
 
             setTimeout(() => {
-                this.refreshLine();
+                this._refreshLine();
             }, 300);
 
             // hover更新宽度
             this.on("mouseover", "fnt-tabs-item", e => {
+                this._hoverTarget = e.target;
+
                 // 横向
                 let activeItem = this.$("fnt-tabs-item[active]");
 
@@ -122,6 +132,8 @@ Component(async (load) => {
             });
 
             this.on("mouseout", "fnt-tabs-item", e => {
+                this._hoverTarget = null;
+
                 let activeItem = this.$("fnt-tabs-item[active]");
 
                 if (e.target === activeItem) {

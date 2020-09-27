@@ -5,7 +5,7 @@
 * [stage0:使用组件](docs/stage0/start.md)
     * [学会load函数](docs/stage0/load.md)
     * [组件文档查阅和使用](docs/stage0/use_component.md)
-    * [使用markdown组件]()
+    * [使用markdown组件](docs/stage0/use_omd.md)
     * [5分钟制作markdown编辑器]()
 * [stage1:使用ofa API]()
 * [stage2:开发ofa Component]()
@@ -24,3 +24,4 @@
 
 ## 其他
 * [ofajs的组成]()
+* [为什么要开发ofajs?](docs/why_create_ofajs.md)

@@ -54,15 +54,17 @@ Page(async (load) => {
                 }
             });
 
-            if (nextItem && nextItem.path) {
-                // 存在下一节的，设置下一页按钮
-                this.nextPageName = nextItem.name
-                this.nextPagePath = `@obook/pages/mdPage/mdPage?url=${nextItem.path}`;
-            }
+            if (inItem) {
+                if (nextItem && nextItem.path) {
+                    // 存在下一节的，设置下一页按钮
+                    this.nextPageName = nextItem.name
+                    this.nextPagePath = `@obook/pages/mdPage/mdPage?url=${nextItem.path}`;
+                }
 
-            if (prevItem && prevItem.path) {
-                this.prevPageName = prevItem.name
-                this.prevPagePath = `@obook/pages/mdPage/mdPage?url=${prevItem.path}`;
+                if (prevItem && prevItem.path) {
+                    this.prevPageName = prevItem.name
+                    this.prevPagePath = `@obook/pages/mdPage/mdPage?url=${prevItem.path}`;
+                }
             }
 
             this.$article.html = mdText;
@@ -100,8 +102,35 @@ Page(async (load) => {
 
             this.initMd = 1;
 
-            this.$article.on("scroll", e => {
-                console.log("scroll =>", e);
+            let $container = this.$container;
+            let scrollTimer = 0;
+            const articleAside = this.$host.$articleAside;
+            $container.on("scroll", e => {
+                if (scrollTimer || articleAside._inScroll) {
+                    return;
+                }
+                scrollTimer = 1;
+                setTimeout(() => {
+                    let { scrollTop, clientHeight } = $container.ele;
+
+                    // 折中算出的顶部距离
+                    // let mTop = clientHeight / 2 + scrollTop;
+                    let mTop = scrollTop;
+
+                    // 所有标题距离顶部的高度
+                    let titles = this.$article.all("h1,h2,h3,h4,h5")
+                    let lastId = titles.length - 1;
+                    titles.some((titleEle, index) => {
+                        let top = titleEle.ele.offsetTop;
+
+                        if (top >= mTop || index == lastId) {
+                            articleAside.setTitleActive(index);
+                            return true;
+                        }
+                    });
+
+                    scrollTimer = 0;
+                }, 100);
             });
 
             // let titleArr = [];

@@ -9,19 +9,85 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ofajs</title>
     <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             --primary-color: #e02323;
             --fnt-booktheme: #e02323;
         }
+
+        .body_loading {
+            z-index: 100;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+        }
+
+        .body_loading_out {
+            animation: body_loading_out ease .4s;
+            animation-fill-mode: both;
+        }
+
+        @keyframes body_loading_out {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .start_loading {
+            animation: start_loading_anime linear 1s infinite;
+        }
+
+        @keyframes start_loading_anime {
+            0% {
+                transform: rotate(0);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
     </style>
-    <script src="js/ofa.js"></script>
+    <script src="js/ofa.js" async></script>
     <script>
-        load("o-book -p").then(e => load('o-book/components/fntui -p'));
+        ofa = async () => {
+            await load("o-book -p");
+
+            // 等待loading结束后去除全局过度
+            await $("o-book").watchUntil(`loaded=="finish"`);
+
+            $(".body_loading").class.add("body_loading_out");
+            setTimeout(() => {
+                $(".body_loading").remove();
+            }, 500);
+
+            // 内部需要使用的测试案例
+            load('o-book/components/fntui -p')
+        }
     </script>
 </head>
 
 <body>
     <o-book></o-book>
+    <div class="body_loading">
+        <img src="o-book/img/loading.svg" class="start_loading" width="30" alt="">
+    </div>
 </body>
 
 </html>

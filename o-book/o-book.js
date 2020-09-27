@@ -35,7 +35,7 @@ Component(async (load, { DIR }) => {
             this.loaded = 2;
 
             let summaryData = pubData.summary = summaryToData(summary);
-            const aside = this.$shadow.$("#aside");
+            const aside = this.$aside;
 
             this.emit("summary-loaded");
 
@@ -71,7 +71,9 @@ Component(async (load, { DIR }) => {
             app.push(`<o-page src="@obook/pages/mdPage/mdPage?url=${book.index}"></o-page>`);
 
             // 修正左侧激活状态
-            const fixLeftSide = () => {
+            const fixLeftSide = async () => {
+                await this.$app.watchUntil(`launched`);
+
                 // 去掉旧的激活
                 this.$shadow.all("ba-item[active]").forEach(item => item.active = null);
 
@@ -81,6 +83,7 @@ Component(async (load, { DIR }) => {
 
             // 修正右侧的数据
             const fixRightSide = async () => {
+                await this.$app.watchUntil(`launched`);
                 await this.$shadow.$("o-app").currentPage.watchUntil('initMd == 1');
 
                 let article = this.$shadow.$("o-app").currentPage.$article
@@ -120,7 +123,10 @@ Component(async (load, { DIR }) => {
                 }
             });
 
-            this.loaded = 'ok';
+            // 等待app初始化结束
+            await this.$app.watchUntil(`launched`);
+            await this.$shadow.$("o-app").currentPage.watchUntil('initMd == 1');
+            this.loaded = 'finish';
         }
     };
 });
