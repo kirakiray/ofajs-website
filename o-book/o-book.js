@@ -21,6 +21,47 @@ Component(async (load, { DIR }) => {
         data: {
             loaded: 0
         },
+        proto: {
+            // 左侧点击后，跳转到相应地址
+            clickitem(e, { target }) {
+                let path = target.path;
+
+                if (path) {
+                    this.$app.navigate({
+                        type: this.$app.currents.length > 1 ? "replace" : "to",
+                        src: `@obook/pages/mdPage/mdPage?url=${path}`
+                    });
+                }
+            },
+            // 修正左侧树状结构激活状态
+            async fixLeftSide() {
+                await this.$app.watchUntil(`launched`);
+
+                // 去掉旧的激活
+                this.$shadow.all("ba-item[active]").forEach(item => item.active = null);
+
+                let activeItem = this.$shadow.$(`ba-item[path="${this.$app.currentPage.params.url}"]`);
+                activeItem && (activeItem.active = 2);
+            },
+            // 修正有侧边栏菜单激活状态
+            async fixRightSide() {
+                await this.$app.watchUntil(`launched`);
+                await this.$app.currentPage.watchUntil('initMd == 1');
+
+                let article = this.$app.currentPage.$article
+
+                let titles = [];
+                // 根据正文内容，更新右侧边栏
+                article.all("h1,h2,h3,h4,h5").forEach(titleEle => {
+                    titles.push({
+                        t: titleEle.tag.replace("h", ""),
+                        v: titleEle.text
+                    });
+                });
+
+                this.$articleAside.items = titles;
+            }
+        },
         async ready() {
             // 加载 book.json
             const [book, pubData] = await load(this.src, "./data");
@@ -37,12 +78,7 @@ Component(async (load, { DIR }) => {
             let summaryData = pubData.summary = summaryToData(summary);
             const aside = this.$aside;
 
-            this.emit("summary-loaded");
-
             this.$mainTitle.text = summaryData.title;
-            this.$mainTitle.on("click", e => {
-                this.$app.back("home");
-            });
 
             // 填充侧边栏
             summaryData.items.forEach(e => {
@@ -70,62 +106,19 @@ Component(async (load, { DIR }) => {
             // 添加首页
             app.push(`<o-page src="@obook/pages/mdPage/mdPage?url=${book.index}"></o-page>`);
 
-            // 修正左侧激活状态
-            const fixLeftSide = async () => {
-                await this.$app.watchUntil(`launched`);
-
-                // 去掉旧的激活
-                this.$shadow.all("ba-item[active]").forEach(item => item.active = null);
-
-                let activeItem = this.$shadow.$(`ba-item[path="${app.currentPage.params.url}"]`);
-                activeItem && (activeItem.active = 2);
-            }
-
-            // 修正右侧的数据
-            const fixRightSide = async () => {
-                await this.$app.watchUntil(`launched`);
-                await this.$shadow.$("o-app").currentPage.watchUntil('initMd == 1');
-
-                let article = this.$shadow.$("o-app").currentPage.$article
-
-                let titles = [];
-                // 根据正文内容，更新右侧边栏
-                article.all("h1,h2,h3,h4,h5").forEach(titleEle => {
-                    titles.push({
-                        t: titleEle.tag.replace("h", ""),
-                        v: titleEle.text
-                    });
-                });
-
-                this.$articleAside.initItems(titles);
-            }
-
             // 路由跳转时更换
             app.on("navigate", (e, data) => {
-                fixLeftSide();
-                fixRightSide();
-            });
-
-            setTimeout(() => {
-                fixLeftSide();
-                fixRightSide();
-            }, 1000);
-
-            // 左侧点击后，跳转到相应地址
-            aside.on("active-item", (e, { target }) => {
-                let path = target.path;
-
-                if (path) {
-                    app.navigate({
-                        type: app.currents.length > 1 ? "replace" : "to",
-                        src: `@obook/pages/mdPage/mdPage?url=${path}`
-                    });
-                }
+                this.fixLeftSide();
+                this.fixRightSide();
             });
 
             // 等待app初始化结束
             await this.$app.watchUntil(`launched`);
             await this.$shadow.$("o-app").currentPage.watchUntil('initMd == 1');
+
+            this.fixLeftSide();
+            this.fixRightSide();
+
             this.loaded = 'finish';
         }
     };

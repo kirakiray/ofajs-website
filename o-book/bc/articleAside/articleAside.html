@@ -4,7 +4,7 @@
         animation: item_anime ease .3s;
     }
 
-    fnt-tabs-item[active]{
+    fnt-tabs-item[active] {
         color: var(--fnt-booktheme);
     }
 
@@ -21,17 +21,10 @@
     }
 </style>
 
-<fnt-tabs vertical theme="booktheme" $="tabs">
-    <!-- <fnt-tabs-item>
-        Profile
+<template name="t1">
+    <fnt-tabs-item :title="v">
+        {{v}}
     </fnt-tabs-item>
-    <fnt-tabs-item active>
-        My account
-    </fnt-tabs-item>
-    <fnt-tabs-item>
-        Messages
-    </fnt-tabs-item>
-    <fnt-tabs-item>
-        Logout
-    </fnt-tabs-item> -->
-</fnt-tabs>
+</template>
+
+<fnt-tabs vertical theme="booktheme" $="tabs" xv-fill="items use t1"></fnt-tabs>

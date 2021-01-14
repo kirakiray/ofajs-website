@@ -33,8 +33,7 @@ Component(async (load) => {
             },
         },
         proto: {
-            // 设置激活状态
-            setActive(index) {
+            set activeIndex(index) {
                 let target = this[index];
 
                 this.all(`fnt-tabs-item[active]`).forEach(e => e.attrs.active = null);
@@ -111,7 +110,7 @@ Component(async (load) => {
                     return;
                 }
 
-                this.setActive(e.target.index);
+                this.activeIndex = e.target.index;
             });
 
             setTimeout(() => {

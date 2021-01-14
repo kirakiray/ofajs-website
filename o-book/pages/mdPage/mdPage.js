@@ -124,7 +124,7 @@ Page(async (load) => {
                         let top = titleEle.ele.offsetTop;
 
                         if (top >= mTop || index == lastId) {
-                            articleAside.setTitleActive(index);
+                            articleAside.titleActive = index;
                             return true;
                         }
                     });
@@ -132,16 +132,6 @@ Page(async (load) => {
                     scrollTimer = 0;
                 }, 100);
             });
-
-            // let titleArr = [];
-            // // 根据正文内容，更新右侧边栏
-            // this.$article.all("h1,h2,h3,h4,h5").forEach(titleEle => {
-            //     titleArr.push({
-            //         t: titleEle.tag.replace("h", ""),
-            //         v: titleEle.text
-            //     });
-            // });
-            // this.$host.$articleAside.initItems(titleArr);
 
             this.attrs.oLoading = null;
         }

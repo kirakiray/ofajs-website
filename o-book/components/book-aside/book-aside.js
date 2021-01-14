@@ -4,9 +4,7 @@ Component(async (load) => {
     return {
         tag: "book-aside",
         temp: true,
-        proto: {
-        },
-        ready() {
-        }
+        proto: {},
+        ready() {}
     };
 })

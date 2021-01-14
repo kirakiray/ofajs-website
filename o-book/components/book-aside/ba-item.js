@@ -37,7 +37,7 @@ Component(async (load) => {
                 this.active = 2;
 
                 // 触发激活事件
-                bookaside.emitHandler("active-item", {
+                bookaside.emitHandler("activeItem", {
                     target: this
                 });
             }

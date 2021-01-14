@@ -16,8 +16,8 @@
     <div class="ob_container_left">
         <div class="ob_left_top"></div>
         <div class="ob_left_main">
-            <h1 class="ob_left_title" $="mainTitle"></h1>
-            <book-aside $="aside"></book-aside>
+            <h1 class="ob_left_title" $="mainTitle" @click="$app.back('home')"></h1>
+            <book-aside $="aside" @active-item="clickitem"></book-aside>
         </div>
         <div class="ob_left_bottom"></div>
     </div>
