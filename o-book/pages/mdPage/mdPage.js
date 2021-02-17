@@ -100,6 +100,8 @@ Page(async (load) => {
                 }
             });
 
+            this.$article.class.add("fadein");
+
             this.initMd = 1;
 
             let $container = this.$container;

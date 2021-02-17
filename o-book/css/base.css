@@ -145,3 +145,29 @@ i {
 del {
     text-decoration: line-through;
 }
+
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table th,
+table td,
+table caption {
+    border: 1px solid #ddd;
+    padding: 0.5em 1em;
+    color: #666;
+}
+
+table th {
+    background: #fbfbfb;
+}
+
+table thead th {
+    background: #f1f1f1;
+}
+
+table caption {
+    border-bottom: none;
+}

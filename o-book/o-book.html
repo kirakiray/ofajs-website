@@ -5,24 +5,28 @@
         height: 100vh;
         overflow-x: hidden;
     }
-
-    .ob_left_title {
-        cursor: pointer;
-        user-select: none;
-    }
 </style>
-<link rel="stylesheet" href="./css/index.css">
-<div class="ob_container">
-    <div class="ob_container_left">
-        <div class="ob_left_top"></div>
-        <div class="ob_left_main">
-            <h1 class="ob_left_title" $="mainTitle" @click="$app.back('home')"></h1>
-            <book-aside $="aside" @active-item="clickitem"></book-aside>
+<link rel="stylesheet" href="./css/o-book.css">
+<div class="ob_container" :mobile="$app.rect.width <= 460 ? 1 : ''">
+    <div class="ob_container_left" :hide="hideLeft">
+        <div class="ob_container_left_inner">
+            <div class="ob_left_top"></div>
+            <div class="ob_left_main">
+                <h1 class="ob_left_title" $="mainTitle" @click="$app.back('home')"></h1>
+                <book-aside $="aside" @active-item="clickitem"></book-aside>
+            </div>
+            <div class="ob_left_bottom"></div>
         </div>
-        <div class="ob_left_bottom"></div>
     </div>
     <div class="ob_container_main">
-        <o-app $="app"></o-app>
+        <div class="article_top">
+            <div class="aside_btn" @click="clicAsideBtn"></div>
+        </div>
+        <div style="flex:1;overflow-x:hidden;">
+            <div style="min-width: 320px;height: 100%;">
+                <o-app $="app"></o-app>
+            </div>
+        </div>
         <div class="main_right">
             <article-aside $="articleAside"></article-aside>
         </div>

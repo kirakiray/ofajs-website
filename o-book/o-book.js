@@ -19,9 +19,18 @@ Component(async (load, { DIR }) => {
             src: "book.json"
         },
         data: {
-            loaded: 0
+            loaded: 0,
+            // 是否展示左边栏
+            hideLeft: 0
         },
         proto: {
+            clicAsideBtn() {
+                if (this.$app.$host.hideLeft == 1) {
+                    this.$app.$host.hideLeft = 0;
+                } else {
+                    this.$app.$host.hideLeft = 1;
+                }
+            },
             // 左侧点击后，跳转到相应地址
             clickitem(e, { target }) {
                 let path = target.path;
@@ -41,7 +50,12 @@ Component(async (load, { DIR }) => {
                 this.$shadow.all("ba-item[active]").forEach(item => item.active = null);
 
                 let activeItem = this.$shadow.$(`ba-item[path="${this.$app.currentPage.params.url}"]`);
-                activeItem && (activeItem.active = 2);
+                if (activeItem) {
+                    activeItem.active = 2;
+                    this.$mainTitle.class.remove("active");
+                } else {
+                    this.$mainTitle.class.add("active");
+                }
             },
             // 修正有侧边栏菜单激活状态
             async fixRightSide() {

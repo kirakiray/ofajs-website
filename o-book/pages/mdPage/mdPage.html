@@ -47,8 +47,30 @@
         cursor: pointer;
         font-weight: bold;
     }
+
+    @keyframes fadein {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    .fadein {
+        animation: fadein ease .2s;
+    }
+
+    .container[mobile="1"] article {
+        padding: 0 20px 20px;
+    }
+
+    .container[mobile="1"] .article_bottom {
+        margin: 0 20px 10px;
+    }
 </style>
-<div class="container" $="container">
+<div class="container" $="container" :mobile="app.rect.width <= 460 ? 1 : ''">
     <article $="article"></article>
     <div class="article_bottom" xv-show="prevPageName || nextPageName">
         <div class="bottom_left" xv-show="prevPageName">

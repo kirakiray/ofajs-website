@@ -12,7 +12,7 @@ Component({
     },
     watch: {
         active() {
-            if (this.parent.is("fnt-tabs") && this.parent._refreshLine) {
+            if (this.parent && this.parent.is("fnt-tabs") && this.parent._refreshLine) {
                 this.parent._refreshLine();
             }
         }
