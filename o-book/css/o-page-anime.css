@@ -47,30 +47,30 @@ o-page[o-loading="1"]:before {
 
 [o-page-anime="back"] {
     opacity: 0;
-    transform: translate3d(-50px, 0, 0);
+    transform: translate3d(-10%, 0, 0);
     pointer-events: none;
+    z-index: 1;
 }
 
 [o-page-anime="front"] {
-    transform: translate3d(50px, 0, 0);
+    opacity: 0;
+    transform: translate3d(10%, 0, 0);
     pointer-events: none;
+    z-index: 1;
 }
 
 @media screen and (min-width: 480px) {
     [o-page-anime="back"] {
-        opacity: 0;
-        transform: translate3d(-10%, 0, 0);
-        z-index: 1;
+        transform: translate3d(-50px, 0, 0);
     }
 
     [o-page-anime="front"] {
-        opacity: 0;
-        transform: translate3d(10%, 0, 0);
-        z-index: 1;
+        transform: translate3d(50px, 0, 0);
     }
 }
 
 [o-page-anime="active"] {
     transform: translate3d(0, 0, 0);
     opacity: 1;
+    z-index: 2;
 }
