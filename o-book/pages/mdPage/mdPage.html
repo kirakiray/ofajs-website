@@ -74,11 +74,11 @@
     <article $="article"></article>
     <div class="article_bottom" xv-show="prevPageName || nextPageName">
         <div class="bottom_left" xv-show="prevPageName">
-            ← <span @click="navigate({type:'replace',src:prevPagePath})">{{prevPageName}}</span>
+            ← <span @click="navigate({src:prevPagePath})">{{prevPageName}}</span>
         </div>
         <div style="flex:1;"></div>
         <div class="bottom_right" xv-show="nextPageName">
-            <span @click="navigate({type:'replace',src:nextPagePath})">{{nextPageName}}</span> →
+            <span @click="navigate(nextPagePath)">{{nextPageName}}</span> →
         </div>
     </div>
 </div>

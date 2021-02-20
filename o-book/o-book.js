@@ -21,14 +21,16 @@ Component(async (load, { DIR }) => {
         data: {
             loaded: 0,
             // 是否展示左边栏
-            hideLeft: 0
+            hideLeft: localStorage.getItem("hideLeftAside") == 1 ? 1 : 0
         },
         proto: {
             clicAsideBtn() {
                 if (this.$app.$host.hideLeft == 1) {
                     this.$app.$host.hideLeft = 0;
+                    localStorage.hideLeftAside = 0;
                 } else {
                     this.$app.$host.hideLeft = 1;
+                    localStorage.hideLeftAside = 1;
                 }
             },
             // 左侧点击后，跳转到相应地址
