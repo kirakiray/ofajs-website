@@ -13,6 +13,8 @@
     }
 
     .ob_container_left {
+        position: relative;
+        z-index: 3;
         display: flex;
         flex-direction: column;
         width: 250px;
@@ -22,6 +24,7 @@
         transition: all ease .3s;
         overflow: hidden;
         flex-shrink: 0;
+        background-color: #fff;
 
         &[hide="1"] {
             width: 0 !important;
@@ -66,6 +69,8 @@
     }
 
     .ob_container_main {
+        position: relative;
+        z-index: 2;
         display: flex;
         flex-direction: column;
         flex: 1;
@@ -105,8 +110,6 @@
 .ob_container {
     &[mobile="1"] {
         .ob_container_left {
-            // z-index: 10;
-            // position: absolute;
             // left: 0;
             // top: 0;
             width: calc(100vw - 40px);

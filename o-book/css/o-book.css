@@ -9,6 +9,8 @@
   overflow-x: hidden;
 }
 .ob_container .ob_container_left {
+  position: relative;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   width: 250px;
@@ -17,6 +19,7 @@
   transition: all ease 0.3s;
   overflow: hidden;
   flex-shrink: 0;
+  background-color: #fff;
 }
 .ob_container .ob_container_left[hide="1"] {
   width: 0 !important;
@@ -51,6 +54,8 @@
   height: 10px;
 }
 .ob_container .ob_container_main {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   flex: 1;
