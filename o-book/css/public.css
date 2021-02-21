@@ -30,7 +30,7 @@
     }
 }
 
-[xv-ele]:not([xv-ele="1"]) {
+[x-ele]:not([x-ele="1"]) {
     display: none !important;
 }
 

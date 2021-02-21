@@ -39,7 +39,8 @@ Component(async (load, { DIR }) => {
 
                 if (path) {
                     this.$app.navigate({
-                        type: this.$app.currents.length > 1 ? "replace" : "to",
+                        // type: this.$app.currents.length > 1 ? "replace" : "to",
+                        type: "to",
                         src: `@obook/pages/mdPage/mdPage?url=${path}`
                     });
                 }

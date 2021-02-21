@@ -5,6 +5,10 @@
         height: 100vh;
         overflow-x: hidden;
     }
+
+    [mobile="1"] book-aside ba-item {
+        font-size: 16px;
+    }
 </style>
 <link rel="stylesheet" href="./css/o-book.css">
 <div class="ob_container" :mobile="$app.rect.width <= 460 ? 1 : ''">

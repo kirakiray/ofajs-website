@@ -4,6 +4,24 @@ Page(async (load) => {
 
     const pubData = await load("../../data");
 
+    const fixPath = (path, dir) => {
+        // 去除所有./
+        path = path.replace(/^\.\//, "");
+        path = path.replace(/\/\.\//g, "/");
+
+        // 修正上一级
+        let n_arr2 = [];
+        (dir + path).split("/").forEach(e => {
+            if (e == "..") {
+                n_arr2.splice(-1);
+            } else {
+                n_arr2.push(e);
+            }
+        });
+
+        return n_arr2.join("/");
+    }
+
     return {
         data: {
             prevPageName: "",
@@ -89,6 +107,13 @@ Page(async (load) => {
                     aEle.on("click", e => {
                         // 禁止默认跳转行为
                         e.preventDefault();
+
+                        // 如果是 ./ 开头的，修正目录地址
+                        if (/^\.\//.test(href)) {
+                            let url = this.params.url;
+
+                            href = fixPath(href, url.replace(/(.+\/).+/, "$1"));
+                        }
 
                         this.navigate({
                             src: `@obook/pages/mdPage/mdPage?url=${href}`

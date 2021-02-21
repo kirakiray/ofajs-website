@@ -87,7 +87,7 @@ ofajs的运行需要支持 [Web Components](https://developer.mozilla.org/zh-CN/
 
 ## ofajs的开发历史
 
-<img src="liucheng.svg" width="100%">
+<img src="./liucheng.svg" width="100%">
 
 ## ofajs和现有前端框架相同的地方
 
