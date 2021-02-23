@@ -1,6 +1,8 @@
 # 使用ofa Component
 
-**一个合格的 ofa Component ，都会有相应的使用文档，并且使用文档可以直接用浏览器打开查看**；要使用 ofa Component，须先查看相应的使用文档，在根据文档提供方法进行使用；
+在开发 ofa Component 前，先尝试使用 ofa Componet，体验使用组件的便捷，使用ofa Component 并不需要学习成本；
+
+> **因为ofajs相关辅助性工具，都是以组件的形式开发的，在浏览器上直接运行，所以 ofa Component 很容易制作使用文档；一般情况下开发好的 ofa Component 都会有相应的使用文档**；要使用 ofa Component，须先查看使用文档；
 
 ### fntui
 
@@ -41,6 +43,3 @@
 <fnt-button theme="primary">Button1</fnt-button>
 <fnt-button theme="success" type="circle">Button2</fnt-button>
 <fnt-button theme="danger" type="outlined">Button3</fnt-button>
-
-使用组件太简单了，应该没有什么要讲的了；
-

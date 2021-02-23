@@ -30,6 +30,15 @@ Page(async (load) => {
             nextPagePath: "",
             initMd: 0
         },
+        proto: {
+            clickBack() {
+                if (this.app.currents.slice(-2)[0].src.replace(/.+url=(.+)/, "$1") == this.prevPagePath.replace(/.+url=(.+)/, "$1")) {
+                    this.back();
+                } else {
+                    this.navigate({ src: this.prevPagePath })
+                }
+            }
+        },
         async ready() {
             // 还原loading
             this.attrs.oLoading = 1;
@@ -108,15 +117,11 @@ Page(async (load) => {
                         // 禁止默认跳转行为
                         e.preventDefault();
 
-                        // 如果是 ./ 开头的，修正目录地址
-                        if (/^\.\//.test(href)) {
-                            let url = this.params.url;
-
-                            href = fixPath(href, url.replace(/(.+\/).+/, "$1"));
-                        }
+                        let url = this.params.url;
+                        let fix_href = fixPath(href, url.replace(/(.+\/).+/, "$1"));
 
                         this.navigate({
-                            src: `@obook/pages/mdPage/mdPage?url=${href}`
+                            src: `@obook/pages/mdPage/mdPage?url=${fix_href}`
                         });
                     });
                 } else {

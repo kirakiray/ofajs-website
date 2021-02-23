@@ -14,6 +14,8 @@
 
 搭配async function 使用，效果更佳；
 
+> 2017年后更新的浏览器已支持 **async function**
+
 ```html
 <script>
     (async () => {
@@ -51,8 +53,17 @@
 await load("https://ofajs.com/fntui/fnt-button -p");
 ```
 
+同一资源使用`load`方法加载的只会被加载一次；
+
+```javascript
+load("test/a.js");
+load("test/a.js");
+load("test/a.js");
+// 同时调用三次加载同一个资源，这个文件也仅只会被加载一次
+```
+
 后续的添加脚本请使用 `load` 方法；不要再使用 `script` 标签添加脚本；`ofajs` 的 `load` 提供异步加载普通`js`文件的功能；
 
 ofajs模块化系统还有很多内容，在stage0范围内不是必学内容，你可选择自行学习。
 
-[ofajs的模块化系统](docs/drill/guide.md)
+[ofajs的模块化系统](../drill/guide.md)

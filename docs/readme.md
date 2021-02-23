@@ -27,5 +27,4 @@
 * 框架内集成工程化代码，支持多种类型的文件(wasm等等)；
 * 内部集成数据同步、多线程等等方案；
 
-<!-- [开始使用ofajs](docs/stage0/start.md) -->
-[开始使用ofajs](./stage0/start.md)
+[开始使用ofajs](./guide.md)

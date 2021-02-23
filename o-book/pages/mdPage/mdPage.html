@@ -74,7 +74,7 @@
     <article $="article"></article>
     <div class="article_bottom" x-show="prevPageName || nextPageName">
         <div class="bottom_left" x-show="prevPageName">
-            ← <span @click="navigate({src:prevPagePath})">{{prevPageName}}</span>
+            ← <span @click="clickBack">{{prevPageName}}</span>
         </div>
         <div style="flex:1;"></div>
         <div class="bottom_right" x-show="nextPageName">
