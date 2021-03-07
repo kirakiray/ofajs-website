@@ -1,9 +1,9 @@
 # OFAjs 使用文档
 
 ## 主要
-* [ofajs介绍](docs/guide.md)
+* [ofajs入门](docs/guide.md)
 * [stage0:使用组件](docs/stage0/start.md)
-    * [学会load函数](docs/stage0/load.md)
+    * [学习load函数](docs/stage0/load.md)
     * [组件文档查阅和使用](docs/stage0/use_component.md)
     * [使用markdown组件](docs/stage0/use_omd.md)
     * [5分钟制作markdown编辑器]()

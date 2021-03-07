@@ -1,8 +1,8 @@
-# 介绍
+# 入门
 
 ## 准备
 
-首先，要学会最基础的 **html** **Javascript** **css** 知识，例如新建一个空白页。
+首先，你已经会web前端开发的基础的知识（ **html** **Javascript** **css** ），例如新建一个空白页。
 
 其次，建议学习一下 ES6的 [Promise API](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/async_function) 和 ES7 的 [async function](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/async_function)。
 
@@ -14,7 +14,7 @@
 
 在确保 ofa.js被引入成功后，就可以开始正式的教程了。
 
-为了提高教学质量，这里将ofajs的教学分5个阶段，每个阶段都先对容易并学有所获。
+为了提高教学质量，这里将ofajs的教学分5个阶段，每个阶段都相对容易并学有所获。
 
 ## 教程目录
 
@@ -34,7 +34,7 @@ stage 1 完成后，能够快速开发页面的小功能。
 
 讲解如何开发ofajs的组件；(就是 stage 0 中使用的这种组件)
 
-开发 ofa Component 前，需要搭建静态网站；使用VSCode的话安装 `Live Server` 之类的插件即可；
+开发 ofa Component 前，需要搭建静态网站服务器；编辑器使用VSCode的话安装 `Live Server` 之类的插件即可；
 
 提供了模板引擎之类的语法，可以使用MVVM的开发方式；
 
@@ -54,4 +54,4 @@ stage 3 完成后，能够快速开发功能页面；
 
 开发 ofa APP 的方法很像小程序；但没有编译操作，开发即生效；
 
-stage4完成后，你就能开发全平台通用的高体验应用程序（PWA or Webapp）。
+stage4完成后，你就能开发全平台通用的应用程序（PWA/Web app）。
