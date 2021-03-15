@@ -1,8 +1,8 @@
 # 使用ofa Component
 
-在开发 ofa Component 前，先尝试使用 ofa Componet，体验使用组件的便捷，使用ofa Component 并不需要学习成本；
+先尝试使用 ofa Componet，体验使用组件的便捷；使用ofa Component 并不需要学习成本；
 
-> **因为ofajs相关辅助性工具，都是以组件的形式开发的，在浏览器上直接运行，所以 ofa Component 很容易制作使用文档；一般情况下开发好的 ofa Component 都会有相应的使用文档**；要使用 ofa Component，须先查看使用文档；
+<!-- > **因为ofajs相关辅助性工具，都是以组件的形式开发的，在浏览器上直接运行，所以 ofa Component 很容易制作使用文档；一般情况下开发好的 ofa Component 都会有相应的使用文档**；要使用 ofa Component，须先查看使用文档； 
 
 ### fntui
 
@@ -10,7 +10,7 @@
 
 [fntui仓库地址](https://github.com/kirakiray/ofa_lib/tree/master/v2/fntui)
 
-下面就以使用 **fntui** 的**按钮**组件为例；
+下面就以使用 **fntui** 的**按钮**组件为例； -->
 
 ### fnt-button
 

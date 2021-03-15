@@ -42,16 +42,16 @@ stage 2完成后，能开发出让别人快速使用的组件；
 
 ### stage 3: 开发 ofa Page
 
-学习stage3之前，必须先学习过stage2的内容；
-
 就像开发组件那样开发页面，使用模板引擎之类的语法，还有绑定数据；
 
 stage 3 完成后，能够快速开发功能页面；
 
-### stage 4: 开发 ofa APP
+> 学习stage3之前，必须先学习过stage2的内容；
 
-学习stage4之前，必须先学习stage3的内容；
+### stage 4: 开发 ofa APP
 
 开发 ofa APP 的方法很像小程序；但没有编译操作，开发即生效；
 
 stage4完成后，你就能开发全平台通用的应用程序（PWA/Web app）。
+
+> 学习stage4之前，必须先学习stage3的内容；
