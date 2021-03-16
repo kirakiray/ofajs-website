@@ -12,3 +12,48 @@
 
 ## o-md 组件介绍
 
+[o-md仓库和使用文档](https://github.com/kirakiray/ofa_lib/tree/master/v2/o-md)
+
+## 如何使用
+
+ofajs加载完成后，使用`load`函数添加 `o-md` 库；
+
+```html
+<script src="ofa.js"></script>
+<script>
+    // 加载o-md库
+    // load("https://kirakiray.github.io/ofa_lib/v2/o-md -p");
+    // 因为 o-md 是官方库，可以使用 @libs/ 前缀引用
+    load("@libs/o-md -p");
+</script>
+```
+
+接下来，就可以直接在html内使用了；
+
+```html
+<body>
+    <o-md>
+        <template>
+        # 我是大标题
+
+        我是内容
+        </template>
+    </o-md>
+</body>
+```
+
+通常我们建议使用引用 `.md` 的方式读取；
+
+```html
+<o-md src="README.md">
+    正在请求数据中；
+</o-md>
+```
+
+如果要直接改变readme内的文本，主体数据在实例化对象的 `mdData` 属性内；
+
+```javascript
+$('o-md').mdData  // => 得到标签的markdown原始文本
+
+$('o-md').mdData = `# title ...`; // => 直接设置 markdown 的内部文本
+```

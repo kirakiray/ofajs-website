@@ -6,7 +6,7 @@
     * [学习load函数](docs/stage0/load.md)
     * [组件文档查阅和使用](docs/stage0/use_component.md)
     * [使用markdown组件](docs/stage0/use_omd.md)
-    * [5分钟制作markdown编辑器]()
+    * [5分钟制作markdown编辑器](docs/stage0/md_editor.md)
 * [stage1:使用ofa API]()
 * [stage2:开发ofa Component]()
 * [stage3:开发ofa Page]()
