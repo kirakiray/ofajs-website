@@ -22,7 +22,7 @@
 
 讲解如何使用ofajs封装的组件；只需要学习ofajs提供的 `load` 方法即可；
 
-stage 0 学习完成后，你也能 **五分钟开发一个markdown编辑器**。
+stage 0 学习完成后，你也能 [**五分钟开发一个markdown编辑器**](./stage0/md_editor.md)。
 
 ### stage 1: 使用ofa API
 

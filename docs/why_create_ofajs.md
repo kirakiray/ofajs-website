@@ -52,7 +52,7 @@ ofajs 的目标，是尽量把浏览器当做生态主体，在这个应用层�
 
 > **微前端** 是一种类似于微服务的架构，它将微服务的理念应用于浏览器端，即将 Web 应用由单一的单体应用转变为多个小型前端应用聚合为一的应用。各个前端应用可以独立运行、独立开发、独立部署。 ---摘自某书
 
-封装层更加简单后，才能有更多精力摸索 webgl、wasm、语音视频图片、svg等等
+封装层更加简单后，才能摸索 webgl、wasm、语音视频图片、svg等等需要投入大量精力的技术；
 
 其他引用
 
@@ -103,7 +103,7 @@ ofajs的运行需要支持 [Web Components](https://developer.mozilla.org/zh-CN/
 
 > [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD) 是"Asynchronous Module Definition"的缩写，意思是"异步模块定义"；代表有 `requirejs`；
 
-<img src="./liucheng.svg" style="max-wdith:100%;">
+<img src="./liucheng.svg" style="max-width:100%;">
 
 ofajs 选择了**类AMD** 的方案；所以开发功能时，API设计会更贴近原生；和CMD背道而驰，越走越远；
 
