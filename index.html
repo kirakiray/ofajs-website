@@ -73,7 +73,10 @@
     </style>
     <script src="js/ofa.js" async></script>
     <script>
+        var _hmt = _hmt || [];
         ofa = async () => {
+            load('https://hm.baidu.com/hm.js?e66e6e21e9aa81f298e04ed0a4101cfe');
+
             await load("o-book -p");
 
             // 等待loading结束后去除全局过度
