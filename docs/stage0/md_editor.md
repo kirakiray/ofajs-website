@@ -1,5 +1,7 @@
 # 5分钟制作一款markdown编辑器
 
+点击跳转到[5分钟开发的Markdown编辑器](/example/mdEditor/index.html)
+
 从前一篇文章[（使用o-md组件）](./use_omd.md)，我们知道 `o-md` 直接设置 `mdData` 属性就能动态设置预览内容；
 
 那么，制作一款readme编辑器，只需要监听文本框内容，在内容改变的同时，修正 mdData属性即可；代码大致如下；
@@ -97,5 +99,3 @@
     </script>
 </body>
 ```
-
-[点击跳转查看效果](/example/mdEditor/index.html)

@@ -6,6 +6,10 @@
 
 不用nodejs，不用webpack，兼顾所有类型项目。
 
+## 案例
+
+[5分钟开发一个markdown编辑器](./stage0/md_editor.md)
+
 ### 易用
 * 不用准备复杂的脚手架工作，开箱即用（不用学习Nodejs，webpack）
 * 媲美jQuery的api和上手成本

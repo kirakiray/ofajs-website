@@ -94,10 +94,12 @@
     <script>
         var _hmt = _hmt || [];
         (function () {
-            var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?e66e6e21e9aa81f298e04ed0a4101cfe";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
+            if (location.host === 'ofajs.com') {
+                var hm = document.createElement("script");
+                hm.src = "https://hm.baidu.com/hm.js?e66e6e21e9aa81f298e04ed0a4101cfe";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            }
         })();
     </script>
 </head>
