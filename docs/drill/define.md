@@ -149,28 +149,6 @@ define(async (load) => {
 
 当然还能使用 `../` 上级目录，但是上级引用最大不能超过根目录；
 
-## 定义id
-
-通过 `define` 函数的第二个参数，给模块定义id
-
-```javascript
-// a.js
-define(async()=>{
-    return 'I am test6';
-},'test6');
-```
-
-```javascript
-// 载入 a.js
-let a1 = await load('js/a');
-
-let a2 = await load('test6');
-```
-
-这里的a1和a2值是相等的；
-
-必须先载入 a.js ，才能使用test6这个模块名；若a1 a2 顺序调转，则会报错；
-
 ### 注意
 
 模块间的依赖不能形成闭环，闭环依赖会走不出死循环;

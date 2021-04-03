@@ -4,11 +4,15 @@ Component({
     attrs: {
         // 是否激活状态
         active: null,
-        title: null
+        // 属于多少级
+        level: "1",
+
     },
     data: {
         // 是否竖的方向，默认横向
-        vertical: null
+        vertical: null,
+        // 内容
+        title: null,
     },
     watch: {
         active() {

@@ -25,14 +25,12 @@ function)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Glo
     - 直接定义模块
     - 依赖其它模块
     - 相对路径
-    - 定义id
 3. task模块详细使用
     - `task模块`和`define模块`的异同
     - 模块依赖
     - 传递数据
     - task模块常用的一种应用场景
     - 相对路径
-    - 定义id
     - 非主流task模块写法
 4. ofa.js模块化进阶
     - 并行加载

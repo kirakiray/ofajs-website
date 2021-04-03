@@ -1,5 +1,5 @@
 /*!
- * ofa v2.8.0
+ * ofa v2.8.1
  * https://github.com/kirakiray/ofa.js
  * 
  * (c) 2018-2021 YAO
@@ -4197,10 +4197,10 @@
 
     })(window);
     /*!
-     * drill.js v3.5.3
+     * drill.js v3.5.4
      * https://github.com/kirakiray/drill.js
      * 
-     * (c) 2018-2020 YAO
+     * (c) 2018-2021 YAO
      * Released under the MIT License.
      */
     ((glo) => {
@@ -4556,13 +4556,7 @@
                     // task 进程类型
                     let {
                         type,
-                        moduleId
                     } = tempM;
-
-                    // 判断是否有自定义id
-                    if (moduleId) {
-                        bag.get(moduleId) || bag.set(moduleId, packData);
-                    }
 
                     // 进行processors断定
                     // 默认是file类型
@@ -4927,8 +4921,8 @@
             debug: {
                 bag
             },
-            version: "3.5.3",
-            v: 3005003
+            version: "3.5.4",
+            v: 3005004
         };
         // 设置类型加载器的函数
         const setProcessor = (processName, processRunner) => {
@@ -4945,11 +4939,10 @@
             });
 
             // 特定类型记录器
-            let processDefineFunc = (d, moduleId) => {
+            let processDefineFunc = (d) => {
                 base.tempM = {
                     type: processName,
-                    d,
-                    moduleId
+                    d
                 };
             }
 
@@ -7080,8 +7073,8 @@
             </div>
             `;
         },
-        v: 2008000,
-        version: "2.8.0"
+        v: 2008001,
+        version: "2.8.1"
     };
 
     let oldOfa = glo.ofa;

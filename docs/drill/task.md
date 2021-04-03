@@ -180,18 +180,6 @@ load('../t2');
 
 请参考 [define模块相对路径](02.md#相对路径)
 
-## 定义id
-
-跟 `define模块` 一样， `task模块` 也能使用id定义；
-
-```javascript
-task(async ()=>{
-    // etc...
-},'idName')
-```
-
-详细参考 [define模块定义id](02.md#定义id)
-
 ## 非主流 task模块写法
 
 只要函数返回的是Promise对象，你可以不使用 async function 而用普通函数来写：
