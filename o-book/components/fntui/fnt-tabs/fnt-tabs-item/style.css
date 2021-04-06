@@ -24,6 +24,9 @@
   /* background-color: var(--active-item-color); */
   cursor: default;
 }
+.intext {
+  transform-origin: 0 50%;
+}
 .intext[pdleft="1"] {
   padding-left: 10px;
 }
