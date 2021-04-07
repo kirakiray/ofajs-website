@@ -9,12 +9,12 @@
 然后，将 `ofa.js` 添加到你的页面中；
 
 ```html
-<script src="https://kirakiray.github.io/ofa.js/dist/ofa.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.js"></script>
 ```
 
 在确保 ofa.js被引入成功后，就可以开始正式的教程了。
 
-为了提高教学质量，这里将ofajs的教学分5个阶段，每个阶段都相对容易并学有所获。
+为了防止扎堆的知识导致混乱，这里将ofajs的教学分5章，每章都相对容易并学有所获。
 
 ## 教程目录
 
@@ -32,9 +32,11 @@ stage 1 完成后，能够快速开发页面的小功能。
 
 ### stage 2: 开发 ofa Component
 
-讲解如何开发ofajs的组件；(就是 stage 0 中使用的这种组件)
+讲解如何封装组件；(就是 stage 0 中使用的这种组件)
 
-开发 ofa Component 前，需要搭建静态网站服务器；编辑器使用VSCode的话安装 `Live Server` 之类的插件即可；
+开发 ofa Component 前，需要搭建静态网站服务器；
+
+> 编辑器使用[VSCode](https://code.visualstudio.com/)的话安装 `Live Server` 之类的插件即可
 
 提供了模板引擎之类的语法，可以使用MVVM的开发方式；
 

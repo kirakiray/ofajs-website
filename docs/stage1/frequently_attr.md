@@ -34,6 +34,24 @@
 </script>
 ```
 
+### 获取子元素和子元素长度
+
+直接通过数字获取子元素，**length**属性获取子元素数量；（和数组对象一样）
+
+```html
+<body>
+    <div class="main">
+        <div class="m1">I am m1</div>
+        <div class="m2">I am m2</div>
+    </div>
+</body>
+<script>
+    console.log($(".main").length); // => 2
+    console.log($(".main")[0] === $(".m1")); // => true
+    console.log($(".main")[1] === $(".m2")); // => true
+</script>
+```
+
 ### 内容相关
 
 #### html

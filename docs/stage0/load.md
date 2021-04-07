@@ -1,5 +1,11 @@
 # ofajs模块化系统——`load`的入门教程
 
+记得先引用 ofa.js 库到项目中；
+
+```html
+<script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.js"></script>
+```
+
 当引入 **ofa.js** 文件成功后，会在全局变量内添加一个 `load` 方法
 
 `load`方法是 **模块加载器** ，作用跟ES6的 `import` 和 nodejs的 `require` 相似。但使用 **load** 方法返回的是 [Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise) 对象，当操作成功后，会从then内返回当前模块的内容。
@@ -12,7 +18,7 @@
 </script>
 ```
 
-搭配async function 使用，效果更佳；
+搭配 async function 使用，效果更佳；
 
 > 2017年后更新的浏览器已支持 **async function**
 

@@ -18,7 +18,7 @@
 
 使用$获取或生成的对象，名为 **$元素**;
 
-$选择器支持和 [document.querySelector](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/querySelector) 保持一致，具体支持定位元素请查阅 [css选择器](https://cn.bing.com/search?q=css%E9%80%89%E6%8B%A9%E5%99%A8);
+$选择器支持和 [document.querySelector](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/querySelector) 保持一致，具体支持定位元素请查阅 [css选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Selectors);
 
 ## 查找子元素
 
@@ -231,6 +231,45 @@ let tempDiv = $({
 当然，也可用[Array的访问方法或迭代方法](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array#%E8%AE%BF%E9%97%AE%E6%96%B9%E6%B3%95)，使用参数和Array保持一致；
 
 > 不会改变 $元素 数据的方法，`forEach`、`map`、`concat`、`every`、`filter`、`find`、`findIndex`、`slice`、`some`、`indexOf`、`lastIndexOf`、`includes`和`join`；
+
+### 插入元素
+
+从目标$元素的前面或后面插入新元素；
+
+**before** 从目标元素前方插入；
+
+**after** 从目标元素后方插入；
+
+```html
+<body>
+    <div class="container">
+        <div id="testEle">I am testEle</div>
+        <div>I am last element</div>
+    </div>
+</body>
+<script>
+let target = $("#testEle");
+
+console.log($(".container").length); // => 2
+
+console.log($(".container")[0].text); // => I am testEle
+console.log($(".container")[1].text); // => I am last element
+
+// 向 #testEle 前插入元素
+target.before('<div>I am insert before Element</div>');
+
+// 向 #testEle 后插入元素
+target.after('<div>I am insert after Element</div>');
+
+
+console.log($(".container").length); // => 4
+
+console.log($(".container")[0].text); // => I am insert before Element
+console.log($(".container")[1].text); // => I am testEle
+console.log($(".container")[2].text); // => I am insert after Element
+console.log($(".container")[3].text); // => I am last element
+</script>
+```
 
 ### 注意事项
 
