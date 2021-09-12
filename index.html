@@ -3,113 +3,27 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="Description" content="次世代web前端渐进式框架；不用nodejs，不用webpack，兼顾所有类型项目。">
-    <meta name="Keywords" content="ofa,ofajs,ofa.js,前端框架">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="renderer" content="webkit">
-    <meta name="force-rendering" content="webkit">
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-touch-fullscreen" content="yes" />
-    <meta name="mobile-web-app-capable" content="yes">
-    <link rel="manifest" href="./manifest.json">
     <title>ofajs</title>
+    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kirakiray/o-book/o-book.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kirakiray/o-book/comps/code-view/code-view.js"></script>
     <style>
         html,
         body {
-            width: 100%;
-            height: 100%;
             margin: 0;
             padding: 0;
-            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-        }
-
-        body {
-            --primary-color: #e02323;
-            --fnt-booktheme: #e02323;
-        }
-
-        .body_loading {
-            z-index: 100;
-            position: absolute;
-            left: 0;
-            top: 0;
             width: 100%;
             height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #fff;
-        }
-
-        .body_loading_out {
-            animation: body_loading_out ease .4s;
-            animation-fill-mode: both;
-        }
-
-        @keyframes body_loading_out {
-            0% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-            }
-        }
-
-        .start_loading {
-            animation: start_loading_anime linear 1s infinite;
-        }
-
-        @keyframes start_loading_anime {
-            0% {
-                transform: rotate(0);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
         }
     </style>
-    <!-- <script src="js/ofa.js" async></script> -->
-    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.js" async></script>
-    <script>
-        // var _hmt = _hmt || [];
-        ofa = async () => {
-            // load('https://hm.baidu.com/hm.js?e66e6e21e9aa81f298e04ed0a4101cfe');
-
-            await load("o-book -p");
-
-            // 等待loading结束后去除全局过度
-            await $("o-book").watchUntil(`loaded=="finish"`);
-
-            $(".body_loading").class.add("body_loading_out");
-            setTimeout(() => {
-                $(".body_loading").remove();
-            }, 500);
-
-            // 内部需要使用的测试案例
-            load('o-book/components/fntui -p')
-        }
-    </script>
-    <script>
-        var _hmt = _hmt || [];
-        (function () {
-            if (location.host === 'ofajs.com') {
-                var hm = document.createElement("script");
-                hm.src = "https://hm.baidu.com/hm.js?e66e6e21e9aa81f298e04ed0a4101cfe";
-                var s = document.getElementsByTagName("script")[0];
-                s.parentNode.insertBefore(hm, s);
-            }
-        })();
-    </script>
 </head>
 
 <body>
-    <o-book></o-book>
-    <div class="body_loading">
-        <img src="o-book/img/loading.svg" class="start_loading" width="30" alt="">
-    </div>
+    <o-book summary="summary.md" home="readme.md" style="height:100%;">
+        <div style="display:flex;width:100%;height:100%;justify-content:center;align-items:center;">Loading...</div>
+    </o-book>
 </body>
 
 </html>

@@ -1,50 +1,46 @@
 # OFAjs 使用文档
 
 ## 主要
-* [ofajs入门](docs/guide.md)
-* [stage0:使用组件](docs/stage0/start.md)
-    * [学习load函数](docs/stage0/load.md)
-    * [组件文档查阅和使用](docs/stage0/use_component.md)
-    * [使用markdown组件](docs/stage0/use_omd.md)
-    * [5分钟制作markdown编辑器](docs/stage0/md_editor.md)
-    * [stage0总结](docs/stage0/end.md)
-* [stage1:使用 ofa API](docs/stage1/start.md)
-    * [使用 $](docs/stage1/usedoll.md)
-    * [事件](docs/stage1/event.md)
-    * [常用属性](docs/stage1/frequently_attr.md)
-    * [常用方法](docs/stage1/frequently_func.md)
-    * [stage1总结](docs/stage1/end.md)
-* [stage2:开发ofa Component](docs/stage2/start.md)
-    * [目录结构](docs/stage2/init_dir.md)
-    * [模板语法]()
-        * [文本]()
-        * [属性绑定]()
-        * [数据同步]()
-    * [制作一个按钮组件]()
-    * [Component API]()
-* [stage3:开发ofa Page]()
-    * [目录结构]()
-    * [制作一个简单的页面]()
-    * [Page API]()
-* [stage4:开发ofa APP]()
-    * [最简单的APP制作]()
-    * [App API]()
-* [高级知识]()
-    * [stanz对象]()
-* [辅助工具]()
-    * [辅助文档建设]()
-    * [辅助调试]()
+* [导航](docs/guide.md)
 
-## 高级
-* [模块化](docs/drill/guide.md)
-    * [基础使用](docs/drill/base_use.md)
-    * [define模块详细使用](docs/drill/define.md)
-    * [task模块详细使用](docs/drill/task.md)
-    * [ofa.js模块化进阶](docs/drill/more.md)
-* [数据同步系统]()
-* [组件化]()
-* [微前端]()
+## 第一章 快速使用组件
+* [引用组件资源](docs/chapter1/guide.md)
+* [轮播组件]()
+
+## 第二章 简单使用ofajs
+* [使用$]()
+
+## 第三章 开发组件
+* [入门模块化]()
+* [插槽]()
+* [模板语法]()
+    * [文本]()
+    * [属性绑定]()
+    * [数据同步]()
+* [数据监听]()
+* [表单组件]()
+
+## 第四章 Page组件和App组件
+* [模块化进阶]()
+* [Page组件]()
+* [App组件]()
+* [添加路由功能]()
+
+## 第五章 微前端
+* [什么是微前端]()
+
+## api
+* [属性]()
+* [方法]()
+* [模板语法]()
+* [数据同步]()
+* [默认组件]()
+* [第三方组件]()
+    * [辅助开发型组件]()
+        * [文档型组件]()
+        * [调试型组件]()
+    * [应用组件推荐]()
+* [模块化]()
 
 ## 其他
-* [ofajs的组成]()
-* [为什么要开发ofajs?](docs/why_create_ofajs.md)
+* [已有的组件]()

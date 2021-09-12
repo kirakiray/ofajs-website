@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>button demo</title>
+    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.js"></script>
+    <!-- <script src="http://127.0.0.1:5513/dist/ofa.js"></script> -->
+    <script src="./bs-button.js"></script>
+    <style>
+        body {
+            background-color: #eee;
+        }
+
+        bs-button {
+            visibility: hidden;
+        }
+
+        [x-render="1"]:defined {
+            visibility: visible;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="button_test">
+        <bs-button>Primary</bs-button>
+        <bs-button type="secondary">secondary</bs-button>
+        <bs-button type="success">success</bs-button>
+        <bs-button type="danger">danger</bs-button>
+        <bs-button type="warning">warning</bs-button>
+        <bs-button type="info">info</bs-button>
+        <bs-button type="light">light</bs-button>
+        <bs-button type="dark">dark</bs-button>
+        <bs-button type="link">link</bs-button>
+        <br>
+        <br>
+        <h4>outline</h4>
+        <bs-button outline>Primary</bs-button>
+        <bs-button type="secondary" outline>secondary</bs-button>
+        <bs-button type="success" outline>success</bs-button>
+        <bs-button type="danger" outline>danger</bs-button>
+        <bs-button type="warning" outline>warning</bs-button>
+        <bs-button type="info" outline>info</bs-button>
+        <bs-button type="light" outline>light</bs-button>
+        <bs-button type="dark" outline>dark</bs-button>
+        <bs-button type="link" outline>link</bs-button>
+        <br>
+        <br>
+        <h4>disabled</h4>
+        <bs-button disabled>Primary</bs-button>
+        <bs-button type="secondary" disabled>secondary</bs-button>
+        <bs-button outline disabled>Primary</bs-button>
+        <bs-button type="secondary" outline disabled>secondary</bs-button>
+        <br>
+        <br>
+        <h4>size</h4>
+        <bs-button>Primary</bs-button>
+        <bs-button size="large">Primary large</bs-button>
+        <bs-button size="small">Primary small</bs-button>
+        <bs-button type="success">Primary</bs-button>
+        <bs-button size="large" type="success">Primary large</bs-button>
+        <bs-button size="small" type="success">Primary small</bs-button>
+        <br>
+        <br>
+        <h4>active</h4>
+        <bs-button>Primary</bs-button>
+        <bs-button active>Primary active</bs-button>
+        <bs-button>Primary</bs-button>
+        <bs-button>Primary</bs-button>
+    </div>
+</body>
+
+</html>

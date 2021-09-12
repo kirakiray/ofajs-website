@@ -1,59 +1,66 @@
-# 入门
+# 导航
 
 ## 准备
 
-首先，你已经会web前端开发的基础的知识（ **html** **Javascript** **css** ），例如新建一个空白页。
+* 基本的网页开发知识；
+* 可预览页面的静态服务器（可以是本地服务器）；
 
-其次，建议学习一下 ES6的 [Promise API](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/async_function) 和 ES7 的 [async function](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/async_function)。
+你要会最基础的web前端开发知识，理解什么是 **html css javascript**；
 
-然后，将 `ofa.js` 添加到你的页面中；
+一个合适的代码编辑器，例如 [VSCode](https://code.visualstudio.com/)；
 
-```html
-<script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.js"></script>
-```
+会使用服务器模式，用浏览器访问并预览html文件；（使用VSCode的话，安装Live Server之类的扩展即可）
 
-在确保 ofa.js被引入成功后，就可以开始正式的教程了。
+## 章节引导
 
-为了防止扎堆的知识导致混乱，这里将ofajs的教学分5章，每章都相对容易并学有所获。
+根据章节介绍，可以选择性的学习；
 
-## 教程目录
+##### 第一章
 
-### stage 0: ofa Component 的使用
+使用基于 ofajs 开发的组件（不需要学习 ofajs 的 api）；
 
-讲解如何使用ofajs封装的组件；只需要学习ofajs提供的 `load` 方法即可；
+适合对象或场景（理由）：
+* 后端开发人员（不需要学习前端工程化知识，使用前端封装好的组件）
+* 前端开发初学者（快速理解前端开发的成果）
+* 后端MVC网站（完美解耦前端开发和后端开发，前端开发组件，后端使用组件）
 
-stage 0 学习完成后，你也能 [**五分钟开发一个markdown编辑器**](./stage0/md_editor.md)。
+##### 第二章
 
-### stage 1: 使用ofa API
+学习简单的 ofajs 的 api，快速修改网页；例如DOM或修改样式属性之类的操作；
 
-ofajs提供的api跟jQuery很相似，是jQuery的精神续作；
+如果你使用过 jQuery，一定能很快完成这章的内容；
 
-stage 1 完成后，能够快速开发页面的小功能。
+适合对象或场景（理由）：
+* 前端开发初学者（入门成本低，尝试基本api）
+* 小型项目（简单的小功能页面，不需要复杂的前端知识）
 
-### stage 2: 开发 ofa Component
+##### 第三章
 
-讲解如何封装组件；(就是 stage 0 中使用的这种组件)
+讲解如何开发组件（第一章中使用的组件），享受模板渲染和MVVM的乐趣；
 
-开发 ofa Component 前，需要搭建静态网站服务器；
+完成第三章教程后，就能加入前端开发的行列了；
 
-> 编辑器使用[VSCode](https://code.visualstudio.com/)的话安装 `Live Server` 之类的插件即可
+适合对象或场景（理由）：
+* 前端开发进阶（理解组件的意义和模板引擎语法）
+* 小型项目（将功能封装为组件，让非前端开发人员快速使用你的项目）
 
-提供了模板引擎之类的语法，可以使用MVVM的开发方式；
+##### 第四章
 
-stage 2完成后，能开发出让别人快速使用的组件；
+使用 ofajs 提供的 page组件 和 app组件，开发大型应用项目；
 
-### stage 3: 开发 ofa Page
+完成第四章教程后，能系统性认识前端开发；
 
-就像开发组件那样开发页面，使用模板引擎之类的语法，还有绑定数据；
+适合对象或场景（理由）：
+* 前端开发再进阶（理解大型应用的开发）
+* 大型项目
 
-stage 3 完成后，能够快速开发功能页面；
+##### 第五章
 
-> 学习stage3之前，必须先学习过stage2的内容；
+使用 ofajs 提供的 第三方（官方）组件或插件，接入独立网页应用；
 
-### stage 4: 开发 ofa APP
+理解 **微前端** 这个概念；
 
-开发 ofa APP 的方法很像小程序；但没有编译操作，开发即生效；
-
-stage4完成后，你就能开发全平台通用的应用程序（PWA/Web app）。
-
-> 学习stage4之前，必须先学习stage3的内容；
+适合场景：
+* 超大型项目；
+* 中台系统；
+* 分布式应用、DAPP；
