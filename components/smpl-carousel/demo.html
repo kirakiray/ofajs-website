@@ -6,10 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>smpl-carousel</title>
+    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kirakiray/o-book/comps/o-md/o-md.js"></script>
+    <script src="./smpl-carousel.js"></script>
+    <style>
+        smpl-carousel {
+            visibility: hidden;
+        }
+
+        smpl-carousel:defined {
+            visibility: visible;
+        }
+    </style>
 </head>
 
 <body>
-
+    <o-md src="readme.md"></o-md>
+    <h3>示范案例</h3>
+    <smpl-carousel time="3500" style="width: 480px;height: 320px;">
+        <div smpl-item style="background-color: red;color:#fff;">1</div>
+        <div smpl-item style="background-color: green;color:#fff;">2</div>
+        <div smpl-item style="background-color: blue;color:#fff;">3</div>
+    </smpl-carousel>
+    <script>
+        $("smpl-carousel").on("changecurrent", e => {
+            console.log("currentId => ", e.data);
+        });
+    </script>
 </body>
 
 </html>

@@ -1,0 +1,38 @@
+<style>
+    :host {
+        display: block;
+    }
+
+    .main {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    ::slotted([smpl-item]) {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        z-index: 1;
+    }
+
+    ::slotted([smpl-item][show]) {
+        opacity: 1;
+        z-index: 2;
+    }
+</style>
+<style id="itemStye">
+    /* ::slotted([smpl-item]) {
+        transition: all ease 500ms;
+    } */
+</style>
+
+<div class="main">
+    <slot></slot>
+</div>
