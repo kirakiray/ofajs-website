@@ -19,7 +19,7 @@
 </body>
 ```
 
-<code-run>
+<code-run frame-height="350">
     <template>
         <codehead>
             <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.js"></script>
