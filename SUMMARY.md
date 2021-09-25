@@ -10,11 +10,22 @@
 
 ## 第二章 简单使用ofajs
 * [获取元素](docs/chapter2/getEle.md)
+    * [常用的选择器](docs/chapter2/selector.md)
+    * [获取多个元素](docs/chapter2/getAllEle.md)
+    * [获取子级元素](docs/chapter2/getChildEle.md)
+* [修改内容](docs/chapter2/content.md)
+* [事件](docs/chapter2/bindEvent.md)
+    * [常见的DOM事件](docs/chapter2/commonEvent.md)
+    * [取消事件绑定](docs/chapter2/unbindEvent.md)
+    * [绑定一次性事件](docs/chapter2/onceEvent.md)
+    * [主动触发事件](docs/chapter2/triggerEvent.md)
+* [增删子元素](docs/chapter2/modifyChilds.md)
 
 ## 第三章 开发组件
-* [组件介绍]()
+* [组件介绍](docs/chapter3/introduce.md)
+* [组件初始化](docs/chapter3/init.md)
+* [组件参数]()
 * [入门模块化]()
-* [插槽]()
 * [模板语法]()
     * [文本]()
     * [属性绑定]()
@@ -32,8 +43,7 @@
 * [什么是微前端]()
 
 ## api
-* [属性]()
-* [方法]()
+* [$使用文档](docs/other/xhear_docs.md)
 * [模块化]()
 * [模板语法]()
 * [数据同步]()
