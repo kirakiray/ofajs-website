@@ -23,8 +23,10 @@
 
 ## 第三章 开发组件
 * [组件介绍](docs/chapter3/introduce.md)
-* [组件初始化](docs/chapter3/init.md)
-* [组件参数]()
+* [开始制作组件](docs/chapter3/init.md)
+* [组件参数](docs/chapter3/comp_option.md)
+    * [data](docs/chapter3/comp_option_data.md)
+    * [attrs](docs/chapter3/comp_option_attrs.md)
 * [入门模块化]()
 * [模板语法]()
     * [文本]()

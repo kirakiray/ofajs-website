@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>test-btn</title>
+    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.js"></script>
+    <!-- <script src="./test-btn.js"></script> -->
+</head>
+
+<body>
+    <style>
+        test-btn {
+            color: red;
+        }
+
+        test-btn[btn-text="btntext1"] {
+            color: green;
+        }
+
+        test-btn[btn-text="btntext2"] {
+            color: blue;
+        }
+    </style>
+    <test-btn btn-text="new btnText"></test-btn>
+    <script>
+        (async () => {
+            // 使用load函数引用 test-btn 组件
+            await load("./test-btn.js");
+
+            setTimeout(() => {
+                $("test-btn").btnText = "btntext1";
+                setTimeout(() => {
+                    // $("test-btn").btnText = "btntext2";
+                    // 属性被改变
+                    $(`[btn-text="btntext1"]`).btnText = "btntext2";
+                }, 3000);
+            }, 1000);
+        })()
+    </script>
+</body>
+
+</html>
