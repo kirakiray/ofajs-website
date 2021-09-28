@@ -52,6 +52,7 @@
 * [默认组件]()
 
 ## 其他
+* [为什么开发ofajs](docs/other/why_create_ofajs.md)
 * [组件推荐](docs/other/comp_recom.md)
     <!-- * [辅助开发型组件]()
         * [文档型组件]()
