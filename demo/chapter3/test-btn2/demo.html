@@ -25,6 +25,7 @@
                 $("test-btn").btnText = "btnText count " + count++;
             }, 1000);
 
+            // 下面会运行失败
             $("test-btn").btnText2 = "btnText2 haha";
             console.log('btnText2 => ', $("test-btn").btnText2); // btnText2 => undefined
         })()
