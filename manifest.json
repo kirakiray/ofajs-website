@@ -1,7 +1,7 @@
 {
-    "name": "OFA.js",
-    "short_name": "OFA.js",
+    "name": "ofa.js",
+    "short_name": "ofa.js",
     "display": "standalone",
     "start_url": ".",
-    "description": "OFA document"
+    "description": "ofa.js documentation"
 }
