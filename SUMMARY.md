@@ -26,6 +26,7 @@
 * [开始制作组件](docs/chapter3/init.md)
 * [组件参数](docs/chapter3/comp_option.md)
     * [data](docs/chapter3/comp_option_data.md)
+    * [ready](docs/chapter3/comp_option_ready.md)
     * [attrs](docs/chapter3/comp_option_attrs.md)
 * [入门模块化]()
 * [模板语法]()

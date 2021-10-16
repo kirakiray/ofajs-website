@@ -1,14 +1,14 @@
 # data
 
-可设置组件的data数据，并且采用文本模板渲染 data 上的字段；
+设置组件自身的数据，**data上的数据变动**会触发模板渲染；
 
-> 更多的模板语法在后面教程会讲
+> 案例中为文本渲染，更多的模板渲染语法在后面教程会讲
 
 下面案例用`btntext`字段替代插槽功能；
 
-<code-view src="/demo/chapter3/test-btn2/package.json" style="height:500px;"></code-view>
+<code-view src="/demo/chapter3/test-btn-data/package.json" style="height:500px;"></code-view>
 
-当组件渲染完成后，可获取并修改相应字段的数据；
+当组件渲染完成后，外部可获取或修改数据；
 
 在 **data** 上的数据才能被修改重置，不在 **data** 上的字段将会设置失败；
 
