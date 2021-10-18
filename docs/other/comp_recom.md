@@ -10,4 +10,4 @@
 
 ##### [code-run](https://kirakiray.github.io/o-book/comps/code-run/demo.html)
 
-方便查看并预览单个html文件的组件
+方便查看并预览单个html文件的组件；

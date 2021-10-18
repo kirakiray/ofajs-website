@@ -28,6 +28,8 @@
     * [data](docs/chapter3/comp_option_data.md)
     * [ready](docs/chapter3/comp_option_ready.md)
     * [attrs](docs/chapter3/comp_option_attrs.md)
+    * [proto](docs/chapter3/comp_option_proto.md)
+    * [attached/detached](docs/chapter3/comp_option_attached.md)
 * [入门模块化]()
 * [模板语法]()
     * [文本]()
