@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>test-btn</title>
+    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.js"></script>
+    <script src="./test-btn.js"></script>
+</head>
+
+<body>
+    <test-btn>
+        <div test-item>default div</div>
+    </test-btn>
+
+    <div>
+        <button onclick="$('test-btn').unshift('<div>test btn</div>')">头部添加子元素</button>
+        <button onclick="$('test-btn').pop();">删除末尾子元素</button>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<style>
+    :host {
+        display: inline-block;
+    }
+
+    ::slotted(div) {
+        display: inline-block;
+        padding: 2px 4px;
+        margin: 0 4px;
+        background-color: #aaa;
+        color: #fff;
+    }
+
+    .main {
+        padding: 4px 8px;
+        border-radius: 3px;
+        cursor: pointer;
+        user-select: none;
+    }
+</style>
+
+<div class="main">
+    <div>slotchange count => {{count}}</div>
+    <slot></slot>
+</div>

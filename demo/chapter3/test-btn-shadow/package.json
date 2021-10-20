@@ -1,0 +1,10 @@
+{
+    "index": "test-btn.js",
+    "sources": [
+        "demo.html",
+        "test-btn.js",
+        "test-btn.html"
+    ],
+    "view": "demo.html",
+    "main": "test-btn.js"
+}

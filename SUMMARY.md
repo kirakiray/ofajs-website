@@ -30,6 +30,10 @@
     * [attrs](docs/chapter3/comp_option_attrs.md)
     * [proto](docs/chapter3/comp_option_proto.md)
     * [attached/detached](docs/chapter3/comp_option_attached.md)
+    * [watch](docs/chapter3/comp_option_watch.md)
+* [影子容器](docs/chapter3/shadow.md)
+* [slotchange](docs/chapter3/comp_option_slotchange.md)
+* [数据特性]()
 * [入门模块化]()
 * [模板语法]()
     * [文本]()
@@ -43,6 +47,7 @@
 * [Page组件]()
 * [App组件]()
 * [添加路由功能]()
+* [修改换页动画]()
 
 ## 第五章 微前端
 * [什么是微前端]()
