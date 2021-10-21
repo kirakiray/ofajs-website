@@ -54,7 +54,11 @@
 
 ## api
 * [$使用文档](docs/other/xhear_docs.md)
-* [模块化]()
+* [模块化](docs/drill/guide.md)
+    * [基础使用](docs/drill/base_use.md)
+    * [define模块详细使用](docs/drill/define.md)
+    * [task模块详细使用](docs/drill/task.md)
+    * [ofa.js模块化进阶](docs/drill/more.md)
 * [模板语法]()
 * [数据同步]()
 * [默认组件]()
