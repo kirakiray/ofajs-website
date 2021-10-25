@@ -2,6 +2,8 @@
 
 当 组件被渲染成功 或 相应属性的值发生变动，会触发 `watch` 对象内对应 key 的方法；
 
+当监听的key值为对象，对象深层的值被改动时，也会触发 `watch` 绑定的函数；
+
 <code-view src="/demo/chapter3/test-btn-watch/package.json" style="height:500px;"></code-view>
 
 与其它前端框架不同，`watch`内的函数，在组件渲染完成后，必须被执行一次；

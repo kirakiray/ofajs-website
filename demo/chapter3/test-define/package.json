@@ -1,0 +1,10 @@
+{
+    "index": "testdefine.js",
+    "sources": [
+        "testdefine.js",
+        "package.json",
+        "demo.html"
+    ],
+    "view": "demo.html",
+    "main": "testdefine.js"
+}
