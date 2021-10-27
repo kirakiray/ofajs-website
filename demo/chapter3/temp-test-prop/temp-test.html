@@ -1,0 +1,12 @@
+<style>
+    .main {
+        font-size: 30px;
+    }
+</style>
+<div>
+    count => {{count}}
+</div>
+<sub-comp :subval="count"></sub-comp>
+<input type="text" :value="count">
+<div :text="count" style="color:red;"></div>
+<div :html="counttext()"></div>

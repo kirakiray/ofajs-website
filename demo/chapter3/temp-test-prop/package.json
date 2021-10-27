@@ -1,0 +1,12 @@
+{
+    "index": "temp-test.html",
+    "sources": [
+        "temp-test.html",
+        "temp-test.js",
+        "demo.html",
+        "sub-comp/sub-comp.html",
+        "sub-comp/sub-comp.js"
+    ],
+    "view": "demo.html",
+    "main": "temp-test.js"
+}
