@@ -39,12 +39,14 @@
     * [文本渲染](docs/chapter3/temp_render_text.md)
     * [事件绑定](docs/chapter3/temp_render_bindevent.md)
     * [数据传递](docs/chapter3/temp_render_prop.md)
-    * [条件语句]()
-    * [列表渲染]()
+    * [数据双向同步](docs/chapter3/temp_render_sync.md)
+    * [条件语句](docs/chapter3/temp_render_if.md)
+    * [列表渲染](docs/chapter3/temp_render_fill.md)
+        * [模板递归](docs/chapter3/temp_render_fill_recursion.md)
+        * [模板数据传递](docs/chapter3/temp_render_fill_item.md)
     * [await语句]()
     * [attribute绑定]()
     * [class绑定]()
-* [数据监听]()
 * [表单组件]()
 
 ## 第四章 Page组件和App组件

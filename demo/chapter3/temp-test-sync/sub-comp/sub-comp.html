@@ -1,0 +1,16 @@
+<style>
+    :host {
+        display: block;
+    }
+
+    .main {
+        padding: 10px 20px;
+        border: #aaa solid 1px;
+        border-radius: 5px;
+    }
+</style>
+<div class="main">
+    subval=>{{subval}}  <br>
+    <button @click="subval++" style="cursor: pointer;">subval + 1</button>
+    <button @click="subval--" style="cursor: pointer;">subval - 1</button>
+</div>

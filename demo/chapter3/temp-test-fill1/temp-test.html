@@ -1,0 +1,14 @@
+<style>
+    ul>li {
+        margin-top: 5px;
+        background-color: #eee;
+    }
+</style>
+
+<input type="text" sync:value="hostval">
+
+<!-- 使用模板 testli 和 arr 的数据， 填充到 ul 内 -->
+<ul fill:testli="arr"></ul>
+
+<!-- 定义模板 -->
+<li temp:testli :style="`color:${$data.color}`">{{$index}} - {{$data.val}} ; hostval => {{$host.hostval}}</li>

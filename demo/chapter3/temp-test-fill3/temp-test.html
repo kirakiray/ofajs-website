@@ -1,0 +1,21 @@
+<style>
+    ul>li {
+        margin-top: 5px;
+        background-color: #eee;
+    }
+</style>
+
+<!-- 使用模板 testli 和 arr 的数据， 填充到 ul 内 -->
+<ul fill:testli="arr"></ul>
+
+<!-- 定义模板 -->
+<li temp:testli :style="`color:${$data.color}`">{{$index}} - {{$data.val}} ;
+    <div #if="$item.topval">topval => {{$item.topval}}</div>
+    <div #else>
+        set topval <input type="text" sync:value="$data.val">
+    </div>
+    <!-- 递归使用； 请注意！！！调用自身很容易死循环，请务必添加 #if 判断条件 -->
+    <!-- 使用 item: 传递一个key为topval 的属性，值为 ($item.topval || $data.val) -->
+    <ul #if="$data.childs && $data.childs.length" fill:testli="$data.childs" item:topval="$item.topval || $data.val">
+    </ul>
+</li>
