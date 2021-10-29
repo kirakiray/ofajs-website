@@ -1,0 +1,14 @@
+<style>
+    .main {
+        display: inline-block;
+        padding: 2px 5px;
+        font-size: 30px;
+        cursor: pointer;
+        border: #aaa solid 1px;
+    }
+
+    .red {
+        color: red;
+    }
+</style>
+<div class="main" class:red="bool" @click="bool = !bool">click me; bool => {{bool}}</div>

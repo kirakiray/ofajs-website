@@ -1,0 +1,43 @@
+<style>
+    :host {
+        display: block;
+    }
+
+    .container {
+        display: flex;
+        user-select: none;
+    }
+
+    .container>div {
+        margin: 0 4px;
+        cursor: pointer;
+    }
+
+    .container>div.opa {
+        opacity: .3;
+    }
+
+    .msg {
+        height: 20px;
+        line-height: 20px;
+        color: rgb(255, 230, 0);
+        transition: all ease .3s;
+        overflow: hidden;
+    }
+
+    .msg.hide {
+        height: 0;
+    }
+
+    .msg.red {
+        color: red;
+    }
+</style>
+<div class="container">
+    <div class:opa="value < 1" @click="value = 1">⭐️</div>
+    <div class:opa="value < 2" @click="value = 2">⭐️</div>
+    <div class:opa="value < 3" @click="value = 3">⭐️</div>
+    <div class:opa="value < 4" @click="value = 4">⭐️</div>
+    <div class:opa="value < 5" @click="value = 5">⭐️</div>
+</div>
+<div class="msg" class:hide="!msg" class:red="msg && msg.message">{{msg ? msg.message ? msg.message : msg : ""}}</div>

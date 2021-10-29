@@ -44,10 +44,12 @@
     * [列表渲染](docs/chapter3/temp_render_fill.md)
         * [模板递归](docs/chapter3/temp_render_fill_recursion.md)
         * [模板数据传递](docs/chapter3/temp_render_fill_item.md)
-    * [await语句]()
-    * [attribute绑定]()
-    * [class绑定]()
-* [表单组件]()
+    * [await语句](docs/chapter3/temp_render_await.md)
+    * [attribute绑定](docs/chapter3/temp_render_attr.md)
+    * [class绑定](docs/chapter3/temp_render_class.md)
+* [表单元素和form方法](docs/chapter3/form_ele.md)
+    * [表单组件](docs/chapter3/form_comp.md)
+    * [表单验证](docs/chapter3/form_comp_verify.md)
 
 ## 第四章 Page组件和App组件
 * [模块化进阶]()

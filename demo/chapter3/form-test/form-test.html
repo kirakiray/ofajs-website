@@ -1,0 +1,48 @@
+<style>
+    div {
+        margin-top: 10px;
+    }
+
+    label {
+        margin-right: 10px;
+        cursor: pointer;
+    }
+</style>
+
+<div>{{formdata}}</div>
+<div>
+    username : <input type="text" name="username">
+</div>
+<div>
+    password : <input type="password" name="mima">
+</div>
+<div>
+    gender:
+    <label style="margin:0 10px;">
+        male <input type="radio" name="gender" value="male">
+    </label>
+    <label>
+        female <input type="radio" name="gender" value="female">
+    </label>
+</div>
+<div>
+    education:
+    <label style="margin:0 10px;">
+        primary school <input type="checkbox" name="education" value="primary">
+    </label>
+    <label>
+        high school <input type="checkbox" name="education" value="high">
+    </label>
+    <label>
+        University <input type="checkbox" name="education" value="university">
+    </label>
+</div>
+<div>
+    province:
+    <select name="place">
+        <option value="gd">GuangDong</option>
+        <option value="sh">ShangHai</option>
+        <option value="bj">BeiJing</option>
+        <option value="yn">YunNan</option>
+    </select>
+</div>

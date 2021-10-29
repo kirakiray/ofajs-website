@@ -1,0 +1,26 @@
+<style>
+    :host {
+        display: block;
+    }
+
+    .container {
+        display: flex;
+        user-select: none;
+    }
+
+    .container>div {
+        margin: 0 4px;
+        cursor: pointer;
+    }
+
+    .container>div.opa {
+        opacity: .3;
+    }
+</style>
+<div class="container">
+    <div class:opa="value < 1" @click="value = 1">⭐️</div>
+    <div class:opa="value < 2" @click="value = 2">⭐️</div>
+    <div class:opa="value < 3" @click="value = 3">⭐️</div>
+    <div class:opa="value < 4" @click="value = 4">⭐️</div>
+    <div class:opa="value < 5" @click="value = 5">⭐️</div>
+</div>
