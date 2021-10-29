@@ -1,7 +1,7 @@
 <div #await="count">Loading</div>
 <div #then="data" style="color:green;">count => {{data}}
-    <button @click="resetCount()">reset</button>
+    <button @click="$host.resetCount()">reset</button>
 </div>
 <div #catch="data" style="color:#fb4747;">count => {{data}}
-    <button @click="resetCount()">reset</button>
+    <button @click="$host.resetCount()">reset</button>
 </div>
