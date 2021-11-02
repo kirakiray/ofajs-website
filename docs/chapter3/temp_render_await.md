@@ -4,4 +4,6 @@
 
 使用 `#await` 、`#then` 和 `#catch` 断定元素是否出现；
 
+`$host` 标识代表宿主组件；
+
 <code-view src="/demo/chapter3/temp-test-await/package.json" style="height:500px;"></code-view>

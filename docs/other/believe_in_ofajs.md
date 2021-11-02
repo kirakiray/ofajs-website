@@ -55,4 +55,4 @@ ofajs 以 [Xhear](https://github.com/kirakiray/Xhear) 和 [drill.js](https://git
 
 ## ofajs 的代码质量
 
-虽然 [ofajs](https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js) 功能强大，但代码非常精简，压缩混淆后只有41kb（16KB min+gzip），
+虽然 [ofajs](https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js) 功能强大，但代码非常精简，压缩混淆后只有[41kb](https://kirakiray.github.io/ofa.js/dist/ofa.min.js)（16KB min+gzip），

@@ -1,0 +1,13 @@
+{
+    "index": "demo.html",
+    "sources": [
+        "demo.html",
+        "app.js",
+        "pages/home/home.js",
+        "pages/home/home.html",
+        "pages/info/info.js",
+        "pages/info/info.html"
+    ],
+    "view": "demo.html",
+    "main": "app.js"
+}
