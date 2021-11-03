@@ -62,8 +62,9 @@
 
 ## 第五章 微前端
 * [什么是微前端](docs/chapter5/micro_frontend.md)
-    * [微组件]()
-    * [微应用]()
+    * [微页面](docs/chapter5/micro_page.md)
+    * [微组件](docs/chapter5/micro_component.md)
+    * [微应用](docs/chapter5/micro_app.md)
 
 ## api
 * [$使用文档](docs/other/xhear_docs.md)

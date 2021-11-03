@@ -1,0 +1,23 @@
+<style>
+    .detail_img {
+        width: 100%;
+        height: 100vw;
+        max-height: 50vh;
+        background-color: #f9cf00;
+    }
+
+    .price {
+        color: #f9cf00;
+    }
+</style>
+<div class="detail_img">
+    <button @click="back()">返回</button>
+    <div style="color:#fff;">咸鱼detail</div>
+</div>
+<div>{{productName}}</div>
+<div class="price">
+    {{price}}¥
+</div>
+<div>
+    productId => {{productId}}
+</div>

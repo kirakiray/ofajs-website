@@ -1,0 +1,46 @@
+<style>
+    .commdity_list {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-around;
+        padding: 20px;
+    }
+
+    .commdity_block {
+        margin-bottom: 20px;
+        width: 120px;
+    }
+
+    .commdity_avatar {
+        width: 120px;
+        height: 120px;
+        background-color: #ff6002;
+    }
+
+    .commdity_name {
+        color: #555;
+        text-align: center;
+    }
+
+    .commdity_price {
+        margin-left: auto;
+        font-size: 12px;
+        text-align: right;
+        color: #ff6002;
+    }
+</style>
+<div #await="products" style="display:flex;justify-content: center;align-items: center;height: 100%;">
+    Loading...
+</div>
+<div #then="products">
+    <div class="commdity_list" fill:productblock="products"></div>
+</div>
+</div>
+<div class="commdity_block" temp:productblock>
+    <div class="commdity_avatar" @click="$host.clickItem($data)"></div>
+    <div style="display:flex;align-items: flex-end;">
+        <div class="commdity_name">{{$data.name}}</div>
+        <div class="commdity_price">{{$data.price}}¥</div>
+    </div>
+</div>

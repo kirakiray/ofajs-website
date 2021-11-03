@@ -44,3 +44,11 @@ ofajs是尽量和原生web贴近，在原生基础上增加更易用的api；而
 ### 案例
 
 [**o-book**-最简单的书籍网站生成框架](https://kirakiray.github.io/o-book/website/index.html)
+
+### 导航
+
+[开始学习](docs/chapter1/guide.md)
+
+[为什么开发ofajs](docs/other/why_create_ofajs.md)
+
+[关于ofajs](docs/other/believe_in_ofajs.md)
