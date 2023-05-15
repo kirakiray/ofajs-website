@@ -40,7 +40,7 @@ form方法生成的 **表单数据**，是根据表单特性动态修正的；
 <code-run show-code="top">
     <template>
         <codehead>
-            <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.js"></script>
+            <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@3.0.13/dist/ofa.js"></script>
         </codehead>
         <input type="text" id="target" />
         <div id="consoler"></div>

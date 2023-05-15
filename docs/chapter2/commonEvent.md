@@ -10,7 +10,7 @@
 <code-run show-code="top">
     <template>
         <codehead>
-            <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.js"></script>
+            <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@3.0.13/dist/ofa.js"></script>
         </codehead>
         <button id="btn">Click Me!</button>
         <script>
@@ -30,7 +30,7 @@
 <code-run show-code="top">
     <template>
         <codehead>
-            <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.js"></script>
+            <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@3.0.13/dist/ofa.js"></script>
         </codehead>
         <div id="target" style="width:100px;height:100px;background-color:#eee;">Click Me!</div>
         <script>
@@ -54,7 +54,7 @@
 <code-run show-code="top">
     <template>
         <codehead>
-            <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.js"></script>
+            <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@3.0.13/dist/ofa.js"></script>
         </codehead>
         <div id="consoler"></div>
         <input type="text" id="target" />
@@ -75,7 +75,7 @@ input标签上的表现是，当元素失去焦点，并且value发生变动时�
 <code-run show-code="top">
     <template>
         <codehead>
-            <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.js"></script>
+            <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@3.0.13/dist/ofa.js"></script>
         </codehead>
         <div id="consoler"></div>
         <input type="text" id="target" />
@@ -94,7 +94,7 @@ input标签上的表现是，当元素失去焦点，并且value发生变动时�
 <code-run show-code="top">
     <template>
         <codehead>
-            <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.js"></script>
+            <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@3.0.13/dist/ofa.js"></script>
         </codehead>
         <div id="consoler"></div>
         <input type="text" id="target" />

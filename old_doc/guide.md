@@ -9,7 +9,7 @@
 然后，将 `ofa.js` 添加到你的页面中；
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@3.0.13/dist/ofa.js"></script>
 ```
 
 在确保 ofa.js被引入成功后，就可以开始正式的教程了。

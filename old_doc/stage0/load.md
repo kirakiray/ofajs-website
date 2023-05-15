@@ -3,7 +3,7 @@
 记得先引用 ofa.js 库到项目中；
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@3.0.13/dist/ofa.js"></script>
 ```
 
 当引入 **ofa.js** 文件成功后，会在全局变量内添加一个 `load` 方法

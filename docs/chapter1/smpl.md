@@ -6,7 +6,7 @@
 
 ```html
 <head>
-    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@3.0.13/dist/ofa.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/kirakiray/o_blog/components/smpl-carousel/smpl-carousel.js"></script>
 </head>
 
@@ -22,7 +22,7 @@
 <code-run frame-height="350">
     <template>
         <codehead>
-            <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.js"></script>
+            <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@3.0.13/dist/ofa.js"></script>
             <script src="https://cdn.jsdelivr.net/gh/kirakiray/o_blog/components/smpl-carousel/smpl-carousel.js"></script>
         </codehead>
         <smpl-carousel time="3500" style="width: 480px;height: 320px;">

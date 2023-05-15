@@ -11,7 +11,7 @@ load函数默认支持 `js`、`mjs`、`json`、`wasm`、`html` 文件类型，�
 <code-run show-code="top">
     <template>
         <codehead>
-            <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.js"></script>
+            <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@3.0.13/dist/ofa.js"></script>
         </codehead>
         <div id="target">Loading</div>
         <script>

@@ -11,7 +11,7 @@ ofajs 的 `$` 选择是基于 [querySelector](https://developer.mozilla.org/zh-C
 <code-run show-code="top">
     <template>
         <codehead>
-            <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.js"></script>
+            <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@3.0.13/dist/ofa.js"></script>
         </codehead>
         <style>
         #target{
@@ -41,7 +41,7 @@ id 引用 HTML 元素的 id 属性。
 <code-run show-code="top">
     <template>
         <codehead>
-            <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.js"></script>
+            <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@3.0.13/dist/ofa.js"></script>
         </codehead>
         <style>
         .target{
@@ -63,7 +63,7 @@ id 引用 HTML 元素的 id 属性。
 <code-run show-code="top">
     <template>
         <codehead>
-            <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.js"></script>
+            <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@3.0.13/dist/ofa.js"></script>
         </codehead>
         <style>
         [data-target="1"]{
@@ -85,7 +85,7 @@ id 引用 HTML 元素的 id 属性。
 <code-run show-code="top">
     <template>
         <codehead>
-            <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.js"></script>
+            <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@3.0.13/dist/ofa.js"></script>
         </codehead>
         <style>
         p{

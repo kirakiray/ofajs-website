@@ -14,7 +14,7 @@ ofajs 的 组件功能，是基于 [Web Components](https://developer.mozilla.or
 
 <code-run show-code="top">
     <template>
-        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@3.0.13/dist/ofa.js"></script>
         <!-- 引用按钮模块 -->
         <script src="https://cdn.jsdelivr.net/gh/kirakiray/o_blog/bootstrap-ofa/components/bs-button/bs-button.js"></script>
         <!-- 直接标签使用 -->

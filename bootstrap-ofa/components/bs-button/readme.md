@@ -9,7 +9,7 @@ ofajs 后在引用 bs-button；
 ##### 直接引用
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@3.0.13/dist/ofa.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/kirakiray/o_blog/bootstrap-ofa/components/bs-button/bs-button.js"></script>
 ```
 

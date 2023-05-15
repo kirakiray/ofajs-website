@@ -11,7 +11,7 @@
 <code-run show-code="top">
     <template>
         <codehead>
-            <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.js"></script>
+            <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@3.0.13/dist/ofa.js"></script>
         </codehead>
         <div id="consoler">I am consoler</div>
         <button id="btn">Click Me!</button>

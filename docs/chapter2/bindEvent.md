@@ -9,7 +9,7 @@ ofajs 提供 `on` 方法绑定事件函数；
 <code-run show-code="top">
     <template>
         <codehead>
-            <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.js"></script>
+            <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@3.0.13/dist/ofa.js"></script>
         </codehead>
         <button id="btn">Click Me!</button>
         <script>
@@ -33,7 +33,7 @@ ofajs 提供 `on` 方法绑定事件函数；
 <code-run show-code="top">
     <template>
         <codehead>
-            <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.js"></script>
+            <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@3.0.13/dist/ofa.js"></script>
         </codehead>
         <div id="a" style="width:200px;height:150px;background-color:#ddd;">
             <span id="a_consoler"></span>
