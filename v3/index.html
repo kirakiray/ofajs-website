@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="次世代web前端渐进式框架；不用nodejs，不用webpack，兼顾所有类型项目。">
+    <meta name="Keywords" content="ofa,ofajs,ofa.js,前端框架">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-status-bar-style" content="standalone">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="manifest" href="./manifest.json">
+    <title>ofa.js</title>
+    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@3.0.13/dist/ofa.js"></script>
+    <!-- <script src="http://127.0.0.1:5513/dist/ofa.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/gh/kirakiray/o-book@latest/o-book.js"></script>
+    <!-- <script src="http://127.0.0.1:5512/o-book.js"></script> -->
+    <script>
+        load("https://cdn.jsdelivr.net/gh/kirakiray/o-book/comps/code-view/code-view.js", "bootstrap-ofa/components/bs-button -p", "https://cdn.jsdelivr.net/gh/kirakiray/o-book/comps/code-run -p");
+    </script>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        body>h1 {
+            display: none;
+        }
+    </style>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-7L1TCCJZT6');
+    </script>
+</head>
+
+<body>
+    <h1>ofa.js，次世代web前端渐进式框架；不用nodejs，不用webpack，兼顾所有类型项目。</h1>
+    <o-book summary="SUMMARY.md" home="readme.md" style="height:100%;">
+        <div style="display:flex;width:100%;height:100%;justify-content:center;align-items:center;">Loading...</div>
+    </o-book>
+</body>
+
+</html>
