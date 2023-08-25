@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>制作和使用组件</title>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.1/packages/generator/statics/init.js"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.2/packages/generator/statics/init.js"
       config="../../doc-config.json"
     ></script>
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.1/packages/generator/statics/css/public.css"
+      href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.2/packages/generator/statics/css/public.css"
     />
+    
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -21,15 +22,16 @@
 
         gtag('config', 'G-7L1TCCJZT6');
     </script>
+    
   </head>
   <body>
     <o-app
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.1/packages/generator/statics/app-config.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.2/packages/generator/statics/app-config.mjs"
     >
       <template page>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.1/packages/generator/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.2/packages/generator/statics/css/github-markdown.css"
         />
         <article class="markdown-body">
         <h1>制作和使用组件</h1>
@@ -87,7 +89,6 @@
   &lt;/script&gt;
 &lt;/template&gt;
 </code></pre>
-<p>请避免使用 <code>import</code> 来引用模块。如果需要依赖其他模块，请在 <code>export default</code> 函数中使用 <code>load</code> 函数来引用模块。</p>
 <p>在成功引入 ofa.js 后，会自动注册 <code>load-module</code> 组件，这是一个用于声明式引用模块的组件，类似于 script 标签。该组件会代理加载指定 <code>src</code> 的模块，并对需要加载的模块进行预处理。在本案例中，会加载模板并注册 simple-button 组件。</p>
 <p><code>load-module</code> 组件还可以使用缩写 <code>l-m</code>，以减少代码量。</p>
 <pre><code class="language-html">&lt;!-- demo.html --&gt;
@@ -176,7 +177,7 @@ export const type = $.COMP;
         </article>
         <script>
           export const parent =
-            "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.1/packages/generator/statics/pages/article-layout.html";
+            "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.2/packages/generator/statics/pages/article-layout.html";
         </script>
       </template>
     </o-app>
