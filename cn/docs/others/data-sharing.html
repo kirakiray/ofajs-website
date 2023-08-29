@@ -1,19 +1,19 @@
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>数据共享</title>
-    <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.2/packages/generator/statics/init.js"
-      config="../../doc-config.json"
-    ></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.2/packages/generator/statics/css/public.css"
-    />
-    
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>数据共享</title>
+      <script
+        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.3/packages/generator/statics/init.js"
+        config="../../doc-config.json"
+      ></script>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.3/packages/generator/statics/css/public.css"
+      />
+      
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -23,18 +23,19 @@
         gtag('config', 'G-7L1TCCJZT6');
     </script>
     
-  </head>
-  <body>
-    <o-app
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.2/packages/generator/statics/app-config.mjs"
-    >
-      <template page>
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.2/packages/generator/statics/css/github-markdown.css"
-        />
-        <article class="markdown-body">
-        <h1>数据共享</h1>
+    </head>
+    <body>
+      <o-app
+        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.3/packages/generator/statics/app-config.mjs"
+      >
+        <template page>
+          <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.3/packages/generator/statics/css/github-markdown.css"
+          />
+          <style>article{padding:16px 0 32px;}</style>
+          <article class="markdown-body">
+          <h1>数据共享</h1>
 <p>ofa.js与其他第三方框架不同，不采用传统的状态管理模式。作者认为状态更新应该是无感知的，即改变数据后应自动触发数据更新。</p>
 <p>ofa.js天生就具备出色的数据共享能力，它的实例基于数据共享库 <a href="https://github.com/kirakiray/stanz">Stanz</a> 进行开发。实例上的对象都是可同步的。如果要实现数据共享，只需创建一个独立的 Stanz 对象，然后让所有组件直接引用即可。</p>
 <p>下面的案例展示了如何共享数据：</p>
@@ -158,15 +159,17 @@ export const data = $.stanz({
 &lt;/template&gt;
 </code></pre>
 
-        </article>
-        <script>
-          export const parent =
-            "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.2/packages/generator/statics/pages/article-layout.html";
-        </script>
-      </template>
-    </o-app>
-    <div class="outer-layer" id="outer-layer">
-      <div class="loading"></div>
-    </div>
-  </body>
-</html>
+          <article-footer></article-footer>
+          </article>
+          <script>
+            export const parent =
+              "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.3/packages/generator/statics/pages/article-layout.html";
+          </script>
+        </template>
+      </o-app>
+      <div class="outer-layer" id="outer-layer">
+        <div class="loading"></div>
+      </div>
+    </body>
+  </html>
+  

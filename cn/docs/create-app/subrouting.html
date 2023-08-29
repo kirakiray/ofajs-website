@@ -1,19 +1,19 @@
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>子路由模式</title>
-    <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.2/packages/generator/statics/init.js"
-      config="../../doc-config.json"
-    ></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.2/packages/generator/statics/css/public.css"
-    />
-    
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>子路由模式</title>
+      <script
+        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.3/packages/generator/statics/init.js"
+        config="../../doc-config.json"
+      ></script>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.3/packages/generator/statics/css/public.css"
+      />
+      
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -23,18 +23,19 @@
         gtag('config', 'G-7L1TCCJZT6');
     </script>
     
-  </head>
-  <body>
-    <o-app
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.2/packages/generator/statics/app-config.mjs"
-    >
-      <template page>
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.2/packages/generator/statics/css/github-markdown.css"
-        />
-        <article class="markdown-body">
-        <h1>子路由模式</h1>
+    </head>
+    <body>
+      <o-app
+        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.3/packages/generator/statics/app-config.mjs"
+      >
+        <template page>
+          <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.3/packages/generator/statics/css/github-markdown.css"
+          />
+          <style>article{padding:16px 0 32px;}</style>
+          <article class="markdown-body">
+          <h1>子路由模式</h1>
 <p>在 ofa.js 中，设置子路由与一些前端框架的做法略有不同。ofa.js 使用一种更加直观的方式，通过在页面模块上设置父页面来作为容器，从而实现子路由的需求。</p>
 <h2>设置父页面容器</h2>
 <p>要创建子路由，首先需要在子页面的页面模块上设置 <code>parent</code> 参数，指定父页面的页面模块地址。这样，在子页面加载时，ofa.js 会自动将子页面包裹在父页面容器中。</p>
@@ -79,15 +80,17 @@ export const routerChange = (current, type) =&gt; {
 </code></pre>
 <p>在上述示例中，<code>routerChange</code> 函数接收两个参数，<code>current</code> 表示当前页面的地址，<code>type</code> 表示跳转的方式。当页面发生路由切换时，该函数会被触发，并输出相应的信息。</p>
 
-        </article>
-        <script>
-          export const parent =
-            "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.2/packages/generator/statics/pages/article-layout.html";
-        </script>
-      </template>
-    </o-app>
-    <div class="outer-layer" id="outer-layer">
-      <div class="loading"></div>
-    </div>
-  </body>
-</html>
+          <article-footer></article-footer>
+          </article>
+          <script>
+            export const parent =
+              "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.3/packages/generator/statics/pages/article-layout.html";
+          </script>
+        </template>
+      </o-app>
+      <div class="outer-layer" id="outer-layer">
+        <div class="loading"></div>
+      </div>
+    </body>
+  </html>
+  
