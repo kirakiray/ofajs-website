@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>配置 app 参数</title>
+    <script
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.7/packages/generator/statics/init.js"
+      config="../doc-config.json"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.7/packages/generator/statics/css/public.css"
+    />
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-7L1TCCJZT6');
+    </script>
+    
+  </head>
+  <body>
+    <o-app
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.7/packages/generator/statics/app-config.mjs"
+    >
+      <template page>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.7/packages/generator/statics/css/github-markdown.css"
+        />
+        <exm-article>
+          <article class="markdown-body" data-no-right>
+          <h1>配置 app 参数</h1>
+<p>您可以通过为 <code>o-app</code> 标签单独设置外部模块来配置应用的参数。</p>
+<p>这些参数是一个 ES 模块，您可以配置以下参数：</p>
+<ul>
+<li><strong>home</strong>: 应用的首页，即初始加载时显示的页面。</li>
+<li><strong>loading</strong>: 在应用页面点击跳转时，在未完成模块加载前，显示的加载中内容。您可以通过返回一个字符串作为 loading 内容。</li>
+<li><strong>pageAnime</strong>: 页面跳转时的动画效果，使用的是一个包含 CSS 样式属性的对象。<ul>
+<li><strong>current</strong>: 表示页面处于当前页时的样式。</li>
+<li><strong>next</strong>: 表示页面在未进场时的样式。</li>
+<li><strong>previous</strong>: 表示页面在要退出时的样式。</li>
+</ul>
+</li>
+</ul>
+<p>通过这种方式，您可以根据应用的需要，自定义首页、加载中样式和页面跳转动画等参数，从而为应用带来更加个性化的体验。</p>
+<p><a href="../../publics/examples/use-config/demo.html" preview demo></a>
+<a href="../../publics/examples/use-config/app-config.mjs" main demo></a>
+<a href="../../publics/examples/use-config/page1.html" demo></a>
+<a href="../../publics/examples/use-config/page2.html" demo></a></p>
+
+          <article-footer></article-footer>
+          </article>
+        </exm-article>
+        <script>
+          export const parent =
+            "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.1.7/packages/generator/statics/pages/article-layout.html";
+        </script>
+      </template>
+    </o-app>
+    <div class="outer-layer" id="outer-layer">
+      <div class="loading"></div>
+    </div>
+  </body>
+</html>
