@@ -15,7 +15,7 @@ self.addEventListener("fetch", (event) => {
       })()
     );
   } else if (/^\/\$\//.test(urldata.pathname)) {
-    console.log(urldata);
+    // console.log(urldata);
 
     event.respondWith(
       (async () => {
@@ -36,7 +36,7 @@ self.addEventListener("fetch", (event) => {
         });
 
         if (tempCaches[realUrl]) {
-          data = tempData[realUrl];
+          data = tempCaches[realUrl];
           status = 200;
         }
 
