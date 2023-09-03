@@ -1,21 +1,22 @@
-let data;
+let libPms;
+let lang;
+let libUrl;
 
-fetch("/cn/libs.json")
-  .then((e) => e.json())
-  .then((e) => {
-    data = e;
-    // console.log("data => ", data);
-  });
-
-self.addEventListener("message", function (event) {
+self.addEventListener("message", async function (event) {
   // 获取主线程发送的数据
-  const searchText = event.data;
+  const { searchText, lang: ln } = event.data;
+
+  lang = ln || "cn";
+
+  if (libUrl !== `/${lang}/libs.json`) {
+    libUrl = `/${lang}/libs.json`;
+    libPms = fetch(libUrl).then((e) => e.json());
+  }
 
   // console.log(searchText);
+  const data = await libPms;
 
-  const results = search(searchText, data, "");
-
-  // console.log("results => ", results);
+  const results = search(searchText.toLowerCase(), data, "");
 
   // 发送消息回主线程
   self.postMessage({
@@ -49,7 +50,7 @@ function search(searchText, data, path) {
 
       const text = e.c;
 
-      const tid = text.indexOf(searchText);
+      const tid = text.toLowerCase().indexOf(searchText);
 
       if (tid > -1) {
         let startId = tid - 10;
@@ -72,7 +73,7 @@ function search(searchText, data, path) {
           snippets,
           type: e.t,
           pId: index,
-          path,
+          path: `${lang}${path}.html`,
         });
       }
     });
