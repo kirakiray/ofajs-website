@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>遞歸填充渲染</title>
+    <script
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.2.2/packages/statics/init.js"
+      config="../doc-config.json"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.2.2/packages/statics/css/public.css"
+    />
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-7L1TCCJZT6');
+    </script>
+    
+  </head>
+  <body>
+    <o-app
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.2.2/packages/statics/app-config.mjs"
+    >
+      <template page>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.2.2/packages/statics/css/github-markdown.css"
+        />
+        <exm-article>
+          <article class="markdown-body" data-no-right>
+          <h1>遞歸填充渲染</h1>
+<p>填充渲染允許您使用獨立的模板來渲染數據，並通過 <code>&lt;template&gt;</code> 元素添加 <code>name</code> 屬性進行命名。這種方式使得您可以實現嵌套結構的數據渲染，從而創建更復雜的組件。</p>
+<p>在使用 <code>x-fill</code> 進行填充渲染時，只需將對應的模板名稱傳遞給 <code>name</code> 屬性，即可渲染獨立模板的內容。此外，填充渲染還支持遞歸填充，即在模板內部可以繼續使用相同的模板名稱，實現嵌套填充。</p>
+<p>在示例中，我們定義了一個名為 <code>item</code> 的獨立模板，並在 <code>x-fill</code> 使用時傳遞了相應的模板名稱。這樣，數據中的每個項都將使用這個模板進行渲染，而且模板內部可以再次使用相同的模板名稱進行遞歸填充。這種方式使得您可以靈活地處理具有嵌套結構的數據，實現更加復雜的組件渲染。</p>
+<p><a href="../../publics/examples/fill-temps/demo.html" preview demo></a>
+<a href="../../publics/examples/fill-temps/test-demo.html" main demo></a></p>
+
+          <article-footer></article-footer>
+          </article>
+        </exm-article>
+        <script>
+          import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.2.2/packages/statics/page-init.mjs';
+
+          export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.2.2/packages/statics/pages/article-layout.html";
+          export default async (...args)=> {
+            return await pageInit(PATH,args);
+          }
+        </script>
+      </template>
+    </o-app>
+    <div class="outer-layer" id="outer-layer">
+      <div class="loading"></div>
+    </div>
+  </body>
+</html>

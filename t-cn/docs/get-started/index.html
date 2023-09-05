@@ -1,0 +1,74 @@
+
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>上手使用</title>
+      <script
+        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.2.2/packages/statics/init.js"
+        config="../../doc-config.json"
+      ></script>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.2.2/packages/statics/css/public.css"
+      />
+      
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-7L1TCCJZT6');
+    </script>
+    
+    </head>
+    <body>
+      <o-app
+        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.2.2/packages/statics/app-config.mjs"
+      >
+        <template page>
+          <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.2.2/packages/statics/css/github-markdown.css"
+          />
+          <style>article{padding:16px 0 32px;}</style>
+          <article class="markdown-body">
+          <h1>上手使用</h1>
+<h2>如何使用</h2>
+<h3>直接引用</h3>
+<p>你可以通過 CDN 的地址直接將 ofa.js 引用到你的頁面上：</p>
+<pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.2.4/dist/ofa.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h3>通過 npm 安裝</h3>
+<p>首先，在你的項目中安裝 ofa.js：</p>
+<pre><code class="language-shell">npm install ofa.js --save
+</code></pre>
+<p>然後在項目中引入 ofa.js 模塊：</p>
+<pre><code class="language-javascript">import &quot;ofa.js&quot;; // esm
+// or
+require(&quot;ofa.js&quot;); // cmd
+</code></pre>
+<h3>使用</h3>
+<p>在引用資源後，ofa.js 將在全局作用域上設置一個 <code>$</code> 屬性，所有的功能都在 <code>$</code> 上，後面的教程會詳細講解其用法；</p>
+<p>通常情況下，我們建議采用直接引用的方式添加 ofa.js，而使用 npm 的方式則用於與類似 React 和 Vue 等框架進行兼容。</p>
+
+          <article-footer></article-footer>
+          </article>
+          <script>
+            import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.2.2/packages/statics/page-init.mjs';
+
+            export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.2.2/packages/statics/pages/article-layout.html";
+            export default async (...args)=> {
+              return await pageInit(PATH,args);
+            }
+          </script>
+        </template>
+      </o-app>
+      <div class="outer-layer" id="outer-layer">
+        <div class="loading"></div>
+      </div>
+    </body>
+  </html>
+  

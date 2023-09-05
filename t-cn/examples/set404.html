@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>配置404頁面</title>
+    <script
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.2.2/packages/statics/init.js"
+      config="../doc-config.json"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.2.2/packages/statics/css/public.css"
+    />
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-7L1TCCJZT6');
+    </script>
+    
+  </head>
+  <body>
+    <o-app
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.2.2/packages/statics/app-config.mjs"
+    >
+      <template page>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.2.2/packages/statics/css/github-markdown.css"
+        />
+        <exm-article>
+          <article class="markdown-body" data-no-right>
+          <h1>配置404頁面</h1>
+<p>在應用的配置模塊中，通過設置 <code>fail</code> 函數，以自定義在頁面加載失敗時所展示的內容；</p>
+<p>在這個示例中，當頁面加載失敗時，將顯示加載錯誤信息的第一行內容；</p>
+<pre><code class="language-javascript">export const fail = ({ src, error }) =&gt; {
+  return `&lt;div style=&quot;width:100%;height:100%;display:flex;justify-content:center;align-items:center;word-break:break-all;&quot; data-testid=&quot;error-container&quot;&gt;
+    &lt;div style=&quot;padding:20px;text-align:center;&quot;&gt;
+      &lt;h3&gt;load fail&lt;/h3&gt;
+      &lt;p&gt;${error.stack.split(/\n/g)[0]}&lt;/p&gt;
+      ${src}
+      &lt;div&gt;
+        &lt;button on:click=&quot;back()&quot;&gt;Back&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;`;
+};
+</code></pre>
+<p><a href="../../publics/examples/set404/demo.html" preview demo></a>
+<a href="../../publics/examples/set404/app-config.mjs" main demo></a>
+<a href="../../publics/examples/set404/page1.html" demo></a></p>
+
+          <article-footer></article-footer>
+          </article>
+        </exm-article>
+        <script>
+          import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.2.2/packages/statics/page-init.mjs';
+
+          export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.2.2/packages/statics/pages/article-layout.html";
+          export default async (...args)=> {
+            return await pageInit(PATH,args);
+          }
+        </script>
+      </template>
+    </o-app>
+    <div class="outer-layer" id="outer-layer">
+      <div class="loading"></div>
+    </div>
+  </body>
+</html>
