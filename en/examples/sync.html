@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Two-way data binding</title>
+    <script
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.0/packages/statics/init.js"
+      config="../doc-config.json"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.0/packages/statics/css/public.css"
+    />
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-7L1TCCJZT6');
+    </script>
+    
+  </head>
+  <body>
+    <o-app
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.0/packages/statics/app-config.mjs"
+    >
+      <template page>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.0/packages/statics/css/github-markdown.css"
+        />
+        <exm-article>
+          <article class="markdown-body" data-no-right>
+          <h1>Two-way data binding</h1>
+<p>By using the <code>sync</code> syntax, you can establish a real-time, two-way relationship between interactive elements (such as input fields or custom components) in the user interface and the data model.</p>
+<p>The following example demonstrates how to use the <code>sync</code> attribute in a component to achieve two-way data binding between an input field and the data model:</p>
+<ul>
+<li>In the <code>data</code> parameter, we define a data called <code>testText</code> and set its initial value to &quot;I am testText&quot;.</li>
+<li>Using <code>sync:value=&quot;testText&quot;</code> indicates that the value of the input field is bound to the <code>testText</code> data. Therefore, when the user enters content in the input field, the <code>testText</code> data will be updated in real-time, and vice versa.</li>
+<li>Similarly, using <code>sync:txt=&quot;testText&quot;</code> indicates that the <code>txt</code> attribute of the custom component is bound to the <code>testText</code> data. When the <code>txt</code> attribute of the component changes, the <code>testText</code> data will be updated in real-time, and vice versa.</li>
+</ul>
+<p>Through two-way data binding, you can easily establish a connection between the user interface and the data model, so that changes in the data can be automatically reflected in the interface, and user input on the interface can immediately affect the data model.</p>
+<p>It is worth noting that data synchronization can only pass <strong>strings</strong> or <strong>numbers</strong>, and cannot pass other data types.</p>
+<p><a href="../../publics/examples/sync/demo.html" preview demo></a>
+<a href="../../publics/examples/sync/test-demo.html" main demo></a>
+<a href="../../publics/examples/sync/custom-input.html" demo></a></p>
+
+          <article-footer></article-footer>
+          </article>
+        </exm-article>
+        <script>
+          import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.0/packages/statics/page-init.mjs';
+
+          export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.0/packages/statics/pages/article-layout.html";
+          export default async (...args)=> {
+            return await pageInit(PATH,args);
+          }
+        </script>
+      </template>
+    </o-app>
+    <div class="outer-layer" id="outer-layer">
+      <div class="loading"></div>
+    </div>
+  </body>
+</html>
