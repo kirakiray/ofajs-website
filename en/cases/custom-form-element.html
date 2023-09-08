@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Form Components</title>
+    <script
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.2/packages/statics/init.js"
+      config="../doc-config.json"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.2/packages/statics/css/public.css"
+    />
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-7L1TCCJZT6');
+    </script>
+    
+  </head>
+  <body>
+    <o-app
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.2/packages/statics/app-config.mjs"
+    >
+      <template page>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.2/packages/statics/css/github-markdown.css"
+        />
+        <exm-article>
+          <article class="markdown-body" data-no-right>
+          <h1>Custom Form Components</h1>
+<p>With <code>ofa.js</code>, you can easily develop custom form element components with standard form features. Just add a <code>value</code> attribute and set the <code>name</code> attribute for your custom component, and your homemade component can be used as a standard form element. By updating the <code>value</code> property of the component, you can interact with the form element.</p>
+<p>When initializing <code>formData</code>, you need to add the selector feature of the custom component to the parameters (although the default parameter of the <code>formData</code> method is &#39;&quot;input,select,textarea&quot;&#39;). This way, <code>formData</code> can interact with custom components.</p>
+<p>In this example, we use the custom component <code>custom-input</code> to create an editable text input. This component is used as a form element and uses the <code>value</code> attribute for data interaction. When using the <code>formData</code> method, we add &#39;&quot;input,custom-input&quot;&#39; as a parameter to correctly initialize the form data.</p>
+<p><a href="../../publics/examples/custom-form-element/demo.html" preview demo></a>
+<a href="../../publics/examples/custom-form-element/test-demo.html" main demo></a>
+<a href="../../publics/examples/custom-form-element/custom-input.html" demo></a></p>
+
+          <article-footer></article-footer>
+          </article>
+        </exm-article>
+        <script>
+          import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.2/packages/statics/page-init.mjs';
+
+          export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.2/packages/statics/pages/article-layout.html";
+          export default async (...args)=> {
+            return await pageInit(PATH,args);
+          }
+        </script>
+      </template>
+    </o-app>
+    <div class="outer-layer" id="outer-layer">
+      <div class="loading"></div>
+    </div>
+  </body>
+</html>

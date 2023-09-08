@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conditional Rendering</title>
+    <script
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.2/packages/statics/init.js"
+      config="../doc-config.json"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.2/packages/statics/css/public.css"
+    />
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-7L1TCCJZT6');
+    </script>
+    
+  </head>
+  <body>
+    <o-app
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.2/packages/statics/app-config.mjs"
+    >
+      <template page>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.2/packages/statics/css/github-markdown.css"
+        />
+        <exm-article>
+          <article class="markdown-body" data-no-right>
+          <h1>Conditional Rendering</h1>
+<p>In addition to template syntax, templates also have template components;</p>
+<blockquote>
+<p><strong>Template components</strong> are components designed specifically for templates and can only be used within templates;</p>
+</blockquote>
+<p>Conditional rendering allows you to dynamically insert different content into a component under specific conditions. Here is an example demonstrating how to use conditional rendering within a component.</p>
+<p>In this example, we create a component called <code>test-demo</code>. The component contains a button that increments the <code>count</code> property. Using the <code>&lt;x-if&gt;</code>, <code>&lt;x-else-if&gt;</code>, and <code>&lt;x-else&gt;</code> tags, we implement the logic for conditional rendering.</p>
+<ul>
+<li>The <code>&lt;x-if&gt;</code> tag accepts a <code>value</code> attribute to define the condition. If the value of <code>value</code> is <code>true</code>, the content inside <code>&lt;x-if&gt;</code> will be rendered. In this example, if <code>count</code> is an even number, red text will be displayed.</li>
+<li>The <code>&lt;x-else-if&gt;</code> tag also accepts a <code>value</code> attribute to define the condition. If the previous condition is not met and the value of <code>value</code> is <code>true</code>, the content inside <code>&lt;x-else-if&gt;</code> will be rendered. In this example, if <code>count</code> is a multiple of 3, blue text will be displayed.</li>
+<li>The <code>&lt;x-else&gt;</code> tag does not require a <code>value</code> attribute. It will render its content when none of the previous conditions are met. In this example, if <code>count</code> is neither an even number nor a multiple of 3, green text will be displayed. <code>&lt;x-else&gt;</code> can also immediately follow <code>&lt;x-if&gt;</code>;</li>
+</ul>
+<p>Using this approach, you can dynamically render different content based on different conditions, achieving flexible interaction and display effects.</p>
+<p><a href="../../publics/examples/condition/demo.html" preview demo></a>
+<a href="../../publics/examples/condition/test-demo.html" main demo></a></p>
+
+          <article-footer></article-footer>
+          </article>
+        </exm-article>
+        <script>
+          import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.2/packages/statics/page-init.mjs';
+
+          export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.2/packages/statics/pages/article-layout.html";
+          export default async (...args)=> {
+            return await pageInit(PATH,args);
+          }
+        </script>
+      </template>
+    </o-app>
+    <div class="outer-layer" id="outer-layer">
+      <div class="loading"></div>
+    </div>
+  </body>
+</html>
