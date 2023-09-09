@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Evento de transferencia</title>
+    <script
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/init.js"
+      config="../doc-config.json"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/public.css"
+    />
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-7L1TCCJZT6');
+    </script>
+    
+  </head>
+  <body>
+    <o-app
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/app-config.mjs"
+    >
+      <template page>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/github-markdown.css"
+        />
+        <exm-article>
+          <article class="markdown-body" data-no-right>
+          <h1>Evento de transferencia</h1>
+<p>Además de escuchar eventos nativos, <code>on</code> también se puede utilizar para escuchar eventos personalizados, lo cual es importante para la comunicación de eventos entre componentes. Los eventos personalizados se desencadenan mediante el método <code>emit</code>. Al desencadenar un evento personalizado, se pueden enviar datos personalizados al receptor.</p>
+<p>Si es necesario atravesar los límites del Shadow DOM del componente para desencadenar un evento, se puede agregar el atributo <code>composed</code>.</p>
+<p>En el siguiente ejemplo, aprenderemos cómo utilizar el método <code>emit</code> para transferir eventos entre componentes anidados.</p>
+<p><a href="../../publics/examples/event-passing/demo.html" preview demo></a>
+<a href="../../publics/examples/event-passing/comp-one.html" main demo></a>
+<a href="../../publics/examples/event-passing/comp-two.html" demo></a></p>
+
+          <article-footer></article-footer>
+          </article>
+        </exm-article>
+        <script>
+          import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/page-init.mjs';
+
+          export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/pages/article-layout.html";
+          export default async (...args)=> {
+            return await pageInit(PATH,args);
+          }
+        </script>
+      </template>
+    </o-app>
+    <div class="outer-layer" id="outer-layer">
+      <div class="loading"></div>
+    </div>
+  </body>
+</html>

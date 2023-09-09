@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Respuesta a eventos</title>
+    <script
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/init.js"
+      config="../doc-config.json"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/public.css"
+    />
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-7L1TCCJZT6');
+    </script>
+    
+  </head>
+  <body>
+    <o-app
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/app-config.mjs"
+    >
+      <template page>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/github-markdown.css"
+        />
+        <exm-article>
+          <article class="markdown-body" data-no-right>
+          <h1>Respuesta a eventos</h1>
+<p>Puede utilizar el método <code>on</code> para vincular eventos. Los <strong>eventos</strong> son el concepto más básico en el desarrollo, ya que las aplicaciones requieren eventos para generar respuestas y lograr la interactividad.</p>
+<p>A continuación se muestra un ejemplo de cómo vincular eventos de clic:</p>
+<p>En este ejemplo, seleccionamos el elemento <button> utilizando <code>$</code> y usamos el método <code>on</code> para vincular el evento <code>click</code>. Cuando se hace clic en el botón, se activará la función de devolución de llamada y se cambiará el contenido de texto del elemento <code>target</code> a &quot;¡Hola, mundo!&quot;.</p>
+<p>Si deseas obtener más información sobre los tipos de eventos disponibles, consulta la documentación de <a href="https://developer.mozilla.org/en-US/docs/Web/Events">Events</a>.</p>
+<p><a href="../../publics/examples/event-demo.html" demo preview></a></p>
+
+          <article-footer></article-footer>
+          </article>
+        </exm-article>
+        <script>
+          import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/page-init.mjs';
+
+          export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/pages/article-layout.html";
+          export default async (...args)=> {
+            return await pageInit(PATH,args);
+          }
+        </script>
+      </template>
+    </o-app>
+    <div class="outer-layer" id="outer-layer">
+      <div class="loading"></div>
+    </div>
+  </body>
+</html>

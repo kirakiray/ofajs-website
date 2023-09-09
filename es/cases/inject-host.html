@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Componente inject-host</title>
+    <script
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/init.js"
+      config="../doc-config.json"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/public.css"
+    />
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-7L1TCCJZT6');
+    </script>
+    
+  </head>
+  <body>
+    <o-app
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/app-config.mjs"
+    >
+      <template page>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/github-markdown.css"
+        />
+        <exm-article>
+          <article class="markdown-body" data-no-right>
+          <h1>Componente inject-host</h1>
+<p>Debido al aislamiento de los Web Components, es difícil modificar directamente el estilo de los elementos en el slot de un componente. Para hacer frente a este problema, ofa.js proporciona un componente llamado <code>inject-host</code>; este componente inyectará estilos en la capa principal para configurar la apariencia del componente de forma más flexible.</p>
+<p>Es importante tener en cuenta que el uso de este componente puede afectar el estilo de la capa principal. Por lo tanto, al invadir el estilo, se debe mantener una convención de nomenclatura para evitar afectar el estilo de la capa principal.</p>
+<p>En el ejemplo, definimos un componente llamado <code>comp-two</code>, que utiliza el componente <code>inject-host</code> para inyectar estilos. Esto nos permite ajustar los estilos de los elementos dentro del componente <code>comp-two</code> mediante los estilos inyectados, sin afectar a otros componentes.</p>
+<p>Al mismo tiempo, también debemos tener en cuenta lo siguiente:</p>
+<ul>
+<li>Al agregar una etiqueta <code>&lt;style&gt;</code> dentro de <code>inject-host</code>, podemos definir estilos específicos para el componente. Estos estilos solo afectarán a los elementos del componente actual y no se extenderán a otros componentes.</li>
+<li>Al inyectar estilos, se deben evitar selectores demasiado generales para no afectar el estilo de otros componentes. Es importante mantener la singularidad y especificidad de los selectores.</li>
+<li><code>inject-host</code> también puede inyectar hojas de estilo externas usando la siguiente sintaxis: <code>&lt;link rel=&quot;stylesheet&quot; href=&quot;target/style.css&quot;&gt;</code>.</li>
+</ul>
+<p>En este ejemplo, al utilizar el componente <code>inject-host</code> dentro del componente <code>comp-two</code>, podemos configurar y aplicar estilos internos del componente sin afectar los estilos de otros componentes.</p>
+<p><a href="../../publics/examples/inject-host/demo.html" preview demo></a>
+<a href="../../publics/examples/inject-host/comp-one.html" demo></a>
+<a href="../../publics/examples/inject-host/comp-two.html" main demo></a></p>
+
+          <article-footer></article-footer>
+          </article>
+        </exm-article>
+        <script>
+          import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/page-init.mjs';
+
+          export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/pages/article-layout.html";
+          export default async (...args)=> {
+            return await pageInit(PATH,args);
+          }
+        </script>
+      </template>
+    </o-app>
+    <div class="outer-layer" id="outer-layer">
+      <div class="loading"></div>
+    </div>
+  </body>
+</html>

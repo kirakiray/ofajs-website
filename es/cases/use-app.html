@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Uso del componente app</title>
+    <script
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/init.js"
+      config="../doc-config.json"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/public.css"
+    />
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-7L1TCCJZT6');
+    </script>
+    
+  </head>
+  <body>
+    <o-app
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/app-config.mjs"
+    >
+      <template page>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/github-markdown.css"
+        />
+        <exm-article>
+          <article class="markdown-body" data-no-right>
+          <h1>Uso del componente app</h1>
+<p>En <code>ofa.js</code>, puede utilizar el componente <code>o-app</code> para crear la estructura de diseño de toda la aplicación y cargar módulos de página dentro de él. Al utilizar los componentes <code>o-app</code>, <code>o-page</code> y módulos de página, puede construir la estructura de página de toda la aplicación e implementar la navegación entre páginas</p>
+<p>Cuando el componente <code>o-page</code> esté dentro de <code>o-app</code>, puedes usar la etiqueta <code>&lt;a&gt;</code> con el atributo <code>olink</code> para realizar la navegación entre páginas. Esta navegación no afectará a la página actual, en su lugar se realizará dentro de <code>o-app</code>, similar a usar <code>&lt;iframe&gt;</code>.</p>
+<p>Si el componente <code>o-page</code> está dentro de <code>o-app</code>, también puedes utilizar los siguientes métodos:</p>
+<ul>
+<li>El método <code>goto</code> para navegar a una página.</li>
+<li>El método <code>back</code> para regresar a la página anterior.</li>
+<li>El método <code>replace</code> para realizar una navegación de reemplazo en la página actual.</li>
+</ul>
+<p>Usando el componente <code>o-app</code>, puedes construir la estructura de diseño de toda la aplicación y cargar diferentes módulos de página en ella. Además, la funcionalidad de enrutamiento proporcionada por <code>o-app</code> permite una navegación fácil y flexible entre páginas.</p>
+<p>En este ejemplo, creamos una estructura de aplicación utilizando el componente <code>o-app</code> y luego cargamos un módulo de página llamado <code>page1.html</code> en él.</p>
+<p>En el módulo de página <code>page1.html</code>, definimos un título y un botón. Al hacer clic en el botón, se navegará a otro módulo de página llamado <code>page2.html</code>. También agregamos un enlace con el atributo <code>olink</code>, que navegará a <code>page2.html</code> al hacer clic en él.</p>
+<p>En el módulo de página <code>page2.html</code>, también definimos un título y un botón. Al hacer clic en el botón, regresaremos a la página anterior, completando así la navegación entre páginas.</p>
+<p><a href="../../publics/examples/use-app/demo.html" preview demo></a>
+<a href="../../publics/examples/use-app/page1.html" main demo></a>
+<a href="../../publics/examples/use-app/page2.html" demo></a></p>
+
+          <article-footer></article-footer>
+          </article>
+        </exm-article>
+        <script>
+          import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/page-init.mjs';
+
+          export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/pages/article-layout.html";
+          export default async (...args)=> {
+            return await pageInit(PATH,args);
+          }
+        </script>
+      </template>
+    </o-app>
+    <div class="outer-layer" id="outer-layer">
+      <div class="loading"></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bindings de eventos</title>
+    <script
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/init.js"
+      config="../doc-config.json"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/public.css"
+    />
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-7L1TCCJZT6');
+    </script>
+    
+  </head>
+  <body>
+    <o-app
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/app-config.mjs"
+    >
+      <template page>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/github-markdown.css"
+        />
+        <exm-article>
+          <article class="markdown-body" data-no-right>
+          <h1>Bindings de eventos</h1>
+<p>Dentro de un componente, puedes usar la propiedad <code>on</code> para realizar bindings de eventos y dotar al componente de capacidad interactiva. Aquí se muestra cómo realizar bindings de eventos dentro de un componente para lograr efectos interactivos.</p>
+<p>El parámetro <code>proto</code> se utiliza para definir los métodos propios del componente, estos métodos se pueden utilizar dentro del componente o ejecutarse desde el exterior después de obtener el componente a través del selector.</p>
+<p>El <code>xxx</code> después de <code>on:click=&quot;xxx&quot;</code> puede ser el nombre del método definido dentro del componente o una expresión de función. Si se utiliza una expresión de función, no es necesario escribir explícitamente la palabra clave <code>this</code>, el ámbito de la variable se enlazará automáticamente con el propio componente.</p>
+<p>Si deseas obtener más información sobre los tipos de eventos disponibles, consulta la documentación de <a href="https://developer.mozilla.org/en-US/docs/Web/Events">Events</a>.</p>
+<p><a href="../../publics/examples/bind-event/demo.html" preview demo></a>
+<a href="../../publics/examples/bind-event/test-demo.html" main demo></a></p>
+
+          <article-footer></article-footer>
+          </article>
+        </exm-article>
+        <script>
+          import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/page-init.mjs';
+
+          export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/pages/article-layout.html";
+          export default async (...args)=> {
+            return await pageInit(PATH,args);
+          }
+        </script>
+      </template>
+    </o-app>
+    <div class="outer-layer" id="outer-layer">
+      <div class="loading"></div>
+    </div>
+  </body>
+</html>

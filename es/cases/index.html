@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Empezar rápido</title>
+    <script
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/init.js"
+      config="../doc-config.json"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/public.css"
+    />
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-7L1TCCJZT6');
+    </script>
+    
+  </head>
+  <body>
+    <o-app
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/app-config.mjs"
+    >
+      <template page>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/github-markdown.css"
+        />
+        <exm-article>
+          <article class="markdown-body" data-no-right>
+          <h1>Empezar rápido</h1>
+<p>Para empezar, simplemente integra el proyecto <code>ofajs</code> en tu proyecto mediante la URL del CDN:</p>
+<pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.2.5/dist/ofa.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>Esta es un ejemplo sencillo que muestra cómo usar <code>ofa.js</code> para modificar el contenido de elementos DOM:</p>
+<h2>Método de uso</h2>
+<p>Después de importar <code>ofa.js</code>, se registrará el símbolo <code>$</code> en el ámbito global. Puedes seleccionar el primer elemento que cumpla con la condición usando <code>$(&#39;xxx&#39;)</code>, donde <code>xxx</code> es el contenido estándar de <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors">selector CSS</a>.</p>
+<p>En el ejemplo anterior, utilizamos el símbolo <code>$</code> para seleccionar tres elementos con diferentes <code>id</code>, y modificamos su contenido estableciendo las propiedades <code>text</code>, <code>html</code> y <code>value</code>.</p>
+<p>Para obtener más información sobre las propiedades y métodos disponibles, consulta la documentación de la API.</p>
+<p><a href="../../publics/examples/set-props.html" demo preview></a></p>
+
+          <article-footer></article-footer>
+          </article>
+        </exm-article>
+        <script>
+          import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/page-init.mjs';
+
+          export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/pages/article-layout.html";
+          export default async (...args)=> {
+            return await pageInit(PATH,args);
+          }
+        </script>
+      </template>
+    </o-app>
+    <div class="outer-layer" id="outer-layer">
+      <div class="loading"></div>
+    </div>
+  </body>
+</html>

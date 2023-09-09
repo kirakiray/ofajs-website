@@ -1,0 +1,130 @@
+
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Encapsulación y Componentización: Conocimientos generales de la componentización</title>
+      <script
+        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/init.js"
+        config="../../doc-config.json"
+      ></script>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/public.css"
+      />
+      
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-7L1TCCJZT6');
+    </script>
+    
+    </head>
+    <body>
+      <o-app
+        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/app-config.mjs"
+      >
+        <template page>
+          <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/github-markdown.css"
+          />
+          <style>article{padding:16px 0 32px;}</style>
+          <article class="markdown-body">
+          <h1>Encapsulación y Componentización: Conocimientos generales de la componentización</h1>
+<p>ofa.js es una biblioteca de encapsulamiento basada en la tecnología de Web Components, con el objetivo de simplificar y acelerar el proceso de desarrollo de componentes. Al ocultar los detalles técnicos complejos, los desarrolladores pueden centrarse más en la construcción de componentes y aplicaciones de alta calidad.</p>
+<p>Para desarrollar componentes de manera más efectiva, es necesario aprender algunos conceptos de Web Components. Los puntos mencionados a continuación no solo se pueden aplicar en ofa.js, sino que también podrían beneficiarte al utilizar otros frameworks que empleen Web Components.</p>
+<h2>Contenedor Shadow DOM</h2>
+<p>En Web Components, Shadow DOM proporciona un contenedor aislado para encapsular los estilos y la estructura interna de un componente. Esto significa que los estilos y la estructura DOM internos del componente no interferirán con los estilos y estructuras externas, lo que garantiza la previsibilidad y mantenibilidad del componente.</p>
+<p>En ofa.js, cada componente tiene un contenedor Shadow DOM para aislar su contenido interno. El contenido de la plantilla se renderiza en este contenedor. Además, las instancias de componentes obtenidas a través de <code>$</code> también tienen acceso al contenedor Shadow DOM interno a través de la propiedad <code>shadow</code>, lo que permite operar y acceder a los elementos internos del componente.</p>
+<pre><code class="language-javascript">const myComponent = $(&quot;my-component&quot;); // Obtener instancia del componente
+const shadowContainer = myComponent.shadow; // Obtener el contenedor Shadow DOM del componente
+
+$(&quot;my-component&quot;).shadow.$(&quot;h1&quot;).css.color = &#39;red&#39; // Cambiar el color de h1 en el Shadow DOM a rojo
+</code></pre>
+<h2>Web Components 中的常用 CSS 选择器</h2>
+<p>Web Components 提供了一些特殊的 CSS 选择器，用于选择和样式化组件内部的不同部分。以下是一些常用的选择器：</p>
+<h3>:host 选择器</h3>
+<p><code>:host</code> 选择器用于选择组件自身的外部容器。可以通过这个选��器来定义组件的样式。</p>
+<pre><code class="language-css">:host {
+  display: block;
+  border: 1px solid black;
+  padding: 10px;
+}
+</code></pre>
+<h3>::slotted() 选择器</h3>
+<p><code>::slotted()</code> 选择器用于选择被插槽内容包裹的元素。可以在组件内部的样式中使用这个选择器来样式化被插槽的内容。</p>
+<pre><code class="language-css">::slotted(p) {
+  font-size: 18px;
+  color: blue;
+}
+</code></pre>
+<h2>插槽（Slot）的使用</h2>
+<p>插槽是 Web Components 中用于在组件内部嵌入外部内容的机制。插槽允许开发者将自定义的内容传递到组件内部，实现更灵活的组件结构。</p>
+<h3>单个插槽</h3>
+<p>在组件模板中，可以使用 <code>&lt;slot&gt;</code> 元素来定义插槽。外部传入的内容会被插入到插槽内部。</p>
+<pre><code class="language-html">&lt;!-- MyComponent.html --&gt;
+&lt;div&gt;
+  &lt;h2&gt;&lt;slot&gt;&lt;/slot&gt;&lt;/h2&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-html">&lt;!-- 使用 MyComponent --&gt;
+&lt;my-component&gt;
+  &lt;p&gt;This is a slot content.&lt;/p&gt;
+&lt;/my-component&gt;
+</code></pre>
+<h3>多个命名插槽</h3>
+<p>除了默认插槽外，还可以定义多个命名插槽。命名插槽允许开发者将不同的内容插入到不同的插槽位置。</p>
+<pre><code class="language-html">&lt;!-- MyComponent.html --&gt;
+&lt;div&gt;
+    &lt;header&gt;&lt;slot name=&quot;header&quot;&gt;&lt;/slot&gt;&lt;/header&gt;
+    &lt;main&gt;&lt;slot&gt;&lt;/slot&gt;&lt;/main&gt;
+    &lt;footer&gt;&lt;slot name=&quot;footer&quot;&gt;&lt;/slot&gt;&lt;/footer&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-html">&lt;!-- Utilizando MyComponent --&gt;
+&lt;my-component&gt;
+  &lt;div slot=&quot;header&quot;&gt;Contenido de Encabezado&lt;/div&gt;
+  &lt;p&gt;Este es el contenido principal.&lt;/p&gt;
+  &lt;div slot=&quot;footer&quot;&gt;Contenido de Pie de página&lt;/div&gt;
+&lt;/my-component&gt;
+</code></pre>
+<h2>Uso del evento slotchange</h2>
+<p>El evento <code>slotchange</code> se activa cuando el contenido del slot cambia. Puedes utilizar este evento para realizar operaciones relacionadas con el contenido del slot.</p>
+<pre><code class="language-javascript">// custom-component.mjs
+export const type = $.COMP;
+
+export default {
+  data: {
+    count: 0,
+  },
+  ready() {
+    this.shadow.$(&quot;slot&quot;).on(&quot;slotchange&quot;, () =&gt; {
+      console.log(&quot;El contenido del slot ha cambiado&quot;);
+    });
+  },
+};
+</code></pre>
+
+          <article-footer></article-footer>
+          </article>
+          <script>
+            import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/page-init.mjs';
+
+            export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/pages/article-layout.html";
+            export default async (...args)=> {
+              return await pageInit(PATH,args);
+            }
+          </script>
+        </template>
+      </o-app>
+      <div class="outer-layer" id="outer-layer">
+        <div class="loading"></div>
+      </div>
+    </body>
+  </html>
+  

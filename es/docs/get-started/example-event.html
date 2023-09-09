@@ -1,0 +1,130 @@
+
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Ejemplo de evento</title>
+      <script
+        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/init.js"
+        config="../../doc-config.json"
+      ></script>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/public.css"
+      />
+      
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-7L1TCCJZT6');
+    </script>
+    
+    </head>
+    <body>
+      <o-app
+        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/app-config.mjs"
+      >
+        <template page>
+          <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/github-markdown.css"
+          />
+          <style>article{padding:16px 0 32px;}</style>
+          <article class="markdown-body">
+          <h1>Ejemplo de evento</h1>
+<h2>Evento de clic (click)</h2>
+<p>En este ejemplo, cuando se hace clic en el botón, se mostrará un mensaje en la consola.</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;title&gt;Ejemplo de evento de clic&lt;/title&gt;
+    &lt;script src=&quot;../ofa.js&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;button id=&quot;btn&quot;&gt;Abre la consola y haz clic en mí&lt;/button&gt;
+    &lt;script&gt;
+      $(&quot;#btn&quot;).on(&quot;click&quot;, () =&gt; {
+        console.log(&quot;¡Se hizo clic en el botón!&quot;);
+      });
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2>Evento de pasar el cursor sobre (mouseenter)</h2>
+<p>En este ejemplo, cuando se pasa el cursor sobre el área de texto, el color del texto cambia a rojo.</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;title&gt;Ejemplo de evento de pasar el cursor sobre&lt;/title&gt;
+    &lt;script src=&quot;../ofa.js&quot;&gt;&lt;/script&gt;
+    &lt;style&gt;
+      #text-area {
+        font-size: 18px;
+        color: black;
+      }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id=&quot;text-area&quot;&gt;Pasa el cursor aquí.&lt;/div&gt;
+    &lt;script&gt;
+      $(&quot;#text-area&quot;).on(&quot;mouseenter&quot;, () =&gt; {
+        $(&quot;#text-area&quot;).css.color = &#39;red&#39;;
+      });
+
+      $(&quot;#text-area&quot;).on(&quot;mouseleave&quot;, () =&gt; {
+        $(&quot;#text-area&quot;).css.color = &#39;black&#39;;
+      });
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2>Evento de pulsación de tecla (keydown)</h2>
+<p>En este ejemplo, cuando se presiona cualquier tecla dentro de un cuadro de texto, se mostrará la información de la tecla pulsada en la consola.</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;title&gt;keydown&lt;/title&gt;
+    &lt;script src=&quot;../ofa.js&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h3&gt;Viendo las impresiones después de abrir la consola&lt;/h3&gt;
+    &lt;input type=&quot;text&quot; id=&quot;input-box&quot; placeholder=&quot;Presiona cualquier tecla&quot; /&gt;
+    &lt;script&gt;
+      $(&quot;#input-box&quot;).on(&quot;keydown&quot;, (event) =&gt; {
+        console.log(&quot;keydown:&quot;, event.key);
+      });
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>Estos ejemplos muestran cómo usar eventos de clic, eventos de movimiento del mouse y eventos de pulsación de teclas. Puedes copiar este código a un archivo HTML y ejecutarlo en tu navegador para ver los efectos.</p>
+<p>Todos los eventos disponibles se pueden encontrar en <a href="https://developer.mozilla.org/en-US/docs/Web/Events">Web Events</a> para obtener la lista completa de eventos.</p>
+
+          <article-footer></article-footer>
+          </article>
+          <script>
+            import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/page-init.mjs';
+
+            export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/pages/article-layout.html";
+            export default async (...args)=> {
+              return await pageInit(PATH,args);
+            }
+          </script>
+        </template>
+      </o-app>
+      <div class="outer-layer" id="outer-layer">
+        <div class="loading"></div>
+      </div>
+    </body>
+  </html>
+  

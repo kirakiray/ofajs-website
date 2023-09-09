@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Component creation and usage</title>
+    <script
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/init.js"
+      config="../doc-config.json"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/public.css"
+    />
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-7L1TCCJZT6');
+    </script>
+    
+  </head>
+  <body>
+    <o-app
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/app-config.mjs"
+    >
+      <template page>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/github-markdown.css"
+        />
+        <exm-article>
+          <article class="markdown-body" data-no-right>
+          <h1>Component creation and usage</h1>
+<p>Once the loading of ofa.js has been completed, a component named &#39;load-module&#39; will be registered globally, which can be referenced using the abbreviation &#39;l-m&#39;. Its usage is similar to the &#39;<script>' tag, by using the 'src' attribute to reference the address of the developed component.</p>
+<p>Now, let's start creating our own component. Firstly, create an HTML file with a name that matches the component name.</p>
+<p>In the component file, first add a '<template component></template>' element. Place the content that needs to be rendered by the component inside this 'template' element. Ultimately, this content will be rendered into the component's Shadow DOM, which is isolated from the external environment to prevent contamination.</p>
+<p>Next, simply use the 'l-m' component to reference your developed component. On the page, directly use the component tag that you have defined.</p>
+<p>It is important to note that the registered component name can only use lowercase letters and the hyphen '-' symbol, and must contain at least one '-'. This naming rule must be followed.</p>
+<p>Through this example, you can learn how to create a component named 'my-comp' and use it on another page. You can also use an external CSS file to style the component.</p>
+<p><a href="../../publics/examples/simple-component/demo.html" preview demo></a>
+<a href="../../publics/examples/simple-component/my-comp.html" main demo></a>
+<a href="../../publics/examples/simple-component/public.css" demo></a></p>
+
+          <article-footer></article-footer>
+          </article>
+        </exm-article>
+        <script>
+          import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/page-init.mjs';
+
+          export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/pages/article-layout.html";
+          export default async (...args)=> {
+            return await pageInit(PATH,args);
+          }
+        </script>
+      </template>
+    </o-app>
+    <div class="outer-layer" id="outer-layer">
+      <div class="loading"></div>
+    </div>
+  </body>
+</html>
