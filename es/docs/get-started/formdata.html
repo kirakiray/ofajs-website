@@ -6,12 +6,12 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Funcionalidad de formularios</title>
       <script
-        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/init.js"
+        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/init.js"
         config="../../doc-config.json"
       ></script>
       <link
         rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/public.css"
+        href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/css/public.css"
       />
       
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
@@ -26,12 +26,12 @@
     </head>
     <body>
       <o-app
-        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/app-config.mjs"
+        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/app-config.mjs"
       >
         <template page>
           <link
             rel="stylesheet"
-            href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/github-markdown.css"
+            href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/css/github-markdown.css"
           />
           <style>article{padding:16px 0 32px;}</style>
           <article class="markdown-body">
@@ -66,8 +66,8 @@
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<h2>监听特定表单元素</h2>
-<p>默认情况下，<code>formData()</code> 监听目标元素内的所有 <code>input</code>、<code>select</code> 和 <code>textarea</code> 元素。你可以通过传递选择器来监听特定的表单元素。</p>
+<h2>Escuchar elementos específicos del formulario</h2>
+<p>Por defecto, <code>formData()</code> escucha todos los elementos <code>input</code>, <code>select</code> y <code>textarea</code> dentro del elemento de destino. Puedes pasar selectores para escuchar elementos específicos del formulario.</p>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
@@ -90,17 +90,17 @@
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<h2>Stanz 对象</h2>
-<p><code>formData()</code> 方法返回的对象被称为 Stanz 对象。Stanz 是 <code>$</code> 扩展库的一部分，提供了对表单数据的高效处理和监听功能。</p>
-<p>你可以通过访问 <a href="https://github.com/kirakiray/stanz">https://github.com/kirakiray/stanz</a> 来详细了解 Stanz 的使用教程和功能。</p>
+<h2>Objetos Stanz</h2>
+<p>El objeto devuelto por el método <code>formData()</code> se conoce como objeto Stanz.Stanz forma parte de la biblioteca de extensiones <code>$</code> y proporciona un procesamiento y escucha eficientes para los datos de formulario.</p>
+<p>Puede obtener más información sobre los tutoriales y las funciones de Stanz visitando <a href="https://github.com/kirakiray/stanz">https://github.com/kirakiray/stanz</a>.</p>
 <p>A través de la funcionalidad de formulario anterior, puedes manejar fácilmente los valores y cambios de los elementos del formulario, mejorando la conveniencia y eficiencia de las operaciones del formulario.</p>
 
           <article-footer></article-footer>
           </article>
           <script>
-            import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/page-init.mjs';
+            import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/page-init.mjs';
 
-            export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/pages/article-layout.html";
+            export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/pages/article-layout.html";
             export default async (...args)=> {
               return await pageInit(PATH,args);
             }

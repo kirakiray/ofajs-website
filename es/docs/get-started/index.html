@@ -6,12 +6,12 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Primeros pasos</title>
       <script
-        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/init.js"
+        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/init.js"
         config="../../doc-config.json"
       ></script>
       <link
         rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/public.css"
+        href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/css/public.css"
       />
       
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
@@ -26,12 +26,12 @@
     </head>
     <body>
       <o-app
-        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/app-config.mjs"
+        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/app-config.mjs"
       >
         <template page>
           <link
             rel="stylesheet"
-            href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/github-markdown.css"
+            href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/css/github-markdown.css"
           />
           <style>article{padding:16px 0 32px;}</style>
           <article class="markdown-body">
@@ -52,14 +52,14 @@ require(&quot;ofa.js&quot;); // cmd
 </code></pre>
 <h3>Uso</h3>
 <p>Después de agregar los recursos, ofa.js establecerá una propiedad <code>$</code> en el ámbito global, todas las funciones estarán disponibles en <code>$</code>, y el siguiente tutorial explicará su uso en detalle;</p>
-<p>通常情况下，我们建议采用直接引用的方式添加 ofa.js，而使用 npm 的方式则用于与类似 React 和 Vue 等框架进行兼容。</p>
+<p>En general, recomendamos añadir ofa.js como referencia directa, y utilizar npm para la compatibilidad con frameworks como React y Vue.</p>
 
           <article-footer></article-footer>
           </article>
           <script>
-            import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/page-init.mjs';
+            import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/page-init.mjs';
 
-            export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/pages/article-layout.html";
+            export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/pages/article-layout.html";
             export default async (...args)=> {
               return await pageInit(PATH,args);
             }

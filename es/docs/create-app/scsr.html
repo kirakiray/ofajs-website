@@ -6,12 +6,12 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Renderizado de cliente estático (SCSR)</title>
       <script
-        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/init.js"
+        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/init.js"
         config="../../doc-config.json"
       ></script>
       <link
         rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/public.css"
+        href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/css/public.css"
       />
       
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
@@ -26,12 +26,12 @@
     </head>
     <body>
       <o-app
-        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/app-config.mjs"
+        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/app-config.mjs"
       >
         <template page>
           <link
             rel="stylesheet"
-            href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/github-markdown.css"
+            href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/css/github-markdown.css"
           />
           <style>article{padding:16px 0 32px;}</style>
           <article class="markdown-body">
@@ -42,7 +42,7 @@
 <p>Puedes utilizar una biblioteca de SCSR de la siguiente manera:</p>
 <pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.0.0/libs/scsr/dist/scsr.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
-<h2>SCSR 的工作原理</h2>
+<h2>Cómo funciona SCSR</h2>
 <p>SCSR es un módulo de página que se ejecuta directamente en modo de archivo único, sin necesidad de utilizar la etiqueta <code>o-page</code>, lo que permite renderear en la página. Específicamente, se pone el código de plantilla del módulo de página directamente dentro de <code>o-app</code>.</p>
 <p>A continuación se muestra un ejemplo de SCSR que muestra cómo renderear directamente el contenido del módulo de página en la página:</p>
 <pre><code class="language-html">&lt;!-- home.html --&gt;&lt;!DOCTYPE html&gt;
@@ -121,9 +121,9 @@
           <article-footer></article-footer>
           </article>
           <script>
-            import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/page-init.mjs';
+            import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/page-init.mjs';
 
-            export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/pages/article-layout.html";
+            export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/pages/article-layout.html";
             export default async (...args)=> {
               return await pageInit(PATH,args);
             }

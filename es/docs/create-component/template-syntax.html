@@ -6,12 +6,12 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Sintaxis de la plantilla</title>
       <script
-        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/init.js"
+        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/init.js"
         config="../../doc-config.json"
       ></script>
       <link
         rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/public.css"
+        href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/css/public.css"
       />
       
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
@@ -26,12 +26,12 @@
     </head>
     <body>
       <o-app
-        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/app-config.mjs"
+        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/app-config.mjs"
       >
         <template page>
           <link
             rel="stylesheet"
-            href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/github-markdown.css"
+            href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/css/github-markdown.css"
           />
           <style>article{padding:16px 0 32px;}</style>
           <article class="markdown-body">
@@ -55,9 +55,9 @@ export const data = {
 <p>En el ejemplo anterior, <code>{{username}}</code> será reemplazado por el valor de la propiedad <code>username</code> en los datos del componente, lo que mostrará &quot;Bienvenido, JohnDoe!&quot; en la interfaz.</p>
 <h2>Sintaxis de enlace de atributos</h2>
 <p>Utilizando la sintaxis de enlace de atributos <code>:xxx=&#39;yyy&#39;</code>, puedes vincular las propiedades del componente a los atributos de los elementos dentro de la plantilla. Este enlace es unidireccional, los cambios en las propiedades afectarán a los atributos de los elementos en la plantilla, pero no al revés.</p>
-<p>以下是一些常见的属性绑定示例：</p>
+<p>He aquí algunos ejemplos comunes de vinculación de propiedades:</p>
 <pre><code class="language-html">&lt;!-- template.html --&gt;
-&lt;l-m src=&quot;custom-component.mjs&quot;&gt;&lt;/l-m&gt;  &lt;!-- 加载 custom-component 组件 --&gt;
+&lt;l-m src=&quot;custom-component.mjs&quot;&gt;&lt;/l-m&gt;  &lt;!-- Carga de componentes personalizados --&gt;
 &lt;div&gt;
     &lt;p :text=&quot;greeting&quot;&gt;&lt;/p&gt;
     &lt;input :value=&quot;inputValue&quot; /&gt;
@@ -74,7 +74,7 @@ export const data = {
 };
 </code></pre>
 <p>En el ejemplo anterior, <code>:text=&quot;greeting&quot;</code> enlaza el valor de la propiedad <code>greeting</code> del <code>data</code> del componente al contenido de texto del elemento <code>&lt;p&gt;</code>. <code>:value=&quot;inputValue&quot;</code> enlaza el valor de la propiedad <code>inputValue</code> del <code>data</code> del componente al atributo <code>value</code> del elemento <code>&lt;input&gt;</code>. Para componentes personalizados, <code>custom-prop</code> es el nombre de la propiedad del componente personalizado, y se pasa el valor de la propiedad <code>customValue</code> del <code>data</code> del componente al componente personalizado.</p>
-<h2>事件绑定</h2>
+<h2>vinculación de eventos</h2>
 <p>Usando el formato <code>on:click=&quot;yyy&quot;</code>, puedes enlazar un evento especificado del elemento objetivo (por ejemplo, <code>click</code>) a una propiedad <code>yyy</code> del componente anfitrión. De esta manera, cuando se acciona el evento especificado en el elemento objetivo, se llama al método de propiedad respectivo en el componente anfitrión.</p>
 <p>A continuación se muestra un ejemplo:</p>
 <pre><code class="language-html">&lt;!-- template.html --&gt;
@@ -151,9 +151,9 @@ export const data = {
           <article-footer></article-footer>
           </article>
           <script>
-            import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/page-init.mjs';
+            import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/page-init.mjs';
 
-            export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/pages/article-layout.html";
+            export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/pages/article-layout.html";
             export default async (...args)=> {
               return await pageInit(PATH,args);
             }

@@ -6,12 +6,12 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Creando una Aplicación</title>
       <script
-        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/init.js"
+        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/init.js"
         config="../../doc-config.json"
       ></script>
       <link
         rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/public.css"
+        href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/css/public.css"
       />
       
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
@@ -26,12 +26,12 @@
     </head>
     <body>
       <o-app
-        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/app-config.mjs"
+        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/app-config.mjs"
       >
         <template page>
           <link
             rel="stylesheet"
-            href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/github-markdown.css"
+            href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/css/github-markdown.css"
           />
           <style>article{padding:16px 0 32px;}</style>
           <article class="markdown-body">
@@ -155,7 +155,7 @@ export const pageAnime = {
 <p>Puedes utilizar el atributo <code>on:click</code> en la plantilla de la página para vincular un evento de clic y llamar al método <code>goto</code> en el módulo para realizar la navegación por rutas.</p>
 <pre><code class="language-html">&lt;template page&gt;
   &lt;div class=&quot;container&quot;&gt;
-    &lt;button on:click=&quot;toabout&quot;&gt;跳转到关于页面&lt;/button&gt;
+    &lt;button on:click=&quot;toabout&quot;&gt;Ir a la página Acerca de&lt;/button&gt;
   &lt;/div&gt;
 
   &lt;script&gt;
@@ -171,26 +171,26 @@ export const pageAnime = {
   &lt;/script&gt;
 &lt;/template&gt;
 </code></pre>
-<p>又或者直接卸载目标元素上：</p>
-<pre><code class="language-html">&lt;button on:click=&quot;goto(&#39;./pages/about.mjs&#39;)&quot;&gt;跳转到关于页面&lt;/button&gt;
+<p>O tal vez descargar directamente en el elemento de destino:</p>
+<pre><code class="language-html">&lt;button on:click=&quot;goto(&#39;./pages/about.mjs&#39;)&quot;&gt;Ir a la página Acerca de&lt;/button&gt;
 </code></pre>
-<h3>替换跳转和返回页面</h3>
-<p>除了 <code>goto</code> 方法外，<code>o-app</code> 还支持 <code>replace</code> 和 <code>back</code> 方法。</p>
+<h3>Sustituir páginas de salto y retorno</h3>
+<p>Además del método <code>goto</code>, <code>o-app</code> también admite los métodos <code>replace</code> y <code>back</code>.</p>
 <ul>
-<li><code>replace</code> 方法用于替换跳转，它会取代当前页面的路由，使新页面成为当前页面的路由。</li>
+<li>El método <code>replace</code> se utiliza para reemplazar un salto, reemplaza la ruta de la página actual, haciendo que la nueva página sea la ruta de la página actual.</li>
 </ul>
-<pre><code class="language-html">&lt;button on:click=&quot;replace(&#39;./pages/settings.mjs&#39;)&quot;&gt;跳转并替换当前页面&lt;/button&gt;
+<pre><code class="language-html">&lt;button on:click=&quot;replace(&#39;./pages/settings.mjs&#39;)&quot;&gt;Saltar y reemplazar la página actual&lt;/button&gt;
 </code></pre>
 <ul>
-<li><code>back</code> 方法用于返回到前一个页面。</li>
+<li>El método <code>back</code> se utiliza para volver a la página anterior.</li>
 </ul>
-<pre><code class="language-html">&lt;button on:click=&quot;back()&quot;&gt;返回上一页&lt;/button&gt;
+<pre><code class="language-html">&lt;button on:click=&quot;back()&quot;&gt;Volver a la página anterior&lt;/button&gt;
 </code></pre>
-<p>需要注意的是，应用内会保持组件的路由状态，但路由数据不会绑定到当前浏览器标签上。这样，你可以方便地在应用中实现页面之间的跳转和导航。</p>
-<p>如果你想实现路由和页面的绑定，可以使用 o-router 组件，我们将在后面的章节中详细介绍。</p>
-<p>通过以上方法，你可以在 <code>o-app</code> 应用中实现灵活的路由跳转，让用户能够方便地浏览不同的页面内容。</p>
-<h2>访问应用和当前页面</h2>
-<p>在应用内的各个元素（包括组件），你通过 <strong>app</strong> 属性来获取它们所在的 <code>o-app</code> 实例。这对于需要与整个应用进行交互的操作非常有用。</p>
+<p>Tenga en cuenta que el estado de enrutamiento del componente se mantiene dentro de la aplicación, pero los datos de enrutamiento no están vinculados a la pestaña actual del navegador. De este modo, puede saltar y navegar fácilmente entre páginas dentro de la aplicación.</p>
+<p>Si desea implementar el enrutamiento y la vinculación de páginas, puede utilizar el componente o-router, que cubriremos en detalle en una sección posterior.</p>
+<p>Con el método anterior, puedes implementar saltos de ruta flexibles en la aplicación <code>o-app</code>, para que los usuarios puedan navegar fácilmente por los diferentes contenidos de las páginas.</p>
+<h2>Acceso a la aplicación y a la página actual</h2>
+<p>Elementos individuales (incluyendo componentes) dentro de la aplicación, se obtiene la instancia <code>o-app</code> en la que se encuentran a través del atributo <strong>app</strong>. Esto es útil para las operaciones que requieren la interacción con toda la aplicación.</p>
 <p>A través de la propiedad <code>app.current</code>, puedes obtener la dirección del módulo de página actualmente activo.</p>
 <p>Aquí tienes un ejemplo de uso:</p>
 <pre><code class="language-javascript">// MyComponent.mjs
@@ -219,9 +219,9 @@ export default async ({ load }) =&gt; {
           <article-footer></article-footer>
           </article>
           <script>
-            import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/page-init.mjs';
+            import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/page-init.mjs';
 
-            export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/pages/article-layout.html";
+            export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/pages/article-layout.html";
             export default async (...args)=> {
               return await pageInit(PATH,args);
             }

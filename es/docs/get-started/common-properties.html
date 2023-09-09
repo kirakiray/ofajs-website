@@ -6,12 +6,12 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Propiedades comunes</title>
       <script
-        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/init.js"
+        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/init.js"
         config="../../doc-config.json"
       ></script>
       <link
         rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/public.css"
+        href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/css/public.css"
       />
       
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
@@ -26,12 +26,12 @@
     </head>
     <body>
       <o-app
-        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/app-config.mjs"
+        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/app-config.mjs"
       >
         <template page>
           <link
             rel="stylesheet"
-            href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/github-markdown.css"
+            href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/css/github-markdown.css"
           />
           <style>article{padding:16px 0 32px;}</style>
           <article class="markdown-body">
@@ -45,8 +45,8 @@
     console.log($div.tag); // Salida: &quot;div&quot;
 &lt;/script&gt;
 </code></pre>
-<h2>ele 属性</h2>
-<p><code>ele</code> 属性 se utiliza para obtener el elemento DOM real de la instancia <code>$</code>, lo que permite realizar operaciones JavaScript nativas en ese elemento.</p>
+<h2>ele attribute</h2>
+<p><code>ele</code> causalidad se utiliza para obtener el elemento DOM real de la instancia <code>$</code>, lo que permite realizar operaciones JavaScript nativas en ese elemento.</p>
 <pre><code class="language-html">&lt;div id=&quot;example&quot;&gt;Hola Mundo&lt;/div&gt;
 &lt;script&gt;
     const $div = $(&#39;#example&#39;);
@@ -54,7 +54,7 @@
     elementoActual.style.color = &quot;rojo&quot;; // Cambiar el color del texto a rojo
 &lt;/script&gt;
 </code></pre>
-<h2>index 属性</h2>
+<h2>atributo index</h2>
 <p><code>index</code> atributo se utiliza para obtener el índice de clasificación del elemento actual entre los elementos del mismo nivel, comenzando desde 0.</p>
 <pre><code class="language-html">&lt;div&gt;
     &lt;span&gt;Primero&lt;/span&gt;
@@ -146,9 +146,9 @@
           <article-footer></article-footer>
           </article>
           <script>
-            import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/page-init.mjs';
+            import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/page-init.mjs';
 
-            export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/pages/article-layout.html";
+            export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/pages/article-layout.html";
             export default async (...args)=> {
               return await pageInit(PATH,args);
             }

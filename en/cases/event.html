@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Event Response</title>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/init.js"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/init.js"
       config="../doc-config.json"
     ></script>
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/public.css"
+      href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/css/public.css"
     />
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
@@ -26,19 +26,19 @@
   </head>
   <body>
     <o-app
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/app-config.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/app-config.mjs"
     >
       <template page>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/css/github-markdown.css"
         />
         <exm-article>
           <article class="markdown-body" data-no-right>
           <h1>Event Response</h1>
 <p>You can use the <code>on</code> method to bind events. <strong>Events</strong> are the most basic concept in development, and applications rely on event triggers to generate feedback and achieve interactivity.</p>
 <p>The following example demonstrates how to bind a click event:</p>
-<p>In this example, we select the <button> element using <code>$</code> and bind the <code>click</code> event using the <code>on</code> method. When the button is clicked, the callback function is triggered and the text content of the <code>target</code> element is changed to &quot;Hello, world!&quot;.</p>
+<p>In this example, we selected the <code>button</code> element using <code>$</code> and bound the <code>click</code> event using the <code>on</code> method. When the button is clicked, the callback function is triggered, changing the text content of the <code>target</code> element to &quot;Hello, world!&quot;.</p>
 <p>If you want to learn more about available event types, please refer to the <a href="https://developer.mozilla.org/en-US/docs/Web/Events">Events</a> documentation.</p>
 <p><a href="../../publics/examples/event-demo.html" demo preview></a></p>
 
@@ -46,9 +46,9 @@
           </article>
         </exm-article>
         <script>
-          import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/page-init.mjs';
+          import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/page-init.mjs';
 
-          export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/pages/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/pages/article-layout.html";
           export default async (...args)=> {
             return await pageInit(PATH,args);
           }
