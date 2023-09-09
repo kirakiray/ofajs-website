@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>事件響應</title>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/init.js"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/init.js"
       config="../doc-config.json"
     ></script>
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/public.css"
+      href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/css/public.css"
     />
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
@@ -26,19 +26,19 @@
   </head>
   <body>
     <o-app
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/app-config.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/app-config.mjs"
     >
       <template page>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/css/github-markdown.css"
         />
         <exm-article>
           <article class="markdown-body" data-no-right>
           <h1>事件響應</h1>
 <p>您可以使用 <code>on</code> 方法來綁定事件。<strong>事件</strong> 是開發中最基礎的概念，應用通過事件的觸發才能產生反饋，從而實現互動性。</p>
 <p>以下示例演示了如何綁定點擊事件：</p>
-<p>在這個示例中，我們通過使用 <code>$</code> 選擇了 <code>&lt;button&gt;</code> 元素，並使用 <code>on</code> 方法綁定了 <code>click</code> 事件。當按鈕被點擊時，會觸發回調函數，將 <code>target</code> 元素的文本內容更改為 &quot;你好，世界！&quot;。</p>
+<p>在這個示例中，我們通過使用 <code>$</code> 選擇了 <code>button</code> 元素，並使用 <code>on</code> 方法綁定了 <code>click</code> 事件。當按鈕被點擊時，會觸發回調函數，將 <code>target</code> 元素的文本內容更改為 &quot;你好，世界！&quot;。</p>
 <p>如果您想了解更多可用的事件類型，請參考 <a href="https://developer.mozilla.org/en-US/docs/Web/Events">Events</a> 文檔。</p>
 <p><a href="../../publics/examples/event-demo.html" demo preview></a></p>
 
@@ -46,9 +46,9 @@
           </article>
         </exm-article>
         <script>
-          import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/page-init.mjs';
+          import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/page-init.mjs';
 
-          export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/pages/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/pages/article-layout.html";
           export default async (...args)=> {
             return await pageInit(PATH,args);
           }

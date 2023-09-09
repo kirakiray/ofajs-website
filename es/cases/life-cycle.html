@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ciclo de vida</title>
+    <script
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/init.js"
+      config="../doc-config.json"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/css/public.css"
+    />
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-7L1TCCJZT6');
+    </script>
+    
+  </head>
+  <body>
+    <o-app
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/app-config.mjs"
+    >
+      <template page>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/css/github-markdown.css"
+        />
+        <exm-article>
+          <article class="markdown-body" data-no-right>
+          <h1>Ciclo de vida</h1>
+<p>Los hooks del ciclo de vida proporcionan la oportunidad de ejecutar código en diferentes etapas del componente. En <code>ofa.js</code>, hay cinco hooks principales del ciclo de vida que son: <code>created</code>, <code>ready</code>, <code>watch</code>, <code>attached</code> y <code>detached</code>.</p>
+<ul>
+<li><p><strong>created()</strong>: Se llama cuando se crea el componente, en este momento el shadow root aún no se ha renderizado. Puede realizar algunas configuraciones de inicialización aquí, pero no puede acceder a los elementos dentro del shadow root.</p>
+</li>
+<li><p><strong>ready()</strong>: Se llama después de que se haya completado la renderización del shadow root, generalmente se utiliza para la lógica de inicialización del componente. En esta etapa, puede acceder y manipular los elementos dentro del shadow root, así como realizar otras operaciones que necesite realizar después de la renderización.</p>
+</li>
+<li><p><strong>watch</strong>: Utilice el objeto <code>watch</code> para estar atento a los cambios en los datos. Después de que se complete <code>ready</code>, se activará una vez el <code>watch</code> correspondiente al valor en <code>data</code>. Luego, cada vez que el valor de la clave correspondiente cambie, se activará la función correspondiente dentro de <code>watch</code>.</p>
+</li>
+<li><p><strong>attached()</strong>: Se llama cuando el componente se agrega al documento, en este momento puede realizar operaciones de interacción con el entorno externo, como obtener la apariencia del componente o inicializar la lógica de datos compartidos.</p>
+</li>
+<li><p><strong>detached()</strong>: Se llama cuando el componente se elimina del documento. En esta etapa, puede realizar tareas de limpieza, cancelar la interacción con el entorno externo y liberar recursos.</p>
+</li>
+</ul>
+<p><a href="../../publics/examples/life-cycle/demo.html" preview demo></a>
+<a href="../../publics/examples/life-cycle/test-demo.html" main demo></a></p>
+
+          <article-footer></article-footer>
+          </article>
+        </exm-article>
+        <script>
+          import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/page-init.mjs';
+
+          export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/pages/article-layout.html";
+          export default async (...args)=> {
+            return await pageInit(PATH,args);
+          }
+        </script>
+      </template>
+    </o-app>
+    <div class="outer-layer" id="outer-layer">
+      <div class="loading"></div>
+    </div>
+  </body>
+</html>

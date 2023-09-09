@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Component Creation and Usage</title>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/init.js"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/init.js"
       config="../doc-config.json"
     ></script>
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/public.css"
+      href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/css/public.css"
     />
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
@@ -26,19 +26,19 @@
   </head>
   <body>
     <o-app
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/app-config.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/app-config.mjs"
     >
       <template page>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/css/github-markdown.css"
         />
         <exm-article>
           <article class="markdown-body" data-no-right>
           <h1>Component Creation and Usage</h1>
-<p>Once the ofa.js loading is complete, a component named <code>load-module</code> will be registered globally and can be referenced using the abbreviation <code>l-m</code>. It is used similar to the <code>&lt;script&gt;</code> tag, by referencing the address of the component you developed through the <code>src</code> attribute.</p>
+<p>Once the loading of ofa.js is completed, a component named &#39;load-module&#39; will be registered globally, and you can reference it using the abbreviation &#39;l-m&#39;. Its usage is similar to that of the &#39;script&#39; tag, where you reference the address of your developed component through the &#39;src&#39; attribute.</p>
 <p>Now, let&#39;s start creating our own component. First, create an HTML file with a name that matches the component name.</p>
-<p>In the component file, first add a <code>&lt;template component&gt;&lt;/template&gt;</code> element. Place the content that the component needs to render inside this <code>template</code> element. Eventually, this content will be rendered into the component&#39;s Shadow DOM, which is isolated from the external environment to prevent pollution of the external environment.</p>
+<p>In the component file, first add a <code>template</code> element and add a <code>component</code> attribute. Place the content that the component needs to render inside this <code>template</code> element. Finally, this content will be rendered into the component&#39;s Shadow DOM. Shadow DOM is isolated from the external environment to prevent contamination of the external environment.</p>
 <p>Next, simply use the <code>l-m</code> component to reference the component you developed. On the page, use the component tag you defined directly.</p>
 <p>Note that the registered component name can only use lowercase letters and hyphens (-), and must include at least one hyphen. This naming rule must be followed.</p>
 <p>Through this example, you can learn how to create a component named <code>my-comp</code> and use it in another page. You can also use an external CSS file to style the component.</p>
@@ -50,9 +50,9 @@
           </article>
         </exm-article>
         <script>
-          import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/page-init.mjs';
+          import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/page-init.mjs';
 
-          export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.3/packages/statics/pages/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/pages/article-layout.html";
           export default async (...args)=> {
             return await pageInit(PATH,args);
           }

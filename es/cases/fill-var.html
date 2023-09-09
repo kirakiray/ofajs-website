@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Relleno</title>
+    <script
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/init.js"
+      config="../doc-config.json"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/css/public.css"
+    />
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-7L1TCCJZT6');
+    </script>
+    
+  </head>
+  <body>
+    <o-app
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/app-config.mjs"
+    >
+      <template page>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/css/github-markdown.css"
+        />
+        <exm-article>
+          <article class="markdown-body" data-no-right>
+          <h1>Relleno</h1>
+<p>Las plantillas de relleno (x-fill) en un framework frontend son similares al concepto de renderizar listas, ya que le permiten renderizar dinámicamente un conjunto de componentes minúsculos basados en una colección de datos.</p>
+<p>Durante el proceso de relleno, puede utilizar las siguientes variables especiales:</p>
+<ul>
+<li><strong>$data</strong>: representa los datos del elemento de relleno. Al manipular $data, puede obtener o modificar los datos de cada elemento de relleno.</li>
+<li><strong>$index</strong>: representa el índice del elemento de datos actual en la colección de datos.</li>
+<li><strong>$host</strong>: representa el componente actual en sí mismo. Si desea obtener los datos del componente o llamar a sus métodos, debe utilizar $host para acceder al componente.</li>
+</ul>
+<p><a href="../../publics/examples/fill-var/demo.html" preview demo></a>
+<a href="../../publics/examples/fill-var/test-demo.html" main demo></a></p>
+
+          <article-footer></article-footer>
+          </article>
+        </exm-article>
+        <script>
+          import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/page-init.mjs';
+
+          export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/pages/article-layout.html";
+          export default async (...args)=> {
+            return await pageInit(PATH,args);
+          }
+        </script>
+      </template>
+    </o-app>
+    <div class="outer-layer" id="outer-layer">
+      <div class="loading"></div>
+    </div>
+  </body>
+</html>
