@@ -1,0 +1,67 @@
+
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>常用方法</title>
+      <script
+        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/init.js"
+        config="../../doc-config.json"
+      ></script>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/css/public.css"
+      />
+      
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-7L1TCCJZT6');
+    </script>
+    
+    </head>
+    <body>
+      <o-app
+        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/app-config.mjs"
+      >
+        <template page>
+          <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/css/github-markdown.css"
+          />
+          <style>article{padding:16px 0 32px;}</style>
+          <article class="markdown-body">
+          <h1>常用方法</h1>
+<h2>attr</h2>
+<p><code>attr</code> 方法允許您獲取或設置元素的屬性。</p>
+<pre><code class="language-html">&lt;div id=&quot;example&quot; name=&quot;i am hello word&quot;&gt;Hello World&lt;/div&gt;
+&lt;script&gt;
+    const $div = $(&#39;#example&#39;);
+    console.log($div.attr(&#39;name&#39;)); // 輸出: &quot;i am hello word&quot;
+    $div.attr(&#39;title&#39;, &quot;change title&quot;);
+&lt;/script&gt;
+</code></pre>
+<p>在上面的示例中，我們首先選擇了一個具有 <code>id</code> 為 &quot;example&quot; 的 <code>div</code> 元素。然後，我們使用 <code>attr</code> 方法來獲取該元素的 <code>name</code> 屬性，並將其打印到控制台。接下來，我們使用 <code>attr</code> 方法來設置該元素的 <code>title</code> 屬性為 &quot;change title&quot;。</p>
+
+          <article-footer></article-footer>
+          </article>
+          <script>
+            import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/page-init.mjs';
+
+            export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/pages/article-layout.html";
+            export default async (...args)=> {
+              return await pageInit(PATH,args);
+            }
+          </script>
+        </template>
+      </o-app>
+      <div class="outer-layer" id="outer-layer">
+        <div class="loading"></div>
+      </div>
+    </body>
+  </html>
+  

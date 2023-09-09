@@ -1,0 +1,67 @@
+
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Métodos comunes</title>
+      <script
+        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/init.js"
+        config="../../doc-config.json"
+      ></script>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/css/public.css"
+      />
+      
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-7L1TCCJZT6');
+    </script>
+    
+    </head>
+    <body>
+      <o-app
+        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/app-config.mjs"
+      >
+        <template page>
+          <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/css/github-markdown.css"
+          />
+          <style>article{padding:16px 0 32px;}</style>
+          <article class="markdown-body">
+          <h1>Métodos comunes</h1>
+<h2>attr</h2>
+<p><code>attr</code> método le permite obtener o establecer los atributos de un elemento.</p>
+<pre><code class="language-html">&lt;div id=&quot;ejemplo&quot; name=&quot;soy hola mundo&quot;&gt;Hola Mundo&lt;/div&gt;
+&lt;script&gt;
+    const $div = $(&#39;#ejemplo&#39;);
+    console.log($div.attr(&#39;name&#39;)); // Salida: &quot;soy hola mundo&quot;
+    $div.attr(&#39;title&#39;, &quot;cambiar título&quot;);
+&lt;/script&gt;
+</code></pre>
+<p>En el ejemplo anterior, primero seleccionamos un elemento <code>div</code> con <code>id</code> &quot;ejemplo&quot;. Luego, usamos el método <code>attr</code> para obtener el atributo <code>name</code> de ese elemento y lo imprimimos en la consola. A continuación, usamos el método <code>attr</code> para establecer el atributo <code>title</code> de ese elemento como &quot;cambiar título&quot;.</p>
+
+          <article-footer></article-footer>
+          </article>
+          <script>
+            import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/page-init.mjs';
+
+            export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/pages/article-layout.html";
+            export default async (...args)=> {
+              return await pageInit(PATH,args);
+            }
+          </script>
+        </template>
+      </o-app>
+      <div class="outer-layer" id="outer-layer">
+        <div class="loading"></div>
+      </div>
+    </body>
+  </html>
+  
