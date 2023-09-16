@@ -1,41 +1,105 @@
-
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>關於微前端</title>
-      <script
-        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/init.js"
-        config="../../doc-config.json"
-      ></script>
-      <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/css/public.css"
-      />
-      
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>關於微前端</title>
+    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.14/dist/ofa.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.14/libs/scsr/scsr.mjs"
+      type="module"
+    ></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/o-book@2.0.8/statics/css/public.css" />
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+    </style>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-7L1TCCJZT6');
+      let configUrl = "../../config.json";
     </script>
     
-    </head>
-    <body>
-      <o-app
-        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/app-config.mjs"
-      >
-        <template page>
-          <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/css/github-markdown.css"
-          />
-          <style>article{padding:16px 0 32px;}</style>
-          <article class="markdown-body">
-          <h1>關於微前端</h1>
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag("js", new Date());
+
+          gtag("config", "G-7L1TCCJZT6");
+        </script>
+        <script>
+          (async () => {
+            async function getHash(str, algorithm = "SHA-256") {
+              const encoder = new TextEncoder();
+              const data = encoder.encode(str);
+              const hashBuffer = await crypto.subtle.digest(algorithm, data);
+              const hashArray = Array.from(new Uint8Array(hashBuffer));
+              const hashHex = hashArray
+                .map((byte) => byte.toString(16).padStart(2, "0"))
+                .join("");
+              return hashHex;
+            }
+
+            // 注册 sw 服务
+            const swText = await fetch("/sw.js")
+              .then((e) => {
+                if (e.status == 200) {
+                  return e.text();
+                }
+
+                return false;
+              })
+              .catch(() => false);
+
+            if (swText) {
+              const hsId = await getHash(swText);
+
+              navigator.serviceWorker
+                .register("/sw.js", {
+                  scope: "/",
+                })
+                .then((reg) => {
+                  if (localStorage._swid !== hsId) {
+                    reg.update();
+                    localStorage._swid = hsId;
+                  }
+
+                  setTimeout(() => {
+                    reg.update();
+                  }, 60 * 60 * 1000);
+                })
+                .catch((err) => {
+                  console.error(err);
+                });
+            }
+          })();
+        </script>
+      
+  </head>
+  <body>
+    <l-m src="https://cdn.jsdelivr.net/npm/o-book@2.0.8/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/o-book@2.0.8/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/o-book@2.0.8/statics/app-config.mjs">
+      <template page>
+        <style>
+          .markdown-body::before,
+          .markdown-body::after {
+            display: block;
+            content: "";
+            height: 1px;
+          }
+          .markdown-body::after {
+            height: 32px;
+          }
+        </style>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/o-book@2.0.8/statics/css/github-markdown.css"
+        />
+        <article class="markdown-body"><h1>關於微前端</h1>
 <p>微前端是一種前端架構模式，旨在幫助團隊更好地構建和維護大型、復雜的前端應用程序。它借鑒了微服務架構的思想，將前端應用程序拆分為更小的獨立部分，每個部分都可以由不同的團隊開發、測試和部署。</p>
 <p>在傳統的單體前端應用不斷擴展的過程中，可能會變得難以維護和擴展。微前端的目標是通過將應用拆分成更小、更可管理的模塊，使得開發團隊能夠獨立地開發和部署這些模塊，從而提高團隊的效率和應用的可維護性。</p>
 <p><strong>ofa.js</strong> 天生具備微前端的特性，它與其它框架的不同之處在於，基於 <strong>ofa.js</strong> 開發的組件、頁面和應用無需預編譯。相比於一些框架如 React、Vue 和 Angular 等，它們需要在 Node.js 環境下進行一次構建，生成用於客戶端的代碼。然而，<strong>ofa.js</strong> 的開發代碼可以直接放置在靜態服務器上，無需額外的構建步驟，就能實時查看、使用和運行。</p>
@@ -66,21 +130,20 @@
 <li><a href="https://blog.bitsrc.io/integrating-web-components-in-react-17a52a6a28e4">將 Web Components 集成到 React 中</a></li>
 </ul>
 
-          <article-footer></article-footer>
-          </article>
-          <script>
-            import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/page-init.mjs';
+  <article-footer></article-footer>
+  </article>
+        <script>
+          export const parent = "https://cdn.jsdelivr.net/npm/o-book@2.0.8/statics/layouts/article-layout.html";
 
-            export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/pages/article-layout.html";
-            export default async (...args)=> {
-              return await pageInit(PATH,args);
-            }
-          </script>
-        </template>
-      </o-app>
-      <div class="outer-layer" id="outer-layer">
-        <div class="loading"></div>
-      </div>
-    </body>
-  </html>
-  
+          import pageInit from "https://cdn.jsdelivr.net/npm/o-book@2.0.8/statics/page-init.mjs";
+
+          export default async (...args) => {
+            return await pageInit(PATH, args);
+          };
+        </script>
+      </template>
+    </o-app>
+    <div id="loading"></div>
+    <script src="https://cdn.jsdelivr.net/npm/o-book@2.0.8/statics/init.js" type="module"></script>
+  </body>
+</html>

@@ -1,41 +1,105 @@
-
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>实例的基础概念</title>
-      <script
-        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/init.js"
-        config="../../doc-config.json"
-      ></script>
-      <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/css/public.css"
-      />
-      
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>实例的基础概念</title>
+    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.14/dist/ofa.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.14/libs/scsr/scsr.mjs"
+      type="module"
+    ></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/o-book@2.0.8/statics/css/public.css" />
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+    </style>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-7L1TCCJZT6');
+      let configUrl = "../../config.json";
     </script>
     
-    </head>
-    <body>
-      <o-app
-        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/app-config.mjs"
-      >
-        <template page>
-          <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/css/github-markdown.css"
-          />
-          <style>article{padding:16px 0 32px;}</style>
-          <article class="markdown-body">
-          <h1>实例的基础概念</h1>
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag("js", new Date());
+
+          gtag("config", "G-7L1TCCJZT6");
+        </script>
+        <script>
+          (async () => {
+            async function getHash(str, algorithm = "SHA-256") {
+              const encoder = new TextEncoder();
+              const data = encoder.encode(str);
+              const hashBuffer = await crypto.subtle.digest(algorithm, data);
+              const hashArray = Array.from(new Uint8Array(hashBuffer));
+              const hashHex = hashArray
+                .map((byte) => byte.toString(16).padStart(2, "0"))
+                .join("");
+              return hashHex;
+            }
+
+            // 注册 sw 服务
+            const swText = await fetch("/sw.js")
+              .then((e) => {
+                if (e.status == 200) {
+                  return e.text();
+                }
+
+                return false;
+              })
+              .catch(() => false);
+
+            if (swText) {
+              const hsId = await getHash(swText);
+
+              navigator.serviceWorker
+                .register("/sw.js", {
+                  scope: "/",
+                })
+                .then((reg) => {
+                  if (localStorage._swid !== hsId) {
+                    reg.update();
+                    localStorage._swid = hsId;
+                  }
+
+                  setTimeout(() => {
+                    reg.update();
+                  }, 60 * 60 * 1000);
+                })
+                .catch((err) => {
+                  console.error(err);
+                });
+            }
+          })();
+        </script>
+      
+  </head>
+  <body>
+    <l-m src="https://cdn.jsdelivr.net/npm/o-book@2.0.8/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/o-book@2.0.8/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/o-book@2.0.8/statics/app-config.mjs">
+      <template page>
+        <style>
+          .markdown-body::before,
+          .markdown-body::after {
+            display: block;
+            content: "";
+            height: 1px;
+          }
+          .markdown-body::after {
+            height: 32px;
+          }
+        </style>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/o-book@2.0.8/statics/css/github-markdown.css"
+        />
+        <article class="markdown-body"><h1>实例的基础概念</h1>
 <p><code>$</code> 实例是对页面上元素的封装，除了用于选择现有的元素外，它还可以直接创建新元素并进行操作。在本章中，我们将介绍如何创建新元素以及对 <code>$</code> 实例的一些操作。</p>
 <h2>创建新元素</h2>
 <p>通过 <code>$</code> 实例，我们可以直接创建新的元素并进行操作，例如：</p>
@@ -116,21 +180,20 @@
 <p>在上面的例子中，我们获取了所有 <code>p</code> 元素的 <code>$</code> 实例，并使用 <code>push</code> 方法添加了一个新的 <code>div</code> 元素作为子元素，然后使用 <code>pop</code> 方法移除了最后一个子元素。</p>
 <p>通过上述示例，你可以了解 <code>$</code> 实例的一些基本操作，包括创建新元素和对子元素的访问与操作。 <code>$</code> 实例提供了简便的方法来操作页面上的元素。</p>
 
-          <article-footer></article-footer>
-          </article>
-          <script>
-            import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/page-init.mjs';
+  <article-footer></article-footer>
+  </article>
+        <script>
+          export const parent = "https://cdn.jsdelivr.net/npm/o-book@2.0.8/statics/layouts/article-layout.html";
 
-            export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/pages/article-layout.html";
-            export default async (...args)=> {
-              return await pageInit(PATH,args);
-            }
-          </script>
-        </template>
-      </o-app>
-      <div class="outer-layer" id="outer-layer">
-        <div class="loading"></div>
-      </div>
-    </body>
-  </html>
-  
+          import pageInit from "https://cdn.jsdelivr.net/npm/o-book@2.0.8/statics/page-init.mjs";
+
+          export default async (...args) => {
+            return await pageInit(PATH, args);
+          };
+        </script>
+      </template>
+    </o-app>
+    <div id="loading"></div>
+    <script src="https://cdn.jsdelivr.net/npm/o-book@2.0.8/statics/init.js" type="module"></script>
+  </body>
+</html>

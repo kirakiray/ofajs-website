@@ -1,41 +1,105 @@
-
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>封裝和組件化：組件化常規知識</title>
-      <script
-        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/init.js"
-        config="../../doc-config.json"
-      ></script>
-      <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/css/public.css"
-      />
-      
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>封裝和組件化：組件化常規知識</title>
+    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.14/dist/ofa.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.14/libs/scsr/scsr.mjs"
+      type="module"
+    ></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/o-book@2.0.8/statics/css/public.css" />
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+    </style>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-7L1TCCJZT6');
+      let configUrl = "../../config.json";
     </script>
     
-    </head>
-    <body>
-      <o-app
-        src="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/app-config.mjs"
-      >
-        <template page>
-          <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/css/github-markdown.css"
-          />
-          <style>article{padding:16px 0 32px;}</style>
-          <article class="markdown-body">
-          <h1>封裝和組件化：組件化常規知識</h1>
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag("js", new Date());
+
+          gtag("config", "G-7L1TCCJZT6");
+        </script>
+        <script>
+          (async () => {
+            async function getHash(str, algorithm = "SHA-256") {
+              const encoder = new TextEncoder();
+              const data = encoder.encode(str);
+              const hashBuffer = await crypto.subtle.digest(algorithm, data);
+              const hashArray = Array.from(new Uint8Array(hashBuffer));
+              const hashHex = hashArray
+                .map((byte) => byte.toString(16).padStart(2, "0"))
+                .join("");
+              return hashHex;
+            }
+
+            // 注册 sw 服务
+            const swText = await fetch("/sw.js")
+              .then((e) => {
+                if (e.status == 200) {
+                  return e.text();
+                }
+
+                return false;
+              })
+              .catch(() => false);
+
+            if (swText) {
+              const hsId = await getHash(swText);
+
+              navigator.serviceWorker
+                .register("/sw.js", {
+                  scope: "/",
+                })
+                .then((reg) => {
+                  if (localStorage._swid !== hsId) {
+                    reg.update();
+                    localStorage._swid = hsId;
+                  }
+
+                  setTimeout(() => {
+                    reg.update();
+                  }, 60 * 60 * 1000);
+                })
+                .catch((err) => {
+                  console.error(err);
+                });
+            }
+          })();
+        </script>
+      
+  </head>
+  <body>
+    <l-m src="https://cdn.jsdelivr.net/npm/o-book@2.0.8/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/o-book@2.0.8/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/o-book@2.0.8/statics/app-config.mjs">
+      <template page>
+        <style>
+          .markdown-body::before,
+          .markdown-body::after {
+            display: block;
+            content: "";
+            height: 1px;
+          }
+          .markdown-body::after {
+            height: 32px;
+          }
+        </style>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/o-book@2.0.8/statics/css/github-markdown.css"
+        />
+        <article class="markdown-body"><h1>封裝和組件化：組件化常規知識</h1>
 <p>ofa.js 是一個基於 Web Components 技術的封裝庫，旨在簡化和加速組件開發過程。它通過將復雜的技術細節隱藏在背後，讓開發者能夠更專注地構建高質量的組件和應用。</p>
 <p>為了更好地開發組件，有必要學習一些 Web Components 的知識。下面介紹的知識點不僅可以在 ofa.js 中應用，還可以讓你在其他使用 Web Components 的框架上同樣受益。</p>
 <h2>Shadow DOM 容器</h2>
@@ -110,21 +174,20 @@ export default {
 };
 </code></pre>
 
-          <article-footer></article-footer>
-          </article>
-          <script>
-            import pageInit from 'https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/page-init.mjs';
+  <article-footer></article-footer>
+  </article>
+        <script>
+          export const parent = "https://cdn.jsdelivr.net/npm/o-book@2.0.8/statics/layouts/article-layout.html";
 
-            export const parent = "https://cdn.jsdelivr.net/gh/kirakiray/ofa-v4-docs@0.3.4/packages/statics/pages/article-layout.html";
-            export default async (...args)=> {
-              return await pageInit(PATH,args);
-            }
-          </script>
-        </template>
-      </o-app>
-      <div class="outer-layer" id="outer-layer">
-        <div class="loading"></div>
-      </div>
-    </body>
-  </html>
-  
+          import pageInit from "https://cdn.jsdelivr.net/npm/o-book@2.0.8/statics/page-init.mjs";
+
+          export default async (...args) => {
+            return await pageInit(PATH, args);
+          };
+        </script>
+      </template>
+    </o-app>
+    <div id="loading"></div>
+    <script src="https://cdn.jsdelivr.net/npm/o-book@2.0.8/statics/init.js" type="module"></script>
+  </body>
+</html>
