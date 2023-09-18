@@ -9,7 +9,7 @@
       src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.14/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/o-book@2.0.8/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.1/statics/css/public.css" />
     <style>
       html,
       body {
@@ -34,9 +34,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/o-book@2.0.8/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/o-book@2.0.8/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/o-book@2.0.8/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.1/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.1/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.1/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -51,7 +51,7 @@
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/o-book@2.0.8/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.1/statics/css/github-markdown.css"
         />
         <article class="markdown-body"><h1>第一個案例</h1>
 <p>以下是一個案例，點擊按鈕後將文本更改為 &quot;Hello World&quot;：</p>
@@ -94,7 +94,7 @@
 <p>在上面的案例中，打開頁面一秒後，會分別改變 <strong>p標簽</strong> 、<strong>#desk</strong> 和 <strong>.logger</strong>  的文本內容。</p>
 <h2>事件綁定</h2>
 <p>選擇元素成功後，你可以為元素綁定事件。就像前面提到的 &quot;Hello World&quot; 案例中，我們給 id 為 &quot;btn&quot; 的元素綁定了點擊事件。當點擊按鈕後，綁定的函數會被執行。</p>
-<p>你可以點擊跳轉查看 <a href="./example-event.md">事件示例</a>  章節，了解一些事件綁定的案例；</p>
+<p>你可以點擊跳轉查看 <a href="./example-event.html">事件示例</a>  章節，了解一些事件綁定的案例；</p>
 <p>所有可用的事件，可以參考 <a href="https://developer.mozilla.org/en-US/docs/Web/Events">Web Events</a> 來了解完整的事件列表。</p>
 <h2>屬性</h2>
 <p>在上面的兩個案例中，我們分別展示了 <code>html</code> 和 <code>text</code> 屬性的使用。</p>
@@ -116,9 +116,9 @@
   <article-footer></article-footer>
   </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/o-book@2.0.8/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.1/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/o-book@2.0.8/statics/page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.1/statics/page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -127,6 +127,6 @@
       </template>
     </o-app>
     <div id="loading"></div>
-    <script src="https://cdn.jsdelivr.net/npm/o-book@2.0.8/statics/init.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.1/statics/init.js" type="module"></script>
   </body>
 </html>
