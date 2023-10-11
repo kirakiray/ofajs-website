@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Explanation of Component Registration Parameters</title>
-    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/dist/ofa.min.js"></script>
+    <title>Explanation of registration parameters for components</title>
+    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/css/public.css" />
     <style>
       html,
       body {
@@ -34,9 +34,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -51,35 +51,35 @@
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/css/github-markdown.css"
         />
-        <article class="markdown-body"><h1>Explanation of Component Registration Parameters</h1>
-<p>In ofa.js, you can define some specific registration parameters in the component module to configure the component more flexibly. The following explains each registration parameter in detail, accompanied by relevant demonstration examples.</p>
+        <article class="markdown-body"><h1>Explanation of registration parameters for components</h1>
+<p>In ofa.js, you can define certain specific registration parameters in the component module to configure the component more flexibly. The following explains each registration parameter in detail, accompanied by corresponding examples for demonstration.</p>
 <h2>Basic Parameters</h2>
-<p>The basic parameters are the most basic configurations for registering a component and include the following properties:</p>
-<h3>Component Identifier</h3>
-<p>The component module must have &#39;export const type = $.COMP&#39; to identify it as a component module.</p>
-<p>Example:</p>
+<p>Basic parameters are the most basic configuration for registering a component, which includes the following attributes:</p>
+<h5>Component Identification</h5>
+<p>The component module must have <code>export const type = $.COMP</code> to identify it as a component module.</p>
+<p>Example: </p>
 <pre><code class="language-javascript">// button-component.mjs
 export const type = $.COMP;
 </code></pre>
 <h3>tag</h3>
-<p><code>tag</code> represents the registered component name. When <code>tag</code> property is not defined, the registered component name remains the same as the file name.</p>
-<p>Example:</p>
+<p><code>tag</code> represents the registered component name. When the <code>tag</code> attribute is not defined, the registered component name remains the same as the file name.</p>
+<p>Example: </p>
 <pre><code class="language-javascript">// button-component.mjs
 export const type = $.COMP;
-export const tag = &quot;my-button&quot;; // Register component name as &#39;my-button&#39;
+export const tag = &quot;my-button&quot;; // Register the component name as &#39;my-button&#39;
 </code></pre>
 <h3>temp</h3>
-<p><code>temp</code> is a string type property used to define the address of the component template. When <code>temp</code> is not defined, it defaults to loading an HTML file with the same name as the component in the same directory as the current module.</p>
-<p>Example:</p>
+<p><code>temp</code> is a string-type property used to define the address of the component template. When <code>temp</code> is not defined, the HTML file with the same name as the component in the same directory as the current module will be loaded by default.</p>
+<p>Example: </p>
 <pre><code class="language-javascript">// button-component.mjs
 export const type = $.COMP;
-export const temp = &quot;./my-button-template.html&quot;; // Specify the address of the component template as &#39;./my-button-template.html&#39;
+export const temp = &quot;./my-button-template.html&quot;; // 指定组件模板的地址为 &#39;./my-button-template.html&#39;
 </code></pre>
 <h3>data</h3>
-<p><code>data</code> is an object type property used to generate default custom data added after the component is created.</p>
-<p>Example:</p>
+<p><code>data</code> is an object-type property used to add default custom data to the generated component.</p>
+<p>Example: </p>
 <pre><code class="language-javascript">// button-component.mjs
 export const type = $.COMP;
 export const data = {
@@ -87,8 +87,8 @@ export const data = {
 };
 </code></pre>
 <h3>attrs</h3>
-<p><code>attrs</code> is an object type property belonging to <code>data</code>, but this data will be reflected in the element&#39;s attributes, and changes to the attributes will dynamically change the component&#39;s <code>data</code>. When there is a capital letter key, it will be converted to <code>-</code> camel case naming in the component attribute.</p>
-<p>Example:</p>
+<p><code>attrs</code> is an object-type attribute, which also belongs to <code>data</code>, but this data will be reflected in the attributes of the element. Changes in the attributes will also dynamically change the <code>data</code> of the component. When there is a capital key, it will be transformed into a kebab-case naming in the component attribute.</p>
+<p>Example: </p>
 <pre><code class="language-javascript">// button-component.mjs
 export const type = $.COMP;
 export const attrs = {
@@ -96,7 +96,7 @@ export const attrs = {
 };
 </code></pre>
 <h3>proto</h3>
-<p>In the registration parameter of the component, you can add a <code>proto</code> object to define the methods that need to be added to the component&#39;s prototype. This way, when creating an instance of the component, these attributes and methods will be added to the prototype of the instance, allowing all instances to access and share these methods.</p>
+<p>In the registration parameter of the component, you can add a <code>proto</code> object to define the methods that need to be added to the component prototype. In this way, when creating an instance of the component, these properties and methods will be added to the prototype of the instance, so that all instances can access and share these methods.</p>
 <pre><code class="language-javascript">// MyComponent.js
 export const type = $.COMP;
 
@@ -111,13 +111,13 @@ export const proto = {
 };
 </code></pre>
 <h3>watch</h3>
-<p><code>watch</code> is an object type property used to listen for changes in <code>data</code>. The listener function is placed here. Once registered successfully, the listener function will be immediately executed.</p>
+<p><code>watch</code> is an object type property used to listen to the changes of <code>data</code>. The listener function is placed here. After being successfully registered, the value being listened to will be executed immediately.</p>
 <ul>
-<li>The function registered by <code>watch</code> will only be triggered once during a single thread change. Therefore, even if the monitored value is modified multiple times within a thread, it will only be triggered once.</li>
+<li>The function registered with <code>watch</code> will only be triggered once during a single-threaded change. Therefore, even if the value being listened to is modified multiple times within a single thread, it will only be triggered once.</li>
 <li>The first parameter is the current value.</li>
-<li>The second parameter is an object that contains a <code>watchers</code> data set. In most cases, the <code>watchers</code> object will only contain one object. You can retrieve the <code>oldValue</code> from this object. When the monitored value has been changed multiple times within a single thread, this data set will record multiple changes.</li>
+<li>The second parameter is an object that contains the <code>watchers</code> data set. In general, there will only be one object on <code>watchers</code>, and you can obtain the <code>oldValue</code> from this object. When the value being listened to in a single thread is changed multiple times, this data set will record the changes multiple times.</li>
 </ul>
-<p>Example:</p>
+<p>Example: </p>
 <pre><code class="language-javascript">// button-component.mjs
 export const type = $.COMP;
 export const data = {
@@ -133,8 +133,8 @@ export const watch = {
   },
 };
 </code></pre>
-<h2>Example Code</h2>
-<p>The following is a complete example code, including the definition of basic parameters and the component template.</p>
+<h2>Example code</h2>
+<p>The following is a complete example code, including the definition of basic parameters and component templates.</p>
 <pre><code class="language-javascript">// button-component.mjs
 export const type = $.COMP;
 export const tag = &quot;my-button&quot;;
@@ -181,7 +181,7 @@ export const proto = {
   }
 &lt;/style&gt;
 
-&lt;!-- Using template rendering syntax to render component data as text --&gt;
+&lt;!-- Use template rendering syntax to render component data as text --&gt;
 &lt;button class=&quot;shadow-button&quot;&gt;{{buttonText}} - count:{{count}}&lt;/button&gt;
 </code></pre>
 <pre><code class="language-html">&lt;!-- demo.html --&gt;
@@ -209,27 +209,27 @@ export const proto = {
 &lt;/html&gt;
 </code></pre>
 <h3>default</h3>
-<p>You can also use asynchronous functions to define the &#39;default&#39; data in order to dynamically return the registration parameters of the component.</p>
-<p>The &#39;function&#39; of the function will bring an object that contains</p>
-<p> &#39;load&#39;, &#39;url&#39;, and &#39;query&#39;:</p>
+<p>You can also use asynchronous functions to define the <code>default</code> data, in order to dynamically return the registration parameters of the component.</p>
+<p>Functions in JavaScript will introduce an object that includes</p>
+<p><code>load</code>, <code>url</code>, and <code>query</code>:</p>
 <ul>
-<li>The &#39;load&#39; method is an asynchronous loading function, which can be loaded asynchronously by using the same method as asynchronous &#39;import&#39;, and can load asynchronous modules using &#39;const data = await load(xxx)&#39;.</li>
-<li>Modules loaded through &#39;load&#39; will have the same effect as those loaded by &#39;load-module&#39;. The &#39;load&#39; method is a functional version of the &#39;load-module&#39; component, and specific usage can be found in the documentation of <a href="https://github.com/kirakiray/drill.js">https://github.com/kirakiray/drill.js</a>.</li>
-<li>&#39;url&#39; is the filename of the current module.</li>
-<li>&#39;query&#39; is an object converted from URL parameters when loading this module.</li>
+<li>The <code>load</code> method is an asynchronous loading function, used in the same way as asynchronous <code>import</code> loading. You can use <code>const data = await load(xxx)</code> to load asynchronous modules.</li>
+<li>Modules loaded through <code>load</code> have the same effect as modules loaded through <code>load-module</code>. The <code>load</code> method is a function version of the <code>load-module</code> component. For specific usage, you can refer to the documentation of <a href="https://github.com/kirakiray/drill.js">https://github.com/kirakiray/drill.js</a>.</li>
+<li><code>url</code> is the file name of the current module.</li>
+<li><code>query</code> is an object converted from the URL parameters when loading this module.</li>
 </ul>
-<p>Here is an example of using &#39;default&#39;:</p>
+<p>Below are examples of using <code>default</code>:</p>
 <pre><code class="language-javascript">// button-component.mjs
 export const type = $.COMP; // This must be defined first and cannot be a dynamic parameter
 export const tag = &quot;my-button&quot;;
 export const temp = &quot;./my-button-template.html&quot;;
 
 export default async function ({ load, url, query }) {
-  console.log(&quot;url:&quot;, url); // Outputs the filename of the current module
-  console.log(&quot;query:&quot;, query); // Outputs the object converted from the URL parameters of the current module
+  console.log(&quot;url:&quot;, url); // Output the file name of the current module
+  console.log(&quot;query:&quot;, query); // Output the object converted from the URL parameters of the current module
 
-  const asyncData = await load(&quot;./async-data.mjs&quot;); // Loads the module asynchronously using &#39;load&#39;
-  console.log(&quot;asyncData:&quot;, asyncData); // Outputs the asynchronously loaded module data
+  const asyncData = await load(&quot;./async-data.mjs&quot;); // Use load to asynchronously load modules
+  console.log(&quot;asyncData:&quot;, asyncData); // Output the asynchronously loaded module data
 
   return {
     data: {
@@ -255,15 +255,15 @@ export default async function ({ load, url, query }) {
   };
 }
 </code></pre>
-<p>In this example, we demonstrate how to customize the behavior of a component using the registration parameters ofa.js. By configuring these parameters properly, you can better adapt to different component requirements and achieve more flexible component development.</p>
-<p>Write a documentation on how to use the registration parameters of the component proto.</p>
+<p>In this example, we demonstrate how to customize the behavior of components using the registration parameters of ofa.js. By configuring these parameters appropriately, you can better adapt to different component requirements and achieve more flexible component development.</p>
+<p>Write a documentation on the use of the proto registration parameters for components.</p>
 
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -272,6 +272,63 @@ export default async function ({ load, url, query }) {
       </template>
     </o-app>
     <div id="loading"></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/init.js" type="module"></script>
+    <div class="body-important other-link"><ul>
+<li><a href="../../cases/index.html">Getting Started</a></li>
+<li><a href="../../cases/event.html">Event Handling</a></li>
+<li><a href="../../cases/simple-component.html">Creating and Using Components</a></li>
+<li><a href="../../cases/slot.html">Component Slots</a></li>
+<li><a href="../../cases/render-text.html">Template Syntax: Rendering Text</a></li>
+<li><a href="../../cases/attribute-transmission.html">Attribute Propagation</a></li>
+<li><a href="../../cases/get-set-comp.html">Accessing and Modifying Component Instance Values</a></li>
+<li><a href="../../cases/property-transmission.html">Template Syntax: Prop Binding</a></li>
+<li><a href="../../cases/bind-event.html">Template Syntax: Event Binding</a></li>
+<li><a href="../../cases/nested-component.html">Nested Components</a></li>
+<li><a href="../../cases/inject-host.html">inject-host Component</a></li>
+<li><a href="../../cases/event-passing.html">Event Propagation</a></li>
+<li><a href="../../cases/sync.html">Template Syntax: Two-Way Data Binding</a></li>
+<li><a href="../../cases/condition.html">Template Component: Conditional Rendering</a></li>
+<li><a href="../../cases/fill.html">Template Component: Dynamic Rendering</a></li>
+<li><a href="../../cases/fill-temp.html">Recursive Filling and Rendering</a></li>
+<li><a href="../../cases/life-cycle.html">Lifecycle</a></li>
+<li><a href="../../cases/form-data.html">Form Data</a></li>
+<li><a href="../../cases/custom-form-element.html">Custom Form Components</a></li>
+<li><a href="../../cases/use-page.html">Using Page Components</a></li>
+<li><a href="../../cases/use-app.html">Using app Component</a></li>
+<li><a href="../../cases/app-config.html">Configuring app Parameters</a></li>
+<li><a href="../../cases/app-loading.html">Customizing app Loading</a></li>
+<li><a href="../../cases/set404.html">Setting Up 404 Page</a></li>
+<li><a href="../../cases/use-hash-router.html">Using Hash Router</a></li>
+<li><a href="../../cases/use-scsr.html">Using SCSR Solution</a></li>
+<li><a href="../introduce.html">Introduction</a></li>
+<li><a href="../get-started/index.html">How to use ofa.js</a></li>
+<li><a href="../get-started/hello-world.html">First Case</a></li>
+<li><a href="../get-started/elements-and-events.html">Selection of Elements and Events</a></li>
+<li><a href="../get-started/basic-concept.html">Basic Concepts of Instances</a></li>
+<li><a href="../get-started/common-properties.html">Commonly Used Properties</a></li>
+<li><a href="../get-started/common-function.html">Introduction to Common Methods</a></li>
+<li><a href="../get-started/css.html">CSS</a></li>
+<li><a href="../get-started/classlist-and-data.html">classList and data</a></li>
+<li><a href="../get-started/box-model.html">Box Model</a></li>
+<li><a href="../get-started/formdata.html">Form Data</a></li>
+<li><a href="index.html">Creation and Usage</a></li>
+<li><a href="parameter-description.html">Parameter Descriptions</a></li>
+<li><a href="life-cycle.html">Life Cycle</a></li>
+<li><a href="web-components.html">General Knowledge of Componentization</a></li>
+<li><a href="template-syntax.html">Template Syntax</a></li>
+<li><a href="template-component.html">Template Components</a></li>
+<li><a href="../create-app/index.html">Using o-app</a></li>
+<li><a href="../create-app/page.html">Using Page Components</a></li>
+<li><a href="../create-app/app.html">Using App Components</a></li>
+<li><a href="../create-app/subrouting.html">Subrouting</a></li>
+<li><a href="../create-app/o-router.html">Route Binding</a></li>
+<li><a href="../create-app/scsr.html">SCSR Solution</a></li>
+<li><a href="../../others/data-sharing.html">Data Sharing</a></li>
+<li><a href="../../others/about-micro-frontend.html">ofa.js and Micro Frontend</a></li>
+<li><a href="../../../cn/index.html">简体中文-index.html</a></li>
+<li><a href="../../index.html">English-index.html</a></li>
+<li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
+
+</ul></div>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/init.js" type="module"></script>
   </body>
 </html>

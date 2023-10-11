@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Developing an application</title>
-    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/dist/ofa.min.js"></script>
+    <title>Develop Applications</title>
+    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/css/public.css" />
     <style>
       html,
       body {
@@ -34,9 +34,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -51,12 +51,12 @@
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/css/github-markdown.css"
         />
-        <article class="markdown-body"><h1>Developing an application</h1>
-<p>In addition to developing components, <code>ofa.js</code> can also be used to develop fully functional applications.</p>
-<p><code>ofa.js</code> integrates the application as an <code>o-app</code> component, allowing you to quickly create applications by simply using this tag. This simplifies and streamlines the process of application creation.</p>
-<p>Furthermore, <code>ofa.js</code> also provides a complete <strong>routing</strong> and <strong>SSG (Static Site Generation)</strong> solution, helping developers build more robust applications. These features accelerate the development process and allow you to focus on the logic and user experience of the application, without having to worry too much about the underlying details.</p>
+        <article class="markdown-body"><h1>Develop Applications</h1>
+<p>Apart from developing components, <code>ofa.js</code> can also be used to develop fully functional applications.</p>
+<p><code>ofa.js</code> integrates applications as an <code>o-app</code> component, allowing you to quickly create applications by directly using this tag. This approach simplifies and streamlines the process of application creation.</p>
+<p>In addition, the official <code>ofa.js</code> also provides a complete <strong>routing</strong> and <strong>SSG (Static Site Generation)</strong> solution, which helps developers build more robust applications. These features can accelerate the development process, allowing you to focus on the logic and user experience of the application without worrying too much about the underlying details.</p>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
   &lt;head&gt;
@@ -84,14 +84,14 @@
   &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<p>The above is a simple application tutorial code example, and the development process of the application will be explained gradually next.</p>
+<p>Above is a simple application tutorial code example. The development process of the application will be explained step by step.</p>
 
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -100,6 +100,63 @@
       </template>
     </o-app>
     <div id="loading"></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/init.js" type="module"></script>
+    <div class="body-important other-link"><ul>
+<li><a href="../../cases/index.html">Getting Started</a></li>
+<li><a href="../../cases/event.html">Event Handling</a></li>
+<li><a href="../../cases/simple-component.html">Creating and Using Components</a></li>
+<li><a href="../../cases/slot.html">Component Slots</a></li>
+<li><a href="../../cases/render-text.html">Template Syntax: Rendering Text</a></li>
+<li><a href="../../cases/attribute-transmission.html">Attribute Propagation</a></li>
+<li><a href="../../cases/get-set-comp.html">Accessing and Modifying Component Instance Values</a></li>
+<li><a href="../../cases/property-transmission.html">Template Syntax: Prop Binding</a></li>
+<li><a href="../../cases/bind-event.html">Template Syntax: Event Binding</a></li>
+<li><a href="../../cases/nested-component.html">Nested Components</a></li>
+<li><a href="../../cases/inject-host.html">inject-host Component</a></li>
+<li><a href="../../cases/event-passing.html">Event Propagation</a></li>
+<li><a href="../../cases/sync.html">Template Syntax: Two-Way Data Binding</a></li>
+<li><a href="../../cases/condition.html">Template Component: Conditional Rendering</a></li>
+<li><a href="../../cases/fill.html">Template Component: Dynamic Rendering</a></li>
+<li><a href="../../cases/fill-temp.html">Recursive Filling and Rendering</a></li>
+<li><a href="../../cases/life-cycle.html">Lifecycle</a></li>
+<li><a href="../../cases/form-data.html">Form Data</a></li>
+<li><a href="../../cases/custom-form-element.html">Custom Form Components</a></li>
+<li><a href="../../cases/use-page.html">Using Page Components</a></li>
+<li><a href="../../cases/use-app.html">Using app Component</a></li>
+<li><a href="../../cases/app-config.html">Configuring app Parameters</a></li>
+<li><a href="../../cases/app-loading.html">Customizing app Loading</a></li>
+<li><a href="../../cases/set404.html">Setting Up 404 Page</a></li>
+<li><a href="../../cases/use-hash-router.html">Using Hash Router</a></li>
+<li><a href="../../cases/use-scsr.html">Using SCSR Solution</a></li>
+<li><a href="../introduce.html">Introduction</a></li>
+<li><a href="../get-started/index.html">How to use ofa.js</a></li>
+<li><a href="../get-started/hello-world.html">First Case</a></li>
+<li><a href="../get-started/elements-and-events.html">Selection of Elements and Events</a></li>
+<li><a href="../get-started/basic-concept.html">Basic Concepts of Instances</a></li>
+<li><a href="../get-started/common-properties.html">Commonly Used Properties</a></li>
+<li><a href="../get-started/common-function.html">Introduction to Common Methods</a></li>
+<li><a href="../get-started/css.html">CSS</a></li>
+<li><a href="../get-started/classlist-and-data.html">classList and data</a></li>
+<li><a href="../get-started/box-model.html">Box Model</a></li>
+<li><a href="../get-started/formdata.html">Form Data</a></li>
+<li><a href="../create-component/index.html">Creation and Usage</a></li>
+<li><a href="../create-component/parameter-description.html">Parameter Descriptions</a></li>
+<li><a href="../create-component/life-cycle.html">Life Cycle</a></li>
+<li><a href="../create-component/web-components.html">General Knowledge of Componentization</a></li>
+<li><a href="../create-component/template-syntax.html">Template Syntax</a></li>
+<li><a href="../create-component/template-component.html">Template Components</a></li>
+<li><a href="index.html">Using o-app</a></li>
+<li><a href="page.html">Using Page Components</a></li>
+<li><a href="app.html">Using App Components</a></li>
+<li><a href="subrouting.html">Subrouting</a></li>
+<li><a href="o-router.html">Route Binding</a></li>
+<li><a href="scsr.html">SCSR Solution</a></li>
+<li><a href="../../others/data-sharing.html">Data Sharing</a></li>
+<li><a href="../../others/about-micro-frontend.html">ofa.js and Micro Frontend</a></li>
+<li><a href="../../../cn/index.html">简体中文-index.html</a></li>
+<li><a href="../../index.html">English-index.html</a></li>
+<li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
+
+</ul></div>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/init.js" type="module"></script>
   </body>
 </html>

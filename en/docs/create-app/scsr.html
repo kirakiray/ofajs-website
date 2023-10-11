@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Static Client-Side Rendering (SCSR)</title>
-    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/dist/ofa.min.js"></script>
+    <title>Static Client Side Rendering (SCSR)</title>
+    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/css/public.css" />
     <style>
       html,
       body {
@@ -34,9 +34,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -51,18 +51,24 @@
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/css/github-markdown.css"
         />
-        <article class="markdown-body"><h1>Static Client-Side Rendering (SCSR)</h1>
+        <article class="markdown-body"><h1>Static Client Side Rendering (SCSR)</h1>
 <h2>What is SCSR?</h2>
-<p>SCSR, or Static Client-Side Rendering, is a variation of CSR (Client-Side Rendering) that allows pages to be crawled in a static state while maintaining the user experience of CSR.</p>
+<p>SCSR, short for Static Client-Side Rendering, is also known as static client-side rendering. SCSR is a variant of CSR (Client-Side Rendering) that allows web pages to be crawled by search engines while maintaining the user experience of CSR in a static state.</p>
 <h2>How to Use SCSR</h2>
-<p>You can reference the SCSR library using the following method:</p>
-<pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.0.0/libs/scsr/dist/scsr.min.js&quot;&gt;&lt;/script&gt;
+<p>You can reference the SCSR library using the following methods: </p>
+<pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/libs/scsr/dist/scsr.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
-<h2>SCSR&#39;s working principle</h2>
-<p>SCSR works by directly running the page module in single-file mode, without using the <code>o-page</code> tag, thus enabling rendering on the page. Specifically, it involves placing the template code of the page module directly within the <code>o-app</code>.</p>
-<p>Here is an SCSR example that demonstrates how to directly render the content of a page module on the page:</p>
+<h2>The Working Principle of SCSR</h2>
+<p>SCSR is a page module that runs in single-file mode without using the <code>o-page</code> tag, allowing rendering on the page. Specifically, the template code of the page module is directly placed within the <code>o-app</code>.</p>
+<p>Below is an example of SCSR, which shows how to render the content of a page module directly on the page:</p>
+<pre><code class="language-html">&lt;scsr:module name=&quot;example-module&quot;&gt;
+  &lt;h1&gt;Hello, world!&lt;/h1&gt;
+&lt;/scsr:module&gt;
+</code></pre>
+<p>Based on the example above, the content within the <code>&lt;scsr:module&gt;</code> tag will be rendered directly on the page when the module named &quot;example-module&quot; is loaded.</p>
+<p>To use this feature, you need to have the appropriate module defined and registered in your SCSR framework. By using the module name as the value of the <code>name</code> attribute, you can easily embed the content within the module on any page.</p>
 <pre><code class="language-html">&lt;!-- home.html --&gt;
 &lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -96,7 +102,7 @@
   &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<p>The content within the <code>template</code> tag in SCSR is directly rendered onto the page, and this content is actually the page module of the single-file mode.</p>
+<p>Through SCSR, the content inside the <code>template</code> tag will be directly rendered on the page, and this part of the content is actually the page module in single-file mode.</p>
 <p>Continuing with the example of the <code>home.html</code> page, let&#39;s create a <code>help</code> page:</p>
 <pre><code class="language-html">&lt;!-- pages/help.html --&gt;
 &lt;!DOCTYPE html&gt;
@@ -129,20 +135,20 @@
   &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<p>After clicking &quot;GO TO HELP&quot; on the <code>home.html</code> page, it smoothly transitions to the <code>help.html</code> page, achieving a smooth transition effect through client-side rendering.</p>
-<h2>Precautions</h2>
-<p>All pages using the SCSR scheme must keep the referenced resources consistent, except for descriptive content (such as title, meta:description, keywords) and page template content, to ensure consistent experience after page navigation and refresh.</p>
-<h2>About the SSR scheme</h2>
-<p>The current SCSR scheme is actually more similar to a SSG (Static Site Generation) scheme, as it pre-renders the pages into static content and then interacts with them through the client side. ofa.js already provides a relatively independent component encapsulation scheme, allowing frontend developers to encapsulate components and then combine them with traditional backend rendering page schemes (such as Node.js, Go, Java, PHP, etc.) to quickly create high-quality web pages. </p>
-<p>We plan to provide a complete SSR (Server-Side Rendering) scheme in the future. The principle of this scheme is to first fetch the element content of the next page, and then compare it with the current page&#39;s tag content to dynamically add, delete, and modify attribute values. However, it is important to note that this SSR scheme will be more time-consuming because it involves complex element comparison and modification operations.</p>
-<p>ofa.js is an emerging framework, and the author&#39;s spare time is limited, so the SSR scheme has not been fully developed yet. However, if ofa.js can have more users in the future and there is a strong demand for the SSR scheme, the author will continue to improve and develop this scheme. Currently, the author will focus on the stability and functionality expansion of the framework, and also welcomes feedback and suggestions from users in order to better meet their needs in the future.</p>
+<p>After clicking &quot;GO TO HELP&quot; on the <code>home.html</code> page, the smooth transition to the <code>help.html</code> page is achieved, realizing the smooth transition effect of client-side rendering.</p>
+<h2>Caveat</h2>
+<p>All pages using the SCSR scheme must keep the referenced resources consistent, except for descriptive contents such as title, meta:description, keywords, and page template content, to ensure consistent experience after page navigation and refresh.</p>
+<h2>About SSR Solution</h2>
+<p>The current SCSR solution is actually more similar to a SSG (Static Site Generation) solution because it pre-renders the pages into static content and then interacts with them through the client. ofa.js has provided a relatively independent component encapsulation solution, allowing frontend developers to encapsulate components and combine them with traditional backend rendering solutions (such as website rendering frameworks in languages like Node.js, Go, Java, PHP, etc.), enabling backend developers to quickly use these encapsulated components to build high-quality web pages.</p>
+<p>We plan to provide a complete Server-Side Rendering (SSR) solution in the future. The principle of this solution is to first obtain the element content of the next page, and then compare it with the current page&#39;s tag content in order to dynamically add, delete, and modify attribute values. However, it is important to note that this SSR solution can be time-consuming because it involves complex element comparison and modification operations.</p>
+<p>ofa.js is an emerging framework, and the author&#39;s limited spare time means that the SSR solution has not been fully developed yet. However, if ofa.js gains more users in the future and there is a strong demand for an SSR solution, the author will continue to improve and develop this solution. Currently, the author is focusing on the stability and feature expansion of the framework, and welcomes user feedback and suggestions to better meet user needs in the future.</p>
 
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -151,6 +157,63 @@
       </template>
     </o-app>
     <div id="loading"></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/init.js" type="module"></script>
+    <div class="body-important other-link"><ul>
+<li><a href="../../cases/index.html">Getting Started</a></li>
+<li><a href="../../cases/event.html">Event Handling</a></li>
+<li><a href="../../cases/simple-component.html">Creating and Using Components</a></li>
+<li><a href="../../cases/slot.html">Component Slots</a></li>
+<li><a href="../../cases/render-text.html">Template Syntax: Rendering Text</a></li>
+<li><a href="../../cases/attribute-transmission.html">Attribute Propagation</a></li>
+<li><a href="../../cases/get-set-comp.html">Accessing and Modifying Component Instance Values</a></li>
+<li><a href="../../cases/property-transmission.html">Template Syntax: Prop Binding</a></li>
+<li><a href="../../cases/bind-event.html">Template Syntax: Event Binding</a></li>
+<li><a href="../../cases/nested-component.html">Nested Components</a></li>
+<li><a href="../../cases/inject-host.html">inject-host Component</a></li>
+<li><a href="../../cases/event-passing.html">Event Propagation</a></li>
+<li><a href="../../cases/sync.html">Template Syntax: Two-Way Data Binding</a></li>
+<li><a href="../../cases/condition.html">Template Component: Conditional Rendering</a></li>
+<li><a href="../../cases/fill.html">Template Component: Dynamic Rendering</a></li>
+<li><a href="../../cases/fill-temp.html">Recursive Filling and Rendering</a></li>
+<li><a href="../../cases/life-cycle.html">Lifecycle</a></li>
+<li><a href="../../cases/form-data.html">Form Data</a></li>
+<li><a href="../../cases/custom-form-element.html">Custom Form Components</a></li>
+<li><a href="../../cases/use-page.html">Using Page Components</a></li>
+<li><a href="../../cases/use-app.html">Using app Component</a></li>
+<li><a href="../../cases/app-config.html">Configuring app Parameters</a></li>
+<li><a href="../../cases/app-loading.html">Customizing app Loading</a></li>
+<li><a href="../../cases/set404.html">Setting Up 404 Page</a></li>
+<li><a href="../../cases/use-hash-router.html">Using Hash Router</a></li>
+<li><a href="../../cases/use-scsr.html">Using SCSR Solution</a></li>
+<li><a href="../introduce.html">Introduction</a></li>
+<li><a href="../get-started/index.html">How to use ofa.js</a></li>
+<li><a href="../get-started/hello-world.html">First Case</a></li>
+<li><a href="../get-started/elements-and-events.html">Selection of Elements and Events</a></li>
+<li><a href="../get-started/basic-concept.html">Basic Concepts of Instances</a></li>
+<li><a href="../get-started/common-properties.html">Commonly Used Properties</a></li>
+<li><a href="../get-started/common-function.html">Introduction to Common Methods</a></li>
+<li><a href="../get-started/css.html">CSS</a></li>
+<li><a href="../get-started/classlist-and-data.html">classList and data</a></li>
+<li><a href="../get-started/box-model.html">Box Model</a></li>
+<li><a href="../get-started/formdata.html">Form Data</a></li>
+<li><a href="../create-component/index.html">Creation and Usage</a></li>
+<li><a href="../create-component/parameter-description.html">Parameter Descriptions</a></li>
+<li><a href="../create-component/life-cycle.html">Life Cycle</a></li>
+<li><a href="../create-component/web-components.html">General Knowledge of Componentization</a></li>
+<li><a href="../create-component/template-syntax.html">Template Syntax</a></li>
+<li><a href="../create-component/template-component.html">Template Components</a></li>
+<li><a href="index.html">Using o-app</a></li>
+<li><a href="page.html">Using Page Components</a></li>
+<li><a href="app.html">Using App Components</a></li>
+<li><a href="subrouting.html">Subrouting</a></li>
+<li><a href="o-router.html">Route Binding</a></li>
+<li><a href="scsr.html">SCSR Solution</a></li>
+<li><a href="../../others/data-sharing.html">Data Sharing</a></li>
+<li><a href="../../others/about-micro-frontend.html">ofa.js and Micro Frontend</a></li>
+<li><a href="../../../cn/index.html">简体中文-index.html</a></li>
+<li><a href="../../index.html">English-index.html</a></li>
+<li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
+
+</ul></div>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/init.js" type="module"></script>
   </body>
 </html>

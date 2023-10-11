@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Create an application</title>
-    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/dist/ofa.min.js"></script>
+    <title>Creating Applications</title>
+    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/css/public.css" />
     <style>
       html,
       body {
@@ -34,9 +34,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -51,14 +51,12 @@
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/css/github-markdown.css"
         />
-        <article class="markdown-body"><h1>Create an application</h1>
-<p>You can easily create a complete application window using the <code>o-app</code> tag. Here are the steps to create an application and configure it:</p>
+        <article class="markdown-body"><h1>Creating Applications</h1>
+<p>Using the <code>o-app</code> tag allows you to easily create a complete application window. Here is the step-by-step process for creating an application and configuring it:</p>
 <h2>Basic code</h2>
-<ol>
-<li>Create an HTML file and set the <code>o-app</code> tag as the display window for the application. Make sure to set the <code>o-app</code> to fullscreen style to occupy the entire viewport.</li>
-</ol>
+<p>Create an HTML file and set the &#39;o-app&#39; tag as the display window for the application. Make sure to set the &#39;o-app&#39; tag to full screen style so that the application occupies the entire viewport.</p>
 <pre><code class="language-html">&lt;!-- app.html --&gt;
 &lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -87,15 +85,16 @@
 &lt;/html&gt;
 </code></pre>
 <ol start="2">
-<li>Create an ES module to set the configuration data for the application. The configuration data includes the following options:</li>
-</ol>
+<li><p>Create an ES module to set up the configuration data for the application. The configuration data includes the following options:</p>
 <ul>
-<li><code>home</code>: A string specifying the page module address for the application&#39;s homepage.</li>
-<li><code>loading</code>: A function that runs when the application is loading a new page. The content returned by this function will be inserted into the application as a loading indicator, and it will automatically be removed when the page finishes loading.</li>
-<li><code>fail</code>: A function that runs when the application fails to load a page. The value returned by this function will be displayed in the application as a loading failure message. The function receives the source address of the failed page and the error object.</li>
-<li><code>pageAnime</code>: The animation configuration for page transitions.</li>
+<li><code>home</code>: String type, the page module address of the application&#39;s homepage.</li>
+<li><code>loading</code>: Function type, this function will be executed when the application is loading a new page. The content obtained will be inserted into the application as a loading prompt. After the page is loaded, this loading element will be automatically removed.</li>
+<li><code>fail</code>: Function type, this function will be executed when the application fails to load a page. The value returned will be displayed in the application as a loading failure prompt. The function will have the <code>src</code> address of the failed page and the error object.</li>
+<li><code>pageAnime</code>: Animation configuration for page transitions.</li>
 </ul>
-<p>Here is an example of the application&#39;s configuration data:</p>
+</li>
+</ol>
+<p>The following is an example of the configuration data for the application:</p>
 <pre><code class="language-javascript">// app-config.mjs
 export const home = &quot;./pages/home.mjs?count=1&quot;;
 
@@ -133,7 +132,7 @@ export const pageAnime = {
 };
 </code></pre>
 <ol start="3">
-<li>Use the <code>o-app</code> tag in the HTML file and reference the configuration data&#39;s ES module using the <code>src</code> attribute.</li>
+<li>Use the <code>o-app</code> tag in HTML files and reference the configuration data es module through the <code>src</code> attribute.</li>
 </ol>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -161,18 +160,18 @@ export const pageAnime = {
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<p>By following the above steps, you have successfully created an application window that uses the <code>o-app</code> component. The <code>o-app</code> component will load the page based on the settings in the configuration data, displaying a loading indicator or an error message if the loading fails, and supporting page transition animations. This allows you to quickly build a fully functional and interactive application.</p>
-<h2>Route Navigation</h2>
-<p>In the <code>o-app</code> application, you can easily implement route navigation, moving from one page module to another. The following describes several different ways to perform route navigation.</p>
-<h3>Using <code>&lt;a&gt;</code> Tags for Route Navigation</h3>
-<p>You can use <code>&lt;a&gt;</code> tags in the HTML of the page to implement route navigation. The <code>href</code> attribute should be specified as the path to the target page module, and the <code>olink</code> attribute should be added to inform the <code>o-app</code> component that this is a route link.</p>
-<pre><code class="language-html">&lt;a href=&quot;./pages/home.mjs?count=2&quot; olink&gt;Go to Home&lt;/a&gt;
+<p>By following the steps above, you have successfully created an application window using the <code>o-app</code> component. The <code>o-app</code> component will load the page based on the settings in the configuration data, display a loading prompt or a loading failure prompt, and support page transition animations. This way, you can quickly build a fully functional and interactive application.</p>
+<h2>Route Jump</h2>
+<p>In the <code>o-app</code> application, you can easily achieve route navigation, jumping from one page module to another page module. Below are several different ways to perform route navigation.</p>
+<h3>Use <code>&lt;a&gt;</code> tag for route navigation</h3>
+<p>You can use the <code>&lt;a&gt;</code> tag in the HTML of the page to implement routing. You need to specify the <code>href</code> attribute as the path of the target page module and add the <code>olink</code> attribute to inform the <code>o-app</code> component that this is a routing link.</p>
+<pre><code class="language-html">&lt;a href=&quot;./pages/home.mjs?count=2&quot; olink&gt;Jump to homepage&lt;/a&gt;
 </code></pre>
 <h3>goto</h3>
-<p>You can use the <code>on:click</code> attribute in the page template to bind a click event and call the <code>goto</code> method on the module to perform route navigation.</p>
+<p>You can use the <code>on:click</code> attribute in the page template to bind a click event and call the <code>goto</code> method on the module for routing.</p>
 <pre><code class="language-html">&lt;template page&gt;
   &lt;div class=&quot;container&quot;&gt;
-    &lt;button on:click=&quot;toabout&quot;&gt;Go to About Page&lt;/button&gt;
+    &lt;button on:click=&quot;toabout&quot;&gt;Jump to About page&lt;/button&gt;
   &lt;/div&gt;
 
   &lt;script&gt;
@@ -188,28 +187,28 @@ export const pageAnime = {
   &lt;/script&gt;
 &lt;/template&gt;
 </code></pre>
-<p>Or directly on the target element:</p>
-<pre><code class="language-html">&lt;button on:click=&quot;goto(&#39;./pages/about.mjs&#39;)&quot;&gt;Go to About Page&lt;/button&gt;
+<p>Uninstall the target element directly.</p>
+<pre><code class="language-html">&lt;button on:click=&quot;goto(&#39;./pages/about.mjs&#39;)&quot;&gt;Go to about page&lt;/button&gt;
 </code></pre>
-<h3>Replace Navigation and Back</h3>
-<p>In addition to the <code>goto</code> method, <code>o-app</code> also supports <code>replace</code> and <code>back</code> methods.</p>
+<h3>Replace Jump and Return Pages</h3>
+<p>Besides the <code>goto</code> method, <code>o-app</code> also supports the <code>replace</code> and <code>back</code> methods.</p>
 <ul>
-<li>The <code>replace</code> method is used to replace navigation. It replaces the current page&#39;s route with the route of the new page.</li>
+<li>The <code>replace</code> method is used to replace navigation, it replaces the current page&#39;s route with the route of the new page.</li>
 </ul>
-<pre><code class="language-html">&lt;button on:click=&quot;replace(&#39;./pages/settings.mjs&#39;)&quot;&gt;Go to New Page and Replace Current Page&lt;/button&gt;
+<pre><code class="language-html">&lt;button on:click=&quot;replace(&#39;./pages/settings.mjs&#39;)&quot;&gt;Jump and replace the current page&lt;/button&gt;
 </code></pre>
 <ul>
 <li>The <code>back</code> method is used to go back to the previous page.</li>
 </ul>
-<pre><code class="language-html">&lt;button on:click=&quot;back()&quot;&gt;Go back to previous page&lt;/button&gt;
+<pre><code class="language-html">&lt;button on:click=&quot;back()&quot;&gt;Back to Previous Page&lt;/button&gt;
 </code></pre>
-<p>It should be noted that the component&#39;s route state is maintained within the application, but the route data is not bound to the current browser tab. This allows for easy navigation and transitions between pages in the application.</p>
-<p>If you want to achieve binding between routes and pages, you can use the o-router component, which will be explained in detail in later chapters.</p>
-<p>Using the above methods, you can implement flexible navigation within an o-app application, allowing users to easily browse different page contents.</p>
-<h2>Accessing the Application and Current Page</h2>
-<p>Within various elements (including components) in the application, you can use the <strong>app</strong> attribute to access the o-app instance they belong to. This is useful for interactions that need to involve the entire application.</p>
-<p>You can get the address of the currently active page module through the <code>app.current</code> property.</p>
-<p>Here is an example of its usage:</p>
+<p>It should be noted that the application will maintain the routing state of the components, but the routing data will not be bound to the current browser tab. In this way, you can easily implement page transitions and navigation between pages in the application.</p>
+<p>If you want to bind routes and pages, you can use the o-router component, which we will discuss in detail in the following sections.</p>
+<p>Through the above methods, you can implement flexible routing in the <code>o-app</code> application, allowing users to easily browse different page content.</p>
+<h2>Accessing Apps and Current Pages</h2>
+<p>In various elements (including components) within the application, you can use the <strong>app</strong> attribute to access the <code>o-app</code> instance they belong to. This is very useful for operations that require interaction with the entire application.</p>
+<p>You can retrieve the address of the currently active page module through the <code>app.current</code> property.</p>
+<p>Here is an example of usage: </p>
 <pre><code class="language-javascript">// MyComponent.mjs
 export default () =&gt; {
   return {
@@ -217,28 +216,28 @@ export default () =&gt; {
       const appTag = this.app;
 
       const currentPage = appTag.current;
-      console.log(`The currently active page is: ${currentPage}`);
+      console.log(`The current activated page is: ${currentPage}`);
     }
   };
 }
 </code></pre>
-<p>In the example above, the application tag was obtained by using the selector <code>.app</code>, and then the current active page address was accessed through the <code>app.current</code> property.</p>
-<h2>Tip: Pre-caching next page</h2>
-<p>In some scenarios, you may already know that the user will be navigating to the next page. To improve user experience, you can pre-cache the page module of the next page so that it can be immediately loaded during actual navigation, reducing the waiting time for the user and making the experience smoother.</p>
-<p>In the JavaScript code of the current page, call the <code>load</code> method and pass the module path of the next page. This module will be loaded and cached.</p>
+<p>In the example above, the app tag was retrieved using the selector <code>.app</code>, and then the current active page address was obtained by accessing the <code>app.current</code> attribute.</p>
+<h2>Tips: Pre-cache the next page</h2>
+<p>In some scenarios, you may already know that the user is about to navigate to the next page. To enhance the user experience, you can pre-cache the page modules of the next page, so that they can be loaded immediately when the actual navigation occurs. This reduces the waiting time for users and makes their experience smoother.</p>
+<p>In the JavaScript code of the current page, call the <code>load</code> method and pass in the module path of the next page. The module will be loaded and cached.</p>
 <pre><code class="language-javascript">// MyComponent.mjs
 export default async ({ load }) =&gt; {
   //   await load(&#39;./pages/next-page.mjs&#39;);
-  load(&#39;./pages/next-page.mjs&#39;); // This is used only for caching, not necessary for non-current page modules, no need to add await
+  load(&#39;./pages/next-page.mjs&#39;); // This is only used for caching and is not a necessary module for the current page, so there is no need to add await
 };
 </code></pre>
 
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -247,6 +246,63 @@ export default async ({ load }) =&gt; {
       </template>
     </o-app>
     <div id="loading"></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/init.js" type="module"></script>
+    <div class="body-important other-link"><ul>
+<li><a href="../../cases/index.html">Getting Started</a></li>
+<li><a href="../../cases/event.html">Event Handling</a></li>
+<li><a href="../../cases/simple-component.html">Creating and Using Components</a></li>
+<li><a href="../../cases/slot.html">Component Slots</a></li>
+<li><a href="../../cases/render-text.html">Template Syntax: Rendering Text</a></li>
+<li><a href="../../cases/attribute-transmission.html">Attribute Propagation</a></li>
+<li><a href="../../cases/get-set-comp.html">Accessing and Modifying Component Instance Values</a></li>
+<li><a href="../../cases/property-transmission.html">Template Syntax: Prop Binding</a></li>
+<li><a href="../../cases/bind-event.html">Template Syntax: Event Binding</a></li>
+<li><a href="../../cases/nested-component.html">Nested Components</a></li>
+<li><a href="../../cases/inject-host.html">inject-host Component</a></li>
+<li><a href="../../cases/event-passing.html">Event Propagation</a></li>
+<li><a href="../../cases/sync.html">Template Syntax: Two-Way Data Binding</a></li>
+<li><a href="../../cases/condition.html">Template Component: Conditional Rendering</a></li>
+<li><a href="../../cases/fill.html">Template Component: Dynamic Rendering</a></li>
+<li><a href="../../cases/fill-temp.html">Recursive Filling and Rendering</a></li>
+<li><a href="../../cases/life-cycle.html">Lifecycle</a></li>
+<li><a href="../../cases/form-data.html">Form Data</a></li>
+<li><a href="../../cases/custom-form-element.html">Custom Form Components</a></li>
+<li><a href="../../cases/use-page.html">Using Page Components</a></li>
+<li><a href="../../cases/use-app.html">Using app Component</a></li>
+<li><a href="../../cases/app-config.html">Configuring app Parameters</a></li>
+<li><a href="../../cases/app-loading.html">Customizing app Loading</a></li>
+<li><a href="../../cases/set404.html">Setting Up 404 Page</a></li>
+<li><a href="../../cases/use-hash-router.html">Using Hash Router</a></li>
+<li><a href="../../cases/use-scsr.html">Using SCSR Solution</a></li>
+<li><a href="../introduce.html">Introduction</a></li>
+<li><a href="../get-started/index.html">How to use ofa.js</a></li>
+<li><a href="../get-started/hello-world.html">First Case</a></li>
+<li><a href="../get-started/elements-and-events.html">Selection of Elements and Events</a></li>
+<li><a href="../get-started/basic-concept.html">Basic Concepts of Instances</a></li>
+<li><a href="../get-started/common-properties.html">Commonly Used Properties</a></li>
+<li><a href="../get-started/common-function.html">Introduction to Common Methods</a></li>
+<li><a href="../get-started/css.html">CSS</a></li>
+<li><a href="../get-started/classlist-and-data.html">classList and data</a></li>
+<li><a href="../get-started/box-model.html">Box Model</a></li>
+<li><a href="../get-started/formdata.html">Form Data</a></li>
+<li><a href="../create-component/index.html">Creation and Usage</a></li>
+<li><a href="../create-component/parameter-description.html">Parameter Descriptions</a></li>
+<li><a href="../create-component/life-cycle.html">Life Cycle</a></li>
+<li><a href="../create-component/web-components.html">General Knowledge of Componentization</a></li>
+<li><a href="../create-component/template-syntax.html">Template Syntax</a></li>
+<li><a href="../create-component/template-component.html">Template Components</a></li>
+<li><a href="index.html">Using o-app</a></li>
+<li><a href="page.html">Using Page Components</a></li>
+<li><a href="app.html">Using App Components</a></li>
+<li><a href="subrouting.html">Subrouting</a></li>
+<li><a href="o-router.html">Route Binding</a></li>
+<li><a href="scsr.html">SCSR Solution</a></li>
+<li><a href="../../others/data-sharing.html">Data Sharing</a></li>
+<li><a href="../../others/about-micro-frontend.html">ofa.js and Micro Frontend</a></li>
+<li><a href="../../../cn/index.html">简体中文-index.html</a></li>
+<li><a href="../../index.html">English-index.html</a></li>
+<li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
+
+</ul></div>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/init.js" type="module"></script>
   </body>
 </html>

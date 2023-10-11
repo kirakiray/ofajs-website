@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Subroute mode</title>
-    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/dist/ofa.min.js"></script>
+    <title>Subroute Mode</title>
+    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/css/public.css" />
     <style>
       html,
       body {
@@ -34,9 +34,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -51,12 +51,12 @@
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/css/github-markdown.css"
         />
-        <article class="markdown-body"><h1>Subroute mode</h1>
-<p>In ofa.js, setting subroutes is slightly different from the practices of some frontend frameworks. ofa.js uses a more intuitive approach by setting the parent page as the container on the page module, to achieve the demand for subroutes.</p>
-<h2>Setting the parent page container</h2>
-<p>To create subroutes, you first need to set the <code>parent</code> parameter on the page module of the child page, specifying the page module address of the parent page. This way, when the child page is loaded, ofa.js will automatically wrap the child page in the parent page container.</p>
+        <article class="markdown-body"><h1>Subroute Mode</h1>
+<p>In ofa.js, setting up sub-routes is slightly different from other front-end frameworks. ofa.js uses a more intuitive approach by setting the parent page as a container on the page module to achieve the needs of sub-routes.</p>
+<h2>Set Parent Page Container</h2>
+<p>To create a sub-route, first, the <code>parent</code> parameter needs to be set on the page module of the child page, specifying the page module address of the parent page. This way, when the child page is loaded, ofa.js will automatically wrap the child page in the container of the parent page.</p>
 <pre><code class="language-html">&lt;template page&gt;
   &lt;h1&gt;Page 1&lt;/h1&gt;
 
@@ -65,45 +65,45 @@
   &lt;/script&gt;
 &lt;/template&gt;
 </code></pre>
-<p>In the above example, the page module of the sub-page specifies the address of the parent page container using the <code>parent</code> parameter.</p>
-<h2>Parent Page Container Template Setting</h2>
-<p>The template of the parent page container needs to set a <code>&lt;slot&gt;</code> element so that the sub-page can be inserted into the specified position of the parent page. At the same time, make sure that the container element of the <code>&lt;slot&gt;</code> element is set to <code>position: relative</code>, which is very important because the sub-page will be absolutely positioned within the parent page container.</p>
-<p>Here is an example template of a parent page container:</p>
+<p>In the above example, the page module of the subpage specifies the address of the parent page container through the <code>parent</code> parameter.</p>
+<h2>Parent Page Container Template Settings</h2>
+<p>The template of the parent page container needs to set a <code>&lt;slot&gt;</code> element so that the child pages can be inserted into the specified position of the parent page. At the same time, make sure that the container element of the <code>&lt;slot&gt;</code> element is set to <code>position: relative</code>. This is very important because the child pages will be absolutely positioned within the parent page container.</p>
+<p>The following is an example template of a parent page container:</p>
 <pre><code class="language-html">&lt;!-- layout-page.html --&gt;
 &lt;template page&gt;
   &lt;style&gt;
-    /* Set the container element to relative position */
+    /* Set the container element as relative positioning */
     .parent-container {
       position: relative;
     }
   &lt;/style&gt;
   
-  &lt;!-- Set the container element for inserting the sub-page --&gt;
+  &lt;!-- Set the container element for inserting subpages --&gt;
   &lt;div class=&quot;parent-container&quot;&gt;
     &lt;slot&gt;&lt;/slot&gt;
   &lt;/div&gt;
 &lt;/template&gt;
 </code></pre>
-<p>In the above example, by setting a container element with a <code>slot</code>, the sub-page will be inserted into that container. Make sure the container element has relative positioning so that the sub-page can be positioned relative to it.</p>
-<p>By using this approach, you can more intuitively configure child routes by establishing the relationship between the parent page container and the sub-page for loading and rendering the sub-page.</p>
-<h2>Parent Page Route Listening</h2>
-<p>In some cases, multiple pages share the same parent page as a container. When navigating between these pages, the parent page is not refreshed. In this case, the parent page can still listen to route changes to perform corresponding actions without refreshing the page.</p>
-<h3>Listening to Route Changes</h3>
-<p>The parent page module can set a <code>routerChange</code> function to listen to route changes. When the page changes its route without refreshing the parent page, the <code>routerChange</code> event will be triggered. This event will pass the information of the current page and the navigation type (<code>type</code>).</p>
-<p>Here is an example of a parent page module that demonstrates how to set up a <code>routerChange</code> function to listen to route changes:</p>
+<p>In the above example, by setting a container element with a <code>slot</code>, the subpage will be inserted into the container. Make sure the container element has relative positioning so that the subpage can be positioned relative to the container.</p>
+<p>By using this approach, you can configure sub-routes more intuitively. By setting the association between the parent page container and the child pages, you can achieve the loading and rendering of the child pages.</p>
+<h2>Listening to Routes on the Parent Page</h2>
+<p>In some cases, multiple pages share the same parent page as a container. When these pages navigate between each other, the parent page will not be refreshed. In this case, the parent page can still listen for changes in the route and perform corresponding operations without refreshing the page.</p>
+<h3>Listen to routing changes</h3>
+<p>The parent page module can set a <code>routerChange</code> function to monitor the change of the route. When the page changes the route without refreshing the parent page, the <code>routerChange</code> event will be triggered. This event will pass the information of the current page and the navigation mode (<code>type</code>).</p>
+<p>Below is an example of a parent page module, demonstrating how to set up the <code>routerChange</code> function to listen for route changes:</p>
 <pre><code class="language-javascript">// Parent page&#39;s page module
 export const routerChange = (current, type) =&gt; {
-  console.log(`Route Change: Current page is ${current.src}, navigation type is ${type}`);
+  console.log(`Routing change: Current page is ${current.src}, change method is ${type}`);
 };
 </code></pre>
-<p>In the above example, the <code>routerChange</code> function takes two parameters: <code>current</code> represents the current page address, and <code>type</code> represents the type of navigation. When the page undergoes a router change, this function is triggered and outputs the corresponding information.</p>
+<p>In the above example, the <code>routerChange</code> function receives two parameters. <code>current</code> represents the address of the current page, and <code>type</code> represents the type of navigation. When the page undergoes a router change, this function will be triggered and output the corresponding information.</p>
 
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -112,6 +112,63 @@ export const routerChange = (current, type) =&gt; {
       </template>
     </o-app>
     <div id="loading"></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/init.js" type="module"></script>
+    <div class="body-important other-link"><ul>
+<li><a href="../../cases/index.html">Getting Started</a></li>
+<li><a href="../../cases/event.html">Event Handling</a></li>
+<li><a href="../../cases/simple-component.html">Creating and Using Components</a></li>
+<li><a href="../../cases/slot.html">Component Slots</a></li>
+<li><a href="../../cases/render-text.html">Template Syntax: Rendering Text</a></li>
+<li><a href="../../cases/attribute-transmission.html">Attribute Propagation</a></li>
+<li><a href="../../cases/get-set-comp.html">Accessing and Modifying Component Instance Values</a></li>
+<li><a href="../../cases/property-transmission.html">Template Syntax: Prop Binding</a></li>
+<li><a href="../../cases/bind-event.html">Template Syntax: Event Binding</a></li>
+<li><a href="../../cases/nested-component.html">Nested Components</a></li>
+<li><a href="../../cases/inject-host.html">inject-host Component</a></li>
+<li><a href="../../cases/event-passing.html">Event Propagation</a></li>
+<li><a href="../../cases/sync.html">Template Syntax: Two-Way Data Binding</a></li>
+<li><a href="../../cases/condition.html">Template Component: Conditional Rendering</a></li>
+<li><a href="../../cases/fill.html">Template Component: Dynamic Rendering</a></li>
+<li><a href="../../cases/fill-temp.html">Recursive Filling and Rendering</a></li>
+<li><a href="../../cases/life-cycle.html">Lifecycle</a></li>
+<li><a href="../../cases/form-data.html">Form Data</a></li>
+<li><a href="../../cases/custom-form-element.html">Custom Form Components</a></li>
+<li><a href="../../cases/use-page.html">Using Page Components</a></li>
+<li><a href="../../cases/use-app.html">Using app Component</a></li>
+<li><a href="../../cases/app-config.html">Configuring app Parameters</a></li>
+<li><a href="../../cases/app-loading.html">Customizing app Loading</a></li>
+<li><a href="../../cases/set404.html">Setting Up 404 Page</a></li>
+<li><a href="../../cases/use-hash-router.html">Using Hash Router</a></li>
+<li><a href="../../cases/use-scsr.html">Using SCSR Solution</a></li>
+<li><a href="../introduce.html">Introduction</a></li>
+<li><a href="../get-started/index.html">How to use ofa.js</a></li>
+<li><a href="../get-started/hello-world.html">First Case</a></li>
+<li><a href="../get-started/elements-and-events.html">Selection of Elements and Events</a></li>
+<li><a href="../get-started/basic-concept.html">Basic Concepts of Instances</a></li>
+<li><a href="../get-started/common-properties.html">Commonly Used Properties</a></li>
+<li><a href="../get-started/common-function.html">Introduction to Common Methods</a></li>
+<li><a href="../get-started/css.html">CSS</a></li>
+<li><a href="../get-started/classlist-and-data.html">classList and data</a></li>
+<li><a href="../get-started/box-model.html">Box Model</a></li>
+<li><a href="../get-started/formdata.html">Form Data</a></li>
+<li><a href="../create-component/index.html">Creation and Usage</a></li>
+<li><a href="../create-component/parameter-description.html">Parameter Descriptions</a></li>
+<li><a href="../create-component/life-cycle.html">Life Cycle</a></li>
+<li><a href="../create-component/web-components.html">General Knowledge of Componentization</a></li>
+<li><a href="../create-component/template-syntax.html">Template Syntax</a></li>
+<li><a href="../create-component/template-component.html">Template Components</a></li>
+<li><a href="index.html">Using o-app</a></li>
+<li><a href="page.html">Using Page Components</a></li>
+<li><a href="app.html">Using App Components</a></li>
+<li><a href="subrouting.html">Subrouting</a></li>
+<li><a href="o-router.html">Route Binding</a></li>
+<li><a href="scsr.html">SCSR Solution</a></li>
+<li><a href="../../others/data-sharing.html">Data Sharing</a></li>
+<li><a href="../../others/about-micro-frontend.html">ofa.js and Micro Frontend</a></li>
+<li><a href="../../../cn/index.html">简体中文-index.html</a></li>
+<li><a href="../../index.html">English-index.html</a></li>
+<li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
+
+</ul></div>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/init.js" type="module"></script>
   </body>
 </html>

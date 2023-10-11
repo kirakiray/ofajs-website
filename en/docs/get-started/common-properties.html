@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Common Properties</title>
-    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/dist/ofa.min.js"></script>
+    <title>Commonly Used Properties</title>
+    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/css/public.css" />
     <style>
       html,
       body {
@@ -34,9 +34,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -51,20 +51,20 @@
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/css/github-markdown.css"
         />
-        <article class="markdown-body"><h1>Common Properties</h1>
-<p>In a <code>$</code> instance, in addition to selecting elements using selectors, there are also some common properties provided for easy element manipulation and retrieval.</p>
-<h2>tag Property</h2>
-<p>The <code>tag</code> property is used to get the lowercase tag name of the current element, similar to the <code>tagName</code> property of DOM elements.</p>
+        <article class="markdown-body"><h1>Commonly Used Properties</h1>
+<p>In the <code>$</code> instance, in addition to selecting elements with selectors, there are also some commonly used methods provided to facilitate element manipulation and searching.</p>
+<h2>tag</h2>
+<p><code>tag</code> is used to get the tag name (in lowercase form) of the current element, similar to the <code>tagName</code> of DOM elements.</p>
 <pre><code class="language-html">&lt;div id=&quot;example&quot;&gt;Hello World&lt;/div&gt;
 &lt;script&gt;
     const $div = $(&#39;#example&#39;);
     console.log($div.tag); // Output: &quot;div&quot;
 &lt;/script&gt;
 </code></pre>
-<h2>ele Property</h2>
-<p>The <code>ele</code> property is used to get the actual DOM element of the <code>$</code> instance, allowing native JavaScript operations on that element.</p>
+<h2>ele</h2>
+<p><code>ele</code> is used to access the actual DOM element of the <code>$</code> instance, so that native JavaScript operations can be performed on that element.</p>
 <pre><code class="language-html">&lt;div id=&quot;example&quot;&gt;Hello World&lt;/div&gt;
 &lt;script&gt;
     const $div = $(&#39;#example&#39;);
@@ -72,8 +72,8 @@
     actualElement.style.color = &quot;red&quot;; // Change text color to red
 &lt;/script&gt;
 </code></pre>
-<h2>index Property</h2>
-<p>The <code>index</code> property is used to get the ranking index of the current element among sibling elements, starting from 0.</p>
+<p>Sorry, I cannot see any simplified Chinese text in the given input.</p>
+<p><code>index</code> is used to retrieve the ranking index of the current element among its sibling elements, starting from 0.</p>
 <pre><code class="language-html">&lt;div&gt;
     &lt;span&gt;First&lt;/span&gt;
     &lt;span&gt;Second&lt;/span&gt;
@@ -84,10 +84,10 @@
     console.log($targetSpan.index); // Output: 2
 &lt;/script&gt;
 </code></pre>
-<h2>parent and parents attributes</h2>
+<h2>parent and parents</h2>
 <ul>
-<li>The <code>parent</code> attribute is used to get the direct parent element of the current element. </li>
-<li>The <code>parents</code> attribute is used to get an array of all ancestor elements of the current element (including the parent&#39;s parent, the parent&#39;s parent&#39;s parent, and so on).</li>
+<li><code>parent</code> is used to retrieve the immediate parent element of the current element.</li>
+<li><code>parents</code> is used to retrieve an array of all ancestor elements of the current element, including the parent element&#39;s parent element, the parent element&#39;s parent element&#39;s parent element, and so on.</li>
 </ul>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -115,13 +115,13 @@
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<h2>next, nexts, prev, prevs, siblings attributes</h2>
+<h2>next, nexts, prev, prevs, siblings</h2>
 <ul>
-<li>The <code>next</code> attribute is used to get the next sibling element of the current element. </li>
-<li>The <code>nexts</code> attribute is used to get an array of all sibling elements that come after the current element. </li>
-<li>The <code>prev</code> attribute is used to get the previous sibling element of the current element. </li>
-<li>The <code>prevs</code> attribute is used to get an array of all sibling elements that come before the current element. </li>
-<li>The <code>siblings</code> attribute is used to get all sibling elements of the current element, excluding itself.</li>
+<li><code>next</code> is used to get the next sibling element of the current element.</li>
+<li><code>nexts</code> is used to get an array of all the sibling elements after the current element.</li>
+<li><code>prev</code> is used to get the previous sibling element of the current element.</li>
+<li><code>prevs</code> is used to get an array of all the sibling elements before the current element.</li>
+<li><code>siblings</code> is used to get all the sibling elements of the current element, excluding itself.</li>
 </ul>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -164,9 +164,9 @@
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -175,6 +175,63 @@
       </template>
     </o-app>
     <div id="loading"></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/init.js" type="module"></script>
+    <div class="body-important other-link"><ul>
+<li><a href="../../cases/index.html">Getting Started</a></li>
+<li><a href="../../cases/event.html">Event Handling</a></li>
+<li><a href="../../cases/simple-component.html">Creating and Using Components</a></li>
+<li><a href="../../cases/slot.html">Component Slots</a></li>
+<li><a href="../../cases/render-text.html">Template Syntax: Rendering Text</a></li>
+<li><a href="../../cases/attribute-transmission.html">Attribute Propagation</a></li>
+<li><a href="../../cases/get-set-comp.html">Accessing and Modifying Component Instance Values</a></li>
+<li><a href="../../cases/property-transmission.html">Template Syntax: Prop Binding</a></li>
+<li><a href="../../cases/bind-event.html">Template Syntax: Event Binding</a></li>
+<li><a href="../../cases/nested-component.html">Nested Components</a></li>
+<li><a href="../../cases/inject-host.html">inject-host Component</a></li>
+<li><a href="../../cases/event-passing.html">Event Propagation</a></li>
+<li><a href="../../cases/sync.html">Template Syntax: Two-Way Data Binding</a></li>
+<li><a href="../../cases/condition.html">Template Component: Conditional Rendering</a></li>
+<li><a href="../../cases/fill.html">Template Component: Dynamic Rendering</a></li>
+<li><a href="../../cases/fill-temp.html">Recursive Filling and Rendering</a></li>
+<li><a href="../../cases/life-cycle.html">Lifecycle</a></li>
+<li><a href="../../cases/form-data.html">Form Data</a></li>
+<li><a href="../../cases/custom-form-element.html">Custom Form Components</a></li>
+<li><a href="../../cases/use-page.html">Using Page Components</a></li>
+<li><a href="../../cases/use-app.html">Using app Component</a></li>
+<li><a href="../../cases/app-config.html">Configuring app Parameters</a></li>
+<li><a href="../../cases/app-loading.html">Customizing app Loading</a></li>
+<li><a href="../../cases/set404.html">Setting Up 404 Page</a></li>
+<li><a href="../../cases/use-hash-router.html">Using Hash Router</a></li>
+<li><a href="../../cases/use-scsr.html">Using SCSR Solution</a></li>
+<li><a href="../introduce.html">Introduction</a></li>
+<li><a href="index.html">How to use ofa.js</a></li>
+<li><a href="hello-world.html">First Case</a></li>
+<li><a href="elements-and-events.html">Selection of Elements and Events</a></li>
+<li><a href="basic-concept.html">Basic Concepts of Instances</a></li>
+<li><a href="common-properties.html">Commonly Used Properties</a></li>
+<li><a href="common-function.html">Introduction to Common Methods</a></li>
+<li><a href="css.html">CSS</a></li>
+<li><a href="classlist-and-data.html">classList and data</a></li>
+<li><a href="box-model.html">Box Model</a></li>
+<li><a href="formdata.html">Form Data</a></li>
+<li><a href="../create-component/index.html">Creation and Usage</a></li>
+<li><a href="../create-component/parameter-description.html">Parameter Descriptions</a></li>
+<li><a href="../create-component/life-cycle.html">Life Cycle</a></li>
+<li><a href="../create-component/web-components.html">General Knowledge of Componentization</a></li>
+<li><a href="../create-component/template-syntax.html">Template Syntax</a></li>
+<li><a href="../create-component/template-component.html">Template Components</a></li>
+<li><a href="../create-app/index.html">Using o-app</a></li>
+<li><a href="../create-app/page.html">Using Page Components</a></li>
+<li><a href="../create-app/app.html">Using App Components</a></li>
+<li><a href="../create-app/subrouting.html">Subrouting</a></li>
+<li><a href="../create-app/o-router.html">Route Binding</a></li>
+<li><a href="../create-app/scsr.html">SCSR Solution</a></li>
+<li><a href="../../others/data-sharing.html">Data Sharing</a></li>
+<li><a href="../../others/about-micro-frontend.html">ofa.js and Micro Frontend</a></li>
+<li><a href="../../../cn/index.html">简体中文-index.html</a></li>
+<li><a href="../../index.html">English-index.html</a></li>
+<li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
+
+</ul></div>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/init.js" type="module"></script>
   </body>
 </html>

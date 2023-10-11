@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Encapsulation and Componentization: Basic Knowledge of Componentization</title>
-    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/dist/ofa.min.js"></script>
+    <title>Encapsulation and Componentization: Common Knowledge of Componentization</title>
+    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/css/public.css" />
     <style>
       html,
       body {
@@ -34,9 +34,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -51,23 +51,23 @@
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/css/github-markdown.css"
         />
-        <article class="markdown-body"><h1>Encapsulation and Componentization: Basic Knowledge of Componentization</h1>
-<p>ofa.js is a wrapping library based on Web Components technology, aiming to simplify and accelerate the component development process. By hiding the complex technical details behind, it enables developers to focus more on building high-quality components and applications.</p>
-<p>To better develop components, it is necessary to learn some knowledge of Web Components. The knowledge points introduced below can not only be applied in ofa.js, but also benefit you in other frameworks that use Web Components.</p>
+        <article class="markdown-body"><h1>Encapsulation and Componentization: Common Knowledge of Componentization</h1>
+<p>ofa.js is a wrapper library based on Web Components technology, aiming to simplify and accelerate the component development process. By hiding complex technical details behind the scenes, it allows developers to focus more on building high-quality components and applications.</p>
+<p>In order to develop components better, it is necessary to learn some knowledge about Web Components. The knowledge points introduced below can not only be applied in ofa.js, but also benefit you when using other frameworks that use Web Components.</p>
 <h2>Shadow DOM Container</h2>
-<p>In Web Components, the Shadow DOM provides an isolated container for encapsulating the internal styles and structure of a component. This means that the internal styles and DOM structure of a component will not interfere with the external styles and structure, ensuring the predictability and maintainability of the component.</p>
-<p>In ofa.js, each component has a Shadow DOM container for isolating the internal content of the component. The template content is rendered into this container. The component instance obtained through <code>$</code> can also access the internal Shadow DOM container through the <code>shadow</code> property, thus achieving operations and access to the internal elements of the component.</p>
+<p>In Web Components, Shadow DOM provides an isolated container for encapsulating the styles and structure of a component. This means that the styles and DOM structure inside the component will not interfere with the external styles and structure, ensuring the predictability and maintainability of the component.</p>
+<p>In ofa.js, each component has a Shadow DOM container to isolate the internal content of the component. The template content is rendered into this container. The component instance obtained through <code>$</code> can also access the Shadow DOM container within the component by using the <code>shadow</code> property, thereby achieving manipulation and access to the internal elements of the component.</p>
 <pre><code class="language-javascript">const myComponent = $(&quot;my-component&quot;); // Get the component instance
 const shadowContainer = myComponent.shadow; // Get the Shadow DOM container of the component
 
-$(&quot;my-component&quot;).shadow.$(&quot;h1&quot;).css.color = &#39;red&#39; // Change the h1 in the Shadow DOM to red
+$(&quot;my-component&quot;).shadow.$(&quot;h1&quot;).css.color = &#39;red&#39; // Change the h1 element in the Shadow DOM to red
 </code></pre>
 <h2>Common CSS Selectors in Web Components</h2>
-<p>Web Components provide some special CSS selectors for selecting and styling different parts within the component. Here are some common selectors:</p>
+<p>Web Components provides special CSS selectors for selecting and styling different parts within a component. Here are some commonly used selectors:</p>
 <h3>:host Selector</h3>
-<p><code>:host</code> selector is used to select the outer container of the component itself. This selector can be used to define the style of the component.</p>
+<p>The <code>:host</code> selector is used to select the outer container of the component itself. This selector can be used to define the style of the component.</p>
 <pre><code class="language-css">:host {
   display: block;
   border: 1px solid black;
@@ -75,28 +75,28 @@ $(&quot;my-component&quot;).shadow.$(&quot;h1&quot;).css.color = &#39;red&#39; /
 }
 </code></pre>
 <h3>::slotted() Selector</h3>
-<p><code>::slotted()</code> selector is used to select the elements wrapped by slotted content. This selector can be used in internal styles of the component to style the slotted content.</p>
+<p><code>::slotted()</code> selector is used to select elements that are wrapped by slotted content. This selector can be used in the styles of a component to style the slotted content.</p>
 <pre><code class="language-css">::slotted(p) {
   font-size: 18px;
   color: blue;
 }
 </code></pre>
-<h2>Usage of Slots</h2>
-<p>Slots are mechanisms in Web Components used to embed external content within the component. Slots allow developers to pass custom content into the component, enabling more flexible component structures.</p>
+<h2>How to Use Slots</h2>
+<p>Slots are the mechanism in Web Components used to embed external content inside a component. Slots allow developers to pass custom content into the component, enabling more flexible component structures.</p>
 <h3>Single Slot</h3>
-<p>In the component template, the <code>&lt;slot&gt;</code> element can be used to define a slot. The content provided from outside will be inserted into the slot.</p>
+<p>In component templates, <code>&lt;slot&gt;</code> element can be used to define slots. Contents passed from the outside will be inserted into the slots.</p>
 <pre><code class="language-html">&lt;!-- MyComponent.html --&gt;
 &lt;div&gt;
   &lt;h2&gt;&lt;slot&gt;&lt;/slot&gt;&lt;/h2&gt;
 &lt;/div&gt;
 </code></pre>
-<pre><code class="language-html">&lt;!-- Using MyComponent --&gt;
+<pre><code class="language-html">&lt;!-- Use MyComponent --&gt;
 &lt;my-component&gt;
   &lt;p&gt;This is a slot content.&lt;/p&gt;
 &lt;/my-component&gt;
 </code></pre>
 <h3>Multiple Named Slots</h3>
-<p>In addition to the default slot, multiple named slots can also be defined. Named slots allow developers to insert different contents into different slot positions.</p>
+<p>Except for the default slot, multiple named slots can also be defined. Named slots allow developers to insert different content into different slot positions.</p>
 <pre><code class="language-html">&lt;!-- MyComponent.html --&gt;
 &lt;div&gt;
     &lt;header&gt;&lt;slot name=&quot;header&quot;&gt;&lt;/slot&gt;&lt;/header&gt;
@@ -104,15 +104,16 @@ $(&quot;my-component&quot;).shadow.$(&quot;h1&quot;).css.color = &#39;red&#39; /
     &lt;footer&gt;&lt;slot name=&quot;footer&quot;&gt;&lt;/slot&gt;&lt;/footer&gt;
 &lt;/div&gt;
 </code></pre>
-<pre><code class="language-html">&lt;!-- Using MyComponent --&gt;
+<pre><code class="language-html">&lt;!-- Use MyComponent --&gt;
 &lt;my-component&gt;
   &lt;div slot=&quot;header&quot;&gt;Header Content&lt;/div&gt;
   &lt;p&gt;This is main content.&lt;/p&gt;
   &lt;div slot=&quot;footer&quot;&gt;Footer Content&lt;/div&gt;
 &lt;/my-component&gt;
 </code></pre>
-<h2>Usage of slotchange event</h2>
-<p>The <code>slotchange</code> event is triggered when the content of a slot changes. This event can be listened to in order to perform actions related to the slot content.</p>
+<h2>Usage of the &quot;slotchange&quot; event</h2>
+<p>The &quot;slotchange&quot; event is used to detect changes in the assigned nodes within a web component.</p>
+<p>The <code>slotchange</code> event is triggered when the content of a slot changes. You can listen to this event to perform operations related to the content of the slot.</p>
 <pre><code class="language-javascript">// custom-component.mjs
 export const type = $.COMP;
 
@@ -131,9 +132,9 @@ export default {
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -142,6 +143,63 @@ export default {
       </template>
     </o-app>
     <div id="loading"></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/init.js" type="module"></script>
+    <div class="body-important other-link"><ul>
+<li><a href="../../cases/index.html">Getting Started</a></li>
+<li><a href="../../cases/event.html">Event Handling</a></li>
+<li><a href="../../cases/simple-component.html">Creating and Using Components</a></li>
+<li><a href="../../cases/slot.html">Component Slots</a></li>
+<li><a href="../../cases/render-text.html">Template Syntax: Rendering Text</a></li>
+<li><a href="../../cases/attribute-transmission.html">Attribute Propagation</a></li>
+<li><a href="../../cases/get-set-comp.html">Accessing and Modifying Component Instance Values</a></li>
+<li><a href="../../cases/property-transmission.html">Template Syntax: Prop Binding</a></li>
+<li><a href="../../cases/bind-event.html">Template Syntax: Event Binding</a></li>
+<li><a href="../../cases/nested-component.html">Nested Components</a></li>
+<li><a href="../../cases/inject-host.html">inject-host Component</a></li>
+<li><a href="../../cases/event-passing.html">Event Propagation</a></li>
+<li><a href="../../cases/sync.html">Template Syntax: Two-Way Data Binding</a></li>
+<li><a href="../../cases/condition.html">Template Component: Conditional Rendering</a></li>
+<li><a href="../../cases/fill.html">Template Component: Dynamic Rendering</a></li>
+<li><a href="../../cases/fill-temp.html">Recursive Filling and Rendering</a></li>
+<li><a href="../../cases/life-cycle.html">Lifecycle</a></li>
+<li><a href="../../cases/form-data.html">Form Data</a></li>
+<li><a href="../../cases/custom-form-element.html">Custom Form Components</a></li>
+<li><a href="../../cases/use-page.html">Using Page Components</a></li>
+<li><a href="../../cases/use-app.html">Using app Component</a></li>
+<li><a href="../../cases/app-config.html">Configuring app Parameters</a></li>
+<li><a href="../../cases/app-loading.html">Customizing app Loading</a></li>
+<li><a href="../../cases/set404.html">Setting Up 404 Page</a></li>
+<li><a href="../../cases/use-hash-router.html">Using Hash Router</a></li>
+<li><a href="../../cases/use-scsr.html">Using SCSR Solution</a></li>
+<li><a href="../introduce.html">Introduction</a></li>
+<li><a href="../get-started/index.html">How to use ofa.js</a></li>
+<li><a href="../get-started/hello-world.html">First Case</a></li>
+<li><a href="../get-started/elements-and-events.html">Selection of Elements and Events</a></li>
+<li><a href="../get-started/basic-concept.html">Basic Concepts of Instances</a></li>
+<li><a href="../get-started/common-properties.html">Commonly Used Properties</a></li>
+<li><a href="../get-started/common-function.html">Introduction to Common Methods</a></li>
+<li><a href="../get-started/css.html">CSS</a></li>
+<li><a href="../get-started/classlist-and-data.html">classList and data</a></li>
+<li><a href="../get-started/box-model.html">Box Model</a></li>
+<li><a href="../get-started/formdata.html">Form Data</a></li>
+<li><a href="index.html">Creation and Usage</a></li>
+<li><a href="parameter-description.html">Parameter Descriptions</a></li>
+<li><a href="life-cycle.html">Life Cycle</a></li>
+<li><a href="web-components.html">General Knowledge of Componentization</a></li>
+<li><a href="template-syntax.html">Template Syntax</a></li>
+<li><a href="template-component.html">Template Components</a></li>
+<li><a href="../create-app/index.html">Using o-app</a></li>
+<li><a href="../create-app/page.html">Using Page Components</a></li>
+<li><a href="../create-app/app.html">Using App Components</a></li>
+<li><a href="../create-app/subrouting.html">Subrouting</a></li>
+<li><a href="../create-app/o-router.html">Route Binding</a></li>
+<li><a href="../create-app/scsr.html">SCSR Solution</a></li>
+<li><a href="../../others/data-sharing.html">Data Sharing</a></li>
+<li><a href="../../others/about-micro-frontend.html">ofa.js and Micro Frontend</a></li>
+<li><a href="../../../cn/index.html">简体中文-index.html</a></li>
+<li><a href="../../index.html">English-index.html</a></li>
+<li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
+
+</ul></div>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/init.js" type="module"></script>
   </body>
 </html>

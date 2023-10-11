@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Event Binding</title>
-    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/dist/ofa.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/css/public.css" />
     <style>
       html,
       body {
@@ -34,9 +34,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -51,7 +51,7 @@
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/css/github-markdown.css"
         />
         <exm-article><article class="markdown-body"><template is="exm-article">
 <a href="../../publics/examples/bind-event/demo.html" preview></a>
@@ -59,17 +59,17 @@
 </template>
 
 <h1>Event Binding</h1>
-<p>Within the component, you can use the <code>on</code> attribute to bind events and make the component interactive. This demonstrates how to bind events within a component to achieve interactive effects.</p>
-<p>The <code>proto</code> parameter is used to define the component&#39;s own methods, which can be used internally within the component or externally by selecting the component and running the methods.</p>
-<p>The <code>xxx</code> after <code>on:click=&quot;xxx&quot;</code> can be the method name defined within the component or a function expression. If using a function expression, the <code>this</code> keyword does not need to be explicitly written, as the variable scope will be automatically bound to the component itself.</p>
-<p>If you want to learn more about available event types, please refer to the <a href="https://developer.mozilla.org/en-US/docs/Web/Events">Events</a> documentation.</p>
+<p>In the component, you can use the <code>on</code> attribute to bind events and enable interactivity for the component. Here is a demonstration of how to bind events in a component to achieve interactive effects.</p>
+<p>The <code>proto</code> parameter is used to define the methods of the component itself. These methods can be used internally within the component or can be executed externally after obtaining the component through a selector.</p>
+<p><code>on:click=&quot;xxx&quot;</code> can be followed by either a method name defined within the component or a function expression. If using a function expression, there is no need to explicitly write the <code>this</code> keyword, as the variable scope will automatically be bound to the component itself.</p>
+<p>If you want to learn more about the available event types, please refer to the <a href="https://developer.mozilla.org/en-US/docs/Web/Events">Events</a> documentation.</p>
 
     <article-footer></article-footer>
     </article></exm-article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -78,6 +78,63 @@
       </template>
     </o-app>
     <div id="loading"></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/init.js" type="module"></script>
+    <div class="body-important other-link"><ul>
+<li><a href="index.html">Getting Started</a></li>
+<li><a href="event.html">Event Handling</a></li>
+<li><a href="simple-component.html">Creating and Using Components</a></li>
+<li><a href="slot.html">Component Slots</a></li>
+<li><a href="render-text.html">Template Syntax: Rendering Text</a></li>
+<li><a href="attribute-transmission.html">Attribute Propagation</a></li>
+<li><a href="get-set-comp.html">Accessing and Modifying Component Instance Values</a></li>
+<li><a href="property-transmission.html">Template Syntax: Prop Binding</a></li>
+<li><a href="bind-event.html">Template Syntax: Event Binding</a></li>
+<li><a href="nested-component.html">Nested Components</a></li>
+<li><a href="inject-host.html">inject-host Component</a></li>
+<li><a href="event-passing.html">Event Propagation</a></li>
+<li><a href="sync.html">Template Syntax: Two-Way Data Binding</a></li>
+<li><a href="condition.html">Template Component: Conditional Rendering</a></li>
+<li><a href="fill.html">Template Component: Dynamic Rendering</a></li>
+<li><a href="fill-temp.html">Recursive Filling and Rendering</a></li>
+<li><a href="life-cycle.html">Lifecycle</a></li>
+<li><a href="form-data.html">Form Data</a></li>
+<li><a href="custom-form-element.html">Custom Form Components</a></li>
+<li><a href="use-page.html">Using Page Components</a></li>
+<li><a href="use-app.html">Using app Component</a></li>
+<li><a href="app-config.html">Configuring app Parameters</a></li>
+<li><a href="app-loading.html">Customizing app Loading</a></li>
+<li><a href="set404.html">Setting Up 404 Page</a></li>
+<li><a href="use-hash-router.html">Using Hash Router</a></li>
+<li><a href="use-scsr.html">Using SCSR Solution</a></li>
+<li><a href="../docs/introduce.html">Introduction</a></li>
+<li><a href="../docs/get-started/index.html">How to use ofa.js</a></li>
+<li><a href="../docs/get-started/hello-world.html">First Case</a></li>
+<li><a href="../docs/get-started/elements-and-events.html">Selection of Elements and Events</a></li>
+<li><a href="../docs/get-started/basic-concept.html">Basic Concepts of Instances</a></li>
+<li><a href="../docs/get-started/common-properties.html">Commonly Used Properties</a></li>
+<li><a href="../docs/get-started/common-function.html">Introduction to Common Methods</a></li>
+<li><a href="../docs/get-started/css.html">CSS</a></li>
+<li><a href="../docs/get-started/classlist-and-data.html">classList and data</a></li>
+<li><a href="../docs/get-started/box-model.html">Box Model</a></li>
+<li><a href="../docs/get-started/formdata.html">Form Data</a></li>
+<li><a href="../docs/create-component/index.html">Creation and Usage</a></li>
+<li><a href="../docs/create-component/parameter-description.html">Parameter Descriptions</a></li>
+<li><a href="../docs/create-component/life-cycle.html">Life Cycle</a></li>
+<li><a href="../docs/create-component/web-components.html">General Knowledge of Componentization</a></li>
+<li><a href="../docs/create-component/template-syntax.html">Template Syntax</a></li>
+<li><a href="../docs/create-component/template-component.html">Template Components</a></li>
+<li><a href="../docs/create-app/index.html">Using o-app</a></li>
+<li><a href="../docs/create-app/page.html">Using Page Components</a></li>
+<li><a href="../docs/create-app/app.html">Using App Components</a></li>
+<li><a href="../docs/create-app/subrouting.html">Subrouting</a></li>
+<li><a href="../docs/create-app/o-router.html">Route Binding</a></li>
+<li><a href="../docs/create-app/scsr.html">SCSR Solution</a></li>
+<li><a href="../others/data-sharing.html">Data Sharing</a></li>
+<li><a href="../others/about-micro-frontend.html">ofa.js and Micro Frontend</a></li>
+<li><a href="../../cn/index.html">简体中文-index.html</a></li>
+<li><a href="../index.html">English-index.html</a></li>
+<li><a href="../../t-cn/index.html">繁体中文-index.html</a></li>
+
+</ul></div>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/init.js" type="module"></script>
   </body>
 </html>

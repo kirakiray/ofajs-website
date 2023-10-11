@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>使用 hash router</title>
-    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/dist/ofa.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/css/public.css" />
     <style>
       html,
       body {
@@ -34,9 +34,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -51,7 +51,7 @@
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/css/github-markdown.css"
         />
         <exm-article><article class="markdown-body"><template is="exm-article">
 <a href="../../publics/examples/use-hash-router/demo.html" preview></a>
@@ -63,7 +63,7 @@
 <h1>使用 hash router</h1>
 <p>只需使用 o-router 組件，即可將 app 組件內的路由與當前網頁關聯起來。一旦頁面與路由綁定，即使進行頁面刷新，也能保持頁面的路由狀態。</p>
 <p>在這個示例中，請點擊  <span style='font-family: "iconfont"'>&#xe7cb;</span>  按鈕，以新頁面的方式打開並嘗試。</p>
-<pre><code class="language-html">&lt;l-m src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.14/libs/router/dist/router.min.mjs&quot;&gt;&lt;/l-m&gt;
+<pre><code class="language-html">&lt;l-m src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/libs/router/dist/router.min.mjs&quot;&gt;&lt;/l-m&gt;
 &lt;o-router fix-body&gt;
   &lt;o-app src=&quot;./app-config.mjs&quot;&gt;&lt;/o-app&gt;
 &lt;/o-router&gt;
@@ -72,9 +72,9 @@
     <article-footer></article-footer>
     </article></exm-article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -83,6 +83,63 @@
       </template>
     </o-app>
     <div id="loading"></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/init.js" type="module"></script>
+    <div class="body-important other-link"><ul>
+<li><a href="index.html">開始</a></li>
+<li><a href="event.html">事件反應</a></li>
+<li><a href="simple-component.html">組件的創建和使用</a></li>
+<li><a href="slot.html">組件插槽</a></li>
+<li><a href="render-text.html">模板語法：渲染文本</a></li>
+<li><a href="attribute-transmission.html">特性傳遞</a></li>
+<li><a href="get-set-comp.html">獲取和修改組件實例的值</a></li>
+<li><a href="property-transmission.html">模板語法：屬性傳遞</a></li>
+<li><a href="bind-event.html">模板語法：綁定事件</a></li>
+<li><a href="nested-component.html">嵌套組件</a></li>
+<li><a href="inject-host.html">inject-host 組件</a></li>
+<li><a href="event-passing.html">事件傳遞</a></li>
+<li><a href="sync.html">模板語法：雙向數據綁定</a></li>
+<li><a href="condition.html">模板組件：條件渲染</a></li>
+<li><a href="fill.html">模板組件：填充渲染</a></li>
+<li><a href="fill-temp.html">遞歸填充渲染</a></li>
+<li><a href="life-cycle.html">生命周期</a></li>
+<li><a href="form-data.html">表單數據</a></li>
+<li><a href="custom-form-element.html">自定義表單組件</a></li>
+<li><a href="use-page.html">使用頁面組件</a></li>
+<li><a href="use-app.html">使用app組件</a></li>
+<li><a href="app-config.html">配置app參數</a></li>
+<li><a href="app-loading.html">為app定制loading</a></li>
+<li><a href="set404.html">設置404頁面</a></li>
+<li><a href="use-hash-router.html">使用 hash router</a></li>
+<li><a href="use-scsr.html">使用scsr方案</a></li>
+<li><a href="../docs/introduce.html">介紹</a></li>
+<li><a href="../docs/get-started/index.html">如何使用ofa.js</a></li>
+<li><a href="../docs/get-started/hello-world.html">第一個案例</a></li>
+<li><a href="../docs/get-started/elements-and-events.html">選擇元素和事件相關</a></li>
+<li><a href="../docs/get-started/basic-concept.html">實例的基礎概念</a></li>
+<li><a href="../docs/get-started/common-properties.html">常用屬性介紹</a></li>
+<li><a href="../docs/get-started/common-function.html">常用方法介紹</a></li>
+<li><a href="../docs/get-started/css.html">css</a></li>
+<li><a href="../docs/get-started/classlist-and-data.html">classList 和 data</a></li>
+<li><a href="../docs/get-started/box-model.html">盒模型</a></li>
+<li><a href="../docs/get-started/formdata.html">表單數據</a></li>
+<li><a href="../docs/create-component/index.html">制作和使用</a></li>
+<li><a href="../docs/create-component/parameter-description.html">參數說明</a></li>
+<li><a href="../docs/create-component/life-cycle.html">生命周期</a></li>
+<li><a href="../docs/create-component/web-components.html">組件化常規知識</a></li>
+<li><a href="../docs/create-component/template-syntax.html">模板語法</a></li>
+<li><a href="../docs/create-component/template-component.html">模板組件</a></li>
+<li><a href="../docs/create-app/index.html">使用 o-app</a></li>
+<li><a href="../docs/create-app/page.html">使用Page組件</a></li>
+<li><a href="../docs/create-app/app.html">使用App組件</a></li>
+<li><a href="../docs/create-app/subrouting.html">子路由功能</a></li>
+<li><a href="../docs/create-app/o-router.html">路由綁定</a></li>
+<li><a href="../docs/create-app/scsr.html">SCSR方案</a></li>
+<li><a href="../others/data-sharing.html">數據共享</a></li>
+<li><a href="../others/about-micro-frontend.html">ofa.js和微前端</a></li>
+<li><a href="../../cn/index.html">简体中文-index.html</a></li>
+<li><a href="../../en/index.html">English-index.html</a></li>
+<li><a href="../index.html">繁体中文-index.html</a></li>
+
+</ul></div>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/init.js" type="module"></script>
   </body>
 </html>

@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Using the app component</title>
-    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/dist/ofa.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/css/public.css" />
     <style>
       html,
       body {
@@ -34,9 +34,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -51,7 +51,7 @@
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/css/github-markdown.css"
         />
         <exm-article><article class="markdown-body"><template is="exm-article">
 <a href="../../publics/examples/use-app/demo.html" preview></a>
@@ -61,24 +61,24 @@
 
 <h1>Using the app component</h1>
 <p>In <code>ofa.js</code>, you can use the <code>o-app</code> component to create the layout structure of the entire application and load different page modules within it. By using the <code>o-app</code> component, <code>o-page</code> component, and page modules, you can build the page structure of the entire application and implement navigation between pages.</p>
-<p>When the <code>o-page</code> component is inside the <code>o-app</code> component, you can use the <code>&lt;a&gt;</code> tag with the <code>olink</code> attribute to achieve page redirection. This redirection will not affect the current page, but will only navigate within the <code>o-app</code> component, similar to using <code>&lt;iframe&gt;</code>.</p>
-<p>If the <code>o-page</code> component is inside the <code>o-app</code> component, you can also use the following methods:</p>
+<p>When the <code>o-page</code> component is inside <code>o-app</code>, you can use the <code>&lt;a&gt;</code> tag with the <code>olink</code> attribute to achieve page navigation. This navigation will not affect the current page, but will only navigate within <code>o-app</code>, similar to using an <code>&lt;iframe&gt;</code>.</p>
+<p>If the <code>o-page</code> component is within <code>o-app</code>, you can also use the following method:</p>
 <ul>
-<li>Use the <code>goto</code> method to perform page navigation</li>
-<li>Use the <code>back</code> method to go back to the previous page</li>
-<li>Use the <code>replace</code> method to replace the current page with a new one</li>
+<li>Use the <code>goto</code> method to navigate to another page.</li>
+<li>Use the <code>back</code> method to return to the previous page.</li>
+<li>Use the <code>replace</code> method for replacing the current page during navigation.</li>
 </ul>
-<p>By using the <code>o-app</code> component, you can build the layout structure of the entire application and load different page modules into it. The routing feature provided by <code>o-app</code> makes navigation between pages more convenient and flexible.</p>
-<p>In this example, we created an application layout using the <code>o-app</code> component and loaded a page module <code>page1.html</code> into it.</p>
-<p>In the <code>page1.html</code> page module, we defined a title and a button. Clicking the button will navigate to another page module <code>page2.html</code>. We also added a link with the <code>olink</code> attribute, which will also navigate to <code>page2.html</code> when clicked.</p>
-<p>In the <code>page2.html</code> page module, we also defined a title and a button. Clicking the button will return to the previous page, implementing page navigation.</p>
+<p>By using the <code>o-app</code> component, you can build the layout structure of the entire application and load different page modules in it. At the same time, the routing function provided by <code>o-app</code> makes it more convenient and flexible to navigate between pages.</p>
+<p>In this example, we create an application layout using the <code>o-app</code> component and then load a page module <code>page1.html</code> within it.</p>
+<p>In the <code>page1.html</code> page module, we defined a title and a button. Clicking the button will navigate to another page module <code>page2.html</code>. We also added a link with the <code>olink</code> attribute, and clicking the link will also navigate to <code>page2.html</code>.</p>
+<p>In the <code>page2.html</code> module, we also defined a title and a button, clicking the button will go back to the previous page, implementing page navigation.</p>
 
     <article-footer></article-footer>
     </article></exm-article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -87,6 +87,63 @@
       </template>
     </o-app>
     <div id="loading"></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/init.js" type="module"></script>
+    <div class="body-important other-link"><ul>
+<li><a href="index.html">Getting Started</a></li>
+<li><a href="event.html">Event Handling</a></li>
+<li><a href="simple-component.html">Creating and Using Components</a></li>
+<li><a href="slot.html">Component Slots</a></li>
+<li><a href="render-text.html">Template Syntax: Rendering Text</a></li>
+<li><a href="attribute-transmission.html">Attribute Propagation</a></li>
+<li><a href="get-set-comp.html">Accessing and Modifying Component Instance Values</a></li>
+<li><a href="property-transmission.html">Template Syntax: Prop Binding</a></li>
+<li><a href="bind-event.html">Template Syntax: Event Binding</a></li>
+<li><a href="nested-component.html">Nested Components</a></li>
+<li><a href="inject-host.html">inject-host Component</a></li>
+<li><a href="event-passing.html">Event Propagation</a></li>
+<li><a href="sync.html">Template Syntax: Two-Way Data Binding</a></li>
+<li><a href="condition.html">Template Component: Conditional Rendering</a></li>
+<li><a href="fill.html">Template Component: Dynamic Rendering</a></li>
+<li><a href="fill-temp.html">Recursive Filling and Rendering</a></li>
+<li><a href="life-cycle.html">Lifecycle</a></li>
+<li><a href="form-data.html">Form Data</a></li>
+<li><a href="custom-form-element.html">Custom Form Components</a></li>
+<li><a href="use-page.html">Using Page Components</a></li>
+<li><a href="use-app.html">Using app Component</a></li>
+<li><a href="app-config.html">Configuring app Parameters</a></li>
+<li><a href="app-loading.html">Customizing app Loading</a></li>
+<li><a href="set404.html">Setting Up 404 Page</a></li>
+<li><a href="use-hash-router.html">Using Hash Router</a></li>
+<li><a href="use-scsr.html">Using SCSR Solution</a></li>
+<li><a href="../docs/introduce.html">Introduction</a></li>
+<li><a href="../docs/get-started/index.html">How to use ofa.js</a></li>
+<li><a href="../docs/get-started/hello-world.html">First Case</a></li>
+<li><a href="../docs/get-started/elements-and-events.html">Selection of Elements and Events</a></li>
+<li><a href="../docs/get-started/basic-concept.html">Basic Concepts of Instances</a></li>
+<li><a href="../docs/get-started/common-properties.html">Commonly Used Properties</a></li>
+<li><a href="../docs/get-started/common-function.html">Introduction to Common Methods</a></li>
+<li><a href="../docs/get-started/css.html">CSS</a></li>
+<li><a href="../docs/get-started/classlist-and-data.html">classList and data</a></li>
+<li><a href="../docs/get-started/box-model.html">Box Model</a></li>
+<li><a href="../docs/get-started/formdata.html">Form Data</a></li>
+<li><a href="../docs/create-component/index.html">Creation and Usage</a></li>
+<li><a href="../docs/create-component/parameter-description.html">Parameter Descriptions</a></li>
+<li><a href="../docs/create-component/life-cycle.html">Life Cycle</a></li>
+<li><a href="../docs/create-component/web-components.html">General Knowledge of Componentization</a></li>
+<li><a href="../docs/create-component/template-syntax.html">Template Syntax</a></li>
+<li><a href="../docs/create-component/template-component.html">Template Components</a></li>
+<li><a href="../docs/create-app/index.html">Using o-app</a></li>
+<li><a href="../docs/create-app/page.html">Using Page Components</a></li>
+<li><a href="../docs/create-app/app.html">Using App Components</a></li>
+<li><a href="../docs/create-app/subrouting.html">Subrouting</a></li>
+<li><a href="../docs/create-app/o-router.html">Route Binding</a></li>
+<li><a href="../docs/create-app/scsr.html">SCSR Solution</a></li>
+<li><a href="../others/data-sharing.html">Data Sharing</a></li>
+<li><a href="../others/about-micro-frontend.html">ofa.js and Micro Frontend</a></li>
+<li><a href="../../cn/index.html">简体中文-index.html</a></li>
+<li><a href="../index.html">English-index.html</a></li>
+<li><a href="../../t-cn/index.html">繁体中文-index.html</a></li>
+
+</ul></div>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/init.js" type="module"></script>
   </body>
 </html>

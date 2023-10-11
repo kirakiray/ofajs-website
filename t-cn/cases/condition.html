@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>條件渲染</title>
-    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/dist/ofa.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/css/public.css" />
     <style>
       html,
       body {
@@ -34,9 +34,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -51,7 +51,7 @@
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/css/github-markdown.css"
         />
         <exm-article><article class="markdown-body"><template is="exm-article">
 <a href="../../publics/examples/condition/demo.html" preview></a>
@@ -64,20 +64,20 @@
 <p><strong>模板組件</strong> 是專門為了模板而設計的組件，這類組件只能在模板內使用；</p>
 </blockquote>
 <p>條件渲染允許您在特定條件下，動態地在組件中插入不同的內容。以下是一個演示如何在組件內使用條件渲染的示例。</p>
-<p>在這個示例中，我們創建了一個名為 <code>test-demo</code> 的組件。組件內包含一個按鈕，點擊按鈕會使 <code>count</code> 屬性自增。通過 <code>&lt;x-if&gt;</code>、<code>&lt;x-else-if&gt;</code> 和 <code>&lt;x-else&gt;</code> 標簽，我們實現了條件渲染的邏輯。</p>
+<p>在這個示例中，我們創建了一個名為 <code>test-demo</code> 的組件。組件內包含一個按鈕，點擊按鈕會使 <code>count</code> 屬性自增。通過 <code>x-if</code>、<code>x-else-if</code> 和 <code>x-else</code> 標簽，我們實現了條件渲染的邏輯。</p>
 <ul>
-<li><code>&lt;x-if&gt;</code> 標簽接受一個 <code>value</code> 屬性，用於定義條件。如果 <code>value</code> 的值為 <code>true</code>，則渲染 <code>&lt;x-if&gt;</code> 內部的內容。在這個示例中，如果 <code>count</code> 為偶數，將顯示紅色文本。</li>
-<li><code>&lt;x-else-if&gt;</code> 標簽也接受一個 <code>value</code> 屬性，用於定義條件。如果前面的條件不滿足且 <code>value</code> 的值為 <code>true</code>，則渲染 <code>&lt;x-else-if&gt;</code> 內部的內容。在這個示例中，如果 <code>count</code> 為 3 的倍數，將顯示藍色文本。</li>
-<li><code>&lt;x-else&gt;</code> 標簽不需要 <code>value</code> 屬性，它會在前面的條件都不滿足時渲染其內部的內容。在這個示例中，如果 <code>count</code> 既不是偶數也不是 3 的倍數，將顯示綠色文本。使用 <code>x-else</code> 時也可以緊跟在 <code>x-if</code> 後面；</li>
+<li><code>x-if</code> 標簽接受一個 <code>value</code> 屬性，用於定義條件。如果 <code>value</code> 的值為 <code>true</code>，則渲染 <code>x-if</code> 內部的內容。在這個示例中，如果 <code>count</code> 為偶數，將顯示紅色文本。</li>
+<li><code>x-else-if</code> 標簽也接受一個 <code>value</code> 屬性，用於定義條件。如果前面的條件不滿足且 <code>value</code> 的值為 <code>true</code>，則渲染 <code>x-else-if</code> 內部的內容。在這個示例中，如果 <code>count</code> 為 3 的倍數，將顯示藍色文本。</li>
+<li><code>x-else</code> 標簽不需要 <code>value</code> 屬性，它會在前面的條件都不滿足時渲染其內部的內容。在這個示例中，如果 <code>count</code> 既不是偶數也不是 3 的倍數，將顯示綠色文本。使用 <code>x-else</code> 時也可以緊跟在 <code>x-if</code> 後面；</li>
 </ul>
 <p>通過這種方式，您可以根據不同的條件動態地渲染不同的內容，實現靈活的交互和展示效果。</p>
 
     <article-footer></article-footer>
     </article></exm-article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -86,6 +86,63 @@
       </template>
     </o-app>
     <div id="loading"></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/init.js" type="module"></script>
+    <div class="body-important other-link"><ul>
+<li><a href="index.html">開始</a></li>
+<li><a href="event.html">事件反應</a></li>
+<li><a href="simple-component.html">組件的創建和使用</a></li>
+<li><a href="slot.html">組件插槽</a></li>
+<li><a href="render-text.html">模板語法：渲染文本</a></li>
+<li><a href="attribute-transmission.html">特性傳遞</a></li>
+<li><a href="get-set-comp.html">獲取和修改組件實例的值</a></li>
+<li><a href="property-transmission.html">模板語法：屬性傳遞</a></li>
+<li><a href="bind-event.html">模板語法：綁定事件</a></li>
+<li><a href="nested-component.html">嵌套組件</a></li>
+<li><a href="inject-host.html">inject-host 組件</a></li>
+<li><a href="event-passing.html">事件傳遞</a></li>
+<li><a href="sync.html">模板語法：雙向數據綁定</a></li>
+<li><a href="condition.html">模板組件：條件渲染</a></li>
+<li><a href="fill.html">模板組件：填充渲染</a></li>
+<li><a href="fill-temp.html">遞歸填充渲染</a></li>
+<li><a href="life-cycle.html">生命周期</a></li>
+<li><a href="form-data.html">表單數據</a></li>
+<li><a href="custom-form-element.html">自定義表單組件</a></li>
+<li><a href="use-page.html">使用頁面組件</a></li>
+<li><a href="use-app.html">使用app組件</a></li>
+<li><a href="app-config.html">配置app參數</a></li>
+<li><a href="app-loading.html">為app定制loading</a></li>
+<li><a href="set404.html">設置404頁面</a></li>
+<li><a href="use-hash-router.html">使用 hash router</a></li>
+<li><a href="use-scsr.html">使用scsr方案</a></li>
+<li><a href="../docs/introduce.html">介紹</a></li>
+<li><a href="../docs/get-started/index.html">如何使用ofa.js</a></li>
+<li><a href="../docs/get-started/hello-world.html">第一個案例</a></li>
+<li><a href="../docs/get-started/elements-and-events.html">選擇元素和事件相關</a></li>
+<li><a href="../docs/get-started/basic-concept.html">實例的基礎概念</a></li>
+<li><a href="../docs/get-started/common-properties.html">常用屬性介紹</a></li>
+<li><a href="../docs/get-started/common-function.html">常用方法介紹</a></li>
+<li><a href="../docs/get-started/css.html">css</a></li>
+<li><a href="../docs/get-started/classlist-and-data.html">classList 和 data</a></li>
+<li><a href="../docs/get-started/box-model.html">盒模型</a></li>
+<li><a href="../docs/get-started/formdata.html">表單數據</a></li>
+<li><a href="../docs/create-component/index.html">制作和使用</a></li>
+<li><a href="../docs/create-component/parameter-description.html">參數說明</a></li>
+<li><a href="../docs/create-component/life-cycle.html">生命周期</a></li>
+<li><a href="../docs/create-component/web-components.html">組件化常規知識</a></li>
+<li><a href="../docs/create-component/template-syntax.html">模板語法</a></li>
+<li><a href="../docs/create-component/template-component.html">模板組件</a></li>
+<li><a href="../docs/create-app/index.html">使用 o-app</a></li>
+<li><a href="../docs/create-app/page.html">使用Page組件</a></li>
+<li><a href="../docs/create-app/app.html">使用App組件</a></li>
+<li><a href="../docs/create-app/subrouting.html">子路由功能</a></li>
+<li><a href="../docs/create-app/o-router.html">路由綁定</a></li>
+<li><a href="../docs/create-app/scsr.html">SCSR方案</a></li>
+<li><a href="../others/data-sharing.html">數據共享</a></li>
+<li><a href="../others/about-micro-frontend.html">ofa.js和微前端</a></li>
+<li><a href="../../cn/index.html">简体中文-index.html</a></li>
+<li><a href="../../en/index.html">English-index.html</a></li>
+<li><a href="../index.html">繁体中文-index.html</a></li>
+
+</ul></div>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/init.js" type="module"></script>
   </body>
 </html>

@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Getting Elements and Events</title>
-    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/dist/ofa.min.js"></script>
+    <title>Get Elements and Events Related</title>
+    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/css/public.css" />
     <style>
       html,
       body {
@@ -34,9 +34,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -51,15 +51,15 @@
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/css/github-markdown.css"
         />
-        <article class="markdown-body"><h1>Getting Elements and Events</h1>
-<p>This section aims to enhance understanding of the previous chapter, including selecting elements and binding events.</p>
+        <article class="markdown-body"><h1>Get Elements and Events Related</h1>
+<p>This chapter aims to enhance understanding of the previous chapter, including selecting elements and event binding.</p>
 <h2>Selecting Elements</h2>
-<p>In previous chapters, we have learned how to retrieve a specific element from the global scope using the $ symbol. Now, we will introduce other methods for selecting elements.</p>
-<h3>Finding an Element Within Another Element</h3>
-<h4>Using the <code>$(&quot;xxx&quot;).$(&#39;xxxx&#39;)</code> syntax</h4>
-<p><code>$(&quot;xxx&quot;).$(&#39;xxxx&#39;)</code> is a way to select a parent element first, then find the child element that matches the given condition within it. Here, <code>$(&quot;xxx&quot;)</code> selects a parent element, and <code>$(&#39;xxxx&#39;)</code> searches for the child element within that parent element.</p>
+<p>In the previous chapters, we have learned how to access a specific element from the global scope using the $ symbol. Next, we will introduce other methods of accessing elements.</p>
+<h3>Look for an element within an element</h3>
+<h4>Using <code>$(&quot;xxx&quot;).$(&#39;xxxx&#39;)</code> method</h4>
+<p><code>$(&quot;xxx&quot;).$(&#39;xxxx&#39;)</code> is a way to select a parent element first and then find the child element that meets the condition inside it. In this example, <code>$(&quot;xxx&quot;)</code> selects a parent element, and then uses <code>$(&#39;xxxx&#39;)</code> to find the child element that meets the condition within that parent element.</p>
 <h4>Example</h4>
 <pre><code class="language-html">&lt;div class=&quot;parent&quot;&gt;
   &lt;p&gt;Hello World&lt;/p&gt;
@@ -68,7 +68,7 @@
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;script&gt;
-  // Select parent element and find child element
+  // Select the parent element and find the child element
   const parentElement = $(&quot;.parent&quot;);
   const childElement = parentElement.$(&quot;.child&quot;);
 
@@ -76,9 +76,9 @@
   childElement.text = &quot;Modified child element&quot;;
 &lt;/script&gt;
 </code></pre>
-<p>In the example above, firstly the parent element with the class <code>parent</code> is selected using <code>$(&quot;.parent&quot;)</code>, and then the child element with the class <code>child</code> is found within that parent element using <code>$(&quot;.child&quot;)</code>. Then the text content of the child element is modified to &quot;Modified child element&quot;.</p>
-<h3>Using the <code>$(&#39;xxx xxxx&#39;)</code> approach</h3>
-<p><code>$(&#39;xxx xxxx&#39;)</code> searches for elements that match the second selector condition in the global scope, and then finds elements that match the first selector condition within those elements. This allows for directly finding the child element that meets the conditions.</p>
+<p>In the example above, first select the parent element with the <code>parent</code> class using <code>$(&quot;.parent&quot;)</code>, and then use <code>$(&quot;.child&quot;)</code> to search for the child element with the <code>child</code> class within this parent element. Then modify the text content of the child element to &quot;Modified child element&quot;.</p>
+<h3>Using <code>$(&#39;xxx xxxx&#39;)</code> method</h3>
+<p><code>$(&#39;xxx xxxx&#39;)</code> is used to find elements that match the second selector condition within the global scope, and then search for elements that match the first selector condition within these elements. This approach allows for directly finding the desired child elements in one step.</p>
 <h4>Example</h4>
 <pre><code class="language-html">&lt;div class=&quot;parent&quot;&gt;
   &lt;p&gt;Hello World&lt;/p&gt;
@@ -87,17 +87,17 @@
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;script&gt;
-  // Directly find the child element that meets the conditions
+  // Find the child element that meets the criteria directly
   const childElement = $(&#39;div .child&#39;);
 
   // Modify the text content of the child element
   childElement.text = &quot;Modified child element&quot;;
 &lt;/script&gt;
 </code></pre>
-<p>In the example above, the child element with the class <code>child</code> is directly found using <code>$(&#39;div .child&#39;)</code>, and then the text content of the child element is modified to &quot;Modified child element&quot;.</p>
-<h3>Select multiple elements</h3>
-<h4>Use <code>$.all(&#39;xxx&#39;)</code> to find global elements</h4>
-<p>The <code>$.all(&#39;xxx&#39;)</code> method is used to find all elements in the page that match the selector condition and return them as a collection of elements. This allows you to select multiple elements in the page for batch operations.</p>
+<p>In the above example, you directly use <code>$(&#39;div .child&#39;)</code> to find the child elements with the <code>child</code> class and modify their text content to &quot;Modified child element&quot;.</p>
+<h3>Selecting Multiple Elements</h3>
+<h4>Use <code>$.all(&#39;xxx&#39;)</code> to search for global elements.</h4>
+<p>The <code>$.all(&#39;xxx&#39;)</code> method is used to find all elements on the page that meet the selector condition and return them as a collection of elements. This allows for batch operations on multiple elements in the page.</p>
 <h4>Example</h4>
 <pre><code class="language-html">&lt;p&gt;Paragraph 1&lt;/p&gt;
 &lt;p&gt;Paragraph 2&lt;/p&gt;
@@ -112,9 +112,9 @@
   });
 &lt;/script&gt;
 </code></pre>
-<p>In the above example, using <code>$.all(&quot;p&quot;)</code> finds all the <code>p</code> tag elements on the page and performs batch operations on them by modifying their text content to &quot;Modified Paragraph 1&quot;, &quot;Modified Paragraph 2&quot;, and &quot;Modified Paragraph 3&quot;.</p>
-<h3>Find all elements that meet the condition within an element</h3>
-<p>In addition to finding elements globally, you can also find all child elements that meet the condition from a specific element using the following method: <code>$(&#39;xxx&#39;).all(&#39;xxxx&#39;)</code>.</p>
+<p>In the example above, <code>$.all(&quot;p&quot;)</code> is used to find all the <code>p</code> tag elements on the page and perform a batch operation on them, modifying their text content to &quot;Modified Paragraph 1&quot;, &quot;Modified Paragraph 2&quot;, and &quot;Modified Paragraph 3&quot;.</p>
+<h3>Finding all elements that meet the conditions within an element</h3>
+<p>In addition to searching for elements globally, you can also search for all matching child elements within a specific element using the following syntax: <code>$(&#39;xxx&#39;).all(&#39;xxxx&#39;)</code>.</p>
 <h4>Example</h4>
 <pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
   &lt;p&gt;Hello World&lt;/p&gt;
@@ -133,18 +133,18 @@
   });
 &lt;/script&gt;
 </code></pre>
-<p>In the example above, first use <code>$(&quot;.container&quot;)</code> to find elements with the class <code>container</code>, then use <code>.all(&quot;.item&quot;)</code> to find all child elements with the class <code>item</code> within that container, and perform batch operations on them, modifying the text content to &quot;Modified Item 1&quot;, &quot;Modified Item 2&quot;, and &quot;Modified Item 3&quot;.</p>
+<p>In the above example, first use <code>$(&quot;.container&quot;)</code> to find elements with the class <code>container</code>, then use <code>.all(&quot;.item&quot;)</code> to find all child elements with the class <code>item</code> within that container, and perform batch operations on them, modifying their text content to &quot;Modified Item 1&quot;, &quot;Modified Item 2&quot;, and &quot;Modified Item 3&quot;.</p>
 <h2>Events</h2>
-<p>We have already discussed the usage of <code>on</code> to bind events. Here are a few other methods related to events;</p>
-<h3>Documentation for the use of the <code>off</code> method</h3>
-<p>The <code>off</code> method is used to remove event handlers bound using the <code>on</code> method. When an event handler is no longer needed, it can be removed from the element using the <code>off</code> method to avoid duplicate execution or memory leaks.</p>
+<p>We have already discussed the usage of <code>on</code> to bind events. Now let&#39;s introduce a few methods related to events.</p>
+<h3>Usage documentation for the <code>off</code> method</h3>
+<p>The <code>off</code> method is used to remove event handlers that have been bound using the <code>on</code> method. When a handler for a certain event is no longer needed, the <code>off</code> method can be used to remove it from the element, preventing it from being executed repeatedly or causing memory leaks.</p>
 <h4>Syntax</h4>
 <pre><code class="language-javascript">$(selector).off(eventName, eventHandler);
 </code></pre>
 <ul>
-<li><code>selector</code>: The element to remove the event handler from.</li>
-<li><code>eventName</code>: The event name to remove.</li>
-<li><code>eventHandler</code>: The event handler to remove.</li>
+<li><code>selector</code>: Select the element to remove the event handler from.</li>
+<li><code>eventName</code>: The name of the event to be removed.</li>
+<li><code>eventHandler</code>: The event handler to be removed.</li>
 </ul>
 <h4>Example</h4>
 <pre><code class="language-html">&lt;button id=&quot;btn&quot;&gt;Click Me&lt;/button&gt;
@@ -162,54 +162,54 @@
   }, 5000);
 &lt;/script&gt;
 </code></pre>
-<p>In the example above, when the button is clicked, a dialog box displaying &quot;Button clicked!&quot; will appear. However, after 5 seconds, the click event handler is removed using the <code>off</code> method, so clicking the button again will not trigger the dialog box.</p>
-<h3>Documentation for the use of the <code>one</code> method</h3>
-<p>The <code>one</code> method is used to bind event handlers that will only execute once when the event is triggered for the first time. After executing once, the event handler will be automatically removed, preventing duplicate triggers.</p>
+<p>In the above example, when the button is clicked, a dialog displaying &quot;Button clicked!&quot; will pop up. However, after 5 seconds, the click event handler is removed using the <code>off</code> method, so the dialog will not pop up again when the button is clicked.</p>
+<h3>Documentation for the use of the one method</h3>
+<p><code>one</code> method is used to bind event handlers, but this handler will only be executed once when the event is triggered for the first time. After being executed once, the event handler will be automatically removed to avoid repetitive triggering.</p>
 <h4>Syntax</h4>
 <pre><code class="language-javascript">$(selector).one(eventName, eventHandler);
 </code></pre>
 <ul>
-<li><code>selector</code>: Selects the element to bind the event handler to.</li>
-<li><code>eventName</code>: The name of the event to bind.</li>
-<li><code>eventHandler</code>: The event handler to execute.</li>
+<li><code>selector</code>: Element to bind event handler to.</li>
+<li><code>eventName</code>: Event name to bind.</li>
+<li><code>eventHandler</code>: Event handling function to be executed.</li>
 </ul>
 <h4>Example</h4>
 <pre><code class="language-html">&lt;button id=&quot;btn&quot;&gt;Click Me Once&lt;/button&gt;
 &lt;script&gt;
-  // Bind the click event handler, but only execute it once
+  // Bind the click event handling function, but it will only be executed once
   $(&quot;#btn&quot;).one(&quot;click&quot;, () =&gt; {
     alert(&quot;Button clicked once!&quot;);
   });
 &lt;/script&gt;
 </code></pre>
-<p>In the above example, when the button is clicked, a dialog box with the message &quot;Button clicked once!&quot; will appear. However, after the first click, the event handler will be removed, so subsequent clicks will not trigger the dialog box.</p>
-<h3>Documentation for the <code>emit</code> method</h3>
-<p>The <code>emit</code> method is used to manually trigger a specific event bound to an element. It allows for executing event handler functions without performing any actual operations.</p>
+<p>In the above example, when the button is clicked, a dialog box will appear displaying &quot;Button clicked once!&quot;. However, after the first click, the event handler will be removed, so subsequent button clicks will not trigger the dialog box.</p>
+<h3>Documentation for the emit method</h3>
+<p><code>emit</code> method is used to manually trigger a specific event bound to an element. By using the <code>emit</code> method, we can trigger the execution of event handling functions without performing any actual operations.</p>
 <h4>Syntax</h4>
 <pre><code class="language-javascript">$(selector).emit(eventName);
 </code></pre>
 <ul>
-<li><code>selector</code>: Selects the element to trigger the event on.</li>
+<li><code>selector</code>: Select the element to trigger the event.</li>
 <li><code>eventName</code>: The name of the event to trigger.</li>
 </ul>
 <h4>Example</h4>
 <pre><code class="language-html">&lt;button id=&quot;btn&quot;&gt;Click Me&lt;/button&gt;
 &lt;script&gt;
-  // Bind the click event handler
+  // Bind click event handler
   $(&quot;#btn&quot;).on(&quot;click&quot;, () =&gt; {
     alert(&quot;Button clicked!&quot;);
   });
 
-  // Trigger the click event on the button using the emit method
+  // Trigger the click event of the button using the emit method
   $(&quot;#btn&quot;).emit(&quot;click&quot;);
 &lt;/script&gt;
 </code></pre>
-<p>In the above example, the <code>emit</code> method is used to manually trigger the click event on the button. This will result in a dialog box with the message &quot;Button clicked!&quot; even though the button was not actually clicked.</p>
-<p>Note: The <code>emit</code> method does not simulate a mouse click or any other actual event. It only directly invokes the bound event handler functions. Therefore, if you want to trigger the execution of an event in specific circumstances, you can use the <code>emit</code> method.</p>
-<p>When you bind an event, sometimes you may want to stop the event from further propagation (bubbling) or cancel the default behavior of the event. Below we will explain how to stop bubbling and cancel default events after the event is triggered.</p>
+<p>In the example above, the <code>emit</code> method is used to manually trigger the button&#39;s click event. As a result, a dialog box will appear displaying &quot;Button clicked!&quot; even though the button was not actually clicked.</p>
+<p>Note: Using the <code>emit</code> method does not simulate mouse clicks or other actual events. It simply directly calls the bound event handling function. Therefore, if you want to trigger the execution of an event under specific circumstances, you can use the <code>emit</code> method.</p>
+<p>When you bind an event, sometimes you may want to stop the event from further propagation (bubbling) or cancel the default behavior of the event. Below, we will introduce how to prevent event propagation and cancel default events after the event is triggered.</p>
 <h3>Stop Event Bubbling</h3>
-<p>Event bubbling refers to when an event on an element is triggered, it will bubble up along the DOM tree, triggering the same type of event on parent elements one by one. If you want to stop it from bubbling further after handling the event on a specific element, you can use the <code>event.stopPropagation()</code> method.</p>
-<p>Example code:</p>
+<p>Event bubbling refers to the propagation of an event along the DOM tree when it is triggered on an element, sequentially triggering the same type of event on parent elements. If you want to stop the event from further bubbling after handling it on a specific element, you can use the <code>event.stopPropagation()</code> method.</p>
+<p>Example code: </p>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
@@ -231,7 +231,7 @@
 
     btn.on(&#39;click&#39;, (event) =&gt; {
       alert(&#39;Button Clicked!&#39;);
-      event.stopPropagation(); // Stop event bubbling
+      event.stopPropagation(); // 阻止事件冒泡
     });
 
     innerDiv.on(&#39;click&#39;, () =&gt; {
@@ -245,10 +245,10 @@
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<p>In the above example, when you click the &quot;Click Me&quot; button, it will display &quot;Button Clicked!&quot; but will not trigger &quot;Inner Div Clicked!&quot; and &quot;Outer Div Clicked!&quot;. This is because we called <code>event.stopPropagation()</code> in the button&#39;s click event handler, stopping the event from further propagation.</p>
-<h3>Prevent Default Event</h3>
-<p>Some events on elements have default behaviors when triggered. For example, clicking a submit button will submit the form, clicking a link will redirect to the link&#39;s address, and so on. If you want to prevent the default behavior of an event, you can use the <code>event.preventDefault()</code> method.</p>
-<p>Example code:</p>
+<p>In the example above, when you click the button &quot;Click Me&quot;, it will display &quot;Button Clicked!&quot; but not trigger &quot;Inner Div Clicked!&quot; and &quot;Outer Div Clicked!&quot;. This is because we called <code>event.stopPropagation()</code> in the button&#39;s click event handler, which prevents the event from further propagation.</p>
+<h3>Cancel Default Behavior of an Event</h3>
+<p>Some events on certain elements have default behaviors when triggered. For example, clicking a submit button will cause the form to be submitted, clicking a link will navigate to the link&#39;s address, and so on. If you want to prevent the default behavior of an event, you can use the <code>event.preventDefault()</code> method.</p>
+<p>Example code: </p>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
@@ -269,7 +269,7 @@
     const submitBtn = $(&#39;#submitBtn&#39;);
 
     submitBtn.on(&#39;click&#39;, (event) =&gt; {
-      event.preventDefault(); // Prevent the default behavior of the event
+      event.preventDefault(); // Cancel the default behavior of the event
       const name = $(&#39;#name&#39;).value;
       alert(`Hello, ${name}! Form submission prevented.`);
     });
@@ -281,14 +281,14 @@
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<p>In the above example, when you click the submit button &quot;Submit&quot;, it will display &quot;Hello, {name}! Form submission prevented.&quot;, but it will not trigger the alert &quot;Form Submitted!&quot;. This is because we call <code>event.preventDefault()</code> in the click event handler of the submit button to prevent the default submission behavior of the form.</p>
+<p>In the example above, when you click the &quot;Submit&quot; button, it will display &quot;Hello, {name}! Form submission prevented.&quot;, but it will not trigger the &quot;Form Submitted!&quot; alert. This is because we called <code>event.preventDefault()</code> in the event handler for the submit button, preventing the form&#39;s default submission behavior.</p>
 
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -297,6 +297,63 @@
       </template>
     </o-app>
     <div id="loading"></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/init.js" type="module"></script>
+    <div class="body-important other-link"><ul>
+<li><a href="../../cases/index.html">Getting Started</a></li>
+<li><a href="../../cases/event.html">Event Handling</a></li>
+<li><a href="../../cases/simple-component.html">Creating and Using Components</a></li>
+<li><a href="../../cases/slot.html">Component Slots</a></li>
+<li><a href="../../cases/render-text.html">Template Syntax: Rendering Text</a></li>
+<li><a href="../../cases/attribute-transmission.html">Attribute Propagation</a></li>
+<li><a href="../../cases/get-set-comp.html">Accessing and Modifying Component Instance Values</a></li>
+<li><a href="../../cases/property-transmission.html">Template Syntax: Prop Binding</a></li>
+<li><a href="../../cases/bind-event.html">Template Syntax: Event Binding</a></li>
+<li><a href="../../cases/nested-component.html">Nested Components</a></li>
+<li><a href="../../cases/inject-host.html">inject-host Component</a></li>
+<li><a href="../../cases/event-passing.html">Event Propagation</a></li>
+<li><a href="../../cases/sync.html">Template Syntax: Two-Way Data Binding</a></li>
+<li><a href="../../cases/condition.html">Template Component: Conditional Rendering</a></li>
+<li><a href="../../cases/fill.html">Template Component: Dynamic Rendering</a></li>
+<li><a href="../../cases/fill-temp.html">Recursive Filling and Rendering</a></li>
+<li><a href="../../cases/life-cycle.html">Lifecycle</a></li>
+<li><a href="../../cases/form-data.html">Form Data</a></li>
+<li><a href="../../cases/custom-form-element.html">Custom Form Components</a></li>
+<li><a href="../../cases/use-page.html">Using Page Components</a></li>
+<li><a href="../../cases/use-app.html">Using app Component</a></li>
+<li><a href="../../cases/app-config.html">Configuring app Parameters</a></li>
+<li><a href="../../cases/app-loading.html">Customizing app Loading</a></li>
+<li><a href="../../cases/set404.html">Setting Up 404 Page</a></li>
+<li><a href="../../cases/use-hash-router.html">Using Hash Router</a></li>
+<li><a href="../../cases/use-scsr.html">Using SCSR Solution</a></li>
+<li><a href="../introduce.html">Introduction</a></li>
+<li><a href="index.html">How to use ofa.js</a></li>
+<li><a href="hello-world.html">First Case</a></li>
+<li><a href="elements-and-events.html">Selection of Elements and Events</a></li>
+<li><a href="basic-concept.html">Basic Concepts of Instances</a></li>
+<li><a href="common-properties.html">Commonly Used Properties</a></li>
+<li><a href="common-function.html">Introduction to Common Methods</a></li>
+<li><a href="css.html">CSS</a></li>
+<li><a href="classlist-and-data.html">classList and data</a></li>
+<li><a href="box-model.html">Box Model</a></li>
+<li><a href="formdata.html">Form Data</a></li>
+<li><a href="../create-component/index.html">Creation and Usage</a></li>
+<li><a href="../create-component/parameter-description.html">Parameter Descriptions</a></li>
+<li><a href="../create-component/life-cycle.html">Life Cycle</a></li>
+<li><a href="../create-component/web-components.html">General Knowledge of Componentization</a></li>
+<li><a href="../create-component/template-syntax.html">Template Syntax</a></li>
+<li><a href="../create-component/template-component.html">Template Components</a></li>
+<li><a href="../create-app/index.html">Using o-app</a></li>
+<li><a href="../create-app/page.html">Using Page Components</a></li>
+<li><a href="../create-app/app.html">Using App Components</a></li>
+<li><a href="../create-app/subrouting.html">Subrouting</a></li>
+<li><a href="../create-app/o-router.html">Route Binding</a></li>
+<li><a href="../create-app/scsr.html">SCSR Solution</a></li>
+<li><a href="../../others/data-sharing.html">Data Sharing</a></li>
+<li><a href="../../others/about-micro-frontend.html">ofa.js and Micro Frontend</a></li>
+<li><a href="../../../cn/index.html">简体中文-index.html</a></li>
+<li><a href="../../index.html">English-index.html</a></li>
+<li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
+
+</ul></div>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.26/statics/init.js" type="module"></script>
   </body>
 </html>
