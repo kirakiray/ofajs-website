@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Allow: /en/
+Allow: /cn/
+Allow: /t-cn/
+Sitemap: https://ofajs.com/sitemap.xml
