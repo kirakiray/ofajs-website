@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>組件的生命周期</title>
-    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/dist/ofa.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/dist/ofa.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.28/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/css/public.css" />
     <style>
       html,
       body {
@@ -35,9 +35,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.28/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.28/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.28/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -52,7 +52,7 @@
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.28/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/css/github-markdown.css"
         />
         <article class="markdown-body"><h1>組件的生命周期</h1>
 <p>在 ofa.js 中，組件生命周期是在特定時間點觸發的鉤子函數。這些鉤子函數讓你能更精細地控制和交互，ofa.js 有五個關鍵生命周期鉤子：<code>created</code>、<code>ready</code>、<code>watch</code>、<code>loaded</code>、<code>attached</code> 和 <code>detached</code>，分別在不同時刻觸發。</p>
@@ -134,9 +134,9 @@ export default async function () {
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.28/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.28/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -197,11 +197,11 @@ export default async function () {
 <li><a href="../create-app/scsr.html">SCSR方案</a></li>
 <li><a href="../../others/data-sharing.html">數據共享</a></li>
 <li><a href="../../others/about-micro-frontend.html">ofa.js和微前端</a></li>
-<li><a href="../../../cn/index.html">简体中文-index.html</a></li>
-<li><a href="../../index.html">繁体中文-index.html</a></li>
 <li><a href="../../../en/index.html">English-index.html</a></li>
+<li><a href="../../index.html">繁体中文-index.html</a></li>
+<li><a href="../../../cn/index.html">简体中文-index.html</a></li>
 
 </ul></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.28/statics/init.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/init.js" type="module"></script>
   </body>
 </html>

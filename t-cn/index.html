@@ -4,16 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ofa.js - 不需要打包的 JavaScript 框架</title>
+    <meta name="description" content="ofa.js 是一種全新的構建用戶界面的框架，無需繁瑣的構建過程，直接引用即可輕松使用。它摒棄了對 npm、Node.js 和 webpack 的依賴，重新回歸了 jQuery 時代的便捷性。">
     <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/dist/ofa.min.js"></script>
-    <!-- <script
-      src="http://127.0.0.1:5513/packages/ofa/main.mjs"
-      type="module"
-    ></script> -->
     <script
       src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.28/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/css/public.css" />
     <style>
       html,
       body {
@@ -39,9 +36,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.28/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.28/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.28/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -61,9 +58,11 @@
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.28/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/css/github-markdown.css"
         />
-        <simp-block>
+        <!-- desc: ofa.js 是一種全新的構建用戶界面的框架，無需繁瑣的構建過程，直接引用即可輕松使用。它摒棄了對 npm、Node.js 和 webpack 的依賴，重新回歸了 jQuery 時代的便捷性。 -->
+
+<simp-block>
 
 <punch-logo>
     <img src="../publics/logo.svg" width="100" logo alt="ofa.js" />
@@ -320,16 +319,16 @@ var child = $(&quot;#target&quot;)[0]; // 獲取第一個子元素
 <p><a href="https://obook.ofajs.com/">obook 最簡單的文檔建站工具</a></p>
 </simp-block>
 
-<p><l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.28/blocks/simp-block.html"></l-m>
+<p><l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.30/blocks/simp-block.html"></l-m>
 <l-m src="../publics/comps/punch-logo.html"></l-m>
 <l-m src="../publics/comps/support-platforms.html"></l-m>
 <l-m src="../publics/comps/case-switch.html"></l-m>
 <l-m src="../publics/comps/split-code.html"></l-m></p>
 
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.28/statics/layouts/header-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/layouts/header-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.28/statics/page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -389,12 +388,12 @@ var child = $(&quot;#target&quot;)[0]; // 獲取第一個子元素
 <li><a href="docs/create-app/scsr.html">SCSR方案</a></li>
 <li><a href="others/data-sharing.html">數據共享</a></li>
 <li><a href="others/about-micro-frontend.html">ofa.js和微前端</a></li>
+<li><a href="../en/index.html">English-index.html</a></li>
 <li><a href="../cn/index.html">简体中文-index.html</a></li>
 <li><a href="index.html">繁体中文-index.html</a></li>
-<li><a href="../en/index.html">English-index.html</a></li>
 
 </ul></div>
     <div id="loading"></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.28/statics/init.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/init.js" type="module"></script>
   </body>
 </html>
