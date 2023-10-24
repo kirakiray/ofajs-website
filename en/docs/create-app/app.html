@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Creating Applications</title>
-        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/dist/ofa.min.js"></script>
+    <title>Use o-app Component</title>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/css/public.css" />
     <style>
       html,
       body {
@@ -20,7 +20,9 @@
       let configUrl = "../../config.json";
     </script>
     
-        <link rel="shortcut icon" href="/favicon.png">
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/logo.png">
+        <link rel="apple-touch-icon-precomposed" href="/logo.png">
         <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
         <script>
           window.dataLayer = window.dataLayer || [];
@@ -35,9 +37,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -49,13 +51,18 @@
           .markdown-body::after {
             height: 32px;
           }
+          .markdown-body > * {
+            margin-top: 1em;
+            margin-bottom: 1em;
+          }
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/css/github-markdown.css"
         />
-        <article class="markdown-body"><h1>Creating Applications</h1>
+        <article class="markdown-body"><h1>Use o-app Component</h1>
 <p>Using the <code>o-app</code> tag allows you to easily create a complete application window. Here is the step-by-step process for creating an application and configuring it:</p>
+<p>The text appears to be somewhat dry. We recommend that you go to <a href="../../cases/use-app.html">Application Case Demonstrations</a> for a practical experience.</p>
 <h2>Basic code</h2>
 <p>Create an HTML file and set the &#39;o-app&#39; tag as the display window for the application. Make sure to set the &#39;o-app&#39; tag to full screen style so that the application occupies the entire viewport.</p>
 <pre><code class="language-html">&lt;!-- app.html --&gt;
@@ -133,7 +140,7 @@ export const pageAnime = {
 };
 </code></pre>
 <ol start="3">
-<li>Use the <code>o-app</code> tag in HTML files and reference the configuration data es module through the <code>src</code> attribute.</li>
+<li>Use the <code>o-app</code> tag in HTML files and reference the configuration data es module through the <code>src</code> property.</li>
 </ol>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -165,11 +172,11 @@ export const pageAnime = {
 <h2>Route Jump</h2>
 <p>In the <code>o-app</code> application, you can easily achieve route navigation, jumping from one page module to another page module. Below are several different ways to perform route navigation.</p>
 <h3>Use <code>&lt;a&gt;</code> tag for route navigation</h3>
-<p>You can use the <code>&lt;a&gt;</code> tag in the HTML of the page to implement routing. You need to specify the <code>href</code> attribute as the path of the target page module and add the <code>olink</code> attribute to inform the <code>o-app</code> component that this is a routing link.</p>
+<p>You can use the <code>&lt;a&gt;</code> tag in the HTML of the page to implement routing. You need to specify the <code>href</code> property as the path of the target page module and add the <code>olink</code> property to inform the <code>o-app</code> component that this is a routing link.</p>
 <pre><code class="language-html">&lt;a href=&quot;./pages/home.mjs?count=2&quot; olink&gt;Jump to homepage&lt;/a&gt;
 </code></pre>
 <h3>goto</h3>
-<p>You can use the <code>on:click</code> attribute in the page template to bind a click event and call the <code>goto</code> method on the module for routing.</p>
+<p>You can use the <code>on:click</code> property in the page template to bind a click event and call the <code>goto</code> method on the module for routing.</p>
 <pre><code class="language-html">&lt;template page&gt;
   &lt;div class=&quot;container&quot;&gt;
     &lt;button on:click=&quot;toabout&quot;&gt;Jump to About page&lt;/button&gt;
@@ -207,7 +214,7 @@ export const pageAnime = {
 <p>If you want to bind routes and pages, you can use the o-router component, which we will discuss in detail in the following sections.</p>
 <p>Through the above methods, you can implement flexible routing in the <code>o-app</code> application, allowing users to easily browse different page content.</p>
 <h2>Accessing Apps and Current Pages</h2>
-<p>In various elements (including components) within the application, you can use the <strong>app</strong> attribute to access the <code>o-app</code> instance they belong to. This is very useful for operations that require interaction with the entire application.</p>
+<p>In various elements (including components) within the application, you can use the <strong>app</strong> property to access the <code>o-app</code> instance they belong to. This is very useful for operations that require interaction with the entire application.</p>
 <p>You can retrieve the address of the currently active page module through the <code>app.current</code> property.</p>
 <p>Here is an example of usage: </p>
 <pre><code class="language-javascript">// MyComponent.mjs
@@ -222,7 +229,7 @@ export default () =&gt; {
   };
 }
 </code></pre>
-<p>In the example above, the app tag was retrieved using the selector <code>.app</code>, and then the current active page address was obtained by accessing the <code>app.current</code> attribute.</p>
+<p>In the example above, the app tag was retrieved using the selector <code>.app</code>, and then the current active page address was obtained by accessing the <code>app.current</code> property.</p>
 <h2>Tips: Pre-cache the next page</h2>
 <p>In some scenarios, you may already know that the user is about to navigate to the next page. To enhance the user experience, you can pre-cache the page modules of the next page, so that they can be loaded immediately when the actual navigation occurs. This reduces the waiting time for users and makes their experience smoother.</p>
 <p>In the JavaScript code of the current page, call the <code>load</code> method and pass in the module path of the next page. The module will be loaded and cached.</p>
@@ -236,9 +243,9 @@ export default async ({ load }) =&gt; {
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -249,21 +256,21 @@ export default async ({ load }) =&gt; {
     <div id="loading"></div>
     <div class="body-important other-link"><ul>
 <li><a href="../../cases/index.html">Getting Started</a></li>
-<li><a href="../../cases/event.html">Event Handling</a></li>
+<li><a href="../../cases/event.html">Event Reaction</a></li>
 <li><a href="../../cases/simple-component.html">Creating and Using Components</a></li>
 <li><a href="../../cases/slot.html">Component Slots</a></li>
 <li><a href="../../cases/render-text.html">Template Syntax: Rendering Text</a></li>
-<li><a href="../../cases/attribute-transmission.html">Attribute Propagation</a></li>
-<li><a href="../../cases/get-set-comp.html">Accessing and Modifying Component Instance Values</a></li>
-<li><a href="../../cases/property-transmission.html">Template Syntax: Prop Binding</a></li>
-<li><a href="../../cases/bind-event.html">Template Syntax: Event Binding</a></li>
+<li><a href="../../cases/attribute-transmission.html">property Transmission</a></li>
+<li><a href="../../cases/get-set-comp.html">Getting and Modifying Component Instance Values</a></li>
+<li><a href="../../cases/property-transmission.html">Template Syntax: property Transmission</a></li>
+<li><a href="../../cases/bind-event.html">Template Syntax: Bind Events</a></li>
 <li><a href="../../cases/nested-component.html">Nested Components</a></li>
 <li><a href="../../cases/inject-host.html">inject-host Component</a></li>
-<li><a href="../../cases/event-passing.html">Event Propagation</a></li>
+<li><a href="../../cases/event-passing.html">Event Passing</a></li>
 <li><a href="../../cases/sync.html">Template Syntax: Two-Way Data Binding</a></li>
 <li><a href="../../cases/condition.html">Template Component: Conditional Rendering</a></li>
-<li><a href="../../cases/fill.html">Template Component: Dynamic Rendering</a></li>
-<li><a href="../../cases/fill-temp.html">Recursive Filling and Rendering</a></li>
+<li><a href="../../cases/fill.html">Template Component: Filling Rendering</a></li>
+<li><a href="../../cases/fill-temp.html">Recursive Filling Rendering</a></li>
 <li><a href="../../cases/life-cycle.html">Lifecycle</a></li>
 <li><a href="../../cases/form-data.html">Form Data</a></li>
 <li><a href="../../cases/custom-form-element.html">Custom Form Components</a></li>
@@ -271,39 +278,93 @@ export default async ({ load }) =&gt; {
 <li><a href="../../cases/use-app.html">Using app Component</a></li>
 <li><a href="../../cases/app-config.html">Configuring app Parameters</a></li>
 <li><a href="../../cases/app-loading.html">Customizing app Loading</a></li>
-<li><a href="../../cases/set404.html">Setting Up 404 Page</a></li>
-<li><a href="../../cases/use-hash-router.html">Using Hash Router</a></li>
-<li><a href="../../cases/use-scsr.html">Using SCSR Solution</a></li>
+<li><a href="../../cases/set404.html">Setting up a 404 Page</a></li>
+<li><a href="../../cases/nested-page.html">Nested Pages</a></li>
+<li><a href="../../cases/use-hash-router.html">Using HashRouter</a></li>
+<li><a href="../../cases/use-scsr.html">Using scsr Scheme</a></li>
+<li><a href="../../cases/sync-state.html">State Synchronization</a></li>
+<li><a href="../../cases/alias.html">Aliases</a></li>
 <li><a href="../introduce.html">Introduction</a></li>
 <li><a href="../get-started/index.html">How to use ofa.js</a></li>
-<li><a href="../get-started/hello-world.html">First Case</a></li>
-<li><a href="../get-started/elements-and-events.html">Selection of Elements and Events</a></li>
-<li><a href="../get-started/basic-concept.html">Basic Concepts of Instances</a></li>
-<li><a href="../get-started/common-properties.html">Commonly Used Properties</a></li>
-<li><a href="../get-started/common-function.html">Introduction to Common Methods</a></li>
-<li><a href="../get-started/css.html">CSS</a></li>
-<li><a href="../get-started/classlist-and-data.html">classList and data</a></li>
-<li><a href="../get-started/box-model.html">Box Model</a></li>
-<li><a href="../get-started/formdata.html">Form Data</a></li>
-<li><a href="../create-component/index.html">Creation and Usage</a></li>
-<li><a href="../create-component/parameter-description.html">Parameter Descriptions</a></li>
-<li><a href="../create-component/life-cycle.html">Life Cycle</a></li>
-<li><a href="../create-component/web-components.html">General Knowledge of Componentization</a></li>
-<li><a href="../create-component/template-syntax.html">Template Syntax</a></li>
-<li><a href="../create-component/template-component.html">Template Components</a></li>
-<li><a href="index.html">Using o-app</a></li>
-<li><a href="page.html">Using Page Components</a></li>
-<li><a href="app.html">Using App Components</a></li>
-<li><a href="subrouting.html">Subrouting</a></li>
-<li><a href="o-router.html">Route Binding</a></li>
-<li><a href="scsr.html">SCSR Solution</a></li>
-<li><a href="../../others/data-sharing.html">Data Sharing</a></li>
-<li><a href="../../others/about-micro-frontend.html">ofa.js and Micro Frontend</a></li>
+<li><a href="../get-started/hello-world.html">First case</a></li>
+<li><a href="../get-started/elements-and-events.html">Selection of elements and events</a></li>
+<li><a href="../get-started/basic-concept.html">Basic concepts of instances</a></li>
+<li><a href="../get-started/common-properties.html">Common properties and methods</a></li>
+<li><a href="../create-component/index.html">Making and using components</a></li>
+<li><a href="../create-component/parameter-description.html">Parameter description</a></li>
+<li><a href="../create-component/life-cycle.html">Lifecycle</a></li>
+<li><a href="../create-component/web-components.html">General knowledge of componentization</a></li>
+<li><a href="../create-component/template-syntax.html">Template syntax</a></li>
+<li><a href="index.html">Introduction</a></li>
+<li><a href="page.html">Using the Page component</a></li>
+<li><a href="app.html">Using the App component</a></li>
+<li><a href="subrouting.html">Sub-routing functionality</a></li>
+<li><a href="o-router.html">Route binding</a></li>
+<li><a href="scsr.html">SCSR scheme</a></li>
+<li><a href="../others/data-sharing.html">Data sharing</a></li>
+<li><a href="../others/about-micro-frontend.html">ofa.js and micro-frontends</a></li>
+<li><a href="../../api/index.html">API Introduction</a></li>
+<li><a href="../../api/instance/dollar.html">$ Method</a></li>
+<li><a href="../../api/instance/all.html">all</a></li>
+<li><a href="../../api/instance/prev.html">prev</a></li>
+<li><a href="../../api/instance/prevs.html">prevs</a></li>
+<li><a href="../../api/instance/next.html">next</a></li>
+<li><a href="../../api/instance/nexts.html">nexts</a></li>
+<li><a href="../../api/instance/siblings.html">siblings</a></li>
+<li><a href="../../api/instance/parent.html">parent</a></li>
+<li><a href="../../api/instance/parents.html">parents</a></li>
+<li><a href="../../api/instance/clone.html">clone</a></li>
+<li><a href="../../api/instance/ele.html">ele</a></li>
+<li><a href="../../api/instance/shadow.html">shadow</a></li>
+<li><a href="../../api/instance/root.html">root</a></li>
+<li><a href="../../api/instance/children.html">Child Elements</a></li>
+<li><a href="../../api/instance/host.html">host</a></li>
+<li><a href="../../api/instance/app.html">app</a></li>
+<li><a href="../../api/operation/array-like.html">Add or delete child nodes</a></li>
+<li><a href="../../api/operation/before.html">before</a></li>
+<li><a href="../../api/operation/after.html">after</a></li>
+<li><a href="../../api/operation/remove.html">remove</a></li>
+<li><a href="../../api/operation/wrap.html">wrap</a></li>
+<li><a href="../../api/operation/unwrap.html">unwrap</a></li>
+<li><a href="../../api/props/text.html">text</a></li>
+<li><a href="../../api/props/html.html">html</a></li>
+<li><a href="../../api/props/attr.html">attr</a></li>
+<li><a href="../../api/props/css.html">css</a></li>
+<li><a href="../../api/props/style.html">style</a></li>
+<li><a href="../../api/props/class-list.html">classList</a></li>
+<li><a href="../../api/props/data.html">data</a></li>
+<li><a href="../../api/event/on.html">on</a></li>
+<li><a href="../../api/event/one.html">one</a></li>
+<li><a href="../../api/event/emit.html">emit</a></li>
+<li><a href="../../api/event/off.html">off</a></li>
+<li><a href="../../api/temp-syntax/text-render.html">Text rendering</a></li>
+<li><a href="../../api/temp-syntax/class.html">class</a></li>
+<li><a href="../../api/temp-syntax/sync.html">sync</a></li>
+<li><a href="../../api/temp-syntax/condition.html">Conditional rendering</a></li>
+<li><a href="../../api/temp-syntax/fill.html">List rendering</a></li>
+<li><a href="../../api/life-cycle/created.html">created</a></li>
+<li><a href="../../api/life-cycle/ready.html">ready</a></li>
+<li><a href="../../api/life-cycle/watch.html">watch</a></li>
+<li><a href="../../api/life-cycle/loaded.html">loaded</a></li>
+<li><a href="../../api/life-cycle/attached.html">attached</a></li>
+<li><a href="../../api/life-cycle/detached.html">detached</a></li>
+<li><a href="../../api/life-cycle/router-change.html">routerChange</a></li>
+<li><a href="../../api/others/app.html">app</a></li>
+<li><a href="../../api/others/page.html">page</a></li>
+<li><a href="../../api/others/box.html">Box model</a></li>
+<li><a href="../../api/others/form-data.html">formData</a></li>
+<li><a href="../../api/others/tag.html">tag</a></li>
+<li><a href="../../api/others/index.html">index</a></li>
+<li><a href="../../api/others/is.html">is</a></li>
+<li><a href="../../api/others/refresh.html">refresh</a></li>
+<li><a href="../../api/others/path.html">PATH</a></li>
+<li><a href="../../api/others/extend.html">extend</a></li>
+<li><a href="../../api/others/stanz.html">Instance data characteristics</a></li>
 <li><a href="../../index.html">English-index.html</a></li>
 <li><a href="../../../cn/index.html">简体中文-index.html</a></li>
 <li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
 
 </ul></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/init.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/init.js" type="module"></script>
   </body>
 </html>

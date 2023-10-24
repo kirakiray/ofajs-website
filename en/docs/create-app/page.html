@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Develop Page</title>
-        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/dist/ofa.min.js"></script>
+    <title>Using the o-page component</title>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/css/public.css" />
     <style>
       html,
       body {
@@ -20,7 +20,9 @@
       let configUrl = "../../config.json";
     </script>
     
-        <link rel="shortcut icon" href="/favicon.png">
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/logo.png">
+        <link rel="apple-touch-icon-precomposed" href="/logo.png">
         <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
         <script>
           window.dataLayer = window.dataLayer || [];
@@ -35,9 +37,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -49,27 +51,25 @@
           .markdown-body::after {
             height: 32px;
           }
+          .markdown-body > * {
+            margin-top: 1em;
+            margin-bottom: 1em;
+          }
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/css/github-markdown.css"
         />
-        <article class="markdown-body"><h1>Develop Page</h1>
+        <article class="markdown-body"><h1>Using the o-page component</h1>
 <p>In ofa.js, we have built a custom component called <code>o-page</code> to provide convenience for page development. This component plays a crucial role in application development. When you want to use component template syntax but don&#39;t want to create a completely new component, <code>o-page</code> component will be your best choice.</p>
 <h2>Page Modules</h2>
-<p>When creating a single file page module, it is similar to creating a component module. Use the <code>template</code> tag to wrap the template code of the page and add the <code>page</code> attribute. Inside this tag, you can freely use template syntax to interact with other components or page modules.</p>
+<p>When creating a single file page module, it is similar to creating a component module. Use the <code>template</code> tag to wrap the template code of the page and add the <code>page</code> property. Inside this tag, you can freely use template syntax to interact with other components or page modules.</p>
 <pre><code class="language-html">&lt;!-- my-single-file-page.html --&gt;
 &lt;template page&gt;
   &lt;h1&gt;{{pageTitle}}&lt;/h1&gt;
   &lt;p&gt;Welcome to my single file page!&lt;/p&gt;
   &lt;script&gt;
-    // Avoid using import in single-file mode
-    // import data from &#39;./other/module.mjs&#39;;
-
     export default async ({ load }) =&gt; {
-      // Reference other modules
-      // const data = await load(&quot;./other/module.mjs&quot;);
-
       return {
         data: {
           pageTitle: &quot;My Single File Page&quot;,
@@ -79,7 +79,7 @@
   &lt;/script&gt;
 &lt;/template&gt;
 </code></pre>
-<p>In HTML files, use the <code>src</code> attribute of the <code>o-page</code> tag to specify the file path of the page module. The page content will be rendered inside this component.</p>
+<p>In HTML files, use the <code>src</code> property of the <code>o-page</code> tag to specify the file path of the page module. The page content will be rendered inside this component.</p>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
@@ -97,7 +97,7 @@
 <p>Dual file mode separates <code>static templates</code> and <code>logic code</code> to make the content of the web page clearer.</p>
 <p>Here are the steps to use the <code>o-page</code> component and page modules:</p>
 <p>Creating page module: .</p>
-<p>Similar to creating a component module, create a page module but set the <code>type</code> attribute to <code>$.PAGE</code>. The available parameters for a page module include <code>temp</code>, <code>data</code>, <code>proto</code>, and <code>watch</code>.</p>
+<p>Similar to creating a component module, create a page module but set the <code>type</code> property to <code>$.PAGE</code>. The available parameters for a page module include <code>temp</code>, <code>data</code>, <code>proto</code>, and <code>watch</code>.</p>
 <pre><code class="language-javascript">// my-page.mjs
 export const type = $.PAGE;
 
@@ -121,7 +121,7 @@ export const watch = {
 &lt;h1&gt;{{pageTitle}}&lt;/h1&gt;
 &lt;p&gt;Welcome to my page!&lt;/p&gt;
 </code></pre>
-<p>In your HTML file, use the <code>&lt;o-page&gt;</code> tag to use the <code>o-page</code> component, and reference the file path of the page module through the <code>src</code> attribute. The content of the page will be rendered inside this component.</p>
+<p>In your HTML file, use the <code>&lt;o-page&gt;</code> tag to use the <code>o-page</code> component, and reference the file path of the page module through the <code>src</code> property. The content of the page will be rendered inside this component.</p>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
@@ -136,35 +136,13 @@ export const watch = {
 &lt;/html&gt;
 </code></pre>
 <p>In this way, when you open the page, the <code>o-page</code> component will dynamically load the <code>my-page.mjs</code> page module and render the page content based on the templates and data in the module. The lifecycle and template syntax of the page module are consistent with the component module, making page development and management more unified and flexible.</p>
-<h2>Determine if the page has finished loading</h2>
-<p>In some cases, you may need to determine whether the page has been fully loaded so that you can perform certain operations. <code>ofa.js</code> provides several methods to determine if the page has finished loading.</p>
-<h3>Using the <code>page._loaded</code> property</h3>
-<p>In the page module, <code>page._loaded</code> is a boolean attribute that becomes <code>true</code> when the page content is fully loaded. You can use this attribute to determine if the page has finished loading.</p>
-<pre><code class="language-javascript">if (page._loaded) {
-  // The page has been loaded
-  // Perform your actions
-} else {
-  // Listen for the &#39;page-loaded&#39; event
-  page.addEventListener(&#39;page-loaded&#39;, () =&gt; {
-    // Actions to be performed after the page is loaded
-  });
-}
-</code></pre>
-<h3>Use the <code>page._rendered</code> property</h3>
-<p>Another way is to use the <code>page._rendered</code> property, which is a Promise. When the page is loaded, this Promise will enter the <code>resolve</code> state. You can use <code>await page._rendered</code> to wait for the page to load, and then perform corresponding operations.</p>
-<pre><code class="language-javascript">async function doSomethingAfterPageLoad() {
-  await page._rendered;
-  // The page has finished loading
-  // Perform your operations
-}
-</code></pre>
 
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -175,21 +153,21 @@ export const watch = {
     <div id="loading"></div>
     <div class="body-important other-link"><ul>
 <li><a href="../../cases/index.html">Getting Started</a></li>
-<li><a href="../../cases/event.html">Event Handling</a></li>
+<li><a href="../../cases/event.html">Event Reaction</a></li>
 <li><a href="../../cases/simple-component.html">Creating and Using Components</a></li>
 <li><a href="../../cases/slot.html">Component Slots</a></li>
 <li><a href="../../cases/render-text.html">Template Syntax: Rendering Text</a></li>
-<li><a href="../../cases/attribute-transmission.html">Attribute Propagation</a></li>
-<li><a href="../../cases/get-set-comp.html">Accessing and Modifying Component Instance Values</a></li>
-<li><a href="../../cases/property-transmission.html">Template Syntax: Prop Binding</a></li>
-<li><a href="../../cases/bind-event.html">Template Syntax: Event Binding</a></li>
+<li><a href="../../cases/attribute-transmission.html">property Transmission</a></li>
+<li><a href="../../cases/get-set-comp.html">Getting and Modifying Component Instance Values</a></li>
+<li><a href="../../cases/property-transmission.html">Template Syntax: property Transmission</a></li>
+<li><a href="../../cases/bind-event.html">Template Syntax: Bind Events</a></li>
 <li><a href="../../cases/nested-component.html">Nested Components</a></li>
 <li><a href="../../cases/inject-host.html">inject-host Component</a></li>
-<li><a href="../../cases/event-passing.html">Event Propagation</a></li>
+<li><a href="../../cases/event-passing.html">Event Passing</a></li>
 <li><a href="../../cases/sync.html">Template Syntax: Two-Way Data Binding</a></li>
 <li><a href="../../cases/condition.html">Template Component: Conditional Rendering</a></li>
-<li><a href="../../cases/fill.html">Template Component: Dynamic Rendering</a></li>
-<li><a href="../../cases/fill-temp.html">Recursive Filling and Rendering</a></li>
+<li><a href="../../cases/fill.html">Template Component: Filling Rendering</a></li>
+<li><a href="../../cases/fill-temp.html">Recursive Filling Rendering</a></li>
 <li><a href="../../cases/life-cycle.html">Lifecycle</a></li>
 <li><a href="../../cases/form-data.html">Form Data</a></li>
 <li><a href="../../cases/custom-form-element.html">Custom Form Components</a></li>
@@ -197,39 +175,93 @@ export const watch = {
 <li><a href="../../cases/use-app.html">Using app Component</a></li>
 <li><a href="../../cases/app-config.html">Configuring app Parameters</a></li>
 <li><a href="../../cases/app-loading.html">Customizing app Loading</a></li>
-<li><a href="../../cases/set404.html">Setting Up 404 Page</a></li>
-<li><a href="../../cases/use-hash-router.html">Using Hash Router</a></li>
-<li><a href="../../cases/use-scsr.html">Using SCSR Solution</a></li>
+<li><a href="../../cases/set404.html">Setting up a 404 Page</a></li>
+<li><a href="../../cases/nested-page.html">Nested Pages</a></li>
+<li><a href="../../cases/use-hash-router.html">Using HashRouter</a></li>
+<li><a href="../../cases/use-scsr.html">Using scsr Scheme</a></li>
+<li><a href="../../cases/sync-state.html">State Synchronization</a></li>
+<li><a href="../../cases/alias.html">Aliases</a></li>
 <li><a href="../introduce.html">Introduction</a></li>
 <li><a href="../get-started/index.html">How to use ofa.js</a></li>
-<li><a href="../get-started/hello-world.html">First Case</a></li>
-<li><a href="../get-started/elements-and-events.html">Selection of Elements and Events</a></li>
-<li><a href="../get-started/basic-concept.html">Basic Concepts of Instances</a></li>
-<li><a href="../get-started/common-properties.html">Commonly Used Properties</a></li>
-<li><a href="../get-started/common-function.html">Introduction to Common Methods</a></li>
-<li><a href="../get-started/css.html">CSS</a></li>
-<li><a href="../get-started/classlist-and-data.html">classList and data</a></li>
-<li><a href="../get-started/box-model.html">Box Model</a></li>
-<li><a href="../get-started/formdata.html">Form Data</a></li>
-<li><a href="../create-component/index.html">Creation and Usage</a></li>
-<li><a href="../create-component/parameter-description.html">Parameter Descriptions</a></li>
-<li><a href="../create-component/life-cycle.html">Life Cycle</a></li>
-<li><a href="../create-component/web-components.html">General Knowledge of Componentization</a></li>
-<li><a href="../create-component/template-syntax.html">Template Syntax</a></li>
-<li><a href="../create-component/template-component.html">Template Components</a></li>
-<li><a href="index.html">Using o-app</a></li>
-<li><a href="page.html">Using Page Components</a></li>
-<li><a href="app.html">Using App Components</a></li>
-<li><a href="subrouting.html">Subrouting</a></li>
-<li><a href="o-router.html">Route Binding</a></li>
-<li><a href="scsr.html">SCSR Solution</a></li>
-<li><a href="../../others/data-sharing.html">Data Sharing</a></li>
-<li><a href="../../others/about-micro-frontend.html">ofa.js and Micro Frontend</a></li>
+<li><a href="../get-started/hello-world.html">First case</a></li>
+<li><a href="../get-started/elements-and-events.html">Selection of elements and events</a></li>
+<li><a href="../get-started/basic-concept.html">Basic concepts of instances</a></li>
+<li><a href="../get-started/common-properties.html">Common properties and methods</a></li>
+<li><a href="../create-component/index.html">Making and using components</a></li>
+<li><a href="../create-component/parameter-description.html">Parameter description</a></li>
+<li><a href="../create-component/life-cycle.html">Lifecycle</a></li>
+<li><a href="../create-component/web-components.html">General knowledge of componentization</a></li>
+<li><a href="../create-component/template-syntax.html">Template syntax</a></li>
+<li><a href="index.html">Introduction</a></li>
+<li><a href="page.html">Using the Page component</a></li>
+<li><a href="app.html">Using the App component</a></li>
+<li><a href="subrouting.html">Sub-routing functionality</a></li>
+<li><a href="o-router.html">Route binding</a></li>
+<li><a href="scsr.html">SCSR scheme</a></li>
+<li><a href="../others/data-sharing.html">Data sharing</a></li>
+<li><a href="../others/about-micro-frontend.html">ofa.js and micro-frontends</a></li>
+<li><a href="../../api/index.html">API Introduction</a></li>
+<li><a href="../../api/instance/dollar.html">$ Method</a></li>
+<li><a href="../../api/instance/all.html">all</a></li>
+<li><a href="../../api/instance/prev.html">prev</a></li>
+<li><a href="../../api/instance/prevs.html">prevs</a></li>
+<li><a href="../../api/instance/next.html">next</a></li>
+<li><a href="../../api/instance/nexts.html">nexts</a></li>
+<li><a href="../../api/instance/siblings.html">siblings</a></li>
+<li><a href="../../api/instance/parent.html">parent</a></li>
+<li><a href="../../api/instance/parents.html">parents</a></li>
+<li><a href="../../api/instance/clone.html">clone</a></li>
+<li><a href="../../api/instance/ele.html">ele</a></li>
+<li><a href="../../api/instance/shadow.html">shadow</a></li>
+<li><a href="../../api/instance/root.html">root</a></li>
+<li><a href="../../api/instance/children.html">Child Elements</a></li>
+<li><a href="../../api/instance/host.html">host</a></li>
+<li><a href="../../api/instance/app.html">app</a></li>
+<li><a href="../../api/operation/array-like.html">Add or delete child nodes</a></li>
+<li><a href="../../api/operation/before.html">before</a></li>
+<li><a href="../../api/operation/after.html">after</a></li>
+<li><a href="../../api/operation/remove.html">remove</a></li>
+<li><a href="../../api/operation/wrap.html">wrap</a></li>
+<li><a href="../../api/operation/unwrap.html">unwrap</a></li>
+<li><a href="../../api/props/text.html">text</a></li>
+<li><a href="../../api/props/html.html">html</a></li>
+<li><a href="../../api/props/attr.html">attr</a></li>
+<li><a href="../../api/props/css.html">css</a></li>
+<li><a href="../../api/props/style.html">style</a></li>
+<li><a href="../../api/props/class-list.html">classList</a></li>
+<li><a href="../../api/props/data.html">data</a></li>
+<li><a href="../../api/event/on.html">on</a></li>
+<li><a href="../../api/event/one.html">one</a></li>
+<li><a href="../../api/event/emit.html">emit</a></li>
+<li><a href="../../api/event/off.html">off</a></li>
+<li><a href="../../api/temp-syntax/text-render.html">Text rendering</a></li>
+<li><a href="../../api/temp-syntax/class.html">class</a></li>
+<li><a href="../../api/temp-syntax/sync.html">sync</a></li>
+<li><a href="../../api/temp-syntax/condition.html">Conditional rendering</a></li>
+<li><a href="../../api/temp-syntax/fill.html">List rendering</a></li>
+<li><a href="../../api/life-cycle/created.html">created</a></li>
+<li><a href="../../api/life-cycle/ready.html">ready</a></li>
+<li><a href="../../api/life-cycle/watch.html">watch</a></li>
+<li><a href="../../api/life-cycle/loaded.html">loaded</a></li>
+<li><a href="../../api/life-cycle/attached.html">attached</a></li>
+<li><a href="../../api/life-cycle/detached.html">detached</a></li>
+<li><a href="../../api/life-cycle/router-change.html">routerChange</a></li>
+<li><a href="../../api/others/app.html">app</a></li>
+<li><a href="../../api/others/page.html">page</a></li>
+<li><a href="../../api/others/box.html">Box model</a></li>
+<li><a href="../../api/others/form-data.html">formData</a></li>
+<li><a href="../../api/others/tag.html">tag</a></li>
+<li><a href="../../api/others/index.html">index</a></li>
+<li><a href="../../api/others/is.html">is</a></li>
+<li><a href="../../api/others/refresh.html">refresh</a></li>
+<li><a href="../../api/others/path.html">PATH</a></li>
+<li><a href="../../api/others/extend.html">extend</a></li>
+<li><a href="../../api/others/stanz.html">Instance data characteristics</a></li>
 <li><a href="../../index.html">English-index.html</a></li>
 <li><a href="../../../cn/index.html">简体中文-index.html</a></li>
 <li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
 
 </ul></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/init.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/init.js" type="module"></script>
   </body>
 </html>

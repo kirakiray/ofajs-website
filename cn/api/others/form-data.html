@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>formData</title>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
+      type="module"
+    ></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/css/public.css" />
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+    </style>
+    <script>
+      let configUrl = "../../config.json";
+    </script>
+    
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/logo.png">
+        <link rel="apple-touch-icon-precomposed" href="/logo.png">
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag("js", new Date());
+
+          gtag("config", "G-7L1TCCJZT6");
+        </script>
+        <script src="/init-sw.js"></script>
+      
+  </head>
+  <body>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/app-config.mjs">
+      <template page>
+        <style>
+          .markdown-body::before,
+          .markdown-body::after {
+            display: block;
+            content: "";
+            height: 1px;
+          }
+          .markdown-body::after {
+            height: 32px;
+          }
+          .markdown-body > * {
+            margin-top: 1em;
+            margin-bottom: 1em;
+          }
+        </style>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/css/github-markdown.css"
+        />
+        <article class="markdown-body"><h1>formData</h1>
+<p><code>formData</code> 方法用于生成与表单元素绑定的对象数据，使得处理表单元素更加简单和高效。这个方法会生成一个对象，包含目标元素内所有表单元素的值，该对象会实时反映表单元素的改动。</p>
+<p>在下面的示例中，我们演示了如何使用 <code>formData</code> 方法生成与表单元素绑定的对象数据：</p>
+<html-viewer>
+
+<pre><code class="language-html">&lt;!-- 将 ofa.js 引入项目 --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<pre><code class="language-html">&lt;form id=&quot;myForm&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;username&quot; value=&quot;John Doe&quot; /&gt;
+  &lt;div&gt;
+    sex:
+    &lt;label&gt;
+      man
+      &lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;man&quot; /&gt;
+    &lt;/label&gt;
+    &lt;label&gt;
+      woman
+      &lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;woman&quot; /&gt;
+    &lt;/label&gt;
+  &lt;/div&gt;
+  &lt;textarea name=&quot;message&quot;&gt;Hello World!&lt;/textarea&gt;
+&lt;/form&gt;
+&lt;br /&gt;
+&lt;div id=&quot;logger&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+  const data = $(&quot;#myForm&quot;).formData();
+
+  $(&quot;#logger&quot;).text = data;
+  data.watch(() =&gt; {
+    $(&quot;#logger&quot;).text = data;
+  });
+&lt;/script&gt;
+</code></pre>
+</html-viewer>
+
+<p>在这个示例中，我们创建了一个包含文本输入框、单选按钮和文本区域的表单，并使用 <code>formData</code> 方法创建了一个对象 <code>data</code>，该对象包含了这些表单元素的值。我们还使用 <code>watch</code> 方法来监视数据的变化，以及将数据实时显示在页面上。当用户修改表单元素的值时，<code>data</code> 对象会相应地更新，使得数据处理变得非常简单和高效。</p>
+<h2>反向数据绑定</h2>
+<p>生成的对象数据同样具有反向的绑定能力，这意味着当你修改对象的属性时，相关的表单元素值也会自动更新。这在处理表单数据时非常有用，因为你可以轻松地实现双向数据绑定。</p>
+<p>在下面的示例中，我们演示了如何使用 <code>formData</code> 方法生成的对象数据，以及如何进行反向数据绑定：</p>
+<html-viewer>
+
+<pre><code class="language-html">&lt;!-- 将 ofa.js 引入项目 --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<pre><code class="language-html">&lt;form id=&quot;myForm&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;username&quot; value=&quot;John Doe&quot; /&gt;
+  &lt;div&gt;
+    sex:
+    &lt;label&gt;
+      man
+      &lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;man&quot; /&gt;
+    &lt;/label&gt;
+    &lt;label&gt;
+      woman
+      &lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;woman&quot; /&gt;
+    &lt;/label&gt;
+  &lt;/div&gt;
+  &lt;textarea name=&quot;message&quot;&gt;Hello World!&lt;/textarea&gt;
+&lt;/form&gt;
+&lt;br /&gt;
+&lt;div id=&quot;logger&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+  const data = $(&quot;#myForm&quot;).formData();
+
+  setTimeout(()=&gt;{
+    data.username = &quot;Yao&quot;;
+    data.sex = &quot;man&quot;;
+    data.message = &quot;ofa.js is good!&quot;;
+  },1000);
+&lt;/script&gt;
+</code></pre>
+</html-viewer>
+
+<p>在这个示例中，我们首先创建了一个包含文本输入框、单选按钮和文本区域的表单，然后使用 <code>formData</code> 方法生成了一个数据对象 <code>data</code>。随后，通过修改 <code>data</code> 对象的属性，我们实现了反向数据绑定，即表单元素的值会随着对象属性的更改而自动更新。这种双向数据绑定功能使得与表单数据的交互更加便捷。</p>
+<h2>监听特定的表单</h2>
+<p>默认情况下，<code>formData()</code> 方法会监听目标元素内的所有 <code>input</code>、<code>select</code> 和 <code>textarea</code> 元素。但如果你只想监听特定的表单元素，可以通过传递 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors">CSS 选择器</a> 来实现。</p>
+<p>在下面的示例中，我们演示了如何通过传递 CSS 选择器来监听特定的表单元素：</p>
+<html-viewer>
+
+<pre><code class="language-html">&lt;!-- 将 ofa.js 引入项目 --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<pre><code class="language-html">&lt;form id=&quot;myForm&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;username&quot; value=&quot;John Doe&quot; class=&quot;use-it&quot; /&gt;
+  &lt;div&gt;
+    sex:
+    &lt;label&gt;
+      man
+      &lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;man&quot; class=&quot;use-it&quot; /&gt;
+    &lt;/label&gt;
+    &lt;label&gt;
+      woman
+      &lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;woman&quot; class=&quot;use-it&quot; /&gt;
+    &lt;/label&gt;
+  &lt;/div&gt;
+  &lt;textarea name=&quot;message&quot;&gt;这个表单元素没有被绑定&lt;/textarea&gt;
+&lt;/form&gt;
+&lt;br /&gt;
+&lt;div id=&quot;logger&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+  const data = $(&quot;#myForm&quot;).formData(&quot;.use-it&quot;);
+
+  $(&quot;#logger&quot;).text = data;
+  data.watch(() =&gt; {
+    $(&quot;#logger&quot;).text = data;
+  });
+&lt;/script&gt;
+</code></pre>
+</html-viewer>
+
+<p>在此示例中，我们只希望监听具有 <code>class</code> 为 &quot;use-it&quot; 的表单元素，因此我们传递了 <code>&quot;.use-it&quot;</code> 作为参数给 <code>formData()</code> 方法。这样，只有带有该类名的表单元素会被监听和包括在生成的数据对象中。这对于选择性地监听表单元素非常有用，以便更精确地管理你的表单数据。</p>
+<h2>自定义表单</h2>
+<p>自定义表单组件的使用非常简单，只需要为自定义组件添加一个 <strong>value 属性</strong> 并设置 <strong>name 特性</strong>。</p>
+<p>在下面的示例中，我们创建了一个名为 &quot;custom-input&quot; 的自定义表单组件。这个组件是一个可编辑的文本框，当文本发生变化时，它会实时更新其 <code>value</code> 属性。</p>
+<comp-viewer comp-name="custom-input">
+
+<pre><code>&lt;div id=&quot;myForm&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;username&quot; value=&quot;John Doe&quot; /&gt;
+  &lt;custom-input name=&quot;message&quot;&gt;&lt;/custom-input&gt;
+  &lt;div id=&quot;logger&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  const data = $(&quot;#myForm&quot;).formData(&quot;input,custom-input&quot;);
+  $(&quot;#logger&quot;).text = data;
+  data.watch(() =&gt; {
+    $(&quot;#logger&quot;).text = data;
+  });
+&lt;/script&gt;
+</code></pre>
+<pre><code class="language-html">&lt;template component&gt;
+  &lt;style&gt;
+    :host{
+      display: block;
+    }
+    .editor {
+      display: inline-block;
+      min-width: 200px;
+      line-height: 30px;
+      height: 30px;
+      border: #aaa solid 1px;
+      border-radius: 4px;
+      padding: 4px;
+      font-size: 14px;
+    }
+  &lt;/style&gt;
+  &lt;div
+    class=&quot;editor&quot;
+    contenteditable=&quot;plaintext-only&quot;
+    :text=&quot;value&quot;
+    on:input=&quot;changeText&quot;
+  &gt;&lt;/div&gt;
+  &lt;script&gt;
+    export default {
+      tag:&quot;custom-input&quot;,
+      attrs: {
+        name: &quot;&quot;,
+      },
+      data: {
+        value: &quot;Default txt&quot;,
+      },
+      proto: {
+        changeText(e) {
+          this.value = $(e.target).text;
+        },
+      },
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</comp-viewer>
+
+<p>在你使用自定义表单组件时，你只需将它添加到你的表单中，并设置所需的 <code>name</code> 属性：</p>
+<pre><code class="language-html">&lt;div id=&quot;myForm&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;username&quot; value=&quot;John Doe&quot; /&gt;
+  &lt;custom-input name=&quot;message&quot;&gt;&lt;/custom-input&gt;
+  &lt;div id=&quot;logger&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  const data = $(&quot;#myForm&quot;).formData(&quot;input,custom-input&quot;);
+  $(&quot;#logger&quot;).text = data;
+  data.watch(() =&gt; {
+    $(&quot;#logger&quot;).text = data;
+  });
+&lt;/script&gt;
+</code></pre>
+<p>在上述示例中，我们通过添加 <code>&lt;custom-input&gt;</code> 元素并设置 <code>name</code> 属性来使用自定义表单组件。随后，我们使用 <code>formData()</code> 方法监听输入元素和自定义组件的值，以便实时获取和处理表单数据。这种方法可以让你非常方便地扩展你的表单，以包括自定义的表单组件，从而满足你的特定需求。</p>
+<h2>在组件或页面内使用表单数据</h2>
+<p>有时，你可能需要在组件或页面内使用表单数据，并且需要在 <code>ready</code> 周期生命周期时生成数据并将其绑定到组件上。</p>
+<p>在下面的示例中，我们演示了如何在自定义组件内使用表单数据。这个组件包含一个文本输入框，当你输入内容时，它会实时更新日志中的数据。</p>
+<comp-viewer comp-name="custom-input">
+
+<pre><code class="language-html">&lt;template component&gt;
+  &lt;style&gt;
+    :host{
+      display: block;
+    }
+  &lt;/style&gt;
+  &lt;input type=&quot;text&quot; name=&quot;username&quot; value=&quot;John Doe&quot; /&gt;
+  &lt;div&gt;{{logtext}}&lt;/div&gt;
+  &lt;script&gt;
+    export default {
+      tag:&quot;custom-input&quot;,
+      data: {
+        fdata:{},
+        logtext: &quot;&quot;
+      },
+      watch:{
+        fdata(data){
+          if(data){
+            this.logtext = JSON.stringify(data);
+          }
+        }
+      },
+      ready(){
+        this.fdata = this.shadow.formData();
+      }
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</comp-viewer>
+
+<p>通过 <code>ready</code> 周期生命周期，在组件准备就绪后，我们使用 <code>this.shadow.formData()</code> 方法生成了表单数据对象 <code>fdata</code>。然后，我们使用 <code>watch</code> 监听 <code>fdata</code> 的变化，当数据发生变化时，将其转化为 JSON 字符串并更新 <code>logtext</code>，以实现实时显示表单数据的功能。</p>
+
+    <article-footer></article-footer>
+    </article>
+        <script>
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/layouts/article-layout.html";
+
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/document-page-init.mjs";
+
+          export default async (...args) => {
+            return await pageInit(PATH, args);
+          };
+        </script>
+      </template>
+    </o-app>
+    <div id="loading"></div>
+    <div class="body-important other-link"><ul>
+<li><a href="../../cases/index.html">开始</a></li>
+<li><a href="../../cases/event.html">事件反应</a></li>
+<li><a href="../../cases/simple-component.html">组件的创建和使用</a></li>
+<li><a href="../../cases/slot.html">组件插槽</a></li>
+<li><a href="../../cases/render-text.html">模板语法：渲染文本</a></li>
+<li><a href="../../cases/attribute-transmission.html">特性传递</a></li>
+<li><a href="../../cases/get-set-comp.html">获取和修改组件实例的值</a></li>
+<li><a href="../../cases/property-transmission.html">模板语法：属性传递</a></li>
+<li><a href="../../cases/bind-event.html">模板语法：绑定事件</a></li>
+<li><a href="../../cases/nested-component.html">嵌套组件</a></li>
+<li><a href="../../cases/inject-host.html">inject-host 组件</a></li>
+<li><a href="../../cases/event-passing.html">事件传递</a></li>
+<li><a href="../../cases/sync.html">模板语法：双向数据绑定</a></li>
+<li><a href="../../cases/condition.html">模板组件：条件渲染</a></li>
+<li><a href="../../cases/fill.html">模板组件：填充渲染</a></li>
+<li><a href="../../cases/fill-temp.html">递归填充渲染</a></li>
+<li><a href="../../cases/life-cycle.html">生命周期</a></li>
+<li><a href="../../cases/form-data.html">表单数据</a></li>
+<li><a href="../../cases/custom-form-element.html">自定义表单组件</a></li>
+<li><a href="../../cases/use-page.html">使用页面组件</a></li>
+<li><a href="../../cases/use-app.html">使用app组件</a></li>
+<li><a href="../../cases/app-config.html">配置app参数</a></li>
+<li><a href="../../cases/app-loading.html">为app定制loading</a></li>
+<li><a href="../../cases/set404.html">设置404页面</a></li>
+<li><a href="../../cases/nested-page.html">嵌套页面</a></li>
+<li><a href="../../cases/use-hash-router.html">使用HashRouter</a></li>
+<li><a href="../../cases/use-scsr.html">使用scsr方案</a></li>
+<li><a href="../../cases/sync-state.html">状态同步</a></li>
+<li><a href="../../cases/alias.html">别名</a></li>
+<li><a href="../../docs/introduce.html">介绍</a></li>
+<li><a href="../../docs/get-started/index.html">如何使用ofa.js</a></li>
+<li><a href="../../docs/get-started/hello-world.html">第一个案例</a></li>
+<li><a href="../../docs/get-started/elements-and-events.html">选择元素和事件相关</a></li>
+<li><a href="../../docs/get-started/basic-concept.html">实例的基础概念</a></li>
+<li><a href="../../docs/get-started/common-properties.html">常用属性和方法</a></li>
+<li><a href="../../docs/create-component/index.html">制作和使用</a></li>
+<li><a href="../../docs/create-component/parameter-description.html">参数说明</a></li>
+<li><a href="../../docs/create-component/life-cycle.html">生命周期</a></li>
+<li><a href="../../docs/create-component/web-components.html">组件化常规知识</a></li>
+<li><a href="../../docs/create-component/template-syntax.html">模板语法</a></li>
+<li><a href="../../docs/create-app/index.html">介绍</a></li>
+<li><a href="../../docs/create-app/page.html">使用Page组件</a></li>
+<li><a href="../../docs/create-app/app.html">使用App组件</a></li>
+<li><a href="../../docs/create-app/subrouting.html">子路由功能</a></li>
+<li><a href="../../docs/create-app/o-router.html">路由绑定</a></li>
+<li><a href="../../docs/create-app/scsr.html">SCSR方案</a></li>
+<li><a href="../../docs/others/data-sharing.html">数据共享</a></li>
+<li><a href="../../docs/others/about-micro-frontend.html">ofa.js和微前端</a></li>
+<li><a href="../index.html">API介绍</a></li>
+<li><a href="../instance/dollar.html">$ 方法</a></li>
+<li><a href="../instance/all.html">all</a></li>
+<li><a href="../instance/prev.html">prev</a></li>
+<li><a href="../instance/prevs.html">prevs</a></li>
+<li><a href="../instance/next.html">next</a></li>
+<li><a href="../instance/nexts.html">nexts</a></li>
+<li><a href="../instance/siblings.html">siblings</a></li>
+<li><a href="../instance/parent.html">parent</a></li>
+<li><a href="../instance/parents.html">parents</a></li>
+<li><a href="../instance/clone.html">clone</a></li>
+<li><a href="../instance/ele.html">ele</a></li>
+<li><a href="../instance/shadow.html">shadow</a></li>
+<li><a href="../instance/root.html">root</a></li>
+<li><a href="../instance/children.html">子元素</a></li>
+<li><a href="../instance/host.html">host</a></li>
+<li><a href="../instance/app.html">app</a></li>
+<li><a href="../operation/array-like.html">添加或删除子节点</a></li>
+<li><a href="../operation/before.html">before</a></li>
+<li><a href="../operation/after.html">after</a></li>
+<li><a href="../operation/remove.html">remove</a></li>
+<li><a href="../operation/wrap.html">wrap</a></li>
+<li><a href="../operation/unwrap.html">unwrap</a></li>
+<li><a href="../props/text.html">text</a></li>
+<li><a href="../props/html.html">html</a></li>
+<li><a href="../props/attr.html">attr</a></li>
+<li><a href="../props/css.html">css</a></li>
+<li><a href="../props/style.html">style</a></li>
+<li><a href="../props/class-list.html">classList</a></li>
+<li><a href="../props/data.html">data</a></li>
+<li><a href="../event/on.html">on</a></li>
+<li><a href="../event/one.html">one</a></li>
+<li><a href="../event/emit.html">emit</a></li>
+<li><a href="../event/off.html">off</a></li>
+<li><a href="../temp-syntax/text-render.html">文本渲染</a></li>
+<li><a href="../temp-syntax/class.html">class</a></li>
+<li><a href="../temp-syntax/sync.html">sync</a></li>
+<li><a href="../temp-syntax/condition.html">条件渲染</a></li>
+<li><a href="../temp-syntax/fill.html">列表渲染</a></li>
+<li><a href="../life-cycle/created.html">created</a></li>
+<li><a href="../life-cycle/ready.html">ready</a></li>
+<li><a href="../life-cycle/watch.html">watch</a></li>
+<li><a href="../life-cycle/loaded.html">loaded</a></li>
+<li><a href="../life-cycle/attached.html">attached</a></li>
+<li><a href="../life-cycle/detached.html">detached</a></li>
+<li><a href="../life-cycle/router-change.html">routerChange</a></li>
+<li><a href="app.html">app</a></li>
+<li><a href="page.html">page</a></li>
+<li><a href="box.html">盒模型</a></li>
+<li><a href="form-data.html">formData</a></li>
+<li><a href="tag.html">tag</a></li>
+<li><a href="index.html">index</a></li>
+<li><a href="is.html">is</a></li>
+<li><a href="refresh.html">refresh</a></li>
+<li><a href="path.html">PATH</a></li>
+<li><a href="extend.html">extend</a></li>
+<li><a href="stanz.html">实例数据特征</a></li>
+<li><a href="../../../en/index.html">English-index.html</a></li>
+<li><a href="../../index.html">简体中文-index.html</a></li>
+<li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
+
+</ul></div>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/init.js" type="module"></script>
+  </body>
+</html>

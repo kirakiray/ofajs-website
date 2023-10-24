@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tag</title>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
+      type="module"
+    ></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/css/public.css" />
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+    </style>
+    <script>
+      let configUrl = "../../config.json";
+    </script>
+    
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/logo.png">
+        <link rel="apple-touch-icon-precomposed" href="/logo.png">
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag("js", new Date());
+
+          gtag("config", "G-7L1TCCJZT6");
+        </script>
+        <script src="/init-sw.js"></script>
+      
+  </head>
+  <body>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/app-config.mjs">
+      <template page>
+        <style>
+          .markdown-body::before,
+          .markdown-body::after {
+            display: block;
+            content: "";
+            height: 1px;
+          }
+          .markdown-body::after {
+            height: 32px;
+          }
+          .markdown-body > * {
+            margin-top: 1em;
+            margin-bottom: 1em;
+          }
+        </style>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/css/github-markdown.css"
+        />
+        <article class="markdown-body"><h1>tag</h1>
+<p>The <code>tag</code> property is used to get the tag of an element, returning a lowercase string.</p>
+<p>In the example below, we demonstrate how to use the <code>tag</code> method to retrieve the tag of an element:</p>
+<html-viewer>
+
+<pre><code class="language-html">&lt;!-- Import ofa.js into your project --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<pre><code class="language-html">&lt;div id=&quot;logger&quot;&gt;logger&lt;/div&gt;
+&lt;script&gt;
+  setTimeout(() =&gt; {
+    $(&quot;#logger&quot;).text = $(&quot;#logger&quot;).tag;
+  }, 500);
+&lt;/script&gt;
+</code></pre>
+</html-viewer>
+    <article-footer></article-footer>
+    </article>
+        <script>
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/layouts/article-layout.html";
+
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/document-page-init.mjs";
+
+          export default async (...args) => {
+            return await pageInit(PATH, args);
+          };
+        </script>
+      </template>
+    </o-app>
+    <div id="loading"></div>
+    <div class="body-important other-link"><ul>
+<li><a href="../../cases/index.html">Getting Started</a></li>
+<li><a href="../../cases/event.html">Event Reaction</a></li>
+<li><a href="../../cases/simple-component.html">Creating and Using Components</a></li>
+<li><a href="../../cases/slot.html">Component Slots</a></li>
+<li><a href="../../cases/render-text.html">Template Syntax: Rendering Text</a></li>
+<li><a href="../../cases/attribute-transmission.html">property Transmission</a></li>
+<li><a href="../../cases/get-set-comp.html">Getting and Modifying Component Instance Values</a></li>
+<li><a href="../../cases/property-transmission.html">Template Syntax: property Transmission</a></li>
+<li><a href="../../cases/bind-event.html">Template Syntax: Bind Events</a></li>
+<li><a href="../../cases/nested-component.html">Nested Components</a></li>
+<li><a href="../../cases/inject-host.html">inject-host Component</a></li>
+<li><a href="../../cases/event-passing.html">Event Passing</a></li>
+<li><a href="../../cases/sync.html">Template Syntax: Two-Way Data Binding</a></li>
+<li><a href="../../cases/condition.html">Template Component: Conditional Rendering</a></li>
+<li><a href="../../cases/fill.html">Template Component: Filling Rendering</a></li>
+<li><a href="../../cases/fill-temp.html">Recursive Filling Rendering</a></li>
+<li><a href="../../cases/life-cycle.html">Lifecycle</a></li>
+<li><a href="../../cases/form-data.html">Form Data</a></li>
+<li><a href="../../cases/custom-form-element.html">Custom Form Components</a></li>
+<li><a href="../../cases/use-page.html">Using Page Components</a></li>
+<li><a href="../../cases/use-app.html">Using app Component</a></li>
+<li><a href="../../cases/app-config.html">Configuring app Parameters</a></li>
+<li><a href="../../cases/app-loading.html">Customizing app Loading</a></li>
+<li><a href="../../cases/set404.html">Setting up a 404 Page</a></li>
+<li><a href="../../cases/nested-page.html">Nested Pages</a></li>
+<li><a href="../../cases/use-hash-router.html">Using HashRouter</a></li>
+<li><a href="../../cases/use-scsr.html">Using scsr Scheme</a></li>
+<li><a href="../../cases/sync-state.html">State Synchronization</a></li>
+<li><a href="../../cases/alias.html">Aliases</a></li>
+<li><a href="../../docs/introduce.html">Introduction</a></li>
+<li><a href="../../docs/get-started/index.html">How to use ofa.js</a></li>
+<li><a href="../../docs/get-started/hello-world.html">First case</a></li>
+<li><a href="../../docs/get-started/elements-and-events.html">Selection of elements and events</a></li>
+<li><a href="../../docs/get-started/basic-concept.html">Basic concepts of instances</a></li>
+<li><a href="../../docs/get-started/common-properties.html">Common properties and methods</a></li>
+<li><a href="../../docs/create-component/index.html">Making and using components</a></li>
+<li><a href="../../docs/create-component/parameter-description.html">Parameter description</a></li>
+<li><a href="../../docs/create-component/life-cycle.html">Lifecycle</a></li>
+<li><a href="../../docs/create-component/web-components.html">General knowledge of componentization</a></li>
+<li><a href="../../docs/create-component/template-syntax.html">Template syntax</a></li>
+<li><a href="../../docs/create-app/index.html">Introduction</a></li>
+<li><a href="../../docs/create-app/page.html">Using the Page component</a></li>
+<li><a href="../../docs/create-app/app.html">Using the App component</a></li>
+<li><a href="../../docs/create-app/subrouting.html">Sub-routing functionality</a></li>
+<li><a href="../../docs/create-app/o-router.html">Route binding</a></li>
+<li><a href="../../docs/create-app/scsr.html">SCSR scheme</a></li>
+<li><a href="../../docs/others/data-sharing.html">Data sharing</a></li>
+<li><a href="../../docs/others/about-micro-frontend.html">ofa.js and micro-frontends</a></li>
+<li><a href="../index.html">API Introduction</a></li>
+<li><a href="../instance/dollar.html">$ Method</a></li>
+<li><a href="../instance/all.html">all</a></li>
+<li><a href="../instance/prev.html">prev</a></li>
+<li><a href="../instance/prevs.html">prevs</a></li>
+<li><a href="../instance/next.html">next</a></li>
+<li><a href="../instance/nexts.html">nexts</a></li>
+<li><a href="../instance/siblings.html">siblings</a></li>
+<li><a href="../instance/parent.html">parent</a></li>
+<li><a href="../instance/parents.html">parents</a></li>
+<li><a href="../instance/clone.html">clone</a></li>
+<li><a href="../instance/ele.html">ele</a></li>
+<li><a href="../instance/shadow.html">shadow</a></li>
+<li><a href="../instance/root.html">root</a></li>
+<li><a href="../instance/children.html">Child Elements</a></li>
+<li><a href="../instance/host.html">host</a></li>
+<li><a href="../instance/app.html">app</a></li>
+<li><a href="../operation/array-like.html">Add or delete child nodes</a></li>
+<li><a href="../operation/before.html">before</a></li>
+<li><a href="../operation/after.html">after</a></li>
+<li><a href="../operation/remove.html">remove</a></li>
+<li><a href="../operation/wrap.html">wrap</a></li>
+<li><a href="../operation/unwrap.html">unwrap</a></li>
+<li><a href="../props/text.html">text</a></li>
+<li><a href="../props/html.html">html</a></li>
+<li><a href="../props/attr.html">attr</a></li>
+<li><a href="../props/css.html">css</a></li>
+<li><a href="../props/style.html">style</a></li>
+<li><a href="../props/class-list.html">classList</a></li>
+<li><a href="../props/data.html">data</a></li>
+<li><a href="../event/on.html">on</a></li>
+<li><a href="../event/one.html">one</a></li>
+<li><a href="../event/emit.html">emit</a></li>
+<li><a href="../event/off.html">off</a></li>
+<li><a href="../temp-syntax/text-render.html">Text rendering</a></li>
+<li><a href="../temp-syntax/class.html">class</a></li>
+<li><a href="../temp-syntax/sync.html">sync</a></li>
+<li><a href="../temp-syntax/condition.html">Conditional rendering</a></li>
+<li><a href="../temp-syntax/fill.html">List rendering</a></li>
+<li><a href="../life-cycle/created.html">created</a></li>
+<li><a href="../life-cycle/ready.html">ready</a></li>
+<li><a href="../life-cycle/watch.html">watch</a></li>
+<li><a href="../life-cycle/loaded.html">loaded</a></li>
+<li><a href="../life-cycle/attached.html">attached</a></li>
+<li><a href="../life-cycle/detached.html">detached</a></li>
+<li><a href="../life-cycle/router-change.html">routerChange</a></li>
+<li><a href="app.html">app</a></li>
+<li><a href="page.html">page</a></li>
+<li><a href="box.html">Box model</a></li>
+<li><a href="form-data.html">formData</a></li>
+<li><a href="tag.html">tag</a></li>
+<li><a href="index.html">index</a></li>
+<li><a href="is.html">is</a></li>
+<li><a href="refresh.html">refresh</a></li>
+<li><a href="path.html">PATH</a></li>
+<li><a href="extend.html">extend</a></li>
+<li><a href="stanz.html">Instance data characteristics</a></li>
+<li><a href="../../index.html">English-index.html</a></li>
+<li><a href="../../../cn/index.html">简体中文-index.html</a></li>
+<li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
+
+</ul></div>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/init.js" type="module"></script>
+  </body>
+</html>

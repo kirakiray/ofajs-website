@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Static Client Side Rendering (SCSR)</title>
-        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/dist/ofa.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/css/public.css" />
     <style>
       html,
       body {
@@ -20,7 +20,9 @@
       let configUrl = "../../config.json";
     </script>
     
-        <link rel="shortcut icon" href="/favicon.png">
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/logo.png">
+        <link rel="apple-touch-icon-precomposed" href="/logo.png">
         <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
         <script>
           window.dataLayer = window.dataLayer || [];
@@ -35,9 +37,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -49,10 +51,14 @@
           .markdown-body::after {
             height: 32px;
           }
+          .markdown-body > * {
+            margin-top: 1em;
+            margin-bottom: 1em;
+          }
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/css/github-markdown.css"
         />
         <article class="markdown-body"><h1>Static Client Side Rendering (SCSR)</h1>
 <h2>What is SCSR?</h2>
@@ -64,12 +70,6 @@
 <h2>The Working Principle of SCSR</h2>
 <p>SCSR is a page module that runs in single-file mode without using the <code>o-page</code> tag, allowing rendering on the page. Specifically, the template code of the page module is directly placed within the <code>o-app</code>.</p>
 <p>Below is an example of SCSR, which shows how to render the content of a page module directly on the page:</p>
-<pre><code class="language-html">&lt;scsr:module name=&quot;example-module&quot;&gt;
-  &lt;h1&gt;Hello, world!&lt;/h1&gt;
-&lt;/scsr:module&gt;
-</code></pre>
-<p>Based on the example above, the content within the <code>&lt;scsr:module&gt;</code> tag will be rendered directly on the page when the module named &quot;example-module&quot; is loaded.</p>
-<p>To use this feature, you need to have the appropriate module defined and registered in your SCSR framework. By using the module name as the value of the <code>name</code> attribute, you can easily embed the content within the module on any page.</p>
 <pre><code class="language-html">&lt;!-- home.html --&gt;
 &lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -141,15 +141,15 @@
 <p>All pages using the SCSR scheme must keep the referenced resources consistent, except for descriptive contents such as title, meta:description, keywords, and page template content, to ensure consistent experience after page navigation and refresh.</p>
 <h2>About SSR Solution</h2>
 <p>The current SCSR solution is actually more similar to a SSG (Static Site Generation) solution because it pre-renders the pages into static content and then interacts with them through the client. ofa.js has provided a relatively independent component encapsulation solution, allowing frontend developers to encapsulate components and combine them with traditional backend rendering solutions (such as website rendering frameworks in languages like Node.js, Go, Java, PHP, etc.), enabling backend developers to quickly use these encapsulated components to build high-quality web pages.</p>
-<p>We plan to provide a complete Server-Side Rendering (SSR) solution in the future. The principle of this solution is to first obtain the element content of the next page, and then compare it with the current page&#39;s tag content in order to dynamically add, delete, and modify attribute values. However, it is important to note that this SSR solution can be time-consuming because it involves complex element comparison and modification operations.</p>
+<p>We plan to provide a complete Server-Side Rendering (SSR) solution in the future. The principle of this solution is to first obtain the element content of the next page, and then compare it with the current page&#39;s tag content in order to dynamically add, delete, and modify property values. However, it is important to note that this SSR solution can be time-consuming because it involves complex element comparison and modification operations.</p>
 <p>ofa.js is an emerging framework, and the author&#39;s limited spare time means that the SSR solution has not been fully developed yet. However, if ofa.js gains more users in the future and there is a strong demand for an SSR solution, the author will continue to improve and develop this solution. Currently, the author is focusing on the stability and feature expansion of the framework, and welcomes user feedback and suggestions to better meet user needs in the future.</p>
 
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -160,21 +160,21 @@
     <div id="loading"></div>
     <div class="body-important other-link"><ul>
 <li><a href="../../cases/index.html">Getting Started</a></li>
-<li><a href="../../cases/event.html">Event Handling</a></li>
+<li><a href="../../cases/event.html">Event Reaction</a></li>
 <li><a href="../../cases/simple-component.html">Creating and Using Components</a></li>
 <li><a href="../../cases/slot.html">Component Slots</a></li>
 <li><a href="../../cases/render-text.html">Template Syntax: Rendering Text</a></li>
-<li><a href="../../cases/attribute-transmission.html">Attribute Propagation</a></li>
-<li><a href="../../cases/get-set-comp.html">Accessing and Modifying Component Instance Values</a></li>
-<li><a href="../../cases/property-transmission.html">Template Syntax: Prop Binding</a></li>
-<li><a href="../../cases/bind-event.html">Template Syntax: Event Binding</a></li>
+<li><a href="../../cases/attribute-transmission.html">property Transmission</a></li>
+<li><a href="../../cases/get-set-comp.html">Getting and Modifying Component Instance Values</a></li>
+<li><a href="../../cases/property-transmission.html">Template Syntax: property Transmission</a></li>
+<li><a href="../../cases/bind-event.html">Template Syntax: Bind Events</a></li>
 <li><a href="../../cases/nested-component.html">Nested Components</a></li>
 <li><a href="../../cases/inject-host.html">inject-host Component</a></li>
-<li><a href="../../cases/event-passing.html">Event Propagation</a></li>
+<li><a href="../../cases/event-passing.html">Event Passing</a></li>
 <li><a href="../../cases/sync.html">Template Syntax: Two-Way Data Binding</a></li>
 <li><a href="../../cases/condition.html">Template Component: Conditional Rendering</a></li>
-<li><a href="../../cases/fill.html">Template Component: Dynamic Rendering</a></li>
-<li><a href="../../cases/fill-temp.html">Recursive Filling and Rendering</a></li>
+<li><a href="../../cases/fill.html">Template Component: Filling Rendering</a></li>
+<li><a href="../../cases/fill-temp.html">Recursive Filling Rendering</a></li>
 <li><a href="../../cases/life-cycle.html">Lifecycle</a></li>
 <li><a href="../../cases/form-data.html">Form Data</a></li>
 <li><a href="../../cases/custom-form-element.html">Custom Form Components</a></li>
@@ -182,39 +182,93 @@
 <li><a href="../../cases/use-app.html">Using app Component</a></li>
 <li><a href="../../cases/app-config.html">Configuring app Parameters</a></li>
 <li><a href="../../cases/app-loading.html">Customizing app Loading</a></li>
-<li><a href="../../cases/set404.html">Setting Up 404 Page</a></li>
-<li><a href="../../cases/use-hash-router.html">Using Hash Router</a></li>
-<li><a href="../../cases/use-scsr.html">Using SCSR Solution</a></li>
+<li><a href="../../cases/set404.html">Setting up a 404 Page</a></li>
+<li><a href="../../cases/nested-page.html">Nested Pages</a></li>
+<li><a href="../../cases/use-hash-router.html">Using HashRouter</a></li>
+<li><a href="../../cases/use-scsr.html">Using scsr Scheme</a></li>
+<li><a href="../../cases/sync-state.html">State Synchronization</a></li>
+<li><a href="../../cases/alias.html">Aliases</a></li>
 <li><a href="../introduce.html">Introduction</a></li>
 <li><a href="../get-started/index.html">How to use ofa.js</a></li>
-<li><a href="../get-started/hello-world.html">First Case</a></li>
-<li><a href="../get-started/elements-and-events.html">Selection of Elements and Events</a></li>
-<li><a href="../get-started/basic-concept.html">Basic Concepts of Instances</a></li>
-<li><a href="../get-started/common-properties.html">Commonly Used Properties</a></li>
-<li><a href="../get-started/common-function.html">Introduction to Common Methods</a></li>
-<li><a href="../get-started/css.html">CSS</a></li>
-<li><a href="../get-started/classlist-and-data.html">classList and data</a></li>
-<li><a href="../get-started/box-model.html">Box Model</a></li>
-<li><a href="../get-started/formdata.html">Form Data</a></li>
-<li><a href="../create-component/index.html">Creation and Usage</a></li>
-<li><a href="../create-component/parameter-description.html">Parameter Descriptions</a></li>
-<li><a href="../create-component/life-cycle.html">Life Cycle</a></li>
-<li><a href="../create-component/web-components.html">General Knowledge of Componentization</a></li>
-<li><a href="../create-component/template-syntax.html">Template Syntax</a></li>
-<li><a href="../create-component/template-component.html">Template Components</a></li>
-<li><a href="index.html">Using o-app</a></li>
-<li><a href="page.html">Using Page Components</a></li>
-<li><a href="app.html">Using App Components</a></li>
-<li><a href="subrouting.html">Subrouting</a></li>
-<li><a href="o-router.html">Route Binding</a></li>
-<li><a href="scsr.html">SCSR Solution</a></li>
-<li><a href="../../others/data-sharing.html">Data Sharing</a></li>
-<li><a href="../../others/about-micro-frontend.html">ofa.js and Micro Frontend</a></li>
+<li><a href="../get-started/hello-world.html">First case</a></li>
+<li><a href="../get-started/elements-and-events.html">Selection of elements and events</a></li>
+<li><a href="../get-started/basic-concept.html">Basic concepts of instances</a></li>
+<li><a href="../get-started/common-properties.html">Common properties and methods</a></li>
+<li><a href="../create-component/index.html">Making and using components</a></li>
+<li><a href="../create-component/parameter-description.html">Parameter description</a></li>
+<li><a href="../create-component/life-cycle.html">Lifecycle</a></li>
+<li><a href="../create-component/web-components.html">General knowledge of componentization</a></li>
+<li><a href="../create-component/template-syntax.html">Template syntax</a></li>
+<li><a href="index.html">Introduction</a></li>
+<li><a href="page.html">Using the Page component</a></li>
+<li><a href="app.html">Using the App component</a></li>
+<li><a href="subrouting.html">Sub-routing functionality</a></li>
+<li><a href="o-router.html">Route binding</a></li>
+<li><a href="scsr.html">SCSR scheme</a></li>
+<li><a href="../others/data-sharing.html">Data sharing</a></li>
+<li><a href="../others/about-micro-frontend.html">ofa.js and micro-frontends</a></li>
+<li><a href="../../api/index.html">API Introduction</a></li>
+<li><a href="../../api/instance/dollar.html">$ Method</a></li>
+<li><a href="../../api/instance/all.html">all</a></li>
+<li><a href="../../api/instance/prev.html">prev</a></li>
+<li><a href="../../api/instance/prevs.html">prevs</a></li>
+<li><a href="../../api/instance/next.html">next</a></li>
+<li><a href="../../api/instance/nexts.html">nexts</a></li>
+<li><a href="../../api/instance/siblings.html">siblings</a></li>
+<li><a href="../../api/instance/parent.html">parent</a></li>
+<li><a href="../../api/instance/parents.html">parents</a></li>
+<li><a href="../../api/instance/clone.html">clone</a></li>
+<li><a href="../../api/instance/ele.html">ele</a></li>
+<li><a href="../../api/instance/shadow.html">shadow</a></li>
+<li><a href="../../api/instance/root.html">root</a></li>
+<li><a href="../../api/instance/children.html">Child Elements</a></li>
+<li><a href="../../api/instance/host.html">host</a></li>
+<li><a href="../../api/instance/app.html">app</a></li>
+<li><a href="../../api/operation/array-like.html">Add or delete child nodes</a></li>
+<li><a href="../../api/operation/before.html">before</a></li>
+<li><a href="../../api/operation/after.html">after</a></li>
+<li><a href="../../api/operation/remove.html">remove</a></li>
+<li><a href="../../api/operation/wrap.html">wrap</a></li>
+<li><a href="../../api/operation/unwrap.html">unwrap</a></li>
+<li><a href="../../api/props/text.html">text</a></li>
+<li><a href="../../api/props/html.html">html</a></li>
+<li><a href="../../api/props/attr.html">attr</a></li>
+<li><a href="../../api/props/css.html">css</a></li>
+<li><a href="../../api/props/style.html">style</a></li>
+<li><a href="../../api/props/class-list.html">classList</a></li>
+<li><a href="../../api/props/data.html">data</a></li>
+<li><a href="../../api/event/on.html">on</a></li>
+<li><a href="../../api/event/one.html">one</a></li>
+<li><a href="../../api/event/emit.html">emit</a></li>
+<li><a href="../../api/event/off.html">off</a></li>
+<li><a href="../../api/temp-syntax/text-render.html">Text rendering</a></li>
+<li><a href="../../api/temp-syntax/class.html">class</a></li>
+<li><a href="../../api/temp-syntax/sync.html">sync</a></li>
+<li><a href="../../api/temp-syntax/condition.html">Conditional rendering</a></li>
+<li><a href="../../api/temp-syntax/fill.html">List rendering</a></li>
+<li><a href="../../api/life-cycle/created.html">created</a></li>
+<li><a href="../../api/life-cycle/ready.html">ready</a></li>
+<li><a href="../../api/life-cycle/watch.html">watch</a></li>
+<li><a href="../../api/life-cycle/loaded.html">loaded</a></li>
+<li><a href="../../api/life-cycle/attached.html">attached</a></li>
+<li><a href="../../api/life-cycle/detached.html">detached</a></li>
+<li><a href="../../api/life-cycle/router-change.html">routerChange</a></li>
+<li><a href="../../api/others/app.html">app</a></li>
+<li><a href="../../api/others/page.html">page</a></li>
+<li><a href="../../api/others/box.html">Box model</a></li>
+<li><a href="../../api/others/form-data.html">formData</a></li>
+<li><a href="../../api/others/tag.html">tag</a></li>
+<li><a href="../../api/others/index.html">index</a></li>
+<li><a href="../../api/others/is.html">is</a></li>
+<li><a href="../../api/others/refresh.html">refresh</a></li>
+<li><a href="../../api/others/path.html">PATH</a></li>
+<li><a href="../../api/others/extend.html">extend</a></li>
+<li><a href="../../api/others/stanz.html">Instance data characteristics</a></li>
 <li><a href="../../index.html">English-index.html</a></li>
 <li><a href="../../../cn/index.html">简体中文-index.html</a></li>
 <li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
 
 </ul></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/init.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/init.js" type="module"></script>
   </body>
 </html>

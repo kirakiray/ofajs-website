@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>封装和组件化：组件化常规知识</title>
-        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/dist/ofa.min.js"></script>
+    <title>组件化常规知识</title>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/css/public.css" />
     <style>
       html,
       body {
@@ -20,7 +20,9 @@
       let configUrl = "../../config.json";
     </script>
     
-        <link rel="shortcut icon" href="/favicon.png">
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/logo.png">
+        <link rel="apple-touch-icon-precomposed" href="/logo.png">
         <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
         <script>
           window.dataLayer = window.dataLayer || [];
@@ -35,9 +37,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -49,12 +51,16 @@
           .markdown-body::after {
             height: 32px;
           }
+          .markdown-body > * {
+            margin-top: 1em;
+            margin-bottom: 1em;
+          }
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/css/github-markdown.css"
         />
-        <article class="markdown-body"><h1>封装和组件化：组件化常规知识</h1>
+        <article class="markdown-body"><h1>组件化常规知识</h1>
 <p>ofa.js 是一个基于 Web Components 技术的封装库，旨在简化和加速组件开发过程。它通过将复杂的技术细节隐藏在背后，让开发者能够更专注地构建高质量的组件和应用。</p>
 <p>为了更好地开发组件，有必要学习一些 Web Components 的知识。下面介绍的知识点不仅可以在 ofa.js 中应用，还可以让你在其他使用 Web Components 的框架上同样受益。</p>
 <h2>Shadow DOM 容器</h2>
@@ -86,26 +92,30 @@ $(&quot;my-component&quot;).shadow.$(&quot;h1&quot;).css.color = &#39;red&#39; /
 <p>插槽是 Web Components 中用于在组件内部嵌入外部内容的机制。插槽允许开发者将自定义的内容传递到组件内部，实现更灵活的组件结构。</p>
 <h3>单个插槽</h3>
 <p>在组件模板中，可以使用 <code>&lt;slot&gt;</code> 元素来定义插槽。外部传入的内容会被插入到插槽内部。</p>
-<pre><code class="language-html">&lt;!-- MyComponent.html --&gt;
+<pre><code class="language-html">&lt;!-- my-component.html --&gt;
+...
 &lt;div&gt;
   &lt;h2&gt;&lt;slot&gt;&lt;/slot&gt;&lt;/h2&gt;
 &lt;/div&gt;
+...
 </code></pre>
-<pre><code class="language-html">&lt;!-- 使用 MyComponent --&gt;
+<pre><code class="language-html">&lt;!-- 使用 my-component --&gt;
 &lt;my-component&gt;
   &lt;p&gt;This is a slot content.&lt;/p&gt;
 &lt;/my-component&gt;
 </code></pre>
 <h3>多个命名插槽</h3>
 <p>除了默认插槽外，还可以定义多个命名插槽。命名插槽允许开发者将不同的内容插入到不同的插槽位置。</p>
-<pre><code class="language-html">&lt;!-- MyComponent.html --&gt;
+<pre><code class="language-html">&lt;!-- my-component.html --&gt;
+...
 &lt;div&gt;
     &lt;header&gt;&lt;slot name=&quot;header&quot;&gt;&lt;/slot&gt;&lt;/header&gt;
     &lt;main&gt;&lt;slot&gt;&lt;/slot&gt;&lt;/main&gt;
     &lt;footer&gt;&lt;slot name=&quot;footer&quot;&gt;&lt;/slot&gt;&lt;/footer&gt;
 &lt;/div&gt;
+...
 </code></pre>
-<pre><code class="language-html">&lt;!-- 使用 MyComponent --&gt;
+<pre><code class="language-html">&lt;!-- 使用 my-component --&gt;
 &lt;my-component&gt;
   &lt;div slot=&quot;header&quot;&gt;Header Content&lt;/div&gt;
   &lt;p&gt;This is main content.&lt;/p&gt;
@@ -114,10 +124,7 @@ $(&quot;my-component&quot;).shadow.$(&quot;h1&quot;).css.color = &#39;red&#39; /
 </code></pre>
 <h2>slotchange 事件的使用</h2>
 <p><code>slotchange</code> 事件在插槽内容变化时触发。可以通过监听这个事件来执行一些与插槽内容相关的操作。</p>
-<pre><code class="language-javascript">// custom-component.mjs
-export const type = $.COMP;
-
-export default {
+<pre><code class="language-javascript">export default {
   data: {
     count: 0,
   },
@@ -132,9 +139,9 @@ export default {
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -168,38 +175,92 @@ export default {
 <li><a href="../../cases/app-config.html">配置app参数</a></li>
 <li><a href="../../cases/app-loading.html">为app定制loading</a></li>
 <li><a href="../../cases/set404.html">设置404页面</a></li>
-<li><a href="../../cases/use-hash-router.html">使用 hash router</a></li>
+<li><a href="../../cases/nested-page.html">嵌套页面</a></li>
+<li><a href="../../cases/use-hash-router.html">使用HashRouter</a></li>
 <li><a href="../../cases/use-scsr.html">使用scsr方案</a></li>
+<li><a href="../../cases/sync-state.html">状态同步</a></li>
+<li><a href="../../cases/alias.html">别名</a></li>
 <li><a href="../introduce.html">介绍</a></li>
 <li><a href="../get-started/index.html">如何使用ofa.js</a></li>
 <li><a href="../get-started/hello-world.html">第一个案例</a></li>
 <li><a href="../get-started/elements-and-events.html">选择元素和事件相关</a></li>
 <li><a href="../get-started/basic-concept.html">实例的基础概念</a></li>
-<li><a href="../get-started/common-properties.html">常用属性介绍</a></li>
-<li><a href="../get-started/common-function.html">常用方法介绍</a></li>
-<li><a href="../get-started/css.html">css</a></li>
-<li><a href="../get-started/classlist-and-data.html">classList 和 data</a></li>
-<li><a href="../get-started/box-model.html">盒模型</a></li>
-<li><a href="../get-started/formdata.html">表单数据</a></li>
+<li><a href="../get-started/common-properties.html">常用属性和方法</a></li>
 <li><a href="index.html">制作和使用</a></li>
 <li><a href="parameter-description.html">参数说明</a></li>
 <li><a href="life-cycle.html">生命周期</a></li>
 <li><a href="web-components.html">组件化常规知识</a></li>
 <li><a href="template-syntax.html">模板语法</a></li>
-<li><a href="template-component.html">模板组件</a></li>
-<li><a href="../create-app/index.html">使用 o-app</a></li>
+<li><a href="../create-app/index.html">介绍</a></li>
 <li><a href="../create-app/page.html">使用Page组件</a></li>
 <li><a href="../create-app/app.html">使用App组件</a></li>
 <li><a href="../create-app/subrouting.html">子路由功能</a></li>
 <li><a href="../create-app/o-router.html">路由绑定</a></li>
 <li><a href="../create-app/scsr.html">SCSR方案</a></li>
-<li><a href="../../others/data-sharing.html">数据共享</a></li>
-<li><a href="../../others/about-micro-frontend.html">ofa.js和微前端</a></li>
+<li><a href="../others/data-sharing.html">数据共享</a></li>
+<li><a href="../others/about-micro-frontend.html">ofa.js和微前端</a></li>
+<li><a href="../../api/index.html">API介绍</a></li>
+<li><a href="../../api/instance/dollar.html">$ 方法</a></li>
+<li><a href="../../api/instance/all.html">all</a></li>
+<li><a href="../../api/instance/prev.html">prev</a></li>
+<li><a href="../../api/instance/prevs.html">prevs</a></li>
+<li><a href="../../api/instance/next.html">next</a></li>
+<li><a href="../../api/instance/nexts.html">nexts</a></li>
+<li><a href="../../api/instance/siblings.html">siblings</a></li>
+<li><a href="../../api/instance/parent.html">parent</a></li>
+<li><a href="../../api/instance/parents.html">parents</a></li>
+<li><a href="../../api/instance/clone.html">clone</a></li>
+<li><a href="../../api/instance/ele.html">ele</a></li>
+<li><a href="../../api/instance/shadow.html">shadow</a></li>
+<li><a href="../../api/instance/root.html">root</a></li>
+<li><a href="../../api/instance/children.html">子元素</a></li>
+<li><a href="../../api/instance/host.html">host</a></li>
+<li><a href="../../api/instance/app.html">app</a></li>
+<li><a href="../../api/operation/array-like.html">添加或删除子节点</a></li>
+<li><a href="../../api/operation/before.html">before</a></li>
+<li><a href="../../api/operation/after.html">after</a></li>
+<li><a href="../../api/operation/remove.html">remove</a></li>
+<li><a href="../../api/operation/wrap.html">wrap</a></li>
+<li><a href="../../api/operation/unwrap.html">unwrap</a></li>
+<li><a href="../../api/props/text.html">text</a></li>
+<li><a href="../../api/props/html.html">html</a></li>
+<li><a href="../../api/props/attr.html">attr</a></li>
+<li><a href="../../api/props/css.html">css</a></li>
+<li><a href="../../api/props/style.html">style</a></li>
+<li><a href="../../api/props/class-list.html">classList</a></li>
+<li><a href="../../api/props/data.html">data</a></li>
+<li><a href="../../api/event/on.html">on</a></li>
+<li><a href="../../api/event/one.html">one</a></li>
+<li><a href="../../api/event/emit.html">emit</a></li>
+<li><a href="../../api/event/off.html">off</a></li>
+<li><a href="../../api/temp-syntax/text-render.html">文本渲染</a></li>
+<li><a href="../../api/temp-syntax/class.html">class</a></li>
+<li><a href="../../api/temp-syntax/sync.html">sync</a></li>
+<li><a href="../../api/temp-syntax/condition.html">条件渲染</a></li>
+<li><a href="../../api/temp-syntax/fill.html">列表渲染</a></li>
+<li><a href="../../api/life-cycle/created.html">created</a></li>
+<li><a href="../../api/life-cycle/ready.html">ready</a></li>
+<li><a href="../../api/life-cycle/watch.html">watch</a></li>
+<li><a href="../../api/life-cycle/loaded.html">loaded</a></li>
+<li><a href="../../api/life-cycle/attached.html">attached</a></li>
+<li><a href="../../api/life-cycle/detached.html">detached</a></li>
+<li><a href="../../api/life-cycle/router-change.html">routerChange</a></li>
+<li><a href="../../api/others/app.html">app</a></li>
+<li><a href="../../api/others/page.html">page</a></li>
+<li><a href="../../api/others/box.html">盒模型</a></li>
+<li><a href="../../api/others/form-data.html">formData</a></li>
+<li><a href="../../api/others/tag.html">tag</a></li>
+<li><a href="../../api/others/index.html">index</a></li>
+<li><a href="../../api/others/is.html">is</a></li>
+<li><a href="../../api/others/refresh.html">refresh</a></li>
+<li><a href="../../api/others/path.html">PATH</a></li>
+<li><a href="../../api/others/extend.html">extend</a></li>
+<li><a href="../../api/others/stanz.html">实例数据特征</a></li>
 <li><a href="../../../en/index.html">English-index.html</a></li>
 <li><a href="../../index.html">简体中文-index.html</a></li>
 <li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
 
 </ul></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/init.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/init.js" type="module"></script>
   </body>
 </html>

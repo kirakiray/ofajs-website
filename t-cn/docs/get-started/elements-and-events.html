@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>獲取元素和事件相關</title>
-        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/dist/ofa.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/css/public.css" />
     <style>
       html,
       body {
@@ -20,7 +20,9 @@
       let configUrl = "../../config.json";
     </script>
     
-        <link rel="shortcut icon" href="/favicon.png">
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/logo.png">
+        <link rel="apple-touch-icon-precomposed" href="/logo.png">
         <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
         <script>
           window.dataLayer = window.dataLayer || [];
@@ -35,9 +37,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -49,10 +51,14 @@
           .markdown-body::after {
             height: 32px;
           }
+          .markdown-body > * {
+            margin-top: 1em;
+            margin-bottom: 1em;
+          }
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/css/github-markdown.css"
         />
         <article class="markdown-body"><h1>獲取元素和事件相關</h1>
 <p>該章節旨在加強對上一章內容的理解，包括選擇元素 和 事件綁定。</p>
@@ -62,6 +68,11 @@
 <h4>使用 <code>$(&quot;xxx&quot;).$(&#39;xxxx&#39;)</code> 的方式</h4>
 <p><code>$(&quot;xxx&quot;).$(&#39;xxxx&#39;)</code> 是通過先選擇一個父元素，然後在其內部查找符合條件的子元素的方式。其中，<code>$(&quot;xxx&quot;)</code> 選擇了一個父元素，然後使用 <code>$(&#39;xxxx&#39;)</code> 在該父元素內查找符合條件的子元素。</p>
 <h4>示例</h4>
+<html-viewer>
+
+<pre><code>&lt;!-- 將 ofa.js 引入項目 --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
 <pre><code class="language-html">&lt;div class=&quot;parent&quot;&gt;
   &lt;p&gt;Hello World&lt;/p&gt;
   &lt;div class=&quot;child&quot;&gt;
@@ -77,10 +88,17 @@
   childElement.text = &quot;Modified child element&quot;;
 &lt;/script&gt;
 </code></pre>
+</html-viewer>
+
 <p>在上面的示例中，首先通過 <code>$(&quot;.parent&quot;)</code> 選擇了具有 <code>parent</code> 類的父元素，然後使用 <code>$(&quot;.child&quot;)</code> 在該父元素內查找具有 <code>child</code> 類的子元素。然後修改了子元素的文本內容為 &quot;Modified child element&quot;。</p>
 <h3>使用 <code>$(&#39;xxx xxxx&#39;)</code> 的方式</h3>
 <p><code>$(&#39;xxx xxxx&#39;)</code> 是通過在全局範圍內查找符合第二個選擇器條件的元素，然後在這些元素內部查找符合第一個選擇器條件的元素。這種方式可以直接一步到位地查找到符合條件的子元素。</p>
 <h4>示例</h4>
+<html-viewer>
+
+<pre><code>&lt;!-- 將 ofa.js 引入項目 --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
 <pre><code class="language-html">&lt;div class=&quot;parent&quot;&gt;
   &lt;p&gt;Hello World&lt;/p&gt;
   &lt;div class=&quot;child&quot;&gt;
@@ -95,11 +113,18 @@
   childElement.text = &quot;Modified child element&quot;;
 &lt;/script&gt;
 </code></pre>
+</html-viewer>
+
 <p>在上面的示例中，直接使用 <code>$(&#39;div .child&#39;)</code> 查找到具有 <code>child</code> 類的子元素，並修改了子元素的文本內容為 &quot;Modified child element&quot;。</p>
 <h3>選擇多個元素</h3>
 <h4>使用 <code>$.all(&#39;xxx&#39;)</code> 查找全局的元素</h4>
 <p><code>$.all(&#39;xxx&#39;)</code> 方法用於查找頁面中所有符合選擇器條件的元素，並將它們作為一個元素集合返回。這樣可以選擇頁面中的多個元素進行批量操作。</p>
 <h4>示例</h4>
+<html-viewer>
+
+<pre><code>&lt;!-- 將 ofa.js 引入項目 --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
 <pre><code class="language-html">&lt;p&gt;Paragraph 1&lt;/p&gt;
 &lt;p&gt;Paragraph 2&lt;/p&gt;
 &lt;p&gt;Paragraph 3&lt;/p&gt;
@@ -113,10 +138,17 @@
   });
 &lt;/script&gt;
 </code></pre>
+</html-viewer>
+
 <p>在上面的示例中，使用 <code>$.all(&quot;p&quot;)</code> 查找到頁面中的所有 <code>p</code> 標簽元素，並對它們進行了批量操作，將文本內容修改為 &quot;Modified Paragraph 1&quot;、&quot;Modified Paragraph 2&quot; 和 &quot;Modified Paragraph 3&quot;。</p>
 <h3>從元素內查找所有符合條件的元素</h3>
 <p>除了可以在全局範圍內查找元素，還可以從某個元素內查找所有符合條件的子元素，使用方式為：<code>$(&#39;xxx&#39;).all(&#39;xxxx&#39;)</code>。</p>
 <h4>示例</h4>
+<html-viewer>
+
+<pre><code>&lt;!-- 將 ofa.js 引入項目 --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
 <pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
   &lt;p&gt;Hello World&lt;/p&gt;
   &lt;div class=&quot;item&quot;&gt;Item 1&lt;/div&gt;
@@ -134,6 +166,8 @@
   });
 &lt;/script&gt;
 </code></pre>
+</html-viewer>
+
 <p>在上面的示例中，首先使用 <code>$(&quot;.container&quot;)</code> 查找到具有 <code>container</code> 類的元素，然後通過 <code>.all(&quot;.item&quot;)</code> 在該容器內查找所有帶有 <code>item</code> 類的子元素，並對它們進行了批量操作，將文本內容修改為 &quot;Modified Item 1&quot;、&quot;Modified Item 2&quot; 和 &quot;Modified Item 3&quot;。</p>
 <h2>事件</h2>
 <p>前面已經講過 <code>on</code> 綁定事件的使用方法，後面介紹幾個和事件相關的方法；</p>
@@ -148,6 +182,11 @@
 <li><code>eventHandler</code>: 要移除的事件處理函數。</li>
 </ul>
 <h4>示例</h4>
+<html-viewer>
+
+<pre><code>&lt;!-- 將 ofa.js 引入項目 --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
 <pre><code class="language-html">&lt;button id=&quot;btn&quot;&gt;Click Me&lt;/button&gt;
 &lt;script&gt;
   const handleClick = () =&gt; {
@@ -163,6 +202,8 @@
   }, 5000);
 &lt;/script&gt;
 </code></pre>
+</html-viewer>
+
 <p>在上面的示例中，當點擊按鈕時，會彈出一個對話框顯示 &quot;Button clicked!&quot;。但是在5秒後，通過 <code>off</code> 方法移除了點擊事件處理函數，所以按鈕再次點擊時不會觸發彈出對話框。</p>
 <h3>one 方法的使用文檔</h3>
 <p><code>one</code> 方法用於綁定事件處理函數，但該處理函數只會在第一次觸發事件時執行一次。在執行一次後，事件處理函數會被自動移除，避免重復觸發。</p>
@@ -175,6 +216,11 @@
 <li><code>eventHandler</code>: 要執行的事件處理函數。</li>
 </ul>
 <h4>示例</h4>
+<html-viewer>
+
+<pre><code>&lt;!-- 將 ofa.js 引入項目 --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
 <pre><code class="language-html">&lt;button id=&quot;btn&quot;&gt;Click Me Once&lt;/button&gt;
 &lt;script&gt;
   // 綁定點擊事件處理函數，但只會執行一次
@@ -183,6 +229,8 @@
   });
 &lt;/script&gt;
 </code></pre>
+</html-viewer>
+
 <p>在上面的示例中，當點擊按鈕時，會彈出一個對話框顯示 &quot;Button clicked once!&quot;。但是在第一次點擊後，事件處理函數就會被移除，所以後續點擊按鈕不會再觸發彈出對話框。</p>
 <h3>emit 方法的使用文檔</h3>
 <p><code>emit</code> 方法用於手動觸發元素上綁定的特定事件。通過 <code>emit</code> 方法可以在不進行實際操作的情況下觸發事件處理函數的執行。</p>
@@ -287,9 +335,9 @@
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -323,38 +371,92 @@
 <li><a href="../../cases/app-config.html">配置app參數</a></li>
 <li><a href="../../cases/app-loading.html">為app定制loading</a></li>
 <li><a href="../../cases/set404.html">設置404頁面</a></li>
-<li><a href="../../cases/use-hash-router.html">使用 hash router</a></li>
+<li><a href="../../cases/nested-page.html">嵌套頁面</a></li>
+<li><a href="../../cases/use-hash-router.html">使用HashRouter</a></li>
 <li><a href="../../cases/use-scsr.html">使用scsr方案</a></li>
+<li><a href="../../cases/sync-state.html">狀態同步</a></li>
+<li><a href="../../cases/alias.html">別名</a></li>
 <li><a href="../introduce.html">介紹</a></li>
 <li><a href="index.html">如何使用ofa.js</a></li>
 <li><a href="hello-world.html">第一個案例</a></li>
 <li><a href="elements-and-events.html">選擇元素和事件相關</a></li>
 <li><a href="basic-concept.html">實例的基礎概念</a></li>
-<li><a href="common-properties.html">常用屬性介紹</a></li>
-<li><a href="common-function.html">常用方法介紹</a></li>
-<li><a href="css.html">css</a></li>
-<li><a href="classlist-and-data.html">classList 和 data</a></li>
-<li><a href="box-model.html">盒模型</a></li>
-<li><a href="formdata.html">表單數據</a></li>
+<li><a href="common-properties.html">常用屬性和方法</a></li>
 <li><a href="../create-component/index.html">制作和使用</a></li>
 <li><a href="../create-component/parameter-description.html">參數說明</a></li>
 <li><a href="../create-component/life-cycle.html">生命周期</a></li>
 <li><a href="../create-component/web-components.html">組件化常規知識</a></li>
 <li><a href="../create-component/template-syntax.html">模板語法</a></li>
-<li><a href="../create-component/template-component.html">模板組件</a></li>
-<li><a href="../create-app/index.html">使用 o-app</a></li>
+<li><a href="../create-app/index.html">介紹</a></li>
 <li><a href="../create-app/page.html">使用Page組件</a></li>
 <li><a href="../create-app/app.html">使用App組件</a></li>
 <li><a href="../create-app/subrouting.html">子路由功能</a></li>
 <li><a href="../create-app/o-router.html">路由綁定</a></li>
 <li><a href="../create-app/scsr.html">SCSR方案</a></li>
-<li><a href="../../others/data-sharing.html">數據共享</a></li>
-<li><a href="../../others/about-micro-frontend.html">ofa.js和微前端</a></li>
+<li><a href="../others/data-sharing.html">數據共享</a></li>
+<li><a href="../others/about-micro-frontend.html">ofa.js和微前端</a></li>
+<li><a href="../../api/index.html">API介紹</a></li>
+<li><a href="../../api/instance/dollar.html">$ 方法</a></li>
+<li><a href="../../api/instance/all.html">all</a></li>
+<li><a href="../../api/instance/prev.html">prev</a></li>
+<li><a href="../../api/instance/prevs.html">prevs</a></li>
+<li><a href="../../api/instance/next.html">next</a></li>
+<li><a href="../../api/instance/nexts.html">nexts</a></li>
+<li><a href="../../api/instance/siblings.html">siblings</a></li>
+<li><a href="../../api/instance/parent.html">parent</a></li>
+<li><a href="../../api/instance/parents.html">parents</a></li>
+<li><a href="../../api/instance/clone.html">clone</a></li>
+<li><a href="../../api/instance/ele.html">ele</a></li>
+<li><a href="../../api/instance/shadow.html">shadow</a></li>
+<li><a href="../../api/instance/root.html">root</a></li>
+<li><a href="../../api/instance/children.html">子元素</a></li>
+<li><a href="../../api/instance/host.html">host</a></li>
+<li><a href="../../api/instance/app.html">app</a></li>
+<li><a href="../../api/operation/array-like.html">添加或刪除子節點</a></li>
+<li><a href="../../api/operation/before.html">before</a></li>
+<li><a href="../../api/operation/after.html">after</a></li>
+<li><a href="../../api/operation/remove.html">remove</a></li>
+<li><a href="../../api/operation/wrap.html">wrap</a></li>
+<li><a href="../../api/operation/unwrap.html">unwrap</a></li>
+<li><a href="../../api/props/text.html">text</a></li>
+<li><a href="../../api/props/html.html">html</a></li>
+<li><a href="../../api/props/attr.html">attr</a></li>
+<li><a href="../../api/props/css.html">css</a></li>
+<li><a href="../../api/props/style.html">style</a></li>
+<li><a href="../../api/props/class-list.html">classList</a></li>
+<li><a href="../../api/props/data.html">data</a></li>
+<li><a href="../../api/event/on.html">on</a></li>
+<li><a href="../../api/event/one.html">one</a></li>
+<li><a href="../../api/event/emit.html">emit</a></li>
+<li><a href="../../api/event/off.html">off</a></li>
+<li><a href="../../api/temp-syntax/text-render.html">文本渲染</a></li>
+<li><a href="../../api/temp-syntax/class.html">class</a></li>
+<li><a href="../../api/temp-syntax/sync.html">sync</a></li>
+<li><a href="../../api/temp-syntax/condition.html">條件渲染</a></li>
+<li><a href="../../api/temp-syntax/fill.html">列表渲染</a></li>
+<li><a href="../../api/life-cycle/created.html">created</a></li>
+<li><a href="../../api/life-cycle/ready.html">ready</a></li>
+<li><a href="../../api/life-cycle/watch.html">watch</a></li>
+<li><a href="../../api/life-cycle/loaded.html">loaded</a></li>
+<li><a href="../../api/life-cycle/attached.html">attached</a></li>
+<li><a href="../../api/life-cycle/detached.html">detached</a></li>
+<li><a href="../../api/life-cycle/router-change.html">routerChange</a></li>
+<li><a href="../../api/others/app.html">app</a></li>
+<li><a href="../../api/others/page.html">page</a></li>
+<li><a href="../../api/others/box.html">盒模型</a></li>
+<li><a href="../../api/others/form-data.html">formData</a></li>
+<li><a href="../../api/others/tag.html">tag</a></li>
+<li><a href="../../api/others/index.html">index</a></li>
+<li><a href="../../api/others/is.html">is</a></li>
+<li><a href="../../api/others/refresh.html">refresh</a></li>
+<li><a href="../../api/others/path.html">PATH</a></li>
+<li><a href="../../api/others/extend.html">extend</a></li>
+<li><a href="../../api/others/stanz.html">實例數據特征</a></li>
 <li><a href="../../../en/index.html">English-index.html</a></li>
 <li><a href="../../../cn/index.html">简体中文-index.html</a></li>
 <li><a href="../../index.html">繁体中文-index.html</a></li>
 
 </ul></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/init.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/init.js" type="module"></script>
   </body>
 </html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>app</title>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
+      type="module"
+    ></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/css/public.css" />
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+    </style>
+    <script>
+      let configUrl = "../../config.json";
+    </script>
+    
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/logo.png">
+        <link rel="apple-touch-icon-precomposed" href="/logo.png">
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag("js", new Date());
+
+          gtag("config", "G-7L1TCCJZT6");
+        </script>
+        <script src="/init-sw.js"></script>
+      
+  </head>
+  <body>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/app-config.mjs">
+      <template page>
+        <style>
+          .markdown-body::before,
+          .markdown-body::after {
+            display: block;
+            content: "";
+            height: 1px;
+          }
+          .markdown-body::after {
+            height: 32px;
+          }
+          .markdown-body > * {
+            margin-top: 1em;
+            margin-bottom: 1em;
+          }
+        </style>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/css/github-markdown.css"
+        />
+        <article class="markdown-body"><h1>app</h1>
+<p><code>o-app</code> 是 <code>ofa.js</code> 中的核心組件之一，用於配置和管理整個應用程序。以下是app的一些關鍵屬性和方法：</p>
+<h2>src</h2>
+<p><code>src</code> 屬性用於指定應用參數配置模塊的具體地址。有關詳細示例，請參考 <a href="../../cases/app-config.html">案例</a>。</p>
+<pre><code class="language-javascript">const app = $(&quot;o-app&quot;);
+console.log(app.src);
+</code></pre>
+<h2>current</h2>
+<p><code>current</code> 屬性用於獲取正在展示中的頁面實例。這可以幫助您訪問和操作當前正在顯示的頁面，例如更新其內容或執行特定的操作。</p>
+<pre><code class="language-javascript">// 獲取當前頁面實例
+const currentPage = app.current;
+</code></pre>
+<h2>goto</h2>
+<p><code>goto</code> 方法用於跳轉到指定的頁面。您可以傳遞目標頁面的地址，應用將加載並顯示該頁面。這是應用導航的重要方法。</p>
+<pre><code class="language-javascript">// 跳轉到指定頁面
+app.goto(&quot;/page2.html&quot;);
+</code></pre>
+<h2>replace</h2>
+<p><code>replace</code> 方法與 <code>goto</code> 類似，但它是用來替換當前頁面而不是在堆棧中添加新頁面。這可以用於實現頁面替換而不是堆棧導航。</p>
+<pre><code class="language-javascript">// 替換當前頁面為新頁面
+app.replace(&quot;/new-page.html&quot;);
+</code></pre>
+<h2>back</h2>
+<p><code>back</code> 方法用於返回上一頁，實現頁面導航的後退操作。這會將用戶導航回上一個頁面。</p>
+<pre><code class="language-javascript">// 返回上一頁
+app.back();
+</code></pre>
+<h2>routers</h2>
+<p><code>routers</code> 屬性包含應用程序的路由配置信息。這是一個重要的屬性，定義了應用程序中各個頁面的路由規則和映射。路由配置決定了頁面之間的導航和如何處理 URL。</p>
+<pre><code class="language-javascript">// 訪問應用程序的路由配置信息
+const routeConfig = app.routers;
+</code></pre>
+
+    <article-footer></article-footer>
+    </article>
+        <script>
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/layouts/article-layout.html";
+
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/document-page-init.mjs";
+
+          export default async (...args) => {
+            return await pageInit(PATH, args);
+          };
+        </script>
+      </template>
+    </o-app>
+    <div id="loading"></div>
+    <div class="body-important other-link"><ul>
+<li><a href="../../cases/index.html">開始</a></li>
+<li><a href="../../cases/event.html">事件反應</a></li>
+<li><a href="../../cases/simple-component.html">組件的創建和使用</a></li>
+<li><a href="../../cases/slot.html">組件插槽</a></li>
+<li><a href="../../cases/render-text.html">模板語法：渲染文本</a></li>
+<li><a href="../../cases/attribute-transmission.html">特性傳遞</a></li>
+<li><a href="../../cases/get-set-comp.html">獲取和修改組件實例的值</a></li>
+<li><a href="../../cases/property-transmission.html">模板語法：屬性傳遞</a></li>
+<li><a href="../../cases/bind-event.html">模板語法：綁定事件</a></li>
+<li><a href="../../cases/nested-component.html">嵌套組件</a></li>
+<li><a href="../../cases/inject-host.html">inject-host 組件</a></li>
+<li><a href="../../cases/event-passing.html">事件傳遞</a></li>
+<li><a href="../../cases/sync.html">模板語法：雙向數據綁定</a></li>
+<li><a href="../../cases/condition.html">模板組件：條件渲染</a></li>
+<li><a href="../../cases/fill.html">模板組件：填充渲染</a></li>
+<li><a href="../../cases/fill-temp.html">遞歸填充渲染</a></li>
+<li><a href="../../cases/life-cycle.html">生命周期</a></li>
+<li><a href="../../cases/form-data.html">表單數據</a></li>
+<li><a href="../../cases/custom-form-element.html">自定義表單組件</a></li>
+<li><a href="../../cases/use-page.html">使用頁面組件</a></li>
+<li><a href="../../cases/use-app.html">使用app組件</a></li>
+<li><a href="../../cases/app-config.html">配置app參數</a></li>
+<li><a href="../../cases/app-loading.html">為app定制loading</a></li>
+<li><a href="../../cases/set404.html">設置404頁面</a></li>
+<li><a href="../../cases/nested-page.html">嵌套頁面</a></li>
+<li><a href="../../cases/use-hash-router.html">使用HashRouter</a></li>
+<li><a href="../../cases/use-scsr.html">使用scsr方案</a></li>
+<li><a href="../../cases/sync-state.html">狀態同步</a></li>
+<li><a href="../../cases/alias.html">別名</a></li>
+<li><a href="../../docs/introduce.html">介紹</a></li>
+<li><a href="../../docs/get-started/index.html">如何使用ofa.js</a></li>
+<li><a href="../../docs/get-started/hello-world.html">第一個案例</a></li>
+<li><a href="../../docs/get-started/elements-and-events.html">選擇元素和事件相關</a></li>
+<li><a href="../../docs/get-started/basic-concept.html">實例的基礎概念</a></li>
+<li><a href="../../docs/get-started/common-properties.html">常用屬性和方法</a></li>
+<li><a href="../../docs/create-component/index.html">制作和使用</a></li>
+<li><a href="../../docs/create-component/parameter-description.html">參數說明</a></li>
+<li><a href="../../docs/create-component/life-cycle.html">生命周期</a></li>
+<li><a href="../../docs/create-component/web-components.html">組件化常規知識</a></li>
+<li><a href="../../docs/create-component/template-syntax.html">模板語法</a></li>
+<li><a href="../../docs/create-app/index.html">介紹</a></li>
+<li><a href="../../docs/create-app/page.html">使用Page組件</a></li>
+<li><a href="../../docs/create-app/app.html">使用App組件</a></li>
+<li><a href="../../docs/create-app/subrouting.html">子路由功能</a></li>
+<li><a href="../../docs/create-app/o-router.html">路由綁定</a></li>
+<li><a href="../../docs/create-app/scsr.html">SCSR方案</a></li>
+<li><a href="../../docs/others/data-sharing.html">數據共享</a></li>
+<li><a href="../../docs/others/about-micro-frontend.html">ofa.js和微前端</a></li>
+<li><a href="../index.html">API介紹</a></li>
+<li><a href="../instance/dollar.html">$ 方法</a></li>
+<li><a href="../instance/all.html">all</a></li>
+<li><a href="../instance/prev.html">prev</a></li>
+<li><a href="../instance/prevs.html">prevs</a></li>
+<li><a href="../instance/next.html">next</a></li>
+<li><a href="../instance/nexts.html">nexts</a></li>
+<li><a href="../instance/siblings.html">siblings</a></li>
+<li><a href="../instance/parent.html">parent</a></li>
+<li><a href="../instance/parents.html">parents</a></li>
+<li><a href="../instance/clone.html">clone</a></li>
+<li><a href="../instance/ele.html">ele</a></li>
+<li><a href="../instance/shadow.html">shadow</a></li>
+<li><a href="../instance/root.html">root</a></li>
+<li><a href="../instance/children.html">子元素</a></li>
+<li><a href="../instance/host.html">host</a></li>
+<li><a href="../instance/app.html">app</a></li>
+<li><a href="../operation/array-like.html">添加或刪除子節點</a></li>
+<li><a href="../operation/before.html">before</a></li>
+<li><a href="../operation/after.html">after</a></li>
+<li><a href="../operation/remove.html">remove</a></li>
+<li><a href="../operation/wrap.html">wrap</a></li>
+<li><a href="../operation/unwrap.html">unwrap</a></li>
+<li><a href="../props/text.html">text</a></li>
+<li><a href="../props/html.html">html</a></li>
+<li><a href="../props/attr.html">attr</a></li>
+<li><a href="../props/css.html">css</a></li>
+<li><a href="../props/style.html">style</a></li>
+<li><a href="../props/class-list.html">classList</a></li>
+<li><a href="../props/data.html">data</a></li>
+<li><a href="../event/on.html">on</a></li>
+<li><a href="../event/one.html">one</a></li>
+<li><a href="../event/emit.html">emit</a></li>
+<li><a href="../event/off.html">off</a></li>
+<li><a href="../temp-syntax/text-render.html">文本渲染</a></li>
+<li><a href="../temp-syntax/class.html">class</a></li>
+<li><a href="../temp-syntax/sync.html">sync</a></li>
+<li><a href="../temp-syntax/condition.html">條件渲染</a></li>
+<li><a href="../temp-syntax/fill.html">列表渲染</a></li>
+<li><a href="../life-cycle/created.html">created</a></li>
+<li><a href="../life-cycle/ready.html">ready</a></li>
+<li><a href="../life-cycle/watch.html">watch</a></li>
+<li><a href="../life-cycle/loaded.html">loaded</a></li>
+<li><a href="../life-cycle/attached.html">attached</a></li>
+<li><a href="../life-cycle/detached.html">detached</a></li>
+<li><a href="../life-cycle/router-change.html">routerChange</a></li>
+<li><a href="app.html">app</a></li>
+<li><a href="page.html">page</a></li>
+<li><a href="box.html">盒模型</a></li>
+<li><a href="form-data.html">formData</a></li>
+<li><a href="tag.html">tag</a></li>
+<li><a href="index.html">index</a></li>
+<li><a href="is.html">is</a></li>
+<li><a href="refresh.html">refresh</a></li>
+<li><a href="path.html">PATH</a></li>
+<li><a href="extend.html">extend</a></li>
+<li><a href="stanz.html">實例數據特征</a></li>
+<li><a href="../../../en/index.html">English-index.html</a></li>
+<li><a href="../../../cn/index.html">简体中文-index.html</a></li>
+<li><a href="../../index.html">繁体中文-index.html</a></li>
+
+</ul></div>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/init.js" type="module"></script>
+  </body>
+</html>

@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>组件的生命周期</title>
-        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/dist/ofa.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/css/public.css" />
     <style>
       html,
       body {
@@ -20,7 +20,9 @@
       let configUrl = "../../config.json";
     </script>
     
-        <link rel="shortcut icon" href="/favicon.png">
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/logo.png">
+        <link rel="apple-touch-icon-precomposed" href="/logo.png">
         <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
         <script>
           window.dataLayer = window.dataLayer || [];
@@ -35,9 +37,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -49,10 +51,14 @@
           .markdown-body::after {
             height: 32px;
           }
+          .markdown-body > * {
+            margin-top: 1em;
+            margin-bottom: 1em;
+          }
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/css/github-markdown.css"
         />
         <article class="markdown-body"><h1>组件的生命周期</h1>
 <p>在 ofa.js 中，组件生命周期是在特定时间点触发的钩子函数。这些钩子函数让你能更精细地控制和交互，ofa.js 有五个关键生命周期钩子：<code>created</code>、<code>ready</code>、<code>watch</code>、<code>loaded</code>、<code>attached</code> 和 <code>detached</code>，分别在不同时刻触发。</p>
@@ -72,71 +78,44 @@
 <p><code>detached</code> 生命周期钩子会在组件从文档中移除时触发。在这个阶段，你可以执行一些清理操作，比如取消事件监听或者释放资源，以防止内存泄漏。</p>
 <h2>示例演示</h2>
 <p>以下是一个示例，展示了如何使用这些生命周期钩子：</p>
-<pre><code class="language-javascript">// lifecycle-demo.mjs
-export const type = $.COMP;
-export const tag = &quot;lifecycle-demo&quot;;
-export const temp = &quot;./lifecycle-demo-template.html&quot;;
+<pre><code class="language-javascript">export default {
+  data: {
+    count: 0,
+  },
+  watch: {
+    count(count) {
+      console.log(&quot;count: &quot;, count);
+    },
+  },
+  created() {
+    console.log(&quot;created: Component created, data not initialized.&quot;);
+  },
+  ready() {
+    console.log(
+      &quot;ready: Component is ready with initialized data and template.&quot;
+    );
 
-export default async function () {
-  return {
-    data: {
-      count: 0,
-    },
-    watch: {
-      count(count) {
-        console.log(&quot;count: &quot;, count);
-      },
-    },
-    created() {
-      console.log(&quot;created: Component created, data not initialized.&quot;);
-    },
-    ready() {
-      console.log(
-        &quot;ready: Component is ready with initialized data and template.&quot;
-      );
-
-      this.on(&quot;click&quot;, () =&gt; {
-        this.count++;
-      });
-    },
-    attached() {
-      console.log(&quot;attached: Component attached to DOM.&quot;);
-    },
-    detached() {
-      console.log(&quot;detached: Component detached from DOM.&quot;);
-    },
-  };
-}
+    this.on(&quot;click&quot;, () =&gt; {
+      this.count++;
+    });
+  },
+  attached() {
+    console.log(&quot;attached: Component attached to DOM.&quot;);
+  },
+  detached() {
+    console.log(&quot;detached: Component detached from DOM.&quot;);
+  },
+};
 </code></pre>
-<pre><code class="language-html">&lt;!-- lifecycle-demo-template.html --&gt;
-&lt;l-m src=&quot;../simple-button/simple-button.mjs&quot;&gt;&lt;/l-m&gt;
-&lt;simple-button&gt;Click Me ({{count}})&lt;/simple-button&gt;
-</code></pre>
-<pre><code class="language-html">&lt;!-- lifecycle-demo.html --&gt;
-&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-  &lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot; /&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
-    &lt;title&gt;Lifecycle Demo&lt;/title&gt;
-    &lt;script src=&quot;../ofa.js&quot;&gt;&lt;/script&gt;
-    &lt;l-m src=&quot;./lifecycle-demo.mjs&quot;&gt;&lt;/l-m&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;lifecycle-demo&gt;&lt;/lifecycle-demo&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<p>在上面的示例中，我们定义了一个名为 <code>lifecycle-demo</code> 的组件，并且在其模板中放置了一个按钮。通过不同的生命周期钩子，我们可以在控制台中观察到各个阶段触发的日志。</p>
 <h2>生命周期流程图</h2>
 <img src="../../../publics/life-cycle.png" width="512" />
 
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -170,38 +149,92 @@ export default async function () {
 <li><a href="../../cases/app-config.html">配置app参数</a></li>
 <li><a href="../../cases/app-loading.html">为app定制loading</a></li>
 <li><a href="../../cases/set404.html">设置404页面</a></li>
-<li><a href="../../cases/use-hash-router.html">使用 hash router</a></li>
+<li><a href="../../cases/nested-page.html">嵌套页面</a></li>
+<li><a href="../../cases/use-hash-router.html">使用HashRouter</a></li>
 <li><a href="../../cases/use-scsr.html">使用scsr方案</a></li>
+<li><a href="../../cases/sync-state.html">状态同步</a></li>
+<li><a href="../../cases/alias.html">别名</a></li>
 <li><a href="../introduce.html">介绍</a></li>
 <li><a href="../get-started/index.html">如何使用ofa.js</a></li>
 <li><a href="../get-started/hello-world.html">第一个案例</a></li>
 <li><a href="../get-started/elements-and-events.html">选择元素和事件相关</a></li>
 <li><a href="../get-started/basic-concept.html">实例的基础概念</a></li>
-<li><a href="../get-started/common-properties.html">常用属性介绍</a></li>
-<li><a href="../get-started/common-function.html">常用方法介绍</a></li>
-<li><a href="../get-started/css.html">css</a></li>
-<li><a href="../get-started/classlist-and-data.html">classList 和 data</a></li>
-<li><a href="../get-started/box-model.html">盒模型</a></li>
-<li><a href="../get-started/formdata.html">表单数据</a></li>
+<li><a href="../get-started/common-properties.html">常用属性和方法</a></li>
 <li><a href="index.html">制作和使用</a></li>
 <li><a href="parameter-description.html">参数说明</a></li>
 <li><a href="life-cycle.html">生命周期</a></li>
 <li><a href="web-components.html">组件化常规知识</a></li>
 <li><a href="template-syntax.html">模板语法</a></li>
-<li><a href="template-component.html">模板组件</a></li>
-<li><a href="../create-app/index.html">使用 o-app</a></li>
+<li><a href="../create-app/index.html">介绍</a></li>
 <li><a href="../create-app/page.html">使用Page组件</a></li>
 <li><a href="../create-app/app.html">使用App组件</a></li>
 <li><a href="../create-app/subrouting.html">子路由功能</a></li>
 <li><a href="../create-app/o-router.html">路由绑定</a></li>
 <li><a href="../create-app/scsr.html">SCSR方案</a></li>
-<li><a href="../../others/data-sharing.html">数据共享</a></li>
-<li><a href="../../others/about-micro-frontend.html">ofa.js和微前端</a></li>
+<li><a href="../others/data-sharing.html">数据共享</a></li>
+<li><a href="../others/about-micro-frontend.html">ofa.js和微前端</a></li>
+<li><a href="../../api/index.html">API介绍</a></li>
+<li><a href="../../api/instance/dollar.html">$ 方法</a></li>
+<li><a href="../../api/instance/all.html">all</a></li>
+<li><a href="../../api/instance/prev.html">prev</a></li>
+<li><a href="../../api/instance/prevs.html">prevs</a></li>
+<li><a href="../../api/instance/next.html">next</a></li>
+<li><a href="../../api/instance/nexts.html">nexts</a></li>
+<li><a href="../../api/instance/siblings.html">siblings</a></li>
+<li><a href="../../api/instance/parent.html">parent</a></li>
+<li><a href="../../api/instance/parents.html">parents</a></li>
+<li><a href="../../api/instance/clone.html">clone</a></li>
+<li><a href="../../api/instance/ele.html">ele</a></li>
+<li><a href="../../api/instance/shadow.html">shadow</a></li>
+<li><a href="../../api/instance/root.html">root</a></li>
+<li><a href="../../api/instance/children.html">子元素</a></li>
+<li><a href="../../api/instance/host.html">host</a></li>
+<li><a href="../../api/instance/app.html">app</a></li>
+<li><a href="../../api/operation/array-like.html">添加或删除子节点</a></li>
+<li><a href="../../api/operation/before.html">before</a></li>
+<li><a href="../../api/operation/after.html">after</a></li>
+<li><a href="../../api/operation/remove.html">remove</a></li>
+<li><a href="../../api/operation/wrap.html">wrap</a></li>
+<li><a href="../../api/operation/unwrap.html">unwrap</a></li>
+<li><a href="../../api/props/text.html">text</a></li>
+<li><a href="../../api/props/html.html">html</a></li>
+<li><a href="../../api/props/attr.html">attr</a></li>
+<li><a href="../../api/props/css.html">css</a></li>
+<li><a href="../../api/props/style.html">style</a></li>
+<li><a href="../../api/props/class-list.html">classList</a></li>
+<li><a href="../../api/props/data.html">data</a></li>
+<li><a href="../../api/event/on.html">on</a></li>
+<li><a href="../../api/event/one.html">one</a></li>
+<li><a href="../../api/event/emit.html">emit</a></li>
+<li><a href="../../api/event/off.html">off</a></li>
+<li><a href="../../api/temp-syntax/text-render.html">文本渲染</a></li>
+<li><a href="../../api/temp-syntax/class.html">class</a></li>
+<li><a href="../../api/temp-syntax/sync.html">sync</a></li>
+<li><a href="../../api/temp-syntax/condition.html">条件渲染</a></li>
+<li><a href="../../api/temp-syntax/fill.html">列表渲染</a></li>
+<li><a href="../../api/life-cycle/created.html">created</a></li>
+<li><a href="../../api/life-cycle/ready.html">ready</a></li>
+<li><a href="../../api/life-cycle/watch.html">watch</a></li>
+<li><a href="../../api/life-cycle/loaded.html">loaded</a></li>
+<li><a href="../../api/life-cycle/attached.html">attached</a></li>
+<li><a href="../../api/life-cycle/detached.html">detached</a></li>
+<li><a href="../../api/life-cycle/router-change.html">routerChange</a></li>
+<li><a href="../../api/others/app.html">app</a></li>
+<li><a href="../../api/others/page.html">page</a></li>
+<li><a href="../../api/others/box.html">盒模型</a></li>
+<li><a href="../../api/others/form-data.html">formData</a></li>
+<li><a href="../../api/others/tag.html">tag</a></li>
+<li><a href="../../api/others/index.html">index</a></li>
+<li><a href="../../api/others/is.html">is</a></li>
+<li><a href="../../api/others/refresh.html">refresh</a></li>
+<li><a href="../../api/others/path.html">PATH</a></li>
+<li><a href="../../api/others/extend.html">extend</a></li>
+<li><a href="../../api/others/stanz.html">实例数据特征</a></li>
 <li><a href="../../../en/index.html">English-index.html</a></li>
 <li><a href="../../index.html">简体中文-index.html</a></li>
 <li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
 
 </ul></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/init.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/init.js" type="module"></script>
   </body>
 </html>

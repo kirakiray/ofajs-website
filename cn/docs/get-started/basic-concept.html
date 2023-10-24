@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>实例的基础概念</title>
-        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/dist/ofa.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/css/public.css" />
     <style>
       html,
       body {
@@ -20,7 +20,9 @@
       let configUrl = "../../config.json";
     </script>
     
-        <link rel="shortcut icon" href="/favicon.png">
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/logo.png">
+        <link rel="apple-touch-icon-precomposed" href="/logo.png">
         <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
         <script>
           window.dataLayer = window.dataLayer || [];
@@ -35,9 +37,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -49,98 +51,89 @@
           .markdown-body::after {
             height: 32px;
           }
+          .markdown-body > * {
+            margin-top: 1em;
+            margin-bottom: 1em;
+          }
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/css/github-markdown.css"
         />
         <article class="markdown-body"><h1>实例的基础概念</h1>
 <p><code>$</code> 实例是对页面上元素的封装，除了用于选择现有的元素外，它还可以直接创建新元素并进行操作。在本章中，我们将介绍如何创建新元素以及对 <code>$</code> 实例的一些操作。</p>
 <h2>创建新元素</h2>
 <p>通过 <code>$</code> 实例，我们可以直接创建新的元素并进行操作，例如：</p>
-<pre><code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-  &lt;meta charset=&quot;UTF-8&quot;&gt;
-  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-  &lt;title&gt;Create New Element&lt;/title&gt;
-  &lt;script src=&quot;../ofa.js&quot;&gt;&lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;script&gt;
-    const $ele = $(&#39;&lt;div style=&quot;color:red&quot;&gt;I am text&lt;/div&gt;&#39;);
-    $(&#39;body&#39;).push($ele);
-  &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+<html-viewer>
+
+<pre><code>&lt;!-- 将 ofa.js 引入项目 --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
+<pre><code class="language-html">&lt;script&gt;
+  const $ele = $(&#39;&lt;div style=&quot;color:red&quot;&gt;I am text&lt;/div&gt;&#39;);
+  $(&#39;body&#39;).push($ele);
+&lt;/script&gt;
+</code></pre>
+</html-viewer>
+
 <p>在上面的例子中，我们通过 <code>$(&#39;&lt;div style=&quot;color:red&quot;&gt;I am text&lt;/div&gt;&#39;)</code> 创建了一个新的 <code>div</code> 元素，并将其添加到了 <code>body</code> 中。</p>
 <h2>获取子元素</h2>
 <p>通过 <code>$</code> 获取的实例，并不像 DOM 元素那样拥有 <code>children</code> 属性。但是我们可以通过数组索引来访问实例的直接子元素：</p>
-<pre><code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-  &lt;meta charset=&quot;UTF-8&quot;&gt;
-  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-  &lt;title&gt;Access Child Elements&lt;/title&gt;
-  &lt;script src=&quot;../ofa.js&quot;&gt;&lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;div&gt;
-    &lt;p&gt;First Paragraph&lt;/p&gt;
-    &lt;p&gt;Second Paragraph&lt;/p&gt;
-  &lt;/div&gt;
-  &lt;script&gt;
-    const $div = $(&#39;div&#39;);
-    console.log($div[0]); // Output: &lt;p&gt;First Paragraph&lt;/p&gt;
-    console.log($div[1]); // Output: &lt;p&gt;Second Paragraph&lt;/p&gt;
-    console.log($div.length); // Output: 2
-  &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+<html-viewer>
+
+<pre><code>&lt;!-- 将 ofa.js 引入项目 --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
+<pre><code class="language-html">&lt;div&gt;
+  &lt;p&gt;First Paragraph&lt;/p&gt;
+  &lt;p&gt;Second Paragraph&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  const $div = $(&#39;div&#39;);
+  console.log($div[0]); // Output: &lt;p&gt;First Paragraph&lt;/p&gt;
+  console.log($div[1]); // Output: &lt;p&gt;Second Paragraph&lt;/p&gt;
+  console.log($div.length); // Output: 2
+&lt;/script&gt;
+</code></pre>
+</html-viewer>
+
 <p>在上面的例子中，我们获取了 <code>div</code> 元素，并通过索引来访问第一个和第二个 <code>p</code> 元素。同时，我们还使用了 <code>$div.length</code> 获取了子元素的数量。</p>
 <h2>操作子元素</h2>
 <p>通过 <code>$</code> 实例，我们还可以直接使用数组的方法来操作子元素，例如 <code>push</code> 和 <code>pop</code>：</p>
-<pre><code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-  &lt;meta charset=&quot;UTF-8&quot;&gt;
-  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-  &lt;title&gt;Manipulate Child Elements&lt;/title&gt;
-  &lt;script src=&quot;../ofa.js&quot;&gt;&lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;div&gt;
-    &lt;p&gt;First Paragraph&lt;/p&gt;
-  &lt;/div&gt;
-  &lt;script&gt;
-    const $paragraphs = $(&#39;p&#39;);
-    
-    // 添加新的 div 元素作为子元素
-    const $newDiv = $(&#39;&lt;div&gt;New Div&lt;/div&gt;&#39;);
-    $paragraphs.push($newDiv);
+<html-viewer>
 
-    setTimeout(()=&gt;{
-      // 删除最后一个子元素
-      $paragraphs.pop();
-
-      console.log($paragraphs);
-    },1000)
-
-  &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+<pre><code>&lt;!-- 将 ofa.js 引入项目 --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
+<pre><code class="language-html">&lt;div&gt;
+  &lt;p&gt;First Paragraph&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  const $paragraphs = $(&#39;p&#39;);
+  
+  // 添加新的 div 元素作为子元素
+  const $newDiv = $(&#39;&lt;div&gt;New Div&lt;/div&gt;&#39;);
+  $paragraphs.push($newDiv);
+
+  setTimeout(()=&gt;{
+    // 删除最后一个子元素
+    $paragraphs.pop();
+
+    console.log($paragraphs);
+  },1000)
+&lt;/script&gt;
+</code></pre>
+</html-viewer>
+
 <p>在上面的例子中，我们获取了所有 <code>p</code> 元素的 <code>$</code> 实例，并使用 <code>push</code> 方法添加了一个新的 <code>div</code> 元素作为子元素，然后使用 <code>pop</code> 方法移除了最后一个子元素。</p>
 <p>通过上述示例，你可以了解 <code>$</code> 实例的一些基本操作，包括创建新元素和对子元素的访问与操作。 <code>$</code> 实例提供了简便的方法来操作页面上的元素。</p>
 
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -174,38 +167,92 @@
 <li><a href="../../cases/app-config.html">配置app参数</a></li>
 <li><a href="../../cases/app-loading.html">为app定制loading</a></li>
 <li><a href="../../cases/set404.html">设置404页面</a></li>
-<li><a href="../../cases/use-hash-router.html">使用 hash router</a></li>
+<li><a href="../../cases/nested-page.html">嵌套页面</a></li>
+<li><a href="../../cases/use-hash-router.html">使用HashRouter</a></li>
 <li><a href="../../cases/use-scsr.html">使用scsr方案</a></li>
+<li><a href="../../cases/sync-state.html">状态同步</a></li>
+<li><a href="../../cases/alias.html">别名</a></li>
 <li><a href="../introduce.html">介绍</a></li>
 <li><a href="index.html">如何使用ofa.js</a></li>
 <li><a href="hello-world.html">第一个案例</a></li>
 <li><a href="elements-and-events.html">选择元素和事件相关</a></li>
 <li><a href="basic-concept.html">实例的基础概念</a></li>
-<li><a href="common-properties.html">常用属性介绍</a></li>
-<li><a href="common-function.html">常用方法介绍</a></li>
-<li><a href="css.html">css</a></li>
-<li><a href="classlist-and-data.html">classList 和 data</a></li>
-<li><a href="box-model.html">盒模型</a></li>
-<li><a href="formdata.html">表单数据</a></li>
+<li><a href="common-properties.html">常用属性和方法</a></li>
 <li><a href="../create-component/index.html">制作和使用</a></li>
 <li><a href="../create-component/parameter-description.html">参数说明</a></li>
 <li><a href="../create-component/life-cycle.html">生命周期</a></li>
 <li><a href="../create-component/web-components.html">组件化常规知识</a></li>
 <li><a href="../create-component/template-syntax.html">模板语法</a></li>
-<li><a href="../create-component/template-component.html">模板组件</a></li>
-<li><a href="../create-app/index.html">使用 o-app</a></li>
+<li><a href="../create-app/index.html">介绍</a></li>
 <li><a href="../create-app/page.html">使用Page组件</a></li>
 <li><a href="../create-app/app.html">使用App组件</a></li>
 <li><a href="../create-app/subrouting.html">子路由功能</a></li>
 <li><a href="../create-app/o-router.html">路由绑定</a></li>
 <li><a href="../create-app/scsr.html">SCSR方案</a></li>
-<li><a href="../../others/data-sharing.html">数据共享</a></li>
-<li><a href="../../others/about-micro-frontend.html">ofa.js和微前端</a></li>
+<li><a href="../others/data-sharing.html">数据共享</a></li>
+<li><a href="../others/about-micro-frontend.html">ofa.js和微前端</a></li>
+<li><a href="../../api/index.html">API介绍</a></li>
+<li><a href="../../api/instance/dollar.html">$ 方法</a></li>
+<li><a href="../../api/instance/all.html">all</a></li>
+<li><a href="../../api/instance/prev.html">prev</a></li>
+<li><a href="../../api/instance/prevs.html">prevs</a></li>
+<li><a href="../../api/instance/next.html">next</a></li>
+<li><a href="../../api/instance/nexts.html">nexts</a></li>
+<li><a href="../../api/instance/siblings.html">siblings</a></li>
+<li><a href="../../api/instance/parent.html">parent</a></li>
+<li><a href="../../api/instance/parents.html">parents</a></li>
+<li><a href="../../api/instance/clone.html">clone</a></li>
+<li><a href="../../api/instance/ele.html">ele</a></li>
+<li><a href="../../api/instance/shadow.html">shadow</a></li>
+<li><a href="../../api/instance/root.html">root</a></li>
+<li><a href="../../api/instance/children.html">子元素</a></li>
+<li><a href="../../api/instance/host.html">host</a></li>
+<li><a href="../../api/instance/app.html">app</a></li>
+<li><a href="../../api/operation/array-like.html">添加或删除子节点</a></li>
+<li><a href="../../api/operation/before.html">before</a></li>
+<li><a href="../../api/operation/after.html">after</a></li>
+<li><a href="../../api/operation/remove.html">remove</a></li>
+<li><a href="../../api/operation/wrap.html">wrap</a></li>
+<li><a href="../../api/operation/unwrap.html">unwrap</a></li>
+<li><a href="../../api/props/text.html">text</a></li>
+<li><a href="../../api/props/html.html">html</a></li>
+<li><a href="../../api/props/attr.html">attr</a></li>
+<li><a href="../../api/props/css.html">css</a></li>
+<li><a href="../../api/props/style.html">style</a></li>
+<li><a href="../../api/props/class-list.html">classList</a></li>
+<li><a href="../../api/props/data.html">data</a></li>
+<li><a href="../../api/event/on.html">on</a></li>
+<li><a href="../../api/event/one.html">one</a></li>
+<li><a href="../../api/event/emit.html">emit</a></li>
+<li><a href="../../api/event/off.html">off</a></li>
+<li><a href="../../api/temp-syntax/text-render.html">文本渲染</a></li>
+<li><a href="../../api/temp-syntax/class.html">class</a></li>
+<li><a href="../../api/temp-syntax/sync.html">sync</a></li>
+<li><a href="../../api/temp-syntax/condition.html">条件渲染</a></li>
+<li><a href="../../api/temp-syntax/fill.html">列表渲染</a></li>
+<li><a href="../../api/life-cycle/created.html">created</a></li>
+<li><a href="../../api/life-cycle/ready.html">ready</a></li>
+<li><a href="../../api/life-cycle/watch.html">watch</a></li>
+<li><a href="../../api/life-cycle/loaded.html">loaded</a></li>
+<li><a href="../../api/life-cycle/attached.html">attached</a></li>
+<li><a href="../../api/life-cycle/detached.html">detached</a></li>
+<li><a href="../../api/life-cycle/router-change.html">routerChange</a></li>
+<li><a href="../../api/others/app.html">app</a></li>
+<li><a href="../../api/others/page.html">page</a></li>
+<li><a href="../../api/others/box.html">盒模型</a></li>
+<li><a href="../../api/others/form-data.html">formData</a></li>
+<li><a href="../../api/others/tag.html">tag</a></li>
+<li><a href="../../api/others/index.html">index</a></li>
+<li><a href="../../api/others/is.html">is</a></li>
+<li><a href="../../api/others/refresh.html">refresh</a></li>
+<li><a href="../../api/others/path.html">PATH</a></li>
+<li><a href="../../api/others/extend.html">extend</a></li>
+<li><a href="../../api/others/stanz.html">实例数据特征</a></li>
 <li><a href="../../../en/index.html">English-index.html</a></li>
 <li><a href="../../index.html">简体中文-index.html</a></li>
 <li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
 
 </ul></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/init.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/init.js" type="module"></script>
   </body>
 </html>

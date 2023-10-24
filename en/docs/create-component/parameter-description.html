@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Explanation of registration parameters for components</title>
-        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/dist/ofa.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/css/public.css" />
     <style>
       html,
       body {
@@ -20,7 +20,9 @@
       let configUrl = "../../config.json";
     </script>
     
-        <link rel="shortcut icon" href="/favicon.png">
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/logo.png">
+        <link rel="apple-touch-icon-precomposed" href="/logo.png">
         <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
         <script>
           window.dataLayer = window.dataLayer || [];
@@ -35,9 +37,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -49,58 +51,41 @@
           .markdown-body::after {
             height: 32px;
           }
+          .markdown-body > * {
+            margin-top: 1em;
+            margin-bottom: 1em;
+          }
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/css/github-markdown.css"
         />
         <article class="markdown-body"><h1>Explanation of registration parameters for components</h1>
 <p>In ofa.js, you can define certain specific registration parameters in the component module to configure the component more flexibly. The following explains each registration parameter in detail, accompanied by corresponding examples for demonstration.</p>
 <h2>Basic Parameters</h2>
 <p>Basic parameters are the most basic configuration for registering a component, which includes the following attributes:</p>
-<h5>Component Identification</h5>
-<p>The component module must have <code>export const type = $.COMP</code> to identify it as a component module.</p>
-<p>Example: </p>
-<pre><code class="language-javascript">// button-component.mjs
-export const type = $.COMP;
-</code></pre>
 <h3>tag</h3>
-<p><code>tag</code> represents the registered component name. When the <code>tag</code> attribute is not defined, the registered component name remains the same as the file name.</p>
+<p><code>tag</code> represents the registered component name. When the <code>tag</code> property is not defined, the registered component name remains the same as the file name.</p>
 <p>Example: </p>
-<pre><code class="language-javascript">// button-component.mjs
-export const type = $.COMP;
-export const tag = &quot;my-button&quot;; // Register the component name as &#39;my-button&#39;
-</code></pre>
-<h3>temp</h3>
-<p><code>temp</code> is a string-type property used to define the address of the component template. When <code>temp</code> is not defined, the HTML file with the same name as the component in the same directory as the current module will be loaded by default.</p>
-<p>Example: </p>
-<pre><code class="language-javascript">// button-component.mjs
-export const type = $.COMP;
-export const temp = &quot;./my-button-template.html&quot;; // 指定组件模板的地址为 &#39;./my-button-template.html&#39;
+<pre><code class="language-javascript">export const tag = &quot;my-button&quot;; // Register the component name as &#39;my-button&#39;
 </code></pre>
 <h3>data</h3>
 <p><code>data</code> is an object-type property used to add default custom data to the generated component.</p>
 <p>Example: </p>
-<pre><code class="language-javascript">// button-component.mjs
-export const type = $.COMP;
-export const data = {
+<pre><code class="language-javascript">export const data = {
   count: 0,
 };
 </code></pre>
 <h3>attrs</h3>
-<p><code>attrs</code> is an object-type attribute, which also belongs to <code>data</code>, but this data will be reflected in the attributes of the element. Changes in the attributes will also dynamically change the <code>data</code> of the component. When there is a capital key, it will be transformed into a kebab-case naming in the component attribute.</p>
+<p><code>attrs</code> 是对象类型属性，也属于 <code>data</code>，但是这个数据会反映到 element 的 attributes 上，attributes 上的改动也会动态改动到组件的 <code>data</code> 上。当出现大写的 key 时，反应到组件 property 会变成 <code>-</code> 驼峰的命名。</p>
 <p>Example: </p>
-<pre><code class="language-javascript">// button-component.mjs
-export const type = $.COMP;
-export const attrs = {
+<pre><code class="language-javascript">export const attrs = {
   buttonText: &quot;Click Me&quot;,
 };
 </code></pre>
 <h3>proto</h3>
 <p>In the registration parameter of the component, you can add a <code>proto</code> object to define the methods that need to be added to the component prototype. In this way, when creating an instance of the component, these properties and methods will be added to the prototype of the instance, so that all instances can access and share these methods.</p>
-<pre><code class="language-javascript">// MyComponent.js
-export const type = $.COMP;
-
+<pre><code class="language-javascript">
 export const data = {
   count: 0,
 };
@@ -119,9 +104,7 @@ export const proto = {
 <li>The second parameter is an object that contains the <code>watchers</code> data set. In general, there will only be one object on <code>watchers</code>, and you can obtain the <code>oldValue</code> from this object. When the value being listened to in a single thread is changed multiple times, this data set will record the changes multiple times.</li>
 </ul>
 <p>Example: </p>
-<pre><code class="language-javascript">// button-component.mjs
-export const type = $.COMP;
-export const data = {
+<pre><code class="language-javascript">export const data = {
   count: 0,
 };
 export const watch = {
@@ -131,84 +114,101 @@ export const watch = {
       oldValue = watchers[0].oldValue;
     }
     console.log(`count changed from ${oldValue} to ${newValue}`);
+  },
+};
+</code></pre>
+<h3>temp</h3>
+<p>Usually, there is no need to set this variable. It is mainly used in separation mode to specify the address of the component template. When <code>temp</code> is not defined, the HTML file with the same name as the current module will be loaded by default, and this file should be located in the same directory.</p>
+<h2>Merge Variables into Default</h2>
+<p>You can write all exported variables onto default so that it is easier to write.</p>
+<pre><code class="language-javascript">export default {
+  tag: &quot;my-button&quot;,
+  data: {
+    count: 0,
+  },
+  attrs: {
+    buttonText: &quot;Click Me&quot;,
+  },
+  watch: {
+    count(newValue, { watchers }) {
+      let oldValue;
+      if (watchers) {
+        oldValue = watchers[0].oldValue;
+      }
+      console.log(`count changed from ${oldValue} to ${newValue}`);
+    },
+  },
+  proto: {
+    sayHello() {
+      alert(&quot;Hello Count:&quot; + this.count);
+    },
   },
 };
 </code></pre>
 <h2>Example code</h2>
 <p>The following is a complete example code, including the definition of basic parameters and component templates.</p>
-<pre><code class="language-javascript">// button-component.mjs
-export const type = $.COMP;
-export const tag = &quot;my-button&quot;;
-export const temp = &quot;./my-button-template.html&quot;;
+<comp-viewer comp-name="my-button">
 
-export const attrs = {
-  buttonText: &quot;Click Me&quot;,
-};
+<pre><code>&lt;my-button button-text=&quot;My Button&quot;&gt;&lt;/my-button&gt;
+&lt;!-- &lt;script&gt;
+  $(&quot;my-button&quot;).on(&quot;click&quot;, () =&gt; {
+    $(&quot;my-button&quot;).count++;
+  });
 
-export const data = {
-  count: 0,
-};
-
-export const watch = {
-  count(newValue, { watchers }) {
-    let oldValue;
-    if (watchers) {
-      oldValue = watchers[0].oldValue;
+  setTimeout(() =&gt; {
+    $(&quot;my-button&quot;).sayHello();
+  }, 1000);
+&lt;/script&gt; --&gt;
+</code></pre>
+<pre><code class="language-html">&lt;template component&gt;
+  &lt;style&gt;
+    .shadow-button {
+      background-color: #6b47fb;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 10px;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
     }
-    console.log(`count changed from ${oldValue} to ${newValue}`);
-  },
-};
+  &lt;/style&gt;
 
-export const proto = {
-  sayHello() {
-    alert(&quot;Hello Count:&quot; + this.count);
-  },
-};
-</code></pre>
-<pre><code class="language-html">&lt;!-- my-button-template.html --&gt;
-&lt;style&gt;
-  .shadow-button {
-    background-color: #6b47fb;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 10px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-  }
-&lt;/style&gt;
+  &lt;!-- Use template rendering syntax to render component data as text --&gt;
+  &lt;button class=&quot;shadow-button&quot; on:click=&quot;count++&quot;&gt;{{buttonText}} - count:{{count}}&lt;/button&gt;
 
-&lt;!-- Use template rendering syntax to render component data as text --&gt;
-&lt;button class=&quot;shadow-button&quot;&gt;{{buttonText}} - count:{{count}}&lt;/button&gt;
+  &lt;script&gt;
+    export default {
+      tag: &quot;my-button&quot;,
+      data: {
+        count: 0,
+      },
+      attrs: {
+        buttonText: &quot;Click Me&quot;,
+      },
+      watch: {
+        count(newValue, { watchers }) {
+          let oldValue;
+          if (watchers) {
+            oldValue = watchers[0].oldValue;
+          }
+          console.log(`count changed from ${oldValue} to ${newValue}`);
+        },
+      },
+      proto: {
+        sayHello() {
+          // alert(&quot;Hello Count:&quot; + this.count);
+        },
+      },
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
 </code></pre>
-<pre><code class="language-html">&lt;!-- demo.html --&gt;
-&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-  &lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot; /&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
-    &lt;title&gt;my-button&lt;/title&gt;
-    &lt;script src=&quot;../ofa.js&quot;&gt;&lt;/script&gt;
-    &lt;l-m src=&quot;./button-component.mjs&quot;&gt;&lt;/l-m&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;my-button button-text=&quot;My Button&quot;&gt;&lt;/my-button&gt;
-    &lt;script&gt;
-      $(&quot;my-button&quot;).on(&quot;click&quot;, () =&gt; {
-        $(&quot;my-button&quot;).count++;
-      });
+</comp-viewer>
 
-      setTimeout(() =&gt; {
-        $(&quot;my-button&quot;).sayHello();
-      }, 1000);
-    &lt;/script&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
 <h3>default</h3>
 <p>You can also use asynchronous functions to define the <code>default</code> data, in order to dynamically return the registration parameters of the component.</p>
 <p>Functions in JavaScript will introduce an object that includes</p>
@@ -221,13 +221,12 @@ export const proto = {
 </ul>
 <p>Below are examples of using <code>default</code>:</p>
 <pre><code class="language-javascript">// button-component.mjs
-export const type = $.COMP; // This must be defined first and cannot be a dynamic parameter
 export const tag = &quot;my-button&quot;;
 export const temp = &quot;./my-button-template.html&quot;;
 
 export default async function ({ load, url, query }) {
-  console.log(&quot;url:&quot;, url); // Output the file name of the current module
-  console.log(&quot;query:&quot;, query); // Output the object converted from the URL parameters of the current module
+  console.log(&quot;url:&quot;, url); // Output the filename of the current module
+  console.log(&quot;query:&quot;, query); // Output the URL parameters of the current module as an object
 
   const asyncData = await load(&quot;./async-data.mjs&quot;); // Use load to asynchronously load modules
   console.log(&quot;asyncData:&quot;, asyncData); // Output the asynchronously loaded module data
@@ -257,14 +256,13 @@ export default async function ({ load, url, query }) {
 }
 </code></pre>
 <p>In this example, we demonstrate how to customize the behavior of components using the registration parameters of ofa.js. By configuring these parameters appropriately, you can better adapt to different component requirements and achieve more flexible component development.</p>
-<p>Write a documentation on the use of the proto registration parameters for components.</p>
 
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -275,21 +273,21 @@ export default async function ({ load, url, query }) {
     <div id="loading"></div>
     <div class="body-important other-link"><ul>
 <li><a href="../../cases/index.html">Getting Started</a></li>
-<li><a href="../../cases/event.html">Event Handling</a></li>
+<li><a href="../../cases/event.html">Event Reaction</a></li>
 <li><a href="../../cases/simple-component.html">Creating and Using Components</a></li>
 <li><a href="../../cases/slot.html">Component Slots</a></li>
 <li><a href="../../cases/render-text.html">Template Syntax: Rendering Text</a></li>
-<li><a href="../../cases/attribute-transmission.html">Attribute Propagation</a></li>
-<li><a href="../../cases/get-set-comp.html">Accessing and Modifying Component Instance Values</a></li>
-<li><a href="../../cases/property-transmission.html">Template Syntax: Prop Binding</a></li>
-<li><a href="../../cases/bind-event.html">Template Syntax: Event Binding</a></li>
+<li><a href="../../cases/attribute-transmission.html">property Transmission</a></li>
+<li><a href="../../cases/get-set-comp.html">Getting and Modifying Component Instance Values</a></li>
+<li><a href="../../cases/property-transmission.html">Template Syntax: property Transmission</a></li>
+<li><a href="../../cases/bind-event.html">Template Syntax: Bind Events</a></li>
 <li><a href="../../cases/nested-component.html">Nested Components</a></li>
 <li><a href="../../cases/inject-host.html">inject-host Component</a></li>
-<li><a href="../../cases/event-passing.html">Event Propagation</a></li>
+<li><a href="../../cases/event-passing.html">Event Passing</a></li>
 <li><a href="../../cases/sync.html">Template Syntax: Two-Way Data Binding</a></li>
 <li><a href="../../cases/condition.html">Template Component: Conditional Rendering</a></li>
-<li><a href="../../cases/fill.html">Template Component: Dynamic Rendering</a></li>
-<li><a href="../../cases/fill-temp.html">Recursive Filling and Rendering</a></li>
+<li><a href="../../cases/fill.html">Template Component: Filling Rendering</a></li>
+<li><a href="../../cases/fill-temp.html">Recursive Filling Rendering</a></li>
 <li><a href="../../cases/life-cycle.html">Lifecycle</a></li>
 <li><a href="../../cases/form-data.html">Form Data</a></li>
 <li><a href="../../cases/custom-form-element.html">Custom Form Components</a></li>
@@ -297,39 +295,93 @@ export default async function ({ load, url, query }) {
 <li><a href="../../cases/use-app.html">Using app Component</a></li>
 <li><a href="../../cases/app-config.html">Configuring app Parameters</a></li>
 <li><a href="../../cases/app-loading.html">Customizing app Loading</a></li>
-<li><a href="../../cases/set404.html">Setting Up 404 Page</a></li>
-<li><a href="../../cases/use-hash-router.html">Using Hash Router</a></li>
-<li><a href="../../cases/use-scsr.html">Using SCSR Solution</a></li>
+<li><a href="../../cases/set404.html">Setting up a 404 Page</a></li>
+<li><a href="../../cases/nested-page.html">Nested Pages</a></li>
+<li><a href="../../cases/use-hash-router.html">Using HashRouter</a></li>
+<li><a href="../../cases/use-scsr.html">Using scsr Scheme</a></li>
+<li><a href="../../cases/sync-state.html">State Synchronization</a></li>
+<li><a href="../../cases/alias.html">Aliases</a></li>
 <li><a href="../introduce.html">Introduction</a></li>
 <li><a href="../get-started/index.html">How to use ofa.js</a></li>
-<li><a href="../get-started/hello-world.html">First Case</a></li>
-<li><a href="../get-started/elements-and-events.html">Selection of Elements and Events</a></li>
-<li><a href="../get-started/basic-concept.html">Basic Concepts of Instances</a></li>
-<li><a href="../get-started/common-properties.html">Commonly Used Properties</a></li>
-<li><a href="../get-started/common-function.html">Introduction to Common Methods</a></li>
-<li><a href="../get-started/css.html">CSS</a></li>
-<li><a href="../get-started/classlist-and-data.html">classList and data</a></li>
-<li><a href="../get-started/box-model.html">Box Model</a></li>
-<li><a href="../get-started/formdata.html">Form Data</a></li>
-<li><a href="index.html">Creation and Usage</a></li>
-<li><a href="parameter-description.html">Parameter Descriptions</a></li>
-<li><a href="life-cycle.html">Life Cycle</a></li>
-<li><a href="web-components.html">General Knowledge of Componentization</a></li>
-<li><a href="template-syntax.html">Template Syntax</a></li>
-<li><a href="template-component.html">Template Components</a></li>
-<li><a href="../create-app/index.html">Using o-app</a></li>
-<li><a href="../create-app/page.html">Using Page Components</a></li>
-<li><a href="../create-app/app.html">Using App Components</a></li>
-<li><a href="../create-app/subrouting.html">Subrouting</a></li>
-<li><a href="../create-app/o-router.html">Route Binding</a></li>
-<li><a href="../create-app/scsr.html">SCSR Solution</a></li>
-<li><a href="../../others/data-sharing.html">Data Sharing</a></li>
-<li><a href="../../others/about-micro-frontend.html">ofa.js and Micro Frontend</a></li>
+<li><a href="../get-started/hello-world.html">First case</a></li>
+<li><a href="../get-started/elements-and-events.html">Selection of elements and events</a></li>
+<li><a href="../get-started/basic-concept.html">Basic concepts of instances</a></li>
+<li><a href="../get-started/common-properties.html">Common properties and methods</a></li>
+<li><a href="index.html">Making and using components</a></li>
+<li><a href="parameter-description.html">Parameter description</a></li>
+<li><a href="life-cycle.html">Lifecycle</a></li>
+<li><a href="web-components.html">General knowledge of componentization</a></li>
+<li><a href="template-syntax.html">Template syntax</a></li>
+<li><a href="../create-app/index.html">Introduction</a></li>
+<li><a href="../create-app/page.html">Using the Page component</a></li>
+<li><a href="../create-app/app.html">Using the App component</a></li>
+<li><a href="../create-app/subrouting.html">Sub-routing functionality</a></li>
+<li><a href="../create-app/o-router.html">Route binding</a></li>
+<li><a href="../create-app/scsr.html">SCSR scheme</a></li>
+<li><a href="../others/data-sharing.html">Data sharing</a></li>
+<li><a href="../others/about-micro-frontend.html">ofa.js and micro-frontends</a></li>
+<li><a href="../../api/index.html">API Introduction</a></li>
+<li><a href="../../api/instance/dollar.html">$ Method</a></li>
+<li><a href="../../api/instance/all.html">all</a></li>
+<li><a href="../../api/instance/prev.html">prev</a></li>
+<li><a href="../../api/instance/prevs.html">prevs</a></li>
+<li><a href="../../api/instance/next.html">next</a></li>
+<li><a href="../../api/instance/nexts.html">nexts</a></li>
+<li><a href="../../api/instance/siblings.html">siblings</a></li>
+<li><a href="../../api/instance/parent.html">parent</a></li>
+<li><a href="../../api/instance/parents.html">parents</a></li>
+<li><a href="../../api/instance/clone.html">clone</a></li>
+<li><a href="../../api/instance/ele.html">ele</a></li>
+<li><a href="../../api/instance/shadow.html">shadow</a></li>
+<li><a href="../../api/instance/root.html">root</a></li>
+<li><a href="../../api/instance/children.html">Child Elements</a></li>
+<li><a href="../../api/instance/host.html">host</a></li>
+<li><a href="../../api/instance/app.html">app</a></li>
+<li><a href="../../api/operation/array-like.html">Add or delete child nodes</a></li>
+<li><a href="../../api/operation/before.html">before</a></li>
+<li><a href="../../api/operation/after.html">after</a></li>
+<li><a href="../../api/operation/remove.html">remove</a></li>
+<li><a href="../../api/operation/wrap.html">wrap</a></li>
+<li><a href="../../api/operation/unwrap.html">unwrap</a></li>
+<li><a href="../../api/props/text.html">text</a></li>
+<li><a href="../../api/props/html.html">html</a></li>
+<li><a href="../../api/props/attr.html">attr</a></li>
+<li><a href="../../api/props/css.html">css</a></li>
+<li><a href="../../api/props/style.html">style</a></li>
+<li><a href="../../api/props/class-list.html">classList</a></li>
+<li><a href="../../api/props/data.html">data</a></li>
+<li><a href="../../api/event/on.html">on</a></li>
+<li><a href="../../api/event/one.html">one</a></li>
+<li><a href="../../api/event/emit.html">emit</a></li>
+<li><a href="../../api/event/off.html">off</a></li>
+<li><a href="../../api/temp-syntax/text-render.html">Text rendering</a></li>
+<li><a href="../../api/temp-syntax/class.html">class</a></li>
+<li><a href="../../api/temp-syntax/sync.html">sync</a></li>
+<li><a href="../../api/temp-syntax/condition.html">Conditional rendering</a></li>
+<li><a href="../../api/temp-syntax/fill.html">List rendering</a></li>
+<li><a href="../../api/life-cycle/created.html">created</a></li>
+<li><a href="../../api/life-cycle/ready.html">ready</a></li>
+<li><a href="../../api/life-cycle/watch.html">watch</a></li>
+<li><a href="../../api/life-cycle/loaded.html">loaded</a></li>
+<li><a href="../../api/life-cycle/attached.html">attached</a></li>
+<li><a href="../../api/life-cycle/detached.html">detached</a></li>
+<li><a href="../../api/life-cycle/router-change.html">routerChange</a></li>
+<li><a href="../../api/others/app.html">app</a></li>
+<li><a href="../../api/others/page.html">page</a></li>
+<li><a href="../../api/others/box.html">Box model</a></li>
+<li><a href="../../api/others/form-data.html">formData</a></li>
+<li><a href="../../api/others/tag.html">tag</a></li>
+<li><a href="../../api/others/index.html">index</a></li>
+<li><a href="../../api/others/is.html">is</a></li>
+<li><a href="../../api/others/refresh.html">refresh</a></li>
+<li><a href="../../api/others/path.html">PATH</a></li>
+<li><a href="../../api/others/extend.html">extend</a></li>
+<li><a href="../../api/others/stanz.html">Instance data characteristics</a></li>
 <li><a href="../../index.html">English-index.html</a></li>
 <li><a href="../../../cn/index.html">简体中文-index.html</a></li>
 <li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
 
 </ul></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.30/statics/init.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/init.js" type="module"></script>
   </body>
 </html>
