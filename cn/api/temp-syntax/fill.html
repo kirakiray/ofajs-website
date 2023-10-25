@@ -198,6 +198,30 @@
 </comp-viewer>
 
 <p>在这个示例中，我们有一个数组 <code>arr</code>，其中包含了两个对象。每个对象都有一个 <code>name</code> 属性，以及一个可能包含嵌套子项的 <code>childs</code> 属性。我们使用 <code>x-fill</code> 来填充列表，并使用模板 <code>&quot;easyLi&quot;</code> 渲染子项。如果某项具有子项，我们使用 <code>x-fill</code> 来递归渲染子列表，实现了递归列表渲染。</p>
+<h2>replace-temp</h2>
+<p>有时候，当我们尝试列表渲染到 select 或 table 内，浏览器可能会自动移除 <code>&lt;x-fill&gt;</code> 元素，导致无法正常进行列表渲染。在这种情况下，可以使用 <code>replace-temp</code> 的方式进行渲染。使用 <code>replace-temp</code> 的方法是，在一个 <code>&lt;template&gt;</code> 标签中设置 <code>is=&quot;replace-temp&quot;</code>，并将这个模板放在浏览器会自动修正的元素内。</p>
+<comp-viewer comp-name="text-render">
+
+<pre><code class="language-html">&lt;template component&gt;
+  &lt;select&gt;
+    &lt;template is=&quot;replace-temp&quot;&gt;
+      &lt;x-fill :value=&quot;arr&quot;&gt;
+        &lt;option&gt;{{$data}}&lt;/option&gt;
+      &lt;/x-fill&gt;
+    &lt;/template&gt;
+  &lt;/select&gt;
+  &lt;script&gt;
+    export default {
+      tag: &quot;text-render&quot;,
+      data: {
+        arr: [&quot;pen&quot;, &quot;apple&quot;, &quot;pineapple&quot;],
+      },
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</comp-viewer>
+
 
     <article-footer></article-footer>
     </article>

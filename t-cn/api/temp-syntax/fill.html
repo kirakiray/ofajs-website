@@ -198,6 +198,30 @@
 </comp-viewer>
 
 <p>在這個示例中，我們有一個數組 <code>arr</code>，其中包含了兩個對象。每個對象都有一個 <code>name</code> 屬性，以及一個可能包含嵌套子項的 <code>childs</code> 屬性。我們使用 <code>x-fill</code> 來填充列表，並使用模板 <code>&quot;easyLi&quot;</code> 渲染子項。如果某項具有子項，我們使用 <code>x-fill</code> 來遞歸渲染子列表，實現了遞歸列表渲染。</p>
+<h2>replace-temp</h2>
+<p>有時候，當我們嘗試列表渲染到 select 或 table 內，瀏覽器可能會自動移除 <code>&lt;x-fill&gt;</code> 元素，導致無法正常進行列表渲染。在這種情況下，可以使用 <code>replace-temp</code> 的方式進行渲染。使用 <code>replace-temp</code> 的方法是，在一個 <code>&lt;template&gt;</code> 標簽中設置 <code>is=&quot;replace-temp&quot;</code>，並將這個模板放在瀏覽器會自動修正的元素內。</p>
+<comp-viewer comp-name="text-render">
+
+<pre><code class="language-html">&lt;template component&gt;
+  &lt;select&gt;
+    &lt;template is=&quot;replace-temp&quot;&gt;
+      &lt;x-fill :value=&quot;arr&quot;&gt;
+        &lt;option&gt;{{$data}}&lt;/option&gt;
+      &lt;/x-fill&gt;
+    &lt;/template&gt;
+  &lt;/select&gt;
+  &lt;script&gt;
+    export default {
+      tag: &quot;text-render&quot;,
+      data: {
+        arr: [&quot;pen&quot;, &quot;apple&quot;, &quot;pineapple&quot;],
+      },
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</comp-viewer>
+
 
     <article-footer></article-footer>
     </article>

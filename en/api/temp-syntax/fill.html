@@ -198,6 +198,30 @@
 </comp-viewer>
 
 <p>In this example, we have an array <code>arr</code> that contains two objects. Each object has a <code>name</code> property and a <code>childs</code> property that may contain nested sub-items. We use <code>x-fill</code> to populate the list and use the template &quot;easyLi&quot; to render the sub-items. If an item has sub-items, we use <code>x-fill</code> to recursively render the child list, achieving recursive list rendering.</p>
+<h2>replace-temp</h2>
+<p>Sometimes, when we try to render a list into a select or table, the browser may automatically remove the <code>&lt;x-fill&gt;</code> element, which prevents the list from being rendered correctly. In this case, you can use the &quot;replace-temp&quot; method for rendering. The way to use &quot;replace-temp&quot; is to set <code>is=&quot;replace-temp&quot;</code> in a <code>&lt;template&gt;</code> tag and place this template inside an element that the browser will automatically fix.</p>
+<comp-viewer comp-name="text-render">
+
+<pre><code class="language-html">&lt;template component&gt;
+  &lt;select&gt;
+    &lt;template is=&quot;replace-temp&quot;&gt;
+      &lt;x-fill :value=&quot;arr&quot;&gt;
+        &lt;option&gt;{{$data}}&lt;/option&gt;
+      &lt;/x-fill&gt;
+    &lt;/template&gt;
+  &lt;/select&gt;
+  &lt;script&gt;
+    export default {
+      tag: &quot;text-render&quot;,
+      data: {
+        arr: [&quot;pen&quot;, &quot;apple&quot;, &quot;pineapple&quot;],
+      },
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</comp-viewer>
+
 
     <article-footer></article-footer>
     </article>
