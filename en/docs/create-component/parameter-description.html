@@ -77,7 +77,7 @@
 };
 </code></pre>
 <h3>attrs</h3>
-<p><code>attrs</code> 是对象类型属性，也属于 <code>data</code>，但是这个数据会反映到 element 的 attributes 上，attributes 上的改动也会动态改动到组件的 <code>data</code> 上。当出现大写的 key 时，反应到组件 property 会变成 <code>-</code> 驼峰的命名。</p>
+<p><code>attrs</code> is an object type attribute, which is also <code>data</code>, but this data is reflected in the attributes of the element, and changes in the attributes are dynamically changed in the <code>data</code> of the component. When there is an uppercase key, the response to the component property is named with a <code>-</code> hump.</p>
 <p>Example: </p>
 <pre><code class="language-javascript">export const attrs = {
   buttonText: &quot;Click Me&quot;,
