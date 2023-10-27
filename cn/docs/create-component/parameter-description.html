@@ -9,7 +9,7 @@
       src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/public.css" />
     <style>
       html,
       body {
@@ -37,9 +37,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -58,7 +58,7 @@
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/github-markdown.css"
         />
         <article class="markdown-body"><h1>组件的注册参数详解</h1>
 <p>在 ofa.js 中，你可以在组件模块中定义一些特定的注册参数，以便更灵活地配置组件。下面详细说明了每个注册参数，并附带了相应的示例演示。</p>
@@ -211,8 +211,7 @@ export const watch = {
 
 <h3>default</h3>
 <p>你还可以使用异步函数来定义 <code>default</code> 数据，以便动态地返回组件的注册参数。</p>
-<p>函数的 <code>function</code> 会带来一个对象，包含</p>
-<p> <code>load</code>、<code>url</code> 和 <code>query</code>：</p>
+<p>函数的 <code>function</code> 会带来一个对象，包含 <code>load</code>、<code>url</code> 和 <code>query</code>：</p>
 <ul>
 <li><code>load</code> 方法是异步加载函数，使用方法和异步 <code>import</code> 加载一致，可以通过 <code>const data = await load(xxx)</code> 加载异步模块。</li>
 <li>通过 <code>load</code> 加载的模块，会有和 <code>load-module</code> 加载一样的效果。<code>load</code> 方法相当于 <code>load-module</code> 组件的函数版，具体使用方法可以查阅<a href="https://github.com/kirakiray/drill.js">https://github.com/kirakiray/drill.js</a>的文档。</li>
@@ -260,9 +259,9 @@ export default async function ({ load, url, query }) {
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -380,8 +379,9 @@ export default async function ({ load, url, query }) {
 <li><a href="../../../en/index.html">English-index.html</a></li>
 <li><a href="../../index.html">简体中文-index.html</a></li>
 <li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
+<li><a href="../../../ja/index.html">index.html</a></li>
 
 </ul></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/init.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/init.js" type="module"></script>
   </body>
 </html>

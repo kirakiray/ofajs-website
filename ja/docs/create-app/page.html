@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>使用 o-page 组件</title>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
+      type="module"
+    ></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/public.css" />
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+    </style>
+    <script>
+      let configUrl = "../../config.json";
+    </script>
+    
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/logo.png">
+        <link rel="apple-touch-icon-precomposed" href="/logo.png">
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag("js", new Date());
+
+          gtag("config", "G-7L1TCCJZT6");
+        </script>
+        <script src="/init-sw.js"></script>
+      
+  </head>
+  <body>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/app-config.mjs">
+      <template page>
+        <style>
+          .markdown-body::before,
+          .markdown-body::after {
+            display: block;
+            content: "";
+            height: 1px;
+          }
+          .markdown-body::after {
+            height: 32px;
+          }
+          .markdown-body > * {
+            margin-top: 1em;
+            margin-bottom: 1em;
+          }
+        </style>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/github-markdown.css"
+        />
+        <article class="markdown-body"><h1>使用 o-page 组件</h1>
+<p>o-pageというカスタムコンポーネントをofa.js内で構築しました。これはページの開発を簡単にするためのものです。このコンポーネントはアプリケーション開発で重要な役割を果たします。コンポーネントのテンプレート構文を使用したいが、新しいコンポーネントを作成たくない場合、o-pageコンポーネントは最適な選択肢となります。</p>
+<h2>页面模块</h2>
+<p>シングルファイルのページモジュールを作成する場合、コンポーネントモジュールの作成と同じです。<code>template</code> タグを使用してページのテンプレートコードを囲み、<code>page</code> 属性を追加します。このタグ内では、テンプレートの文法と他のコンポーネントやページモジュールのインタラクションを自由に行うことができます。</p>
+<pre><code class="language-html">&lt;!-- my-single-file-page.html --&gt;
+&lt;template page&gt;
+  &lt;h1&gt;{{pageTitle}}&lt;/h1&gt;
+  &lt;p&gt;Welcome to my single file page!&lt;/p&gt;
+  &lt;script&gt;
+    export default async ({ load }) =&gt; {
+      return {
+        data: {
+          pageTitle: &quot;My Single File Page&quot;,
+        },
+      };
+    }
+  &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+<p>HTML ファイルでは、<code>o-page</code> タグの <code>src</code> 属性を使用してページモジュールのファイルパスを指定します。コンポーネント内でページの内容がレンダリングされます。</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;My App&lt;/title&gt;
+  &lt;script src=&quot;../../ofa.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;o-page src=&quot;./my-single-file-page.html&quot;&gt;&lt;/o-page&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2>双文件模式</h2>
+<p>静的テンプレートとロジックコードを分離するダブルファイルモードは、ページのコンテンツをより明確にします。</p>
+<p>以下は、<code>o-page</code> コンポーネントとページモジュールを使用する手順です。</p>
+<ol>
+<li>创建页面模块：</li>
+</ol>
+<p>ページモジュールを作成する際には、コンポーネントモジュールの作成と似ていますが、<code>type</code> 属性を <code>$.PAGE</code> に設定します。ページモジュールで使用できるパラメータには、<code>temp</code>、<code>data</code>、<code>proto</code>、<code>watch</code> が含まれます。</p>
+<pre><code class="language-javascript">// my-page.mjs
+export const type = $.PAGE;
+
+export const temp = &quot;./my-page-template.html&quot;;
+
+export const data = {
+  pageTitle: &quot;My Page&quot;,
+};
+
+export const proto = {
+  // ...
+};
+
+export const watch = {
+  // ...
+};
+</code></pre>
+<ol start="2">
+<li>创建页面模板：</li>
+</ol>
+<p>同じディレクトリに <code>my-page-template.html</code> という名前のページテンプレートファイルを作成します。このテンプレートファイルでは、前述のコンポーネントテンプレートの文法と同様に、テンプレート文法を使用して対話型処理を行うことができます。</p>
+<pre><code class="language-html">&lt;!-- my-page-template.html --&gt;
+&lt;h1&gt;{{pageTitle}}&lt;/h1&gt;
+&lt;p&gt;Welcome to my page!&lt;/p&gt;
+</code></pre>
+<p>あなたのHTMLファイルで、<code>&lt;o-page&gt;</code>タグを使用して<code>o-page</code>コンポーネントを使用し、<code>src</code>属性を使用してページモジュールのファイルパスを参照します。ページのコンテンツはこのコンポーネント内でレンダリングされます。</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;My App&lt;/title&gt;
+  &lt;script src=&quot;../../ofa.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;o-page src=&quot;./my-page.mjs&quot;&gt;&lt;/o-page&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>これにより、ページを開くと、<code>o-page</code>コンポーネントが<code>my-page.mjs</code>というページモジュールを動的にロードし、モジュール内のテンプレートとデータに基づいてページコンテンツをレンダリングします。ページモジュールのライフサイクルとテンプレートの文法はコンポーントモジュールと同じであり、ページの開発と管理がより統一的で柔軟になります。</p>
+
+    <article-footer></article-footer>
+    </article>
+        <script>
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/layouts/article-layout.html";
+
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/document-page-init.mjs";
+
+          export default async (...args) => {
+            return await pageInit(PATH, args);
+          };
+        </script>
+      </template>
+    </o-app>
+    <div id="loading"></div>
+    <div class="body-important other-link"><ul>
+<li><a href="../../cases/index.html">開始</a></li>
+<li><a href="../../cases/event.html">イベントの反応</a></li>
+<li><a href="../../cases/simple-component.html">コンポーネントの作成と使用</a></li>
+<li><a href="../../cases/slot.html">コンポーネントスロット</a></li>
+<li><a href="../../cases/render-text.html">テンプレートの文法：テキストのレンダリング</a></li>
+<li><a href="../../cases/attribute-transmission.html">プロパティの受け渡し</a></li>
+<li><a href="../../cases/get-set-comp.html">コンポーネントインスタンスの値の取得と変更</a></li>
+<li><a href="../../cases/property-transmission.html">テンプレートの文法：属性の受け渡し</a></li>
+<li><a href="../../cases/bind-event.html">テンプレートの文法：イベントのバインディング</a></li>
+<li><a href="../../cases/nested-component.html">ネストされたコンポーネント</a></li>
+<li><a href="../../cases/inject-host.html">inject-host コンポーネント</a></li>
+<li><a href="../../cases/event-passing.html">イベントの受け渡し</a></li>
+<li><a href="../../cases/sync.html">テンプレートの文法：双方向データバインディング</a></li>
+<li><a href="../../cases/condition.html">テンプレートコンポーネント：条件付きレンダリング</a></li>
+<li><a href="../../cases/fill.html">テンプレートコンポーネント：プレースホルダレンダリング</a></li>
+<li><a href="../../cases/fill-temp.html">再帰的なプレースホルダレンダリング</a></li>
+<li><a href="../../cases/life-cycle.html">ライフサイクル</a></li>
+<li><a href="../../cases/form-data.html">フォームデータ</a></li>
+<li><a href="../../cases/custom-form-element.html">カスタムフォームコンポーネント</a></li>
+<li><a href="../../cases/use-page.html">ページコンポーネントの使用</a></li>
+<li><a href="../../cases/use-app.html">アプリコンポーネントの使用</a></li>
+<li><a href="../../cases/app-config.html">アプリの設定パラメータ</a></li>
+<li><a href="../../cases/app-loading.html">アプリのカスタムローディング設定</a></li>
+<li><a href="../../cases/set404.html">404ページの設定</a></li>
+<li><a href="../../cases/nested-page.html">ネストしたページ</a></li>
+<li><a href="../../cases/use-hash-router.html">HashRouter の使用</a></li>
+<li><a href="../../cases/use-scsr.html">scsr ソリューションの使用</a></li>
+<li><a href="../../cases/sync-state.html">ステートの同期</a></li>
+<li><a href="../../cases/alias.html">エイリアス</a></li>
+<li><a href="../introduce.html">紹介</a></li>
+<li><a href="../get-started/index.html">ofa.jsの使い方</a></li>
+<li><a href="../get-started/hello-world.html">最初の例</a></li>
+<li><a href="../get-started/elements-and-events.html">要素とイベントの選択</a></li>
+<li><a href="../get-started/basic-concept.html">基本的な概念</a></li>
+<li><a href="../get-started/common-properties.html">一般的なプロパティとメソッド</a></li>
+<li><a href="../create-component/index.html">作成と使用</a></li>
+<li><a href="../create-component/parameter-description.html">パラメータの説明</a></li>
+<li><a href="../create-component/life-cycle.html">ライフサイクル</a></li>
+<li><a href="../create-component/web-components.html">ウェブコンポーネントの基本知識</a></li>
+<li><a href="../create-component/template-syntax.html">テンプレート構文</a></li>
+<li><a href="index.html">紹介</a></li>
+<li><a href="page.html">Pageコンポーネントの使用</a></li>
+<li><a href="app.html">Appコンポーネントの使用</a></li>
+<li><a href="subrouting.html">サブルーティング機能</a></li>
+<li><a href="o-router.html">ルーティングバインディング</a></li>
+<li><a href="scsr.html">SCSRソリューション</a></li>
+<li><a href="../others/data-sharing.html">データ共有</a></li>
+<li><a href="../others/about-micro-frontend.html">ofa.jsとマイクロフロントエンド</a></li>
+<li><a href="../../api/index.html">APIの紹介</a></li>
+<li><a href="../../api/instance/dollar.html">$メソッド</a></li>
+<li><a href="../../api/instance/all.html">all</a></li>
+<li><a href="../../api/instance/prev.html">prev</a></li>
+<li><a href="../../api/instance/prevs.html">prevs</a></li>
+<li><a href="../../api/instance/next.html">next</a></li>
+<li><a href="../../api/instance/nexts.html">nexts</a></li>
+<li><a href="../../api/instance/siblings.html">siblings</a></li>
+<li><a href="../../api/instance/parent.html">parent</a></li>
+<li><a href="../../api/instance/parents.html">parents</a></li>
+<li><a href="../../api/instance/clone.html">clone</a></li>
+<li><a href="../../api/instance/ele.html">ele</a></li>
+<li><a href="../../api/instance/shadow.html">shadow</a></li>
+<li><a href="../../api/instance/root.html">root</a></li>
+<li><a href="../../api/instance/children.html">子要素</a></li>
+<li><a href="../../api/instance/host.html">host</a></li>
+<li><a href="../../api/instance/app.html">app</a></li>
+<li><a href="../../api/operation/array-like.html">子ノードの追加または削除</a></li>
+<li><a href="../../api/operation/before.html">before</a></li>
+<li><a href="../../api/operation/after.html">after</a></li>
+<li><a href="../../api/operation/remove.html">remove</a></li>
+<li><a href="../../api/operation/wrap.html">wrap</a></li>
+<li><a href="../../api/operation/unwrap.html">unwrap</a></li>
+<li><a href="../../api/props/text.html">text</a></li>
+<li><a href="../../api/props/html.html">html</a></li>
+<li><a href="../../api/props/attr.html">attr</a></li>
+<li><a href="../../api/props/css.html">css</a></li>
+<li><a href="../../api/props/style.html">style</a></li>
+<li><a href="../../api/props/class-list.html">classList</a></li>
+<li><a href="../../api/props/data.html">data</a></li>
+<li><a href="../../api/event/on.html">on</a></li>
+<li><a href="../../api/event/one.html">one</a></li>
+<li><a href="../../api/event/emit.html">emit</a></li>
+<li><a href="../../api/event/off.html">off</a></li>
+<li><a href="../../api/temp-syntax/text-render.html">テキストの描画</a></li>
+<li><a href="../../api/temp-syntax/class.html">class</a></li>
+<li><a href="../../api/temp-syntax/sync.html">sync</a></li>
+<li><a href="../../api/temp-syntax/condition.html">条件の描画</a></li>
+<li><a href="../../api/temp-syntax/fill.html">リストの描画</a></li>
+<li><a href="../../api/life-cycle/created.html">created</a></li>
+<li><a href="../../api/life-cycle/ready.html">ready</a></li>
+<li><a href="../../api/life-cycle/watch.html">watch</a></li>
+<li><a href="../../api/life-cycle/loaded.html">loaded</a></li>
+<li><a href="../../api/life-cycle/attached.html">attached</a></li>
+<li><a href="../../api/life-cycle/detached.html">detached</a></li>
+<li><a href="../../api/life-cycle/router-change.html">routerChange</a></li>
+<li><a href="../../api/others/app.html">app</a></li>
+<li><a href="../../api/others/page.html">page</a></li>
+<li><a href="../../api/others/box.html">ボックスモデル</a></li>
+<li><a href="../../api/others/form-data.html">formData</a></li>
+<li><a href="../../api/others/tag.html">tag</a></li>
+<li><a href="../../api/others/index.html">index</a></li>
+<li><a href="../../api/others/is.html">is</a></li>
+<li><a href="../../api/others/refresh.html">refresh</a></li>
+<li><a href="../../api/others/path.html">PATH</a></li>
+<li><a href="../../api/others/extend.html">extend</a></li>
+<li><a href="../../api/others/stanz.html">インスタンスデータの特徴</a></li>
+<li><a href="../../../en/index.html">English-index.html</a></li>
+<li><a href="../../../cn/index.html">简体中文-index.html</a></li>
+<li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
+<li><a href="../../index.html">index.html</a></li>
+
+</ul></div>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/init.js" type="module"></script>
+  </body>
+</html>

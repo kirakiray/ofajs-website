@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>コンポーネントの登録パラメータの詳細</title>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
+      type="module"
+    ></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/public.css" />
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+    </style>
+    <script>
+      let configUrl = "../../config.json";
+    </script>
+    
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/logo.png">
+        <link rel="apple-touch-icon-precomposed" href="/logo.png">
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag("js", new Date());
+
+          gtag("config", "G-7L1TCCJZT6");
+        </script>
+        <script src="/init-sw.js"></script>
+      
+  </head>
+  <body>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/app-config.mjs">
+      <template page>
+        <style>
+          .markdown-body::before,
+          .markdown-body::after {
+            display: block;
+            content: "";
+            height: 1px;
+          }
+          .markdown-body::after {
+            height: 32px;
+          }
+          .markdown-body > * {
+            margin-top: 1em;
+            margin-bottom: 1em;
+          }
+        </style>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/github-markdown.css"
+        />
+        <article class="markdown-body"><h1>コンポーネントの登録パラメータの詳細</h1>
+<p>ofa.jsでは、コンポーネントモジュールで特定の登録パラメータを定義することができ、コンポーネントをより柔軟に設定することができます。以下に各登録パラメータの詳細とそれに対応する例示を示します。</p>
+<h2>基础参数</h2>
+<p>基本パラメータは、コンポーネントの登録の基本的な設定を示します。以下のいくつかの属性が含まれます。</p>
+<h3>tag</h3>
+<p><code>tag</code> は登録されたコンポーネントの名前を表します。<code>tag</code> 属性が定義されていない場合、登録されたコンポーネントの名前はファイル名と同じになります。</p>
+<p>例：サンプル</p>
+<pre><code class="language-javascript">export const tag = &quot;my-button&quot;; // コンポーネント名を &#39;my-button&#39; として登録する
+</code></pre>
+<h3>data</h3>
+<p><code>data</code> はオブジェクトタイプの属性であり、コンポーネントの生成後にデフォルトで追加されるカスタムデータを作成するために使用されます。</p>
+<p>例：サンプル</p>
+<pre><code class="language-javascript">export const data = {
+  count: 0,
+};
+</code></pre>
+<h3>attrs</h3>
+<p><code>attrs</code> はオブジェクト型の属性であり、<code>data</code> にも含まれますが、このデータは要素の属性に反映され、属性の変更はコンポーネントの <code>data</code> にも動的に反映されます。キーが大文字の場合、コンポーネントのプロパティに反映される際にはキャメルケースの命名に変わります。</p>
+<p>例：サンプル</p>
+<pre><code class="language-javascript">export const attrs = {
+  buttonText: &quot;Click Me&quot;,
+};
+</code></pre>
+<h3>proto</h3>
+<p>コンポーネントの登録パラメータには、<code>proto</code>オブジェクトを追加することができます。これにより、コンポーネントのプロトタイプに追加する必要があるメソッドを定義できます。これにより、コンポーネントのインスタンスを作成する際に、これらのプロパティとメソドがインスタンスのプロトタイプに追加され、すべてのインスタンスでこれらのメソッドにアクセスして共有することができます。</p>
+<pre><code class="language-javascript">
+export const data = {
+  count: 0,
+};
+
+export const proto = {
+  sayHello() {
+    alert(&#39;Hello Count:&#39;+ this.count);
+  },
+};
+</code></pre>
+<h3>watch</h3>
+<p><code>watch</code> はオブジェクトタイプのプロパティであり、<code>data</code> の変化を監視するためのリスナーファンクションをここに配置します。成功した場合、監視対象の値は即座に実行されます。</p>
+<p><code>watch</code> で登録された関数は、1回のスレッドの変更でのみトリガされます。そのため、1つのスレッドでこの監視されている値を複数回変更しても、1回のみトリガされます。</p>
+<ul>
+<li>最初のパラメータは現在の値です。</li>
+<li>2番目のパラメータは、<code>watchers</code> データセットを持つオブジェクトであり、通常、<code>watchers</code> には1つのオブジェクトが含まれます。このオブジェクトから <code>oldValue</code> を取得することができます。1回のスレッドでこの監視されている値が複数回変更された場合、このデータセットには複数の変更が記録されます。</li>
+</ul>
+<p>例：サンプル</p>
+<pre><code class="language-javascript">export const data = {
+  count: 0,
+};
+export const watch = {
+  count(newValue, { watchers }) {
+    let oldValue;
+    if (watchers) {
+      oldValue = watchers[0].oldValue;
+    }
+    console.log(`count changed from ${oldValue} to ${newValue}`);
+  },
+};
+</code></pre>
+<h3>temp</h3>
+<p>通常の場合、この変数を設定する必要はありません。ただし、これは分離モードで使用され、コンポーネントのテンプレートの場所を指定するために使用されます。 <code>temp</code> が未定義の場合、デフォルトでは現在のモジュールと同じ名前の HTML ファイルが読み込まれます。このファイルは同じディレクトリに配置する必要があります。</p>
+<h2>変数をデフォルトにマージします</h2>
+<p>defaultにすべてのエクスポート変数を書くことができます。これにより、より簡単に書くことができます。</p>
+<pre><code class="language-javascript">export default {
+  tag: &quot;my-button&quot;,
+  data: {
+    count: 0,
+  },
+  attrs: {
+    buttonText: &quot;Click Me&quot;,
+  },
+  watch: {
+    count(newValue, { watchers }) {
+      let oldValue;
+      if (watchers) {
+        oldValue = watchers[0].oldValue;
+      }
+      console.log(`count changed from ${oldValue} to ${newValue}`);
+    },
+  },
+  proto: {
+    sayHello() {
+      alert(&quot;Hello Count:&quot; + this.count);
+    },
+  },
+};
+</code></pre>
+<h2>サンプルコード：</h2>
+<p>以下は完全なサンプルコードであり、基本パラメータの定義とコンポーネントのテンプレートが含まれています。</p>
+<comp-viewer comp-name="my-button">
+
+<pre><code>&lt;my-button button-text=&quot;My Button&quot;&gt;&lt;/my-button&gt;
+&lt;!-- &lt;script&gt;
+  $(&quot;my-button&quot;).on(&quot;click&quot;, () =&gt; {
+    $(&quot;my-button&quot;).count++;
+  });
+
+  setTimeout(() =&gt; {
+    $(&quot;my-button&quot;).sayHello();
+  }, 1000);
+&lt;/script&gt; --&gt;
+</code></pre>
+<pre><code class="language-html">&lt;template component&gt;
+  &lt;style&gt;
+    .shadow-button {
+      background-color: #6b47fb;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 10px;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+  &lt;/style&gt;
+
+  &lt;!-- テンプレートレンダリング構文を使用して、コンポーネントデータをテキストにレンダリングする --&gt;
+  &lt;button class=&quot;shadow-button&quot; on:click=&quot;count++&quot;&gt;{{buttonText}} - count:{{count}}&lt;/button&gt;
+
+  &lt;script&gt;
+    export default {
+      tag: &quot;my-button&quot;,
+      data: {
+        count: 0,
+      },
+      attrs: {
+        buttonText: &quot;Click Me&quot;,
+      },
+      watch: {
+        count(newValue, { watchers }) {
+          let oldValue;
+          if (watchers) {
+            oldValue = watchers[0].oldValue;
+          }
+          console.log(`countの値が${oldValue}から${newValue}に変更されました`);
+        },
+      },
+      proto: {
+        sayHello() {
+          // alert(&quot;Hello Count:&quot; + this.count);
+        },
+      },
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</comp-viewer>
+
+<h3>default</h3>
+<p>あなたは <code>default</code> データを定義するために非同期関数を使用することもできます。これにより、コンポーネントの登録パラメータを動的に返すことができます。</p>
+<p>関数の <code>function</code> はオブジェクトを返します。このオブジェクトには、<code>load</code>、<code>url</code>、および <code>query</code> が含まれています。</p>
+<ul>
+<li><code>load</code> メソッドは非同期で関数を読み込むためのものであり、非同期の <code>import</code> と同じように使用します。<code>const data = await load(xxx)</code> のようにして非同期モジュールを読み込むことができます。</li>
+<li><code>load</code> で読み込まれたモジュールは、<code>load-module</code> で読み込まれたものと同じ効果あります。<code>load</code> メソッドは <code>load-module</code> コンポーネントの関数版であり、具体的な使用方法については<a href="https://github.com/kirakiray/drill.js">https://github.com/kirakiray/drill.js</a>のドキュメントを参照してください。</li>
+<li><code>url</code> は現在のモジュールのファイル名です。</li>
+<li><code>query</code> はこのモジュールを読み込む際の URL パラメータをオブジェクトに変換したものです。</li>
+</ul>
+<p>以下は<code>default</code>を使用した例です：</p>
+<pre><code class="language-javascript">// button-component.mjs
+export const tag = &quot;my-button&quot;;
+export const temp = &quot;./my-button-template.html&quot;;
+
+export default async function ({ load, url, query }) {
+  console.log(&quot;url:&quot;, url); // 現在のモジュールのファイル名を出力
+  console.log(&quot;query:&quot;, query); // 現在のモジュールの URL パラメータから変換されたオブジェクトを出力します。
+
+  const asyncData = await load(&quot;./async-data.mjs&quot;); // loadを使ってモジュールを非同期にロードする
+  console.log(&quot;asyncData:&quot;, asyncData); // 非同期にロードされたモジュール・データを出力する
+
+  return {
+    data: {
+      count: 0,
+    },
+    attrs: {
+      buttonText: &quot;Click Me&quot;,
+    },
+    watch: {
+      count(newValue, { watchers }) {
+        let oldValue;
+        if (watchers) {
+          oldValue = watchers[0].oldValue;
+        }
+        console.log(`count changed from ${oldValue} to ${newValue}`);
+      },
+    },
+    proto: {
+      sayHello() {
+        alert(&quot;Hello Count:&quot; + this.count);
+      },
+    },
+  };
+}
+</code></pre>
+<p>この例では、ofa.jsの登録パラメータを使用してコンポーネントの動作をカスタマイズする方法を示しています。これらのパラメータを適切に設定することで、さまざまなコンポーネントの要件により適応し、より柔軟なコンポーネント開発を実現することができます。</p>
+
+    <article-footer></article-footer>
+    </article>
+        <script>
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/layouts/article-layout.html";
+
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/document-page-init.mjs";
+
+          export default async (...args) => {
+            return await pageInit(PATH, args);
+          };
+        </script>
+      </template>
+    </o-app>
+    <div id="loading"></div>
+    <div class="body-important other-link"><ul>
+<li><a href="../../cases/index.html">開始</a></li>
+<li><a href="../../cases/event.html">イベントの反応</a></li>
+<li><a href="../../cases/simple-component.html">コンポーネントの作成と使用</a></li>
+<li><a href="../../cases/slot.html">コンポーネントスロット</a></li>
+<li><a href="../../cases/render-text.html">テンプレートの文法：テキストのレンダリング</a></li>
+<li><a href="../../cases/attribute-transmission.html">プロパティの受け渡し</a></li>
+<li><a href="../../cases/get-set-comp.html">コンポーネントインスタンスの値の取得と変更</a></li>
+<li><a href="../../cases/property-transmission.html">テンプレートの文法：属性の受け渡し</a></li>
+<li><a href="../../cases/bind-event.html">テンプレートの文法：イベントのバインディング</a></li>
+<li><a href="../../cases/nested-component.html">ネストされたコンポーネント</a></li>
+<li><a href="../../cases/inject-host.html">inject-host コンポーネント</a></li>
+<li><a href="../../cases/event-passing.html">イベントの受け渡し</a></li>
+<li><a href="../../cases/sync.html">テンプレートの文法：双方向データバインディング</a></li>
+<li><a href="../../cases/condition.html">テンプレートコンポーネント：条件付きレンダリング</a></li>
+<li><a href="../../cases/fill.html">テンプレートコンポーネント：プレースホルダレンダリング</a></li>
+<li><a href="../../cases/fill-temp.html">再帰的なプレースホルダレンダリング</a></li>
+<li><a href="../../cases/life-cycle.html">ライフサイクル</a></li>
+<li><a href="../../cases/form-data.html">フォームデータ</a></li>
+<li><a href="../../cases/custom-form-element.html">カスタムフォームコンポーネント</a></li>
+<li><a href="../../cases/use-page.html">ページコンポーネントの使用</a></li>
+<li><a href="../../cases/use-app.html">アプリコンポーネントの使用</a></li>
+<li><a href="../../cases/app-config.html">アプリの設定パラメータ</a></li>
+<li><a href="../../cases/app-loading.html">アプリのカスタムローディング設定</a></li>
+<li><a href="../../cases/set404.html">404ページの設定</a></li>
+<li><a href="../../cases/nested-page.html">ネストしたページ</a></li>
+<li><a href="../../cases/use-hash-router.html">HashRouter の使用</a></li>
+<li><a href="../../cases/use-scsr.html">scsr ソリューションの使用</a></li>
+<li><a href="../../cases/sync-state.html">ステートの同期</a></li>
+<li><a href="../../cases/alias.html">エイリアス</a></li>
+<li><a href="../introduce.html">紹介</a></li>
+<li><a href="../get-started/index.html">ofa.jsの使い方</a></li>
+<li><a href="../get-started/hello-world.html">最初の例</a></li>
+<li><a href="../get-started/elements-and-events.html">要素とイベントの選択</a></li>
+<li><a href="../get-started/basic-concept.html">基本的な概念</a></li>
+<li><a href="../get-started/common-properties.html">一般的なプロパティとメソッド</a></li>
+<li><a href="index.html">作成と使用</a></li>
+<li><a href="parameter-description.html">パラメータの説明</a></li>
+<li><a href="life-cycle.html">ライフサイクル</a></li>
+<li><a href="web-components.html">ウェブコンポーネントの基本知識</a></li>
+<li><a href="template-syntax.html">テンプレート構文</a></li>
+<li><a href="../create-app/index.html">紹介</a></li>
+<li><a href="../create-app/page.html">Pageコンポーネントの使用</a></li>
+<li><a href="../create-app/app.html">Appコンポーネントの使用</a></li>
+<li><a href="../create-app/subrouting.html">サブルーティング機能</a></li>
+<li><a href="../create-app/o-router.html">ルーティングバインディング</a></li>
+<li><a href="../create-app/scsr.html">SCSRソリューション</a></li>
+<li><a href="../others/data-sharing.html">データ共有</a></li>
+<li><a href="../others/about-micro-frontend.html">ofa.jsとマイクロフロントエンド</a></li>
+<li><a href="../../api/index.html">APIの紹介</a></li>
+<li><a href="../../api/instance/dollar.html">$メソッド</a></li>
+<li><a href="../../api/instance/all.html">all</a></li>
+<li><a href="../../api/instance/prev.html">prev</a></li>
+<li><a href="../../api/instance/prevs.html">prevs</a></li>
+<li><a href="../../api/instance/next.html">next</a></li>
+<li><a href="../../api/instance/nexts.html">nexts</a></li>
+<li><a href="../../api/instance/siblings.html">siblings</a></li>
+<li><a href="../../api/instance/parent.html">parent</a></li>
+<li><a href="../../api/instance/parents.html">parents</a></li>
+<li><a href="../../api/instance/clone.html">clone</a></li>
+<li><a href="../../api/instance/ele.html">ele</a></li>
+<li><a href="../../api/instance/shadow.html">shadow</a></li>
+<li><a href="../../api/instance/root.html">root</a></li>
+<li><a href="../../api/instance/children.html">子要素</a></li>
+<li><a href="../../api/instance/host.html">host</a></li>
+<li><a href="../../api/instance/app.html">app</a></li>
+<li><a href="../../api/operation/array-like.html">子ノードの追加または削除</a></li>
+<li><a href="../../api/operation/before.html">before</a></li>
+<li><a href="../../api/operation/after.html">after</a></li>
+<li><a href="../../api/operation/remove.html">remove</a></li>
+<li><a href="../../api/operation/wrap.html">wrap</a></li>
+<li><a href="../../api/operation/unwrap.html">unwrap</a></li>
+<li><a href="../../api/props/text.html">text</a></li>
+<li><a href="../../api/props/html.html">html</a></li>
+<li><a href="../../api/props/attr.html">attr</a></li>
+<li><a href="../../api/props/css.html">css</a></li>
+<li><a href="../../api/props/style.html">style</a></li>
+<li><a href="../../api/props/class-list.html">classList</a></li>
+<li><a href="../../api/props/data.html">data</a></li>
+<li><a href="../../api/event/on.html">on</a></li>
+<li><a href="../../api/event/one.html">one</a></li>
+<li><a href="../../api/event/emit.html">emit</a></li>
+<li><a href="../../api/event/off.html">off</a></li>
+<li><a href="../../api/temp-syntax/text-render.html">テキストの描画</a></li>
+<li><a href="../../api/temp-syntax/class.html">class</a></li>
+<li><a href="../../api/temp-syntax/sync.html">sync</a></li>
+<li><a href="../../api/temp-syntax/condition.html">条件の描画</a></li>
+<li><a href="../../api/temp-syntax/fill.html">リストの描画</a></li>
+<li><a href="../../api/life-cycle/created.html">created</a></li>
+<li><a href="../../api/life-cycle/ready.html">ready</a></li>
+<li><a href="../../api/life-cycle/watch.html">watch</a></li>
+<li><a href="../../api/life-cycle/loaded.html">loaded</a></li>
+<li><a href="../../api/life-cycle/attached.html">attached</a></li>
+<li><a href="../../api/life-cycle/detached.html">detached</a></li>
+<li><a href="../../api/life-cycle/router-change.html">routerChange</a></li>
+<li><a href="../../api/others/app.html">app</a></li>
+<li><a href="../../api/others/page.html">page</a></li>
+<li><a href="../../api/others/box.html">ボックスモデル</a></li>
+<li><a href="../../api/others/form-data.html">formData</a></li>
+<li><a href="../../api/others/tag.html">tag</a></li>
+<li><a href="../../api/others/index.html">index</a></li>
+<li><a href="../../api/others/is.html">is</a></li>
+<li><a href="../../api/others/refresh.html">refresh</a></li>
+<li><a href="../../api/others/path.html">PATH</a></li>
+<li><a href="../../api/others/extend.html">extend</a></li>
+<li><a href="../../api/others/stanz.html">インスタンスデータの特徴</a></li>
+<li><a href="../../../en/index.html">English-index.html</a></li>
+<li><a href="../../../cn/index.html">简体中文-index.html</a></li>
+<li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
+<li><a href="../../index.html">index.html</a></li>
+
+</ul></div>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/init.js" type="module"></script>
+  </body>
+</html>

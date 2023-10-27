@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>attr</title>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
+      type="module"
+    ></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/public.css" />
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+    </style>
+    <script>
+      let configUrl = "../../config.json";
+    </script>
+    
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/logo.png">
+        <link rel="apple-touch-icon-precomposed" href="/logo.png">
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag("js", new Date());
+
+          gtag("config", "G-7L1TCCJZT6");
+        </script>
+        <script src="/init-sw.js"></script>
+      
+  </head>
+  <body>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/app-config.mjs">
+      <template page>
+        <style>
+          .markdown-body::before,
+          .markdown-body::after {
+            display: block;
+            content: "";
+            height: 1px;
+          }
+          .markdown-body::after {
+            height: 32px;
+          }
+          .markdown-body > * {
+            margin-top: 1em;
+            margin-bottom: 1em;
+          }
+        </style>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/github-markdown.css"
+        />
+        <article class="markdown-body"><h1>attr</h1>
+<p><code>attr</code> メソッドは、要素の <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/attributes">attributes</a> を取得または設定するために使用されます。</p>
+<h2>直接使用</h2>
+<p><code>attr</code>メソッドを使用して、要素の属性を直接取得または設定することができます。以下は例です：%</p>
+<html-viewer>
+
+<pre><code>&lt;!-- ofa.jsをプロジェクトにインポートする --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<pre><code class="language-html">&lt;style&gt;
+    [test-attr=&quot;1&quot;] {
+      color: red;
+    }
+    [test-attr=&quot;2&quot;]{
+      color: green;
+    }
+&lt;/style&gt;
+&lt;div id=&quot;target1&quot; test-attr=&quot;1&quot;&gt;I am target 1&lt;/div&gt;
+&lt;div id=&quot;target2&quot;&gt;I am target 2&lt;/div&gt;
+&lt;div id=&quot;logger&quot; style=&quot;border:blue solid 1px;padding:8px;margin:8px;&quot;&gt;logger&lt;/div&gt;
+
+&lt;script&gt;
+    $(&quot;#logger&quot;).text = $(&quot;#target1&quot;).attr(&#39;test-attr&#39;);
+    setTimeout(()=&gt; {
+        $(&quot;#target1&quot;).attr(&#39;test-attr&#39;, &#39;2&#39;)
+        $(&quot;#logger&quot;).text = $(&quot;#target1&quot;).attr(&#39;test-attr&#39;);
+    }, 500);
+&lt;/script&gt;
+</code></pre>
+</html-viewer>
+
+<h2>テンプレート構文の使用方法</h2>
+<p>attr:aaa=&quot;bbb&quot; のように、テンプレート内で使用することもできます。これにより、対象要素の <strong>aaa</strong> 属性をコンポーネント <strong>bbb</strong> の値に設定することができます。この方法は、コンポーネントのレンダリングに特に役立ちます。以下に例を示します。</p>
+<comp-viewer comp-name="html-demo">
+
+<pre><code class="language-html">&lt;template component&gt;
+  &lt;style&gt;
+    [test-attr=&quot;1&quot;] {
+      color: red;
+    }
+    [test-attr=&quot;2&quot;]{
+      color: green;
+    }
+  &lt;/style&gt;
+  &lt;div attr:test-attr=&quot;txt&quot;&gt;I am target&lt;/div&gt;
+  &lt;script&gt;
+    export default {
+      tag: &quot;html-demo&quot;,
+      data: {
+        txt: &quot;1&quot;
+      },
+      ready(){
+        setTimeout(()=&gt;{
+          this.txt = &quot;2&quot;;
+        }, 500);
+      }
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</comp-viewer>
+    <article-footer></article-footer>
+    </article>
+        <script>
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/layouts/article-layout.html";
+
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/document-page-init.mjs";
+
+          export default async (...args) => {
+            return await pageInit(PATH, args);
+          };
+        </script>
+      </template>
+    </o-app>
+    <div id="loading"></div>
+    <div class="body-important other-link"><ul>
+<li><a href="../../cases/index.html">開始</a></li>
+<li><a href="../../cases/event.html">イベントの反応</a></li>
+<li><a href="../../cases/simple-component.html">コンポーネントの作成と使用</a></li>
+<li><a href="../../cases/slot.html">コンポーネントスロット</a></li>
+<li><a href="../../cases/render-text.html">テンプレートの文法：テキストのレンダリング</a></li>
+<li><a href="../../cases/attribute-transmission.html">プロパティの受け渡し</a></li>
+<li><a href="../../cases/get-set-comp.html">コンポーネントインスタンスの値の取得と変更</a></li>
+<li><a href="../../cases/property-transmission.html">テンプレートの文法：属性の受け渡し</a></li>
+<li><a href="../../cases/bind-event.html">テンプレートの文法：イベントのバインディング</a></li>
+<li><a href="../../cases/nested-component.html">ネストされたコンポーネント</a></li>
+<li><a href="../../cases/inject-host.html">inject-host コンポーネント</a></li>
+<li><a href="../../cases/event-passing.html">イベントの受け渡し</a></li>
+<li><a href="../../cases/sync.html">テンプレートの文法：双方向データバインディング</a></li>
+<li><a href="../../cases/condition.html">テンプレートコンポーネント：条件付きレンダリング</a></li>
+<li><a href="../../cases/fill.html">テンプレートコンポーネント：プレースホルダレンダリング</a></li>
+<li><a href="../../cases/fill-temp.html">再帰的なプレースホルダレンダリング</a></li>
+<li><a href="../../cases/life-cycle.html">ライフサイクル</a></li>
+<li><a href="../../cases/form-data.html">フォームデータ</a></li>
+<li><a href="../../cases/custom-form-element.html">カスタムフォームコンポーネント</a></li>
+<li><a href="../../cases/use-page.html">ページコンポーネントの使用</a></li>
+<li><a href="../../cases/use-app.html">アプリコンポーネントの使用</a></li>
+<li><a href="../../cases/app-config.html">アプリの設定パラメータ</a></li>
+<li><a href="../../cases/app-loading.html">アプリのカスタムローディング設定</a></li>
+<li><a href="../../cases/set404.html">404ページの設定</a></li>
+<li><a href="../../cases/nested-page.html">ネストしたページ</a></li>
+<li><a href="../../cases/use-hash-router.html">HashRouter の使用</a></li>
+<li><a href="../../cases/use-scsr.html">scsr ソリューションの使用</a></li>
+<li><a href="../../cases/sync-state.html">ステートの同期</a></li>
+<li><a href="../../cases/alias.html">エイリアス</a></li>
+<li><a href="../../docs/introduce.html">紹介</a></li>
+<li><a href="../../docs/get-started/index.html">ofa.jsの使い方</a></li>
+<li><a href="../../docs/get-started/hello-world.html">最初の例</a></li>
+<li><a href="../../docs/get-started/elements-and-events.html">要素とイベントの選択</a></li>
+<li><a href="../../docs/get-started/basic-concept.html">基本的な概念</a></li>
+<li><a href="../../docs/get-started/common-properties.html">一般的なプロパティとメソッド</a></li>
+<li><a href="../../docs/create-component/index.html">作成と使用</a></li>
+<li><a href="../../docs/create-component/parameter-description.html">パラメータの説明</a></li>
+<li><a href="../../docs/create-component/life-cycle.html">ライフサイクル</a></li>
+<li><a href="../../docs/create-component/web-components.html">ウェブコンポーネントの基本知識</a></li>
+<li><a href="../../docs/create-component/template-syntax.html">テンプレート構文</a></li>
+<li><a href="../../docs/create-app/index.html">紹介</a></li>
+<li><a href="../../docs/create-app/page.html">Pageコンポーネントの使用</a></li>
+<li><a href="../../docs/create-app/app.html">Appコンポーネントの使用</a></li>
+<li><a href="../../docs/create-app/subrouting.html">サブルーティング機能</a></li>
+<li><a href="../../docs/create-app/o-router.html">ルーティングバインディング</a></li>
+<li><a href="../../docs/create-app/scsr.html">SCSRソリューション</a></li>
+<li><a href="../../docs/others/data-sharing.html">データ共有</a></li>
+<li><a href="../../docs/others/about-micro-frontend.html">ofa.jsとマイクロフロントエンド</a></li>
+<li><a href="../index.html">APIの紹介</a></li>
+<li><a href="../instance/dollar.html">$メソッド</a></li>
+<li><a href="../instance/all.html">all</a></li>
+<li><a href="../instance/prev.html">prev</a></li>
+<li><a href="../instance/prevs.html">prevs</a></li>
+<li><a href="../instance/next.html">next</a></li>
+<li><a href="../instance/nexts.html">nexts</a></li>
+<li><a href="../instance/siblings.html">siblings</a></li>
+<li><a href="../instance/parent.html">parent</a></li>
+<li><a href="../instance/parents.html">parents</a></li>
+<li><a href="../instance/clone.html">clone</a></li>
+<li><a href="../instance/ele.html">ele</a></li>
+<li><a href="../instance/shadow.html">shadow</a></li>
+<li><a href="../instance/root.html">root</a></li>
+<li><a href="../instance/children.html">子要素</a></li>
+<li><a href="../instance/host.html">host</a></li>
+<li><a href="../instance/app.html">app</a></li>
+<li><a href="../operation/array-like.html">子ノードの追加または削除</a></li>
+<li><a href="../operation/before.html">before</a></li>
+<li><a href="../operation/after.html">after</a></li>
+<li><a href="../operation/remove.html">remove</a></li>
+<li><a href="../operation/wrap.html">wrap</a></li>
+<li><a href="../operation/unwrap.html">unwrap</a></li>
+<li><a href="text.html">text</a></li>
+<li><a href="html.html">html</a></li>
+<li><a href="attr.html">attr</a></li>
+<li><a href="css.html">css</a></li>
+<li><a href="style.html">style</a></li>
+<li><a href="class-list.html">classList</a></li>
+<li><a href="data.html">data</a></li>
+<li><a href="../event/on.html">on</a></li>
+<li><a href="../event/one.html">one</a></li>
+<li><a href="../event/emit.html">emit</a></li>
+<li><a href="../event/off.html">off</a></li>
+<li><a href="../temp-syntax/text-render.html">テキストの描画</a></li>
+<li><a href="../temp-syntax/class.html">class</a></li>
+<li><a href="../temp-syntax/sync.html">sync</a></li>
+<li><a href="../temp-syntax/condition.html">条件の描画</a></li>
+<li><a href="../temp-syntax/fill.html">リストの描画</a></li>
+<li><a href="../life-cycle/created.html">created</a></li>
+<li><a href="../life-cycle/ready.html">ready</a></li>
+<li><a href="../life-cycle/watch.html">watch</a></li>
+<li><a href="../life-cycle/loaded.html">loaded</a></li>
+<li><a href="../life-cycle/attached.html">attached</a></li>
+<li><a href="../life-cycle/detached.html">detached</a></li>
+<li><a href="../life-cycle/router-change.html">routerChange</a></li>
+<li><a href="../others/app.html">app</a></li>
+<li><a href="../others/page.html">page</a></li>
+<li><a href="../others/box.html">ボックスモデル</a></li>
+<li><a href="../others/form-data.html">formData</a></li>
+<li><a href="../others/tag.html">tag</a></li>
+<li><a href="../others/index.html">index</a></li>
+<li><a href="../others/is.html">is</a></li>
+<li><a href="../others/refresh.html">refresh</a></li>
+<li><a href="../others/path.html">PATH</a></li>
+<li><a href="../others/extend.html">extend</a></li>
+<li><a href="../others/stanz.html">インスタンスデータの特徴</a></li>
+<li><a href="../../../en/index.html">English-index.html</a></li>
+<li><a href="../../../cn/index.html">简体中文-index.html</a></li>
+<li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
+<li><a href="../../index.html">index.html</a></li>
+
+</ul></div>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/init.js" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>静的クライアントサイドレンダリング (SCSR)</title>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
+      type="module"
+    ></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/public.css" />
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+    </style>
+    <script>
+      let configUrl = "../../config.json";
+    </script>
+    
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/logo.png">
+        <link rel="apple-touch-icon-precomposed" href="/logo.png">
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag("js", new Date());
+
+          gtag("config", "G-7L1TCCJZT6");
+        </script>
+        <script src="/init-sw.js"></script>
+      
+  </head>
+  <body>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/app-config.mjs">
+      <template page>
+        <style>
+          .markdown-body::before,
+          .markdown-body::after {
+            display: block;
+            content: "";
+            height: 1px;
+          }
+          .markdown-body::after {
+            height: 32px;
+          }
+          .markdown-body > * {
+            margin-top: 1em;
+            margin-bottom: 1em;
+          }
+        </style>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/github-markdown.css"
+        />
+        <article class="markdown-body"><h1>静的クライアントサイドレンダリング (SCSR)</h1>
+<h2>SCSRとは？</h2>
+<p>SCSRのフルネームは、Static Client-Side Renderingで、静的なクライアントサイドレンダリングと呼ばれます。静的なクライアントサイドレンダリング(SCSR)は、CSR(Client-Side Rendering)の一種であり、CSRのユーザーエクスペリエンスを保ちながら、ページを静的な状態でクローラーが取できるようにすることができます。</p>
+<h2>SCSRの使い方</h2>
+<p>以下の方法で SCSR ライブラリを引用することができます。</p>
+<pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/libs/scsr/dist/scsr.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h2>SCSRの仕組み</h2>
+<p>SCSRは、<code>o-page</code>タグを使わずに直接シングルファイルモードでページモジュールを実行することで、ページのレンダリングを可能にします。 具体的には、ページモジュールのテンプレートコードは <code>o-app</code> の中に直接置かれます。</p>
+<p>以下は、SCSRの例です。この例では、ページモジュールの内容を直接レンダリングする方法を示しています。</p>
+<pre><code class="language-html">&lt;!-- home.html --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;title&gt;Home&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;./public.css&quot; /&gt;
+    &lt;script src=&quot;../../ofa.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;./scsr.min.js&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;o-app src=&quot;./app.mjs&quot;&gt;
+      &lt;template page&gt;
+        &lt;div class=&quot;container&quot;&gt;
+          &lt;h1 class=&quot;title&quot;&gt;Hello, World!&lt;/h1&gt;
+          &lt;p class=&quot;subtitle&quot;&gt;Welcome to my ofa.js page.&lt;/p&gt;
+          &lt;div&gt;count =&gt; {{count}}&lt;/div&gt;
+          &lt;a href=&quot;./pages/help.html&quot; olink&gt;GO TO HELP&lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;script&gt;
+          export default async ({ query }) =&gt; {
+            return {
+              data: { count: query.count || 0 },
+            };
+          };
+        &lt;/script&gt;
+      &lt;/template&gt;
+    &lt;/o-app&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><code>template</code> タグ内の内容は、SCSRによって直接ページ上にレンダリングされます。この部分の内容は、実際にはシングルファイルモードのページモジュールです。</p>
+<p>以前の <code>home.html</code> ページの例に従って、<code>help</code> ページを作成します：</p>
+<pre><code class="language-html">&lt;!-- pages/help.html --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;title&gt;Help&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;../public.css&quot; /&gt;
+    &lt;script src=&quot;../../../ofa.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;../scsr.min.js&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;o-app src=&quot;../app.mjs&quot;&gt;
+      &lt;template page&gt;
+        &lt;div class=&quot;container&quot;&gt;
+          &lt;h1 class=&quot;title&quot;&gt;Help Page&lt;/h1&gt;
+          &lt;button on:click=&quot;back()&quot;&gt;GO Back&lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;script&gt;
+          export default async ({ query }) =&gt; {
+            return {
+              proto: {},
+            };
+          };
+        &lt;/script&gt;
+      &lt;/template&gt;
+    &lt;/o-app&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>「home.html」のページで「GO TO HELP」をクリックすると、スムーズに「help.html」のページに遷移し、クライアント側でのレンダリングによるスムーズなページ遷移効果が実現されています。</p>
+<h2>注意事項</h2>
+<p>すべてのSCSRスキームを使用したページについて、ページの説明的なコンテンツ（タイトル、メタディスクリプション、キーワードなど）とページテンプレートのコンテンツ以外の参照リソースは、ページの遷移とリロード後の一貫した体験を確保するために一致させる必があります。</p>
+<h2>SSRプログラムについて</h2>
+<p>現在のSCSRの仕組みは実際にはSSG（Static Site Generation）の一種に似ています。なぜなら、ページを静的なコンテンツとして事前にレンダリングし、その後クライアントで相互作用するからです。ofa.jsは、独立したコンポーネントラッピングの仕組みを提供しており、フロンエンド開発者はコンポーネントをラップし、従来のバックエンドページレンダリングの仕組み（Node.js、Go、Java、PHPなどの言語のウェブサイトレンダリングフレームワークなど）と組み合わせることで、バックエンド開発者はこれらのラップされたコンポーネントを使って高品質なウェブページを素早く構築することができます。</p>
+<p>我々は将来的に完全なSSR（サーバーサイドレンダリング）ソリューションを提供する予定です。 このソリューションの原理は、まず次のページの要素の内容を取得し、現在のページのタグの内容と比較することで、動的な追加、削除、属性値の変更などを行うことです。 ただし、このSSRのソリューションは時間がかかる可能性があることに注意してください。なぜなら、このプロセスには複雑な要素の比較と変更が関与するからです。</p>
+<p>ofa.jsは新興のフレームワークであり、また作者の余暇も限られているため、まだこのSSRのソリューションを完全に開発していません。しかし、将来的にofa.jsがより多くのユーザーに利用され、SSRのソリューションに対する強い需要が生じた場合、作者はこのソリューショを改善し続ける予定です。現時点では、作者はフレームワークの安定性と機能拡張に重点を置き、またユーザーのフィードバックと提案も歓迎します。これにより、将来的にユーザーのニーズにより良く応えることができます。</p>
+
+    <article-footer></article-footer>
+    </article>
+        <script>
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/layouts/article-layout.html";
+
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/document-page-init.mjs";
+
+          export default async (...args) => {
+            return await pageInit(PATH, args);
+          };
+        </script>
+      </template>
+    </o-app>
+    <div id="loading"></div>
+    <div class="body-important other-link"><ul>
+<li><a href="../../cases/index.html">開始</a></li>
+<li><a href="../../cases/event.html">イベントの反応</a></li>
+<li><a href="../../cases/simple-component.html">コンポーネントの作成と使用</a></li>
+<li><a href="../../cases/slot.html">コンポーネントスロット</a></li>
+<li><a href="../../cases/render-text.html">テンプレートの文法：テキストのレンダリング</a></li>
+<li><a href="../../cases/attribute-transmission.html">プロパティの受け渡し</a></li>
+<li><a href="../../cases/get-set-comp.html">コンポーネントインスタンスの値の取得と変更</a></li>
+<li><a href="../../cases/property-transmission.html">テンプレートの文法：属性の受け渡し</a></li>
+<li><a href="../../cases/bind-event.html">テンプレートの文法：イベントのバインディング</a></li>
+<li><a href="../../cases/nested-component.html">ネストされたコンポーネント</a></li>
+<li><a href="../../cases/inject-host.html">inject-host コンポーネント</a></li>
+<li><a href="../../cases/event-passing.html">イベントの受け渡し</a></li>
+<li><a href="../../cases/sync.html">テンプレートの文法：双方向データバインディング</a></li>
+<li><a href="../../cases/condition.html">テンプレートコンポーネント：条件付きレンダリング</a></li>
+<li><a href="../../cases/fill.html">テンプレートコンポーネント：プレースホルダレンダリング</a></li>
+<li><a href="../../cases/fill-temp.html">再帰的なプレースホルダレンダリング</a></li>
+<li><a href="../../cases/life-cycle.html">ライフサイクル</a></li>
+<li><a href="../../cases/form-data.html">フォームデータ</a></li>
+<li><a href="../../cases/custom-form-element.html">カスタムフォームコンポーネント</a></li>
+<li><a href="../../cases/use-page.html">ページコンポーネントの使用</a></li>
+<li><a href="../../cases/use-app.html">アプリコンポーネントの使用</a></li>
+<li><a href="../../cases/app-config.html">アプリの設定パラメータ</a></li>
+<li><a href="../../cases/app-loading.html">アプリのカスタムローディング設定</a></li>
+<li><a href="../../cases/set404.html">404ページの設定</a></li>
+<li><a href="../../cases/nested-page.html">ネストしたページ</a></li>
+<li><a href="../../cases/use-hash-router.html">HashRouter の使用</a></li>
+<li><a href="../../cases/use-scsr.html">scsr ソリューションの使用</a></li>
+<li><a href="../../cases/sync-state.html">ステートの同期</a></li>
+<li><a href="../../cases/alias.html">エイリアス</a></li>
+<li><a href="../introduce.html">紹介</a></li>
+<li><a href="../get-started/index.html">ofa.jsの使い方</a></li>
+<li><a href="../get-started/hello-world.html">最初の例</a></li>
+<li><a href="../get-started/elements-and-events.html">要素とイベントの選択</a></li>
+<li><a href="../get-started/basic-concept.html">基本的な概念</a></li>
+<li><a href="../get-started/common-properties.html">一般的なプロパティとメソッド</a></li>
+<li><a href="../create-component/index.html">作成と使用</a></li>
+<li><a href="../create-component/parameter-description.html">パラメータの説明</a></li>
+<li><a href="../create-component/life-cycle.html">ライフサイクル</a></li>
+<li><a href="../create-component/web-components.html">ウェブコンポーネントの基本知識</a></li>
+<li><a href="../create-component/template-syntax.html">テンプレート構文</a></li>
+<li><a href="index.html">紹介</a></li>
+<li><a href="page.html">Pageコンポーネントの使用</a></li>
+<li><a href="app.html">Appコンポーネントの使用</a></li>
+<li><a href="subrouting.html">サブルーティング機能</a></li>
+<li><a href="o-router.html">ルーティングバインディング</a></li>
+<li><a href="scsr.html">SCSRソリューション</a></li>
+<li><a href="../others/data-sharing.html">データ共有</a></li>
+<li><a href="../others/about-micro-frontend.html">ofa.jsとマイクロフロントエンド</a></li>
+<li><a href="../../api/index.html">APIの紹介</a></li>
+<li><a href="../../api/instance/dollar.html">$メソッド</a></li>
+<li><a href="../../api/instance/all.html">all</a></li>
+<li><a href="../../api/instance/prev.html">prev</a></li>
+<li><a href="../../api/instance/prevs.html">prevs</a></li>
+<li><a href="../../api/instance/next.html">next</a></li>
+<li><a href="../../api/instance/nexts.html">nexts</a></li>
+<li><a href="../../api/instance/siblings.html">siblings</a></li>
+<li><a href="../../api/instance/parent.html">parent</a></li>
+<li><a href="../../api/instance/parents.html">parents</a></li>
+<li><a href="../../api/instance/clone.html">clone</a></li>
+<li><a href="../../api/instance/ele.html">ele</a></li>
+<li><a href="../../api/instance/shadow.html">shadow</a></li>
+<li><a href="../../api/instance/root.html">root</a></li>
+<li><a href="../../api/instance/children.html">子要素</a></li>
+<li><a href="../../api/instance/host.html">host</a></li>
+<li><a href="../../api/instance/app.html">app</a></li>
+<li><a href="../../api/operation/array-like.html">子ノードの追加または削除</a></li>
+<li><a href="../../api/operation/before.html">before</a></li>
+<li><a href="../../api/operation/after.html">after</a></li>
+<li><a href="../../api/operation/remove.html">remove</a></li>
+<li><a href="../../api/operation/wrap.html">wrap</a></li>
+<li><a href="../../api/operation/unwrap.html">unwrap</a></li>
+<li><a href="../../api/props/text.html">text</a></li>
+<li><a href="../../api/props/html.html">html</a></li>
+<li><a href="../../api/props/attr.html">attr</a></li>
+<li><a href="../../api/props/css.html">css</a></li>
+<li><a href="../../api/props/style.html">style</a></li>
+<li><a href="../../api/props/class-list.html">classList</a></li>
+<li><a href="../../api/props/data.html">data</a></li>
+<li><a href="../../api/event/on.html">on</a></li>
+<li><a href="../../api/event/one.html">one</a></li>
+<li><a href="../../api/event/emit.html">emit</a></li>
+<li><a href="../../api/event/off.html">off</a></li>
+<li><a href="../../api/temp-syntax/text-render.html">テキストの描画</a></li>
+<li><a href="../../api/temp-syntax/class.html">class</a></li>
+<li><a href="../../api/temp-syntax/sync.html">sync</a></li>
+<li><a href="../../api/temp-syntax/condition.html">条件の描画</a></li>
+<li><a href="../../api/temp-syntax/fill.html">リストの描画</a></li>
+<li><a href="../../api/life-cycle/created.html">created</a></li>
+<li><a href="../../api/life-cycle/ready.html">ready</a></li>
+<li><a href="../../api/life-cycle/watch.html">watch</a></li>
+<li><a href="../../api/life-cycle/loaded.html">loaded</a></li>
+<li><a href="../../api/life-cycle/attached.html">attached</a></li>
+<li><a href="../../api/life-cycle/detached.html">detached</a></li>
+<li><a href="../../api/life-cycle/router-change.html">routerChange</a></li>
+<li><a href="../../api/others/app.html">app</a></li>
+<li><a href="../../api/others/page.html">page</a></li>
+<li><a href="../../api/others/box.html">ボックスモデル</a></li>
+<li><a href="../../api/others/form-data.html">formData</a></li>
+<li><a href="../../api/others/tag.html">tag</a></li>
+<li><a href="../../api/others/index.html">index</a></li>
+<li><a href="../../api/others/is.html">is</a></li>
+<li><a href="../../api/others/refresh.html">refresh</a></li>
+<li><a href="../../api/others/path.html">PATH</a></li>
+<li><a href="../../api/others/extend.html">extend</a></li>
+<li><a href="../../api/others/stanz.html">インスタンスデータの特徴</a></li>
+<li><a href="../../../en/index.html">English-index.html</a></li>
+<li><a href="../../../cn/index.html">简体中文-index.html</a></li>
+<li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
+<li><a href="../../index.html">index.html</a></li>
+
+</ul></div>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/init.js" type="module"></script>
+  </body>
+</html>

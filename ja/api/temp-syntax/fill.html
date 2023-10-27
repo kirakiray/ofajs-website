@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>x-fill</title>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
+      type="module"
+    ></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/public.css" />
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+    </style>
+    <script>
+      let configUrl = "../../config.json";
+    </script>
+    
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/logo.png">
+        <link rel="apple-touch-icon-precomposed" href="/logo.png">
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag("js", new Date());
+
+          gtag("config", "G-7L1TCCJZT6");
+        </script>
+        <script src="/init-sw.js"></script>
+      
+  </head>
+  <body>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/app-config.mjs">
+      <template page>
+        <style>
+          .markdown-body::before,
+          .markdown-body::after {
+            display: block;
+            content: "";
+            height: 1px;
+          }
+          .markdown-body::after {
+            height: 32px;
+          }
+          .markdown-body > * {
+            margin-top: 1em;
+            margin-bottom: 1em;
+          }
+        </style>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/github-markdown.css"
+        />
+        <article class="markdown-body"><h1>x-fill</h1>
+<p><code>x-fill</code> コンポーネントを使用してリストをレンダリングすることができます。配列データを埋めるために <code>value</code> 属性を設定します。</p>
+<p><code>x-fill</code>の内部では、特殊変数<code>$index</code>は現在のリストアイテムのインデックスを表し、そして<code>$data</code>はリストアイテム自体のデータを表します。</p>
+<p>下記は、<code>x-fill</code> を使用して配列をレンダリングする方法を示す例です：</p>
+<comp-viewer comp-name="text-render">
+
+<pre><code class="language-html">&lt;template component&gt;
+  &lt;ul&gt;
+    &lt;x-fill :value=&quot;arr&quot;&gt;
+      &lt;li&gt;{{$index}} - {{$data}}&lt;/li&gt;
+    &lt;/x-fill&gt;
+  &lt;/ul&gt;
+  &lt;script&gt;
+    export default {
+      tag: &quot;text-render&quot;,
+      data: {
+        arr: [&quot;pen&quot;, &quot;apple&quot;, &quot;pineapple&quot;],
+      },
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</comp-viewer>
+
+<p>この例では、<code>x-fill</code> コンポーネントを使用して配列 <code>arr</code> をレンダリングし、各リストアイテムにインデックスとデータを表示します。</p>
+<h2>テンプレートリストのレンダリング</h2>
+<p>あなたは、<code>template</code>要素を使ってコンポーネント内の一時的なテンプレートをカスタマイズすることができます。<code>x-fill</code>を使う際には、<code>name</code>属性を使用して埋め込むテンプレート名を指定します。</p>
+<p>以下は、テンプレートリストのレンダリング方法を示す例です：</p>
+<comp-viewer comp-name="text-render">
+
+<pre><code class="language-html">&lt;template component&gt;
+  &lt;ul&gt;
+    &lt;x-fill :value=&quot;arr&quot; name=&quot;easyLi&quot;&gt;&lt;/x-fill&gt;
+  &lt;/ul&gt;
+  &lt;template name=&quot;easyLi&quot;&gt;
+    &lt;li&gt;{{$index}} - {{$data}}&lt;/li&gt;
+  &lt;/template&gt;
+  &lt;script&gt;
+    export default {
+      tag: &quot;text-render&quot;,
+      data: {
+        arr: [{ name: &quot;apple&quot; }, { name: &quot;pen&quot; }, { name: &quot;pineapple&quot; }],
+      },
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</comp-viewer>
+
+<p>この例では、&quot;easyLi&quot;という名前のテンプレートを作成し、<code>x-fill</code>を使用して配列<code>arr</code>のデータを埋め込み、各リスト項目にインックスとデータの名前を表示しています。</p>
+<h2>入れ子リストのレンダリング</h2>
+<p>ネストされたリストのレンダリングを行う場合、2番目の階層からは、テンプレートを使用して埋める必要があります。この設計は、複数階層のネストされたリストのレンダリングコードを複雑にするのを避けるためです。</p>
+<p>以下は、ネストされたリストのレンダリング方法を示す例である：</p>
+<comp-viewer comp-name="fill-three">
+
+<pre><code class="language-html">&lt;template component&gt;
+  &lt;ul&gt;
+    &lt;x-fill :value=&quot;arr&quot;&gt;
+      &lt;li&gt;{{$index}} - {{$data.name}}&lt;/li&gt;
+      &lt;x-if :value=&quot;$data.childs&quot;&gt;
+        &lt;ol&gt;
+            &lt;x-fill :value=&quot;$data.childs&quot; name=&quot;easyLi&quot;&gt;&lt;/x-fill&gt;
+        &lt;/ol&gt;
+      &lt;/x-if&gt;
+    &lt;/x-fill&gt;
+  &lt;/ul&gt;
+  &lt;template name=&quot;easyLi&quot;&gt;
+    &lt;li&gt;{{$data}}&lt;/li&gt;
+  &lt;/template&gt;
+  &lt;script&gt;
+    export default {
+      tag: &quot;fill-three&quot;,
+      data: {
+        arr: [
+          {
+            name: &quot;apple&quot;,
+          },
+          {
+            name: &quot;pen&quot;,
+            childs: [
+              { name: &quot;pencil&quot; },
+              {
+                name: &quot;ballpoint pen&quot;,
+              },
+            ],
+          },
+        ],
+      },
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</comp-viewer>
+
+<p>この例では、配列 <code>arr</code> を持つ2つのオブジェクトがあります。各オブジェクトには <code>name</code> プロパティとネストされたサブアイテムを含む可能性がある <code>childs</code> プロパティがあります。リストを埋めるために <code>x-fill</code> を使用し、サブアイテムをテンプレート &quot;easyLi&quot; でレンダリグします。アイテムにサブアイテムがある場合は、<code>x-if</code> を使用してネストされたリストを作成します。</p>
+<h2>再帰的リスト・レンダリング</h2>
+<p>テンプレートのレンダリングでは、再帰的なレンダリングも行うことができます。これは、ツリー構造のリストを構築する際に非常に有用です。</p>
+<p>下記は、再帰的なリストのレンダリングの例のデモです：</p>
+<comp-viewer comp-name="fill-four">
+
+<pre><code class="language-html">&lt;template component&gt;
+  &lt;ul&gt;
+    &lt;x-fill :value=&quot;arr&quot; name=&quot;easyLi&quot;&gt;&lt;/x-fill&gt;
+  &lt;/ul&gt;
+  &lt;template name=&quot;easyLi&quot;&gt;
+    &lt;li&gt;
+      {{$index}} - {{$data.name}}
+      &lt;ul&gt;
+        &lt;x-fill :value=&quot;$data.childs&quot; name=&quot;easyLi&quot;&gt;&lt;/x-fill&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/template&gt;
+  &lt;script&gt;
+    export default {
+      tag: &quot;fill-four&quot;,
+      data: {
+        arr: [
+          {
+            name: &quot;apple&quot;,
+          },
+          {
+            name: &quot;pen&quot;,
+            childs: [
+              { name: &quot;pencil&quot; },
+              {
+                name: &quot;ballpoint pen&quot;,
+              },
+            ],
+          },
+        ],
+      },
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</comp-viewer>
+
+<p>この例では、<code>arr</code>という配列があります。配列には2つのオブジェクトが含まれています。各オブジェクトには<code>name</code>プロパティと、ネストされたサブアイテムが含まれている可能性のある<code>childs</code>プロパティがあります。リストを埋めるために<code>x-fill</code>を使用し、子アイテムをテンプレート&quot;easyLi&quot;でレンダリングしています。アイテムにサブアイテムがある場合、再帰的にサブリストをレンダリングするために<code>x-fill</code>を使用しています。これにより、再帰的なリストのレンダリングが実現されています。</p>
+<h2>replace-temp</h2>
+<p>時々、select や table にリストをレンダリングしようとすると、ブラウザが <code>&lt;x-fill&gt;</code> 要素を自動的に削除してしまい、リストのレンダリングがうまくいかないことがあります。この場合、<code>replace-temp</code> を使用してレンダリングする方法があります。<code>replace-temp</code> を使用する方法は、<code>&lt;template&gt;</code> タグで <code>is=&quot;replace-temp&quot;</code> を設定し、このテンプレートをブラウザが自動的に修正する要素内に置くことです。</p>
+<comp-viewer comp-name="text-render">
+
+<pre><code class="language-html">&lt;template component&gt;
+  &lt;select&gt;
+    &lt;template is=&quot;replace-temp&quot;&gt;
+      &lt;x-fill :value=&quot;arr&quot;&gt;
+        &lt;option&gt;{{$data}}&lt;/option&gt;
+      &lt;/x-fill&gt;
+    &lt;/template&gt;
+  &lt;/select&gt;
+  &lt;script&gt;
+    export default {
+      tag: &quot;text-render&quot;,
+      data: {
+        arr: [&quot;pen&quot;, &quot;apple&quot;, &quot;pineapple&quot;],
+      },
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</comp-viewer>
+
+
+    <article-footer></article-footer>
+    </article>
+        <script>
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/layouts/article-layout.html";
+
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/document-page-init.mjs";
+
+          export default async (...args) => {
+            return await pageInit(PATH, args);
+          };
+        </script>
+      </template>
+    </o-app>
+    <div id="loading"></div>
+    <div class="body-important other-link"><ul>
+<li><a href="../../cases/index.html">開始</a></li>
+<li><a href="../../cases/event.html">イベントの反応</a></li>
+<li><a href="../../cases/simple-component.html">コンポーネントの作成と使用</a></li>
+<li><a href="../../cases/slot.html">コンポーネントスロット</a></li>
+<li><a href="../../cases/render-text.html">テンプレートの文法：テキストのレンダリング</a></li>
+<li><a href="../../cases/attribute-transmission.html">プロパティの受け渡し</a></li>
+<li><a href="../../cases/get-set-comp.html">コンポーネントインスタンスの値の取得と変更</a></li>
+<li><a href="../../cases/property-transmission.html">テンプレートの文法：属性の受け渡し</a></li>
+<li><a href="../../cases/bind-event.html">テンプレートの文法：イベントのバインディング</a></li>
+<li><a href="../../cases/nested-component.html">ネストされたコンポーネント</a></li>
+<li><a href="../../cases/inject-host.html">inject-host コンポーネント</a></li>
+<li><a href="../../cases/event-passing.html">イベントの受け渡し</a></li>
+<li><a href="../../cases/sync.html">テンプレートの文法：双方向データバインディング</a></li>
+<li><a href="../../cases/condition.html">テンプレートコンポーネント：条件付きレンダリング</a></li>
+<li><a href="../../cases/fill.html">テンプレートコンポーネント：プレースホルダレンダリング</a></li>
+<li><a href="../../cases/fill-temp.html">再帰的なプレースホルダレンダリング</a></li>
+<li><a href="../../cases/life-cycle.html">ライフサイクル</a></li>
+<li><a href="../../cases/form-data.html">フォームデータ</a></li>
+<li><a href="../../cases/custom-form-element.html">カスタムフォームコンポーネント</a></li>
+<li><a href="../../cases/use-page.html">ページコンポーネントの使用</a></li>
+<li><a href="../../cases/use-app.html">アプリコンポーネントの使用</a></li>
+<li><a href="../../cases/app-config.html">アプリの設定パラメータ</a></li>
+<li><a href="../../cases/app-loading.html">アプリのカスタムローディング設定</a></li>
+<li><a href="../../cases/set404.html">404ページの設定</a></li>
+<li><a href="../../cases/nested-page.html">ネストしたページ</a></li>
+<li><a href="../../cases/use-hash-router.html">HashRouter の使用</a></li>
+<li><a href="../../cases/use-scsr.html">scsr ソリューションの使用</a></li>
+<li><a href="../../cases/sync-state.html">ステートの同期</a></li>
+<li><a href="../../cases/alias.html">エイリアス</a></li>
+<li><a href="../../docs/introduce.html">紹介</a></li>
+<li><a href="../../docs/get-started/index.html">ofa.jsの使い方</a></li>
+<li><a href="../../docs/get-started/hello-world.html">最初の例</a></li>
+<li><a href="../../docs/get-started/elements-and-events.html">要素とイベントの選択</a></li>
+<li><a href="../../docs/get-started/basic-concept.html">基本的な概念</a></li>
+<li><a href="../../docs/get-started/common-properties.html">一般的なプロパティとメソッド</a></li>
+<li><a href="../../docs/create-component/index.html">作成と使用</a></li>
+<li><a href="../../docs/create-component/parameter-description.html">パラメータの説明</a></li>
+<li><a href="../../docs/create-component/life-cycle.html">ライフサイクル</a></li>
+<li><a href="../../docs/create-component/web-components.html">ウェブコンポーネントの基本知識</a></li>
+<li><a href="../../docs/create-component/template-syntax.html">テンプレート構文</a></li>
+<li><a href="../../docs/create-app/index.html">紹介</a></li>
+<li><a href="../../docs/create-app/page.html">Pageコンポーネントの使用</a></li>
+<li><a href="../../docs/create-app/app.html">Appコンポーネントの使用</a></li>
+<li><a href="../../docs/create-app/subrouting.html">サブルーティング機能</a></li>
+<li><a href="../../docs/create-app/o-router.html">ルーティングバインディング</a></li>
+<li><a href="../../docs/create-app/scsr.html">SCSRソリューション</a></li>
+<li><a href="../../docs/others/data-sharing.html">データ共有</a></li>
+<li><a href="../../docs/others/about-micro-frontend.html">ofa.jsとマイクロフロントエンド</a></li>
+<li><a href="../index.html">APIの紹介</a></li>
+<li><a href="../instance/dollar.html">$メソッド</a></li>
+<li><a href="../instance/all.html">all</a></li>
+<li><a href="../instance/prev.html">prev</a></li>
+<li><a href="../instance/prevs.html">prevs</a></li>
+<li><a href="../instance/next.html">next</a></li>
+<li><a href="../instance/nexts.html">nexts</a></li>
+<li><a href="../instance/siblings.html">siblings</a></li>
+<li><a href="../instance/parent.html">parent</a></li>
+<li><a href="../instance/parents.html">parents</a></li>
+<li><a href="../instance/clone.html">clone</a></li>
+<li><a href="../instance/ele.html">ele</a></li>
+<li><a href="../instance/shadow.html">shadow</a></li>
+<li><a href="../instance/root.html">root</a></li>
+<li><a href="../instance/children.html">子要素</a></li>
+<li><a href="../instance/host.html">host</a></li>
+<li><a href="../instance/app.html">app</a></li>
+<li><a href="../operation/array-like.html">子ノードの追加または削除</a></li>
+<li><a href="../operation/before.html">before</a></li>
+<li><a href="../operation/after.html">after</a></li>
+<li><a href="../operation/remove.html">remove</a></li>
+<li><a href="../operation/wrap.html">wrap</a></li>
+<li><a href="../operation/unwrap.html">unwrap</a></li>
+<li><a href="../props/text.html">text</a></li>
+<li><a href="../props/html.html">html</a></li>
+<li><a href="../props/attr.html">attr</a></li>
+<li><a href="../props/css.html">css</a></li>
+<li><a href="../props/style.html">style</a></li>
+<li><a href="../props/class-list.html">classList</a></li>
+<li><a href="../props/data.html">data</a></li>
+<li><a href="../event/on.html">on</a></li>
+<li><a href="../event/one.html">one</a></li>
+<li><a href="../event/emit.html">emit</a></li>
+<li><a href="../event/off.html">off</a></li>
+<li><a href="text-render.html">テキストの描画</a></li>
+<li><a href="class.html">class</a></li>
+<li><a href="sync.html">sync</a></li>
+<li><a href="condition.html">条件の描画</a></li>
+<li><a href="fill.html">リストの描画</a></li>
+<li><a href="../life-cycle/created.html">created</a></li>
+<li><a href="../life-cycle/ready.html">ready</a></li>
+<li><a href="../life-cycle/watch.html">watch</a></li>
+<li><a href="../life-cycle/loaded.html">loaded</a></li>
+<li><a href="../life-cycle/attached.html">attached</a></li>
+<li><a href="../life-cycle/detached.html">detached</a></li>
+<li><a href="../life-cycle/router-change.html">routerChange</a></li>
+<li><a href="../others/app.html">app</a></li>
+<li><a href="../others/page.html">page</a></li>
+<li><a href="../others/box.html">ボックスモデル</a></li>
+<li><a href="../others/form-data.html">formData</a></li>
+<li><a href="../others/tag.html">tag</a></li>
+<li><a href="../others/index.html">index</a></li>
+<li><a href="../others/is.html">is</a></li>
+<li><a href="../others/refresh.html">refresh</a></li>
+<li><a href="../others/path.html">PATH</a></li>
+<li><a href="../others/extend.html">extend</a></li>
+<li><a href="../others/stanz.html">インスタンスデータの特徴</a></li>
+<li><a href="../../../en/index.html">English-index.html</a></li>
+<li><a href="../../../cn/index.html">简体中文-index.html</a></li>
+<li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
+<li><a href="../../index.html">index.html</a></li>
+
+</ul></div>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/init.js" type="module"></script>
+  </body>
+</html>

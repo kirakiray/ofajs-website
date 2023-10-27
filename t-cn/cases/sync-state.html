@@ -9,7 +9,7 @@
       src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/public.css" />
     <style>
       html,
       body {
@@ -37,9 +37,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -58,7 +58,7 @@
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/github-markdown.css"
         />
         <exm-article><article class="markdown-body"><template is="exm-article">
 <a href="../../publics/examples/sync-state/demo.html" preview></a>
@@ -69,16 +69,16 @@
 
 <h1>狀態同步</h1>
 <p>有時候需要多個組件實例或頁面共享一份數據，這時候就需要狀態同步的功能。</p>
-<p>使用 <code>$.stanz</code> 方法創建可以共享的數據；需要共享這個數據的組件上，在組件 attached 周期時，將數據綁定到組件上；</p>
-<p>注意需要在 detached周期綁定的數據清除，不然會內存泄露。</p>
+<p>使用 <code>$.stanz</code> 方法創建可共享的數據；如果需要在組件中分享此數據，應在組件的 attached 時將數據綁定到組件上。</p>
+<p>注意：需要在 detached 周期將綁定的數據清除，不然會內存泄露。</p>
 <p>在這個示例中，我們演示了如何使用狀態同步功能來實現暗黑模式的切換。首先，我們使用 <code>$.stanz</code> 方法創建了一個名為 <code>isDark</code> 的數據對象，該對象可以在多個組件間共享。使不同組件實例能夠共享數據，實現暗黑模式的切換。</p>
 
     <article-footer></article-footer>
     </article></exm-article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -196,8 +196,9 @@
 <li><a href="../../en/index.html">English-index.html</a></li>
 <li><a href="../../cn/index.html">简体中文-index.html</a></li>
 <li><a href="../index.html">繁体中文-index.html</a></li>
+<li><a href="../../ja/index.html">index.html</a></li>
 
 </ul></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.36/statics/init.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/init.js" type="module"></script>
   </body>
 </html>
