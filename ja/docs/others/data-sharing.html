@@ -159,7 +159,7 @@ export const data = $.stanz({
 &lt;/html&gt;
 </code></pre>
 <p>上記の例で、2つのコンポーネントは「attached」ライフサイクルにおいて、データをコンポーネント自体に書き込みます。そして、コンポーネントの「obj」が共有データとなります。そして、「detached」ライフサイクルの後、以前に共有されたデータを「null」に設定して、ータが回収されることを確保します。</p>
-<h2>注意事項</h2>
+<h2>注意</h2>
 <p>データは共有されているため、適切なタイミングでデータを回収し、メモリリークを防止する必要があります。</p>
 <pre><code class="language-html">&lt;template component&gt;
   comp1 =&gt;

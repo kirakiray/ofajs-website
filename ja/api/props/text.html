@@ -76,7 +76,7 @@
 
 &lt;script&gt;
     setTimeout(()=&gt; {
-        $(&#39;#target2&#39;).text = `&lt;b style=&quot;color:blue;&quot;&gt;new text&lt;/b&gt;`; // 只能设置文本，如果想要标签生效，请设置 html 属性
+        $(&#39;#target2&#39;).text = `&lt;b style=&quot;color:blue;&quot;&gt;new text&lt;/b&gt;`; // 設定できるのはテキストのみで、ラベルを有効にしたい場合はhtml属性を設定する。
 
         console.log($(&quot;#target1&quot;).text) // =&gt; &#39;target 1&#39;;
         $(&quot;#logger&quot;).text = $(&quot;#target1&quot;).text;

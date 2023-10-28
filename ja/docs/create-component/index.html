@@ -103,7 +103,7 @@
 
   &lt;script&gt;
     export default {
-      tag: &#39;simple-button&#39; // 需要注册的组件名，如果没有定义 tag 属性，注册的组件名与文件名保持一致
+      tag: &#39;simple-button&#39; // tag属性が定義されていない場合、登録されるコンポーネントの名前はファイル名と同じになる。
     }
   &lt;/script&gt;
 &lt;/template&gt;
@@ -128,7 +128,7 @@
 &lt;/html&gt;
 </code></pre>
 <p><code>load-module</code> コンポーネントは、カスタムの<strong>宣言的なローダー</strong>ライブラリであり、さまざまな種類のファイルのサポートを拡張したり、JavaScript モジュールを中継処理したりする強力な機能を提供します。このコンポーネントは、独立したプロジェクトに分割されています。具体的な使用方法については、<a href="https://github.com/kirakiray/drill.js">https://github.com/kirakiray/drill.js</a> のドキュメントを参照してください。</p>
-<h3>双文件模式</h3>
+<h3>デュアル・ドキュメント・モード</h3>
 <p>静的テンプレートとロジックコードを分けて、コンポーネントをより明確にする、デュアルファイルモードです。</p>
 <p>ロジックコードはjsファイルに配置され、このjsは <code>export const type = $.COMP;</code>というようにマークされる必要があります。これにより、ページにこれがコンポーネントモジュールであることが通知されます。この分割モードでは、モジュールコードは <code>import</code>などのESモジュール標準構文を使用できます。</p>
 <p>ボタンコンポーネントは2つのファイルで構成されます。</p>
@@ -165,7 +165,7 @@
 &lt;/button&gt;
 </code></pre>
 <ol start="2">
-<li><strong>simple-button.mjs</strong>：按钮组件的注册代码。</li>
+<li><strong>simple-button.mjs</strong>：ボタンコンポーネントの登録ロジックコード。</li>
 </ol>
 <pre><code class="language-javascript">// simple-button.mjs
 export const type = $.COMP; // 双文件モジュールは必ず `export const type = $.COMP` を持つ必要があります。

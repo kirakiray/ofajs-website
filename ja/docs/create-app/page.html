@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>使用 o-page 组件</title>
+    <title>Pageコンポーネントの使用</title>
         <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
@@ -60,9 +60,9 @@
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/github-markdown.css"
         />
-        <article class="markdown-body"><h1>使用 o-page 组件</h1>
+        <article class="markdown-body"><h1>Pageコンポーネントの使用</h1>
 <p>o-pageというカスタムコンポーネントをofa.js内で構築しました。これはページの開発を簡単にするためのものです。このコンポーネントはアプリケーション開発で重要な役割を果たします。コンポーネントのテンプレート構文を使用したいが、新しいコンポーネントを作成たくない場合、o-pageコンポーネントは最適な選択肢となります。</p>
-<h2>页面模块</h2>
+<h2>ページモジュール</h2>
 <p>シングルファイルのページモジュールを作成する場合、コンポーネントモジュールの作成と同じです。<code>template</code> タグを使用してページのテンプレートコードを囲み、<code>page</code> 属性を追加します。このタグ内では、テンプレートの文法と他のコンポーネントやページモジュールのインタラクションを自由に行うことができます。</p>
 <pre><code class="language-html">&lt;!-- my-single-file-page.html --&gt;
 &lt;template page&gt;
@@ -93,11 +93,11 @@
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<h2>双文件模式</h2>
+<h2>デュアル・ドキュメント・モード</h2>
 <p>静的テンプレートとロジックコードを分離するダブルファイルモードは、ページのコンテンツをより明確にします。</p>
 <p>以下は、<code>o-page</code> コンポーネントとページモジュールを使用する手順です。</p>
 <ol>
-<li>创建页面模块：</li>
+<li>ページモジュールの作成:</li>
 </ol>
 <p>ページモジュールを作成する際には、コンポーネントモジュールの作成と似ていますが、<code>type</code> 属性を <code>$.PAGE</code> に設定します。ページモジュールで使用できるパラメータには、<code>temp</code>、<code>data</code>、<code>proto</code>、<code>watch</code> が含まれます。</p>
 <pre><code class="language-javascript">// my-page.mjs
@@ -118,7 +118,7 @@ export const watch = {
 };
 </code></pre>
 <ol start="2">
-<li>创建页面模板：</li>
+<li>ページテンプレートの作成:</li>
 </ol>
 <p>同じディレクトリに <code>my-page-template.html</code> という名前のページテンプレートファイルを作成します。このテンプレートファイルでは、前述のコンポーネントテンプレートの文法と同様に、テンプレート文法を使用して対話型処理を行うことができます。</p>
 <pre><code class="language-html">&lt;!-- my-page-template.html --&gt;
