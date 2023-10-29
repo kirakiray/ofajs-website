@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Doble enlace de datos</title>
-    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/dist/ofa.min.js"></script>
+    <title>Enlace de datos bidireccional</title>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/public.css" />
     <style>
       html,
       body {
@@ -20,6 +20,9 @@
       let configUrl = "../config.json";
     </script>
     
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/logo.png">
+        <link rel="apple-touch-icon-precomposed" href="/logo.png">
         <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
         <script>
           window.dataLayer = window.dataLayer || [];
@@ -34,9 +37,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -48,10 +51,14 @@
           .markdown-body::after {
             height: 32px;
           }
+          .markdown-body > * {
+            margin-top: 1em;
+            margin-bottom: 1em;
+          }
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/github-markdown.css"
         />
         <exm-article><article class="markdown-body"><template is="exm-article">
 <a href="../../publics/examples/sync/demo.html" preview></a>
@@ -59,23 +66,23 @@
 <a href="../../publics/examples/sync/custom-input.html"></a>
 </template>
 
-<h1>Doble enlace de datos</h1>
-<p>Al utilizar la sintaxis <code>sync</code>, puede establecer una asociación bidireccional en tiempo real entre los elementos interactivos de la interfaz de usuario (como cuadros de texto o componentes personalizados) y el modelo de datos.</p>
-<p>El siguiente ejemplo muestra cómo utilizar la propiedad <code>sync</code> en un componente para lograr una sincronización bidireccional entre un cuadro de texto y un modelo de datos:</p>
+<h1>Enlace de datos bidireccional</h1>
+<p>mediante el uso de la sintaxis <code>sync</code>, puede establecer una asociación bidireccional en tiempo real entre los elementos interactivos de la interfaz de usuario (como cuadros de texto o componentes personalizados) y el modelo de datos.</p>
+<p>El siguiente ejemplo muestra cómo usar la propiedad &quot;sync&quot; en un componente para lograr una vinculación bidireccional entre un cuadro de texto y un modelo de datos:</p>
 <ul>
-<li>En el parámetro <code>data</code>, se define el dato con el nombre <code>testText</code> y se le asigna un valor inicial de &quot;Soy testText&quot;.</li>
-<li>La declaración <code>sync:value=&quot;testText&quot;</code> establece una vinculación bidireccional entre el valor del cuadro de texto y el dato <code>testText</code>. Por lo tanto, cuando el usuario ingresa contenido en el cuadro de texto, el dato <code>testText</code> se actualiza en tiempo real y viceversa.</li>
-<li>De manera similar, la declaración <code>sync:txt=&quot;testText&quot;</code> establece una vinculación bidireccional entre la propiedad <code>txt</code> del componente personalizado y el dato <code>testText</code>. Cuando la propiedad <code>txt</code> del componente cambia, el dato <code>testText</code> se actualiza en tiempo real y viceversa.</li>
+<li>En el parámetro <code>data</code>, hemos definido un dato llamado <code>testText</code> y le hemos asignado el valor inicial &quot;Soy testText&quot;.</li>
+<li>El uso de <code>sync:value=&quot;testText&quot;</code> indica que se ha establecido una vinculación bidireccional entre el valor del campo de entrada y el dato <code>testText</code>. Por lo tanto, cuando el usuario ingresa contenido en el campo, el dato <code>testText</code> se actualizará en tiempo real, y viceversa.</li>
+<li>De manera similar, el uso de <code>sync:txt=&quot;testText&quot;</code> indica que se ha establecido una vinculación bidireccional entre el atributo <code>txt</code> del componente personalizado y el dato <code>testText</code>. Cuando el atributo <code>txt</code> del componente cambie, el dato <code>testText</code> se actualizará en tiempo real, y viceversa.</li>
 </ul>
-<p>A través de la sincronización bidireccional de datos, puede establecer fácilmente una conexión entre la interfaz de usuario y el modelo de datos, lo que permite que los cambios en los datos se reflejen automáticamente en la interfaz y que las entradas del usuario en la interfaz afecten de inmediato al modelo de datos.</p>
-<p>Es importante tener en cuenta que la sincronización de datos solo puede transferir <strong>cadenas de texto</strong> o <strong>números</strong>, no puede transferir otros tipos de datos.</p>
+<p>A través de la vinculación de datos bidireccional, puede establecer fácilmente una conexión entre la interfaz de usuario y el modelo de datos, de modo que los cambios en los datos se reflejen automáticamente en la interfaz, al mismo tiempo que las entradas del usuario en la interfaz también afecten inmediatamente al modelo de datos.</p>
+<p>Lo que debes tener en cuenta es que la sincronización de datos solo puede transferir <strong>cadenas de texto</strong> o <strong>números</strong>, no puede transferir otros tipos de datos.</p>
 
     <article-footer></article-footer>
     </article></exm-article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -84,6 +91,119 @@
       </template>
     </o-app>
     <div id="loading"></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/init.js" type="module"></script>
+    <div class="body-important other-link"><ul>
+<li><a href="index.html">Empezar</a></li>
+<li><a href="event.html">Reacción de eventos</a></li>
+<li><a href="simple-component.html">Creación y uso de componentes</a></li>
+<li><a href="slot.html">Ranuras de componentes</a></li>
+<li><a href="render-text.html">Sintaxis de plantillas: renderizado de texto</a></li>
+<li><a href="attribute-transmission.html">Transmisión de atributos</a></li>
+<li><a href="get-set-comp.html">Obtener y modificar valores de instancia de componente</a></li>
+<li><a href="property-transmission.html">Sintaxis de plantillas: transmisión de atributos</a></li>
+<li><a href="bind-event.html">Sintaxis de plantillas: vincular eventos</a></li>
+<li><a href="nested-component.html">Componentes anidados</a></li>
+<li><a href="inject-host.html">Componentes de inyección de host</a></li>
+<li><a href="event-passing.html">Transmisión de eventos</a></li>
+<li><a href="sync.html">Sintaxis de plantillas: enlace de datos bidireccional</a></li>
+<li><a href="condition.html">Componentes de plantilla: renderizado condicional</a></li>
+<li><a href="fill.html">Componentes de plantilla: renderizado de relleno</a></li>
+<li><a href="fill-temp.html">Renderizado de relleno recursivo</a></li>
+<li><a href="life-cycle.html">Ciclo de vida</a></li>
+<li><a href="form-data.html">Datos de formulario</a></li>
+<li><a href="custom-form-element.html">Componente de formulario personalizado</a></li>
+<li><a href="use-page.html">Uso de componentes de página</a></li>
+<li><a href="use-app.html">Uso de componentes de aplicación</a></li>
+<li><a href="app-config.html">Configuración de parámetros de aplicación</a></li>
+<li><a href="app-loading.html">Personalización de carga de la aplicación</a></li>
+<li><a href="set404.html">Configuración de la página 404</a></li>
+<li><a href="nested-page.html">Páginas anidadas</a></li>
+<li><a href="use-hash-router.html">Uso de HashRouter</a></li>
+<li><a href="use-scsr.html">Uso de la solución scsr</a></li>
+<li><a href="sync-state.html">Sincronización de estado</a></li>
+<li><a href="alias.html">Alias</a></li>
+<li><a href="../docs/introduce.html">Introducción</a></li>
+<li><a href="../docs/get-started/index.html">Cómo usar ofa.js</a></li>
+<li><a href="../docs/get-started/hello-world.html">Primer caso</a></li>
+<li><a href="../docs/get-started/elements-and-events.html">Selección de elementos y eventos relacionados</a></li>
+<li><a href="../docs/get-started/basic-concept.html">Concepto básico de instancia</a></li>
+<li><a href="../docs/get-started/common-properties.html">Propiedades y métodos comunes</a></li>
+<li><a href="../docs/create-component/index.html">Creación y uso</a></li>
+<li><a href="../docs/create-component/parameter-description.html">Descripción de parámetros</a></li>
+<li><a href="../docs/create-component/life-cycle.html">Ciclo de vida</a></li>
+<li><a href="../docs/create-component/web-components.html">Conocimientos generales sobre componentes web</a></li>
+<li><a href="../docs/create-component/template-syntax.html">Sintaxis de plantillas</a></li>
+<li><a href="../docs/create-app/index.html">Introducción</a></li>
+<li><a href="../docs/create-app/page.html">Uso del componente Page</a></li>
+<li><a href="../docs/create-app/app.html">Uso del componente App</a></li>
+<li><a href="../docs/create-app/subrouting.html">Funcionalidad de subrutas</a></li>
+<li><a href="../docs/create-app/o-router.html">Binding de rutas</a></li>
+<li><a href="../docs/create-app/scsr.html">Esquema SCSR</a></li>
+<li><a href="../docs/others/data-sharing.html">Compartir datos</a></li>
+<li><a href="../docs/others/about-micro-frontend.html">ofa.js y micro frontend</a></li>
+<li><a href="../api/index.html">Introducción a la API</a></li>
+<li><a href="../api/instance/dollar.html">$ Método</a></li>
+<li><a href="../api/instance/all.html">all</a></li>
+<li><a href="../api/instance/prev.html">prev</a></li>
+<li><a href="../api/instance/prevs.html">prevs</a></li>
+<li><a href="../api/instance/next.html">next</a></li>
+<li><a href="../api/instance/nexts.html">nexts</a></li>
+<li><a href="../api/instance/siblings.html">siblings</a></li>
+<li><a href="../api/instance/parent.html">parent</a></li>
+<li><a href="../api/instance/parents.html">parents</a></li>
+<li><a href="../api/instance/clone.html">clone</a></li>
+<li><a href="../api/instance/ele.html">ele</a></li>
+<li><a href="../api/instance/shadow.html">shadow</a></li>
+<li><a href="../api/instance/root.html">root</a></li>
+<li><a href="../api/instance/children.html">Elementos secundarios</a></li>
+<li><a href="../api/instance/host.html">host</a></li>
+<li><a href="../api/instance/app.html">app</a></li>
+<li><a href="../api/operation/array-like.html">Agregar o eliminar nodos secundarios</a></li>
+<li><a href="../api/operation/before.html">before</a></li>
+<li><a href="../api/operation/after.html">after</a></li>
+<li><a href="../api/operation/remove.html">remove</a></li>
+<li><a href="../api/operation/wrap.html">wrap</a></li>
+<li><a href="../api/operation/unwrap.html">unwrap</a></li>
+<li><a href="../api/props/text.html">text</a></li>
+<li><a href="../api/props/html.html">html</a></li>
+<li><a href="../api/props/attr.html">attr</a></li>
+<li><a href="../api/props/css.html">css</a></li>
+<li><a href="../api/props/style.html">style</a></li>
+<li><a href="../api/props/class-list.html">classList</a></li>
+<li><a href="../api/props/data.html">data</a></li>
+<li><a href="../api/event/on.html">on</a></li>
+<li><a href="../api/event/one.html">one</a></li>
+<li><a href="../api/event/emit.html">emit</a></li>
+<li><a href="../api/event/off.html">off</a></li>
+<li><a href="../api/temp-syntax/text-render.html">Renderizado de texto</a></li>
+<li><a href="../api/temp-syntax/class.html">class</a></li>
+<li><a href="../api/temp-syntax/sync.html">sync</a></li>
+<li><a href="../api/temp-syntax/condition.html">Renderizado condicional</a></li>
+<li><a href="../api/temp-syntax/fill.html">Renderizado de listas</a></li>
+<li><a href="../api/life-cycle/created.html">created</a></li>
+<li><a href="../api/life-cycle/ready.html">ready</a></li>
+<li><a href="../api/life-cycle/watch.html">watch</a></li>
+<li><a href="../api/life-cycle/loaded.html">loaded</a></li>
+<li><a href="../api/life-cycle/attached.html">attached</a></li>
+<li><a href="../api/life-cycle/detached.html">detached</a></li>
+<li><a href="../api/life-cycle/router-change.html">routerChange</a></li>
+<li><a href="../api/others/app.html">app</a></li>
+<li><a href="../api/others/page.html">page</a></li>
+<li><a href="../api/others/box.html">Modelo de caja</a></li>
+<li><a href="../api/others/form-data.html">formData</a></li>
+<li><a href="../api/others/tag.html">tag</a></li>
+<li><a href="../api/others/index.html">índice</a></li>
+<li><a href="../api/others/is.html">is</a></li>
+<li><a href="../api/others/refresh.html">refresh</a></li>
+<li><a href="../api/others/path.html">PATH</a></li>
+<li><a href="../api/others/extend.html">extend</a></li>
+<li><a href="../api/others/stanz.html">Características de los datos de instancia</a></li>
+<li><a href="../../en/index.html">English-index.html</a></li>
+<li><a href="../../cn/index.html">简体中文-index.html</a></li>
+<li><a href="../../t-cn/index.html">繁体中文-index.html</a></li>
+<li><a href="../../ja/index.html">index.html</a></li>
+<li><a href="../index.html">española-index.html</a></li>
+
+</ul></div>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/init.js" type="module"></script>
   </body>
 </html>

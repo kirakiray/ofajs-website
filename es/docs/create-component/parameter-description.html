@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Exploración de los parámetros de registro del componente</title>
-    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/dist/ofa.min.js"></script>
+    <title>Explicación detallada de los parámetros de registro del componente</title>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/public.css" />
     <style>
       html,
       body {
@@ -20,6 +20,9 @@
       let configUrl = "../../config.json";
     </script>
     
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/logo.png">
+        <link rel="apple-touch-icon-precomposed" href="/logo.png">
         <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
         <script>
           window.dataLayer = window.dataLayer || [];
@@ -34,9 +37,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -48,58 +51,41 @@
           .markdown-body::after {
             height: 32px;
           }
+          .markdown-body > * {
+            margin-top: 1em;
+            margin-bottom: 1em;
+          }
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/github-markdown.css"
         />
-        <article class="markdown-body"><h1>Exploración de los parámetros de registro del componente</h1>
-<p>En ofa.js, puedes definir algunos parámetros de registro específicos en el módulo de componente para configurar el componente de manera más flexible. A continuación, se explica detalladamente cada parámetro de registro con ejemplos correspondientes.</p>
-<h2>Parámetros básicos</h2>
-<p>Los parámetros básicos son la configuración más básica para registrar un componente e incluyen las siguientes propiedades:</p>
-<h3>Identificador del componente</h3>
-<p>El módulo del componente debe tener <code>export const type = $.COMP</code> para identificarlo como un módulo de componente.</p>
-<p>Ejemplo:</p>
-<pre><code class="language-javascript">// button-component.mjs
-export const type = $.COMP;
-</code></pre>
+        <article class="markdown-body"><h1>Explicación detallada de los parámetros de registro del componente</h1>
+<p>En ofa.js, puedes definir algunos parámetros de registro específicos en los módulos de componentes para configurar los componentes de manera más flexible. A continuación, se detalla cada parámetro de registro con ejemplos correspondientes.</p>
+<h2>Parámetros base</h2>
+<p>El parámetro base son las configuraciones básicas para registrar un componente, que incluyen las siguientes propiedades:</p>
 <h3>tag</h3>
-<p><code>tag</code> represents the registered component name. When the <code>tag</code> attribute is not defined, the registered component name remains the same as the file name.</p>
+<p><code>tag</code> representa el nombre del componente registrado. Cuando no se define el atributo <code>tag</code>, el nombre del componente registrado será igual al nombre del archivo.</p>
 <p>Ejemplo:</p>
-<pre><code class="language-javascript">// button-component.mjs
-export const type = $.COMP;
-export const tag = &quot;my-button&quot;; // Register the component name as &#39;my-button&#39;
-</code></pre>
-<h3>temp</h3>
-<p><code>temp</code> is a string type attribute used to define the address of the component template. When <code>temp</code> is not defined, the default is to load the HTML file with the same name as the component in the same directory as the current module.</p>
-<p>Ejemplo:</p>
-<pre><code class="language-javascript">// button-component.mjs
-export const type = $.COMP;
-export const temp = &quot;./my-button-template.html&quot;; // Specify the address of the component template as &#39;./my-button-template.html&#39;
+<pre><code class="language-javascript">export const tag = &quot;mi-boton&quot;; // Registrar el nombre del componente como &quot;mi-boton&quot;.
 </code></pre>
 <h3>data</h3>
-<p><code>data</code> is an object type attribute used to generate custom data that is automatically added after the component is created.</p>
+<p><code>data</code> es un atributo de tipo objeto que se utiliza para generar componentes y agregar datos personalizados de forma predeterminada.</p>
 <p>Ejemplo:</p>
-<pre><code class="language-javascript">// button-component.mjs
-export const type = $.COMP;
-export const data = {
+<pre><code class="language-javascript">export const data = {
   count: 0,
 };
 </code></pre>
 <h3>attrs</h3>
-<p><code>attrs</code> is an object type attribute, also part of <code>data</code>, but this data is reflected in the attributes of the element. Changes to the attributes will also dynamically change the <code>data</code> of the component. When there is a capitalized key, it will be converted to <code>-</code> camel case in the component attribute.</p>
+<p><code>attrs</code> es un atributo de tipo objeto que también pertenece a <code>data</code>, pero estos datos se reflejarán en los atributos del elemento. Los cambios en los atributos también se actualizarán dinámicamente en los datos del componente. Cuando hay claves en mayúsculas, se convierten en nombres de propiedades con guiones en lugar de camelCase.</p>
 <p>Ejemplo:</p>
-<pre><code class="language-javascript">// button-component.mjs
-export const type = $.COMP;
-export const attrs = {
+<pre><code class="language-javascript">export const attrs = {
   buttonText: &quot;Click Me&quot;,
 };
 </code></pre>
 <h3>proto</h3>
-<p>In the registration parameters of the component, you can add a <code>proto</code> object to define the methods that need to be added to the component prototype. In this way, when creating instances of the component, these attributes and methods will be added to the prototype of the instance, so that all instances can access and share these methods.</p>
-<pre><code class="language-javascript">// MyComponent.js
-export const type = $.COMP;
-
+<p>En los parámetros de registro del componente, puedes agregar un objeto <code>proto</code> para definir los métodos que se deben agregar al prototipo del componente. De esta manera, cuando se crea una instancia del componente, estos atributos y métodos se agregarán al prototipo de la instancia, lo que permitirá que todas las instancias accedan y compartan estos métodos.</p>
+<pre><code class="language-javascript">
 export const data = {
   count: 0,
 };
@@ -111,16 +97,14 @@ export const proto = {
 };
 </code></pre>
 <h3>watch</h3>
-<p><code>watch</code> es una propiedad de tipo objeto que se utiliza para escuchar cambios en <code>data</code>. La función de escucha se registra aquí. Una vez registrado con éxito, el valor de escucha se ejecutará inmediatamente una vez.</p>
+<p>El <code>watch</code> es un atributo de tipo objeto que se utiliza para escuchar los cambios en <code>data</code> y colocar la función de escucha aquí. Después de registrarse correctamente, el valor escuchado se ejecutará inmediatamente una vez.</p>
 <ul>
-<li>Las funciones registradas con <code>watch</code> solo se activarán una vez durante un cambio de hilo único. Por lo tanto, incluso si el valor de escucha se modifica varias veces en un hilo único, solo se activará una vez.</li>
+<li>La función registrada en <code>watch</code> solo se disparará una vez durante un cambio en el hilo. Por lo tanto, aunque se modifique el valor de escucha varias veces en un hilo, solo se activará una vez.</li>
 <li>El primer parámetro es el valor actual.</li>
-<li>El segundo parámetro es un objeto que contendrá un conjunto de datos llamado <code>watchers</code>. En la mayoría de los casos, solo habrá un objeto en <code>watchers</code>, donde se puede obtener el <code>oldValue</code> de este objeto. Si el valor de escucha ha sido modificado varias veces en un hilo único, este conjunto de datos registrará varios cambios.</li>
+<li>El segundo parámetro es un objeto que contiene el conjunto de datos <code>watchers</code>. Normalmente, en <code>watchers</code> solo habrá un objeto, desde el cual se puede obtener el <code>oldValue</code>. Cuando se cambia el valor de escucha varias veces en un solo hilo, este conjunto de datos registrará los cambios múltiples.</li>
 </ul>
 <p>Ejemplo:</p>
-<pre><code class="language-javascript">// button-component.mjs
-export const type = $.COMP;
-export const data = {
+<pre><code class="language-javascript">export const data = {
   count: 0,
 };
 export const watch = {
@@ -129,107 +113,122 @@ export const watch = {
     if (watchers) {
       oldValue = watchers[0].oldValue;
     }
-    console.log(`count ha cambiado de ${oldValue} a ${newValue}`);
+    console.log(`count changed from ${oldValue} to ${newValue}`);
   },
 };
 </code></pre>
-<h2>Ejemplo de código</h2>
-<p>A continuación se muestra un ejemplo de código completo, que incluye la definición de los parámetros básicos y la plantilla del componente.</p>
-<pre><code class="language-javascript">// button-component.mjs
-export const type = $.COMP;
-export const tag = &quot;my-button&quot;;
-export const temp = &quot;./my-button-template.html&quot;;
-
-export const attrs = {
-  buttonText: &quot;Haz clic&quot;,
+<h3>temp</h3>
+<p>La mayoría de las veces, no necesitas establecer esta variable. Se utiliza principalmente en el modo separado para especificar la dirección de la plantilla de componente. Cuando <code>temp</code> no está definido, por defecto se cargará el archivo HTML con el mismo nombre que el módulo actual, que debería estar en el mismo directorio.</p>
+<h2>Combinar variables por defecto</h2>
+<p>Puede escribir todas las variables de exportación en &quot;default&quot;, esto hace que sea más conveniente escribir;</p>
+<pre><code class="language-javascript">export default {
+  tag: &quot;my-button&quot;,
+  data: {
+    count: 0,
+  },
+  attrs: {
+    buttonText: &quot;Click Me&quot;,
+  },
+  watch: {
+    count(newValue, { watchers }) {
+      let oldValue;
+      if (watchers) {
+        oldValue = watchers[0].oldValue;
+      }
+      console.log(`count changed from ${oldValue} to ${newValue}`);
+    },
+  },
+  proto: {
+    sayHello() {
+      alert(&quot;Hello Count:&quot; + this.count);
+    },
+  },
 };
+</code></pre>
+<h2>Código de ejemplo</h2>
+<p>A continuación se muestra un código de ejemplo completo, que incluye la definición de parámetros básicos y plantillas de componentes.</p>
+<comp-viewer comp-name="my-button">
 
-export const data = {
-  count: 0,
-};
+<pre><code>&lt;my-button button-text=&quot;My Button&quot;&gt;&lt;/my-button&gt;
+&lt;!-- &lt;script&gt;
+  $(&quot;my-button&quot;).on(&quot;click&quot;, () =&gt; {
+    $(&quot;my-button&quot;).count++;
+  });
 
-export const watch = {
-  count(newValue, { watchers }) {
-    let oldValue;
-    if (watchers) {
-      oldValue = watchers[0].oldValue;
+  setTimeout(() =&gt; {
+    $(&quot;my-button&quot;).sayHello();
+  }, 1000);
+&lt;/script&gt; --&gt;
+</code></pre>
+<pre><code class="language-html">&lt;template componente&gt;
+  &lt;style&gt;
+    .shadow-button {
+      background-color: #6b47fb;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 10px;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
     }
-    console.log(`count ha cambiado de ${oldValue} a ${newValue}`);
-  },
-};
+  &lt;/style&gt;
 
-export const proto = {
-  sayHello() {
-    alert(&quot;Hola Contador:&quot; + this.count);
-  },
-};
-</code></pre>
-<pre><code class="language-html">&lt;!-- my-button-template.html --&gt;
-&lt;style&gt;
-  .shadow-button {
-    background-color: #6b47fb;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 10px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-  }
-&lt;/style&gt;
+  &lt;!-- Utilizando la sintaxis de renderizado de plantillas, renderice los datos del componente en texto --&gt;
+  &lt;button class=&quot;shadow-button&quot; on:click=&quot;count++&quot;&gt;{{buttonText}} - cuenta:{{count}}&lt;/button&gt;
 
-&lt;!-- Utilizando sintaxis de plantilla para renderear los datos del componente a texto --&gt;
-&lt;button class=&quot;shadow-button&quot;&gt;{{buttonText}} - cuenta:{{count}}&lt;/button&gt;
+  &lt;script&gt;
+    export default {
+      etiqueta: &quot;mi-botón&quot;,
+      datos: {
+        count: 0,
+      },
+      attrs: {
+        buttonText: &quot;Haz clic&quot;,
+      },
+      watch: {
+        count(nuevoValor, { watchers }) {
+          let viejoValor;
+          if (watchers) {
+            viejoValor = watchers[0].oldValue;
+          }
+          console.log(`la cuenta cambió de ${viejoValor} a ${nuevoValor}`);
+        },
+      },
+      proto: {
+        sayHello() {
+          // alert(&quot;Hola cuenta:&quot; + this.count);
+        },
+      },
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
 </code></pre>
-<pre><code class="language-html">&lt;!-- demo.html --&gt;
-&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-  &lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot; /&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
-    &lt;title&gt;my-button&lt;/title&gt;
-    &lt;script src=&quot;../ofa.js&quot;&gt;&lt;/script&gt;
-    &lt;l-m src=&quot;./button-component.mjs&quot;&gt;&lt;/l-m&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;my-button button-text=&quot;Mi Botón&quot;&gt;&lt;/my-button&gt;
-    &lt;script&gt;
-      $(&quot;my-button&quot;).on(&quot;click&quot;, () =&gt; {
-        $(&quot;my-button&quot;).count++;
-      });
+</comp-viewer>
 
-      setTimeout(() =&gt; {
-        $(&quot;my-button&quot;).sayHello();
-      }, 1000);
-    &lt;/script&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
 <h3>default</h3>
-<p>Puedes usar una función asíncrona para definir los datos &#39;default&#39; y así retornar de forma dinámica los parámetros de registro del componente.</p>
-<p>La función &#39;function&#39; traerá un objeto que contiene</p>
-<p>las propiedades &#39;load&#39;, &#39;url&#39; y &#39;query&#39;:</p>
+<p>Puedes usar funciones asíncronas para definir datos <code>default</code>, de modo que puedas retornar dinámicamente los parámetros de registro del componente.</p>
+<p>Función <code>function</code> traerá un objeto que incluye <code>load</code>, <code>url</code> y <code>query</code>:</p>
 <ul>
-<li>El método &#39;load&#39; es una función de carga asíncrona, se utiliza de manera similar a la carga asíncrona &#39;import&#39;, se puede cargar un módulo asíncrono mediante &#39;const data = await load(xxx)&#39;.</li>
-<li>Los módulos cargados a través de &#39;load&#39; tienen el mismo efecto que los cargados a través de &#39;load-module&#39;. El método &#39;load&#39; es una función del componente &#39;load-module&#39;, se puede consultar el método de uso específico en la documentación de <a href="https://github.com/kirakiray/drill.js">https://github.com/kirakiray/drill.js</a>.</li>
-<li>&#39;url&#39; es el nombre de archivo del módulo actual.</li>
-<li>&#39;query&#39; es un objeto que contiene los parámetros de URL al cargar este módulo.</li>
+<li>El método <code>load</code> es una función de carga asíncrona, se utiliza de la misma manera que la carga asincrónica de <code>import</code>, y se puede cargar un módulo asincrónico utilizando <code>const data = await load(xxx)</code>.</li>
+<li>Los módulos cargados a través de <code>load</code> tienen el mismo efecto que los cargados a través de <code>load-module</code>. El método <code>load</code> es una versión funcional del componente <code>load-module</code>, y se puede consultar la documentación en <a href="https://github.com/kirakiray/drill.js">https://github.com/kirakiray/drill.js</a> para obtener información específica sobre cómo usarlo.</li>
+<li><code>url</code> es el nombre de archivo del módulo actual.</li>
+<li><code>query</code> es un objeto resultante de convertir los parámetros de URL al cargar este módulo.</li>
 </ul>
-<p>A continuación se muestra un ejemplo de uso de &#39;default&#39;:</p>
+<p>A continuación se muestra un ejemplo del uso de &#39;default&#39;:</p>
 <pre><code class="language-javascript">// button-component.mjs
-export const type = $.COMP; // Esto debe definirse primero y no puede ser un parámetro dinámico
 export const tag = &quot;my-button&quot;;
 export const temp = &quot;./my-button-template.html&quot;;
 
 export default async function ({ load, url, query }) {
-  console.log(&quot;url:&quot;, url); // Imprime el nombre de archivo del módulo actual
-  console.log(&quot;query:&quot;, query); // Imprime el objeto convertido de los parámetros de URL del módulo actual
+  console.log(&quot;url:&quot;, url); // Muestra el nombre de archivo del módulo actual
+  console.log(&quot;query:&quot;, query); // Da salida al objeto convertido a partir del parámetro URL del módulo actual.
 
-  const asyncData = await load(&quot;./async-data.mjs&quot;); // Carga de forma asíncrona un módulo usando load
-  console.log(&quot;asyncData:&quot;, asyncData); // Imprime los datos del módulo cargado de forma asíncrona
+  const asyncData = await load(&quot;./async-data.mjs&quot;); // Carga asíncrona de módulos mediante load
+  console.log(&quot;asyncData:&quot;, asyncData); // Salida de datos de módulos cargados asíncronamente
 
   return {
     data: {
@@ -255,15 +254,14 @@ export default async function ({ load, url, query }) {
   };
 }
 </code></pre>
-<p>En este ejemplo, demostramos cómo utilizar los parámetros de registro de ofa.js para personalizar el comportamiento de los componentes. Al configurar correctamente estos parámetros, puedes adaptarte mejor a diferentes necesidades de los componentes y lograr un desarrollo de componentes más flexible.</p>
-<p>Escribe un documento de uso de proto para los parámetros de registro de componentes.</p>
+<p>En este ejemplo, mostramos cómo utilizar los parámetros de registro de ofa.js para personalizar el comportamiento del componente. Al configurar adecuadamente estos parámetros, puedes adaptarte mejor a las distintas necesidades de los componentes y lograr un desarrollo de componentes más flexible.</p>
 
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -272,6 +270,119 @@ export default async function ({ load, url, query }) {
       </template>
     </o-app>
     <div id="loading"></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/init.js" type="module"></script>
+    <div class="body-important other-link"><ul>
+<li><a href="../../cases/index.html">Empezar</a></li>
+<li><a href="../../cases/event.html">Reacción de eventos</a></li>
+<li><a href="../../cases/simple-component.html">Creación y uso de componentes</a></li>
+<li><a href="../../cases/slot.html">Ranuras de componentes</a></li>
+<li><a href="../../cases/render-text.html">Sintaxis de plantillas: renderizado de texto</a></li>
+<li><a href="../../cases/attribute-transmission.html">Transmisión de atributos</a></li>
+<li><a href="../../cases/get-set-comp.html">Obtener y modificar valores de instancia de componente</a></li>
+<li><a href="../../cases/property-transmission.html">Sintaxis de plantillas: transmisión de atributos</a></li>
+<li><a href="../../cases/bind-event.html">Sintaxis de plantillas: vincular eventos</a></li>
+<li><a href="../../cases/nested-component.html">Componentes anidados</a></li>
+<li><a href="../../cases/inject-host.html">Componentes de inyección de host</a></li>
+<li><a href="../../cases/event-passing.html">Transmisión de eventos</a></li>
+<li><a href="../../cases/sync.html">Sintaxis de plantillas: enlace de datos bidireccional</a></li>
+<li><a href="../../cases/condition.html">Componentes de plantilla: renderizado condicional</a></li>
+<li><a href="../../cases/fill.html">Componentes de plantilla: renderizado de relleno</a></li>
+<li><a href="../../cases/fill-temp.html">Renderizado de relleno recursivo</a></li>
+<li><a href="../../cases/life-cycle.html">Ciclo de vida</a></li>
+<li><a href="../../cases/form-data.html">Datos de formulario</a></li>
+<li><a href="../../cases/custom-form-element.html">Componente de formulario personalizado</a></li>
+<li><a href="../../cases/use-page.html">Uso de componentes de página</a></li>
+<li><a href="../../cases/use-app.html">Uso de componentes de aplicación</a></li>
+<li><a href="../../cases/app-config.html">Configuración de parámetros de aplicación</a></li>
+<li><a href="../../cases/app-loading.html">Personalización de carga de la aplicación</a></li>
+<li><a href="../../cases/set404.html">Configuración de la página 404</a></li>
+<li><a href="../../cases/nested-page.html">Páginas anidadas</a></li>
+<li><a href="../../cases/use-hash-router.html">Uso de HashRouter</a></li>
+<li><a href="../../cases/use-scsr.html">Uso de la solución scsr</a></li>
+<li><a href="../../cases/sync-state.html">Sincronización de estado</a></li>
+<li><a href="../../cases/alias.html">Alias</a></li>
+<li><a href="../introduce.html">Introducción</a></li>
+<li><a href="../get-started/index.html">Cómo usar ofa.js</a></li>
+<li><a href="../get-started/hello-world.html">Primer caso</a></li>
+<li><a href="../get-started/elements-and-events.html">Selección de elementos y eventos relacionados</a></li>
+<li><a href="../get-started/basic-concept.html">Concepto básico de instancia</a></li>
+<li><a href="../get-started/common-properties.html">Propiedades y métodos comunes</a></li>
+<li><a href="index.html">Creación y uso</a></li>
+<li><a href="parameter-description.html">Descripción de parámetros</a></li>
+<li><a href="life-cycle.html">Ciclo de vida</a></li>
+<li><a href="web-components.html">Conocimientos generales sobre componentes web</a></li>
+<li><a href="template-syntax.html">Sintaxis de plantillas</a></li>
+<li><a href="../create-app/index.html">Introducción</a></li>
+<li><a href="../create-app/page.html">Uso del componente Page</a></li>
+<li><a href="../create-app/app.html">Uso del componente App</a></li>
+<li><a href="../create-app/subrouting.html">Funcionalidad de subrutas</a></li>
+<li><a href="../create-app/o-router.html">Binding de rutas</a></li>
+<li><a href="../create-app/scsr.html">Esquema SCSR</a></li>
+<li><a href="../others/data-sharing.html">Compartir datos</a></li>
+<li><a href="../others/about-micro-frontend.html">ofa.js y micro frontend</a></li>
+<li><a href="../../api/index.html">Introducción a la API</a></li>
+<li><a href="../../api/instance/dollar.html">$ Método</a></li>
+<li><a href="../../api/instance/all.html">all</a></li>
+<li><a href="../../api/instance/prev.html">prev</a></li>
+<li><a href="../../api/instance/prevs.html">prevs</a></li>
+<li><a href="../../api/instance/next.html">next</a></li>
+<li><a href="../../api/instance/nexts.html">nexts</a></li>
+<li><a href="../../api/instance/siblings.html">siblings</a></li>
+<li><a href="../../api/instance/parent.html">parent</a></li>
+<li><a href="../../api/instance/parents.html">parents</a></li>
+<li><a href="../../api/instance/clone.html">clone</a></li>
+<li><a href="../../api/instance/ele.html">ele</a></li>
+<li><a href="../../api/instance/shadow.html">shadow</a></li>
+<li><a href="../../api/instance/root.html">root</a></li>
+<li><a href="../../api/instance/children.html">Elementos secundarios</a></li>
+<li><a href="../../api/instance/host.html">host</a></li>
+<li><a href="../../api/instance/app.html">app</a></li>
+<li><a href="../../api/operation/array-like.html">Agregar o eliminar nodos secundarios</a></li>
+<li><a href="../../api/operation/before.html">before</a></li>
+<li><a href="../../api/operation/after.html">after</a></li>
+<li><a href="../../api/operation/remove.html">remove</a></li>
+<li><a href="../../api/operation/wrap.html">wrap</a></li>
+<li><a href="../../api/operation/unwrap.html">unwrap</a></li>
+<li><a href="../../api/props/text.html">text</a></li>
+<li><a href="../../api/props/html.html">html</a></li>
+<li><a href="../../api/props/attr.html">attr</a></li>
+<li><a href="../../api/props/css.html">css</a></li>
+<li><a href="../../api/props/style.html">style</a></li>
+<li><a href="../../api/props/class-list.html">classList</a></li>
+<li><a href="../../api/props/data.html">data</a></li>
+<li><a href="../../api/event/on.html">on</a></li>
+<li><a href="../../api/event/one.html">one</a></li>
+<li><a href="../../api/event/emit.html">emit</a></li>
+<li><a href="../../api/event/off.html">off</a></li>
+<li><a href="../../api/temp-syntax/text-render.html">Renderizado de texto</a></li>
+<li><a href="../../api/temp-syntax/class.html">class</a></li>
+<li><a href="../../api/temp-syntax/sync.html">sync</a></li>
+<li><a href="../../api/temp-syntax/condition.html">Renderizado condicional</a></li>
+<li><a href="../../api/temp-syntax/fill.html">Renderizado de listas</a></li>
+<li><a href="../../api/life-cycle/created.html">created</a></li>
+<li><a href="../../api/life-cycle/ready.html">ready</a></li>
+<li><a href="../../api/life-cycle/watch.html">watch</a></li>
+<li><a href="../../api/life-cycle/loaded.html">loaded</a></li>
+<li><a href="../../api/life-cycle/attached.html">attached</a></li>
+<li><a href="../../api/life-cycle/detached.html">detached</a></li>
+<li><a href="../../api/life-cycle/router-change.html">routerChange</a></li>
+<li><a href="../../api/others/app.html">app</a></li>
+<li><a href="../../api/others/page.html">page</a></li>
+<li><a href="../../api/others/box.html">Modelo de caja</a></li>
+<li><a href="../../api/others/form-data.html">formData</a></li>
+<li><a href="../../api/others/tag.html">tag</a></li>
+<li><a href="../../api/others/index.html">índice</a></li>
+<li><a href="../../api/others/is.html">is</a></li>
+<li><a href="../../api/others/refresh.html">refresh</a></li>
+<li><a href="../../api/others/path.html">PATH</a></li>
+<li><a href="../../api/others/extend.html">extend</a></li>
+<li><a href="../../api/others/stanz.html">Características de los datos de instancia</a></li>
+<li><a href="../../../en/index.html">English-index.html</a></li>
+<li><a href="../../../cn/index.html">简体中文-index.html</a></li>
+<li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
+<li><a href="../../../ja/index.html">index.html</a></li>
+<li><a href="../../index.html">española-index.html</a></li>
+
+</ul></div>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/init.js" type="module"></script>
   </body>
 </html>

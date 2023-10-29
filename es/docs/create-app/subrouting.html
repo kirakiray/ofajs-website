@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Modo de subruta</title>
-    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/dist/ofa.min.js"></script>
+    <title>Patrones de subenrutamiento</title>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/public.css" />
     <style>
       html,
       body {
@@ -20,6 +20,9 @@
       let configUrl = "../../config.json";
     </script>
     
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/logo.png">
+        <link rel="apple-touch-icon-precomposed" href="/logo.png">
         <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
         <script>
           window.dataLayer = window.dataLayer || [];
@@ -34,9 +37,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -48,62 +51,66 @@
           .markdown-body::after {
             height: 32px;
           }
+          .markdown-body > * {
+            margin-top: 1em;
+            margin-bottom: 1em;
+          }
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/github-markdown.css"
         />
-        <article class="markdown-body"><h1>Modo de subruta</h1>
-<p>En ofa.js, configurar subrutas es ligeramente diferente a otras prácticas en marcos front-end. ofa.js utiliza un enfoque más intuitivo al establecer una página padre como contenedor en el módulo de la página para cumplir con los requisitos de las subrutas.</p>
-<h2>Configuración del contenedor de página padre</h2>
-<p>Para crear subrutas, primero se debe establecer el parámetro &#39;parent&#39; en el módulo de la página secundaria para especificar la dirección del contenedor de la página padre. De esta manera, cuando se carga la página secundaria, ofa.js automáticamente envuelve la página secundaria dentro del contenedor de la página padre.</p>
+        <article class="markdown-body"><h1>Patrones de subenrutamiento</h1>
+<p>En ofa.js, la configuración de subrutas es ligeramente diferente a la práctica de algunos frameworks frontend. ofa.js utiliza un enfoque más intuitivo al establecer la página padres como contenedores en los módulos de la página, para cumplir con los requisitos de las subrutas.</p>
+<h2>Establecer el contenedor de páginas padre</h2>
+<p>Para crear una subruta, primero debes establecer el parámetro <code>parent</code> en el módulo de la página secundaria, indicando la dirección del módulo de la página principal. De esta manera, cuando se cargue la página secundaria, el archivo ofa.js automáticamente envolverá la página secundaria en el contenedor de la página principal.</p>
 <pre><code class="language-html">&lt;template page&gt;
-  &lt;h1&gt;Página 1&lt;/h1&gt;
+  &lt;h1&gt;Page 1&lt;/h1&gt;
 
   &lt;script&gt;
     export const parent = &quot;./layout-page.html&quot;;
   &lt;/script&gt;
 &lt;/template&gt;
 </code></pre>
-<p>En el ejemplo anterior, el módulo de la página secundaria especifica la dirección del contenedor de la página padre utilizando el parámetro &#39;parent&#39;.</p>
-<h2>Configuración de la plantilla del contenedor de la página principal</h2>
-<p>La plantilla del contenedor de la página principal necesita tener un elemento <code>&lt;slot&gt;</code> para que las páginas secundarias puedan insertarse en la posición especificada de la página principal. Además, asegúrate de que el elemento contenedor del <code>&lt;slot&gt;</code> esté configurado como <code>position: relative</code>, esto es muy importante, ya que las páginas secundarias se posicionan absolutamente dentro del contenedor de la página principal.</p>
-<p>A continuación se muestra un ejemplo de plantilla del contenedor de la página principal:</p>
+<p>En el ejemplo anterior, el módulo de página de la subpágina especifica la dirección del contenedor de la página padre mediante el parámetro <code>parent</code>.</p>
+<h2>Configuración de la plantilla del contenedor de la página padre</h2>
+<p>La plantilla del contenedor de la página principal debe tener un elemento <code>&lt;slot&gt;</code> para que las páginas secundarias puedan insertarse en la posición especificada en la página principal. Además, asegúrate de que el elemento contenedor del elemento <code>&lt;slot&gt;</code> esté configurado como <code>position: relative</code>, esto es muy importante ya que las páginas secundarias se posicionan absolutamente dentro del contenedor de la página principal.</p>
+<p>A continuación se muestra un ejemplo de plantilla de contenedor de página padre.</p>
 <pre><code class="language-html">&lt;!-- layout-page.html --&gt;
 &lt;template page&gt;
   &lt;style&gt;
-    /* Configura el elemento contenedor como posición relativa */
+    /* Establece el contenedor como posicionamiento relativo */
     .parent-container {
       position: relative;
     }
   &lt;/style&gt;
   
-  &lt;!-- Configura el elemento contenedor para insertar las páginas secundarias --&gt;
+  &lt;!-- Establece el contenedor para insertar las subpáginas --&gt;
   &lt;div class=&quot;parent-container&quot;&gt;
     &lt;slot&gt;&lt;/slot&gt;
   &lt;/div&gt;
 &lt;/template&gt;
 </code></pre>
-<p>En el ejemplo anterior, al configurar un elemento contenedor con <code>slot</code>, las páginas secundarias se insertarán en ese contenedor. Asegúrate de que el elemento contenedor tenga una posición relativa para que las páginas secundarias se posicionen en relación a él.</p>
-<p>Utilizando este enfoque, puedes configurar de manera más visual las rutas secundarias y lograr la carga y el renderizado de las páginas secundarias mediante la asociación entre el contenedor de la página principal y las páginas secundarias.</p>
-<h2>Listener de rutas de la página principal</h2>
-<p>En algunas situaciones, varias páginas comparten la misma página principal como contenedor y cuando se realiza una navegación entre estas páginas, la página principal no se refresca. En este caso, la página principal aún puede escuchar los cambios de ruta para realizar acciones correspondientes sin refrescar la página.</p>
-<h3>Escuchar los cambios de ruta</h3>
-<p>El módulo de la página principal puede configurar una función <code>routerChange</code> para escuchar los cambios de ruta. Cuando se produce un cambio de ruta en la página sin actualizar la página principal, se activará el evento <code>routerChange</code>. Este evento pasará la información de la página actual y el tipo de cambio (<code>type</code>).</p>
-<p>A continuación se muestra un ejemplo de un módulo de página principal que demuestra cómo configurar la función <code>routerChange</code> para escuchar los cambios de ruta:</p>
-<pre><code class="language-javascript">// Módulo de página principal
+<p>En el ejemplo anterior, al establecer un elemento contenedor con una ranura, las subpáginas se insertarán en ese contenedor. Asegúrese de que el elemento contenedor tenga una posición relativa para que las subpáginas se puedan posicionar en función del contenedor.</p>
+<p>Mediante este método, puedes configurar las subrutas de forma más intuitiva, cargando y renderizando las páginas hijas a través de la asociación entre el contenedor de la página principal y las páginas hijas.</p>
+<h2>Ruta de escucha en páginas padre</h2>
+<p>En algunos casos, varias páginas comparten la misma página principal como contenedor, cuando estas páginas se cambian, la página principal no se actualiza. En esta situación, la página principal aún puede escuchar los cambios en la ruta para realizar las acciones correspondientes sin refrescar la página.</p>
+<h3>Listening for route changes</h3>
+<p>La función <code>routerChange</code> puede ser configurada en el módulo de la página padre para escuchar los cambios de la ruta. Cuando ocurre un cambio de ruta en la página sin refrescarla, se activa el evento <code>routerChange</code>. Este evento pasa la información de la página actual y el método de dirección (<code>type</code>).</p>
+<p>A continuación se muestra un ejemplo de un módulo de página principal que muestra cómo configurar la función <code>routerChange</code> para escuchar los cambios en la ruta:</p>
+<pre><code class="language-javascript">// El módulo de página de la página padre
 export const routerChange = (current, type) =&gt; {
-  console.log(`Cambio de ruta: página actual ${current.src}, tipo de cambio ${type}`);
+  console.log(`Cambiar ruta: la página actual es ${current.src}, el tipo de cambio es ${type}`);
 };
 </code></pre>
-<p>En el ejemplo anterior, la función <code>routerChange</code> recibe dos parámetros, <code>current</code> que representa la dirección actual de la página, y <code>type</code> que representa el tipo de redirección. Cuando se produce un cambio de ruta en la página, esta función se activa y muestra la información correspondiente.</p>
+<p>En el ejemplo anterior, la función <code>routerChange</code> recibe dos parámetros, <code>current</code> representa la dirección actual de la página y <code>type</code> representa el método de navegación. Cuando se produce un cambio de ruta en la página, esta función se activará y mostrará la información correspondiente.</p>
 
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -112,6 +119,119 @@ export const routerChange = (current, type) =&gt; {
       </template>
     </o-app>
     <div id="loading"></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/init.js" type="module"></script>
+    <div class="body-important other-link"><ul>
+<li><a href="../../cases/index.html">Empezar</a></li>
+<li><a href="../../cases/event.html">Reacción de eventos</a></li>
+<li><a href="../../cases/simple-component.html">Creación y uso de componentes</a></li>
+<li><a href="../../cases/slot.html">Ranuras de componentes</a></li>
+<li><a href="../../cases/render-text.html">Sintaxis de plantillas: renderizado de texto</a></li>
+<li><a href="../../cases/attribute-transmission.html">Transmisión de atributos</a></li>
+<li><a href="../../cases/get-set-comp.html">Obtener y modificar valores de instancia de componente</a></li>
+<li><a href="../../cases/property-transmission.html">Sintaxis de plantillas: transmisión de atributos</a></li>
+<li><a href="../../cases/bind-event.html">Sintaxis de plantillas: vincular eventos</a></li>
+<li><a href="../../cases/nested-component.html">Componentes anidados</a></li>
+<li><a href="../../cases/inject-host.html">Componentes de inyección de host</a></li>
+<li><a href="../../cases/event-passing.html">Transmisión de eventos</a></li>
+<li><a href="../../cases/sync.html">Sintaxis de plantillas: enlace de datos bidireccional</a></li>
+<li><a href="../../cases/condition.html">Componentes de plantilla: renderizado condicional</a></li>
+<li><a href="../../cases/fill.html">Componentes de plantilla: renderizado de relleno</a></li>
+<li><a href="../../cases/fill-temp.html">Renderizado de relleno recursivo</a></li>
+<li><a href="../../cases/life-cycle.html">Ciclo de vida</a></li>
+<li><a href="../../cases/form-data.html">Datos de formulario</a></li>
+<li><a href="../../cases/custom-form-element.html">Componente de formulario personalizado</a></li>
+<li><a href="../../cases/use-page.html">Uso de componentes de página</a></li>
+<li><a href="../../cases/use-app.html">Uso de componentes de aplicación</a></li>
+<li><a href="../../cases/app-config.html">Configuración de parámetros de aplicación</a></li>
+<li><a href="../../cases/app-loading.html">Personalización de carga de la aplicación</a></li>
+<li><a href="../../cases/set404.html">Configuración de la página 404</a></li>
+<li><a href="../../cases/nested-page.html">Páginas anidadas</a></li>
+<li><a href="../../cases/use-hash-router.html">Uso de HashRouter</a></li>
+<li><a href="../../cases/use-scsr.html">Uso de la solución scsr</a></li>
+<li><a href="../../cases/sync-state.html">Sincronización de estado</a></li>
+<li><a href="../../cases/alias.html">Alias</a></li>
+<li><a href="../introduce.html">Introducción</a></li>
+<li><a href="../get-started/index.html">Cómo usar ofa.js</a></li>
+<li><a href="../get-started/hello-world.html">Primer caso</a></li>
+<li><a href="../get-started/elements-and-events.html">Selección de elementos y eventos relacionados</a></li>
+<li><a href="../get-started/basic-concept.html">Concepto básico de instancia</a></li>
+<li><a href="../get-started/common-properties.html">Propiedades y métodos comunes</a></li>
+<li><a href="../create-component/index.html">Creación y uso</a></li>
+<li><a href="../create-component/parameter-description.html">Descripción de parámetros</a></li>
+<li><a href="../create-component/life-cycle.html">Ciclo de vida</a></li>
+<li><a href="../create-component/web-components.html">Conocimientos generales sobre componentes web</a></li>
+<li><a href="../create-component/template-syntax.html">Sintaxis de plantillas</a></li>
+<li><a href="index.html">Introducción</a></li>
+<li><a href="page.html">Uso del componente Page</a></li>
+<li><a href="app.html">Uso del componente App</a></li>
+<li><a href="subrouting.html">Funcionalidad de subrutas</a></li>
+<li><a href="o-router.html">Binding de rutas</a></li>
+<li><a href="scsr.html">Esquema SCSR</a></li>
+<li><a href="../others/data-sharing.html">Compartir datos</a></li>
+<li><a href="../others/about-micro-frontend.html">ofa.js y micro frontend</a></li>
+<li><a href="../../api/index.html">Introducción a la API</a></li>
+<li><a href="../../api/instance/dollar.html">$ Método</a></li>
+<li><a href="../../api/instance/all.html">all</a></li>
+<li><a href="../../api/instance/prev.html">prev</a></li>
+<li><a href="../../api/instance/prevs.html">prevs</a></li>
+<li><a href="../../api/instance/next.html">next</a></li>
+<li><a href="../../api/instance/nexts.html">nexts</a></li>
+<li><a href="../../api/instance/siblings.html">siblings</a></li>
+<li><a href="../../api/instance/parent.html">parent</a></li>
+<li><a href="../../api/instance/parents.html">parents</a></li>
+<li><a href="../../api/instance/clone.html">clone</a></li>
+<li><a href="../../api/instance/ele.html">ele</a></li>
+<li><a href="../../api/instance/shadow.html">shadow</a></li>
+<li><a href="../../api/instance/root.html">root</a></li>
+<li><a href="../../api/instance/children.html">Elementos secundarios</a></li>
+<li><a href="../../api/instance/host.html">host</a></li>
+<li><a href="../../api/instance/app.html">app</a></li>
+<li><a href="../../api/operation/array-like.html">Agregar o eliminar nodos secundarios</a></li>
+<li><a href="../../api/operation/before.html">before</a></li>
+<li><a href="../../api/operation/after.html">after</a></li>
+<li><a href="../../api/operation/remove.html">remove</a></li>
+<li><a href="../../api/operation/wrap.html">wrap</a></li>
+<li><a href="../../api/operation/unwrap.html">unwrap</a></li>
+<li><a href="../../api/props/text.html">text</a></li>
+<li><a href="../../api/props/html.html">html</a></li>
+<li><a href="../../api/props/attr.html">attr</a></li>
+<li><a href="../../api/props/css.html">css</a></li>
+<li><a href="../../api/props/style.html">style</a></li>
+<li><a href="../../api/props/class-list.html">classList</a></li>
+<li><a href="../../api/props/data.html">data</a></li>
+<li><a href="../../api/event/on.html">on</a></li>
+<li><a href="../../api/event/one.html">one</a></li>
+<li><a href="../../api/event/emit.html">emit</a></li>
+<li><a href="../../api/event/off.html">off</a></li>
+<li><a href="../../api/temp-syntax/text-render.html">Renderizado de texto</a></li>
+<li><a href="../../api/temp-syntax/class.html">class</a></li>
+<li><a href="../../api/temp-syntax/sync.html">sync</a></li>
+<li><a href="../../api/temp-syntax/condition.html">Renderizado condicional</a></li>
+<li><a href="../../api/temp-syntax/fill.html">Renderizado de listas</a></li>
+<li><a href="../../api/life-cycle/created.html">created</a></li>
+<li><a href="../../api/life-cycle/ready.html">ready</a></li>
+<li><a href="../../api/life-cycle/watch.html">watch</a></li>
+<li><a href="../../api/life-cycle/loaded.html">loaded</a></li>
+<li><a href="../../api/life-cycle/attached.html">attached</a></li>
+<li><a href="../../api/life-cycle/detached.html">detached</a></li>
+<li><a href="../../api/life-cycle/router-change.html">routerChange</a></li>
+<li><a href="../../api/others/app.html">app</a></li>
+<li><a href="../../api/others/page.html">page</a></li>
+<li><a href="../../api/others/box.html">Modelo de caja</a></li>
+<li><a href="../../api/others/form-data.html">formData</a></li>
+<li><a href="../../api/others/tag.html">tag</a></li>
+<li><a href="../../api/others/index.html">índice</a></li>
+<li><a href="../../api/others/is.html">is</a></li>
+<li><a href="../../api/others/refresh.html">refresh</a></li>
+<li><a href="../../api/others/path.html">PATH</a></li>
+<li><a href="../../api/others/extend.html">extend</a></li>
+<li><a href="../../api/others/stanz.html">Características de los datos de instancia</a></li>
+<li><a href="../../../en/index.html">English-index.html</a></li>
+<li><a href="../../../cn/index.html">简体中文-index.html</a></li>
+<li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
+<li><a href="../../../ja/index.html">index.html</a></li>
+<li><a href="../../index.html">española-index.html</a></li>
+
+</ul></div>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/init.js" type="module"></script>
   </body>
 </html>

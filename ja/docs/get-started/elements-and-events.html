@@ -80,11 +80,11 @@
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;script&gt;
-  // 选择父元素并查找子元素
+  // 親要素を選択し、子要素を見つける
   const parentElement = $(&quot;.parent&quot;);
   const childElement = parentElement.$(&quot;.child&quot;);
 
-  // 修改子元素的文本内容
+  // 子要素のテキスト内容を変更する
   childElement.text = &quot;Modified child element&quot;;
 &lt;/script&gt;
 </code></pre>
@@ -193,10 +193,10 @@
     alert(&quot;Button clicked!&quot;);
   };
 
-  // 绑定点击事件处理函数
+  // クリック・イベント・ハンドラをバインドする
   $(&quot;#btn&quot;).on(&quot;click&quot;, handleClick);
 
-  // 5秒后移除点击事件处理函数
+  // 5秒後にクリック・イベント・ハンドラを削除する
   setTimeout(() =&gt; {
     $(&quot;#btn&quot;).off(&quot;click&quot;, handleClick);
   }, 5000);
@@ -244,19 +244,19 @@
 <h4>サンプル</h4>
 <pre><code class="language-html">&lt;button id=&quot;btn&quot;&gt;Click Me&lt;/button&gt;
 &lt;script&gt;
-  // 绑定点击事件处理函数
+  // クリック・イベント・ハンドラをバインドする
   $(&quot;#btn&quot;).on(&quot;click&quot;, () =&gt; {
     alert(&quot;Button clicked!&quot;);
   });
 
-  // 通过 emit 方法触发按钮的点击事件
+  // emitメソッドでボタンをクリックするイベントをトリガーする。
   $(&quot;#btn&quot;).emit(&quot;click&quot;);
 &lt;/script&gt;
 </code></pre>
 <p>上記の例では、<code>emit</code>メソッドを使用してボタンのクリックイベントを手動でトリガーしています。実際にボタンをクリックしていなくても、ダイアログボックスに「ボタンがクリックされました！」と表示されます。</p>
 <p>注意：<code>emit</code>メソッドを使用してもマウスクリックや他の実際のイベントはシミュレートされません。ただ、すでにバインドされたイベントハンドラを直接呼び出すだけです。したがって、特定の場合にイベントを発生させたい場合は、<code>emit</code>メソッドを使用することができす。</p>
 <p>イベントがバインドされた後、イベントのさらなる伝播（バブリング）を防止したり、イベントのデフォルトの動作をキャンセルしたりすることがあるかもしれません。次に、イベントがトリガーされた後にバブリングを禁止し、デフォルトのイベントをキャンセルする法について説明します。</p>
-<h3>禁止事件冒泡</h3>
+<h3>イベントのバブリングを無効にする</h3>
 <p>事件冒泡は、要素上のイベントが発生した場合、DOMツリーを上方向にバブリングし、親要素の同じタイプのイベントを順番にトリガすることを指します。特定の要素でイベントを処理した後、バブリングを続行させないようにするには、<code>event.stopPropagation()</code> メソッドを使用します。</p>
 <p>サンプルコード：</p>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
@@ -280,7 +280,7 @@
 
     btn.on(&#39;click&#39;, (event) =&gt; {
       alert(&#39;Button Clicked!&#39;);
-      event.stopPropagation(); // 阻止事件冒泡
+      event.stopPropagation(); // イベントのバブリングをブロック
     });
 
     innerDiv.on(&#39;click&#39;, () =&gt; {
@@ -456,6 +456,7 @@
 <li><a href="../../../cn/index.html">简体中文-index.html</a></li>
 <li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
 <li><a href="../../index.html">index.html</a></li>
+<li><a href="../../../es/index.html">española-index.html</a></li>
 
 </ul></div>
     <script src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/init.js" type="module"></script>

@@ -173,9 +173,9 @@ export const pageAnime = {
 <p>以上の手順で、<code>o-app</code>コンポーネントを使用したアプリケーションウィンドウを作成することができました。<code>o-app</code>コンポーネントは、設定データに基づいてページをロードし、ローディング中のメッセージやロード失敗のメッセージを表示し、ページの切り替えアニメーションをサポートします。これにより、完全な機能を備え、インタラクティブなアプリケーションを素早く構築することができます。</p>
 <h2>ルートジャンプ</h2>
 <p><code>o-app</code> アプリでは、ページモジュールから別のページモジュールに簡単にルートを移動することができます。以下では、ルートの移動方法についていくつかの異なる方法を紹介します。</p>
-<h3><code>a</code> タグを使ったジャンプのルーティング</h3>
+<h3><code>&lt;a&gt;</code> タグを使ったジャンプのルーティング</h3>
 <p>ページのHTMLで、<code>&lt;a&gt;</code>タグを使用してルーティングのリンクを実現することができます。<code>href</code>属性を対象ページのモジュールのパスに設定し、<code>olink</code>属性を追加して、<code>o-app</code>コンポーネントにこれがルーティングリンクであることを通知する必要があります。</p>
-<pre><code class="language-html">&lt;a href=&quot;./pages/home.mjs?count=2&quot; olink&gt;跳转到首页&lt;/a&gt;
+<pre><code class="language-html">&lt;a href=&quot;./pages/home.mjs?count=2&quot; olink&gt;ホームページへジャンプ&lt;/a&gt;
 </code></pre>
 <h3>goto</h3>
 <p>ページのテンプレートで <code>on:click</code> 属性を使用してクリックイベントをバインドし、モジュール上の <code>goto</code> メソッドを呼び出してルーティングを実行できます。</p>
@@ -224,7 +224,7 @@ export default () =&gt; {
       const appTag = this.app;
 
       const currentPage = appTag.current;
-      console.log(`当前激活的页面是：${currentPage}`);
+      console.log(`現在アクティブなページは以下の通り：${currentPage}`);
     }
   };
 }
@@ -364,6 +364,7 @@ export default async ({ load }) =&gt; {
 <li><a href="../../../cn/index.html">简体中文-index.html</a></li>
 <li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
 <li><a href="../../index.html">index.html</a></li>
+<li><a href="../../../es/index.html">española-index.html</a></li>
 
 </ul></div>
     <script src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/init.js" type="module"></script>

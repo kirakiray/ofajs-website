@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Crear y utilizar componentes</title>
-    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/dist/ofa.min.js"></script>
+    <title>Creación y uso de componentes</title>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/public.css" />
     <style>
       html,
       body {
@@ -20,6 +20,9 @@
       let configUrl = "../../config.json";
     </script>
     
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/logo.png">
+        <link rel="apple-touch-icon-precomposed" href="/logo.png">
         <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
         <script>
           window.dataLayer = window.dataLayer || [];
@@ -34,9 +37,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -48,22 +51,26 @@
           .markdown-body::after {
             height: 32px;
           }
+          .markdown-body > * {
+            margin-top: 1em;
+            margin-bottom: 1em;
+          }
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/github-markdown.css"
         />
-        <article class="markdown-body"><h1>Crear y utilizar componentes</h1>
-<p>ofa.js utiliza archivos HTML y JavaScript básicos para definir componentes, evitando la introducción de nuevos tipos de archivos para reducir los costos de aprendizaje. Si tienes un conocimiento básico de HTML, podrás desarrollar y utilizar componentes de ofa.js rápidamente.</p>
+        <article class="markdown-body"><h1>Creación y uso de componentes</h1>
+<p>El ofa.js utiliza archivos básicos de HTML y JavaScript para definir componentes, evitando la introducción de nuevos tipos de archivos para reducir el costo de aprendizaje. Si tienes un conocimiento básico de HTML, podrás desarrollar y usar los componentes de ofa.js de manera rápida.</p>
 <h2>Pasos previos a la creación de un componente</h2>
-<p>Antes de empezar a crear un componente, hay algunos preparativos que debes tener en cuenta. Dado que la creación de componentes implica operaciones de solicitud de recursos del navegador, si simplemente abres un archivo HTML para verlo, se abrirá en el protocolo &quot;file&quot;. Bajo el protocolo &quot;file&quot;, la carga de módulos de JavaScript puede generar errores. Por lo tanto, debes preparar un servidor estático para ver correctamente los componentes.</p>
-<p>Si utilizas el editor Visual Studio Code, puedes instalar fácilmente un complemento compatible con servidores estáticos. Recomendamos utilizar el complemento <a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">Live Server</a>.</p>
-<p>Después de instalar el complemento, simplemente haz clic derecho en el archivo <code>demo.html</code> y selecciona &quot;Open with Live Server&quot;, el complemento abrirá automáticamente el archivo en modo de servidor estático.</p>
-<p>Si utilizas otro editor, también puedes crear un servidor Nginx o Apache que admita la visualización estática de archivos HTML. Esto te permitirá previsualizar y desarrollar tus componentes correctamente.</p>
+<p>Antes de comenzar a crear los componentes, debes tener en cuenta algunos preparativos. Dado que la creación de componentes implica la operación de solicitar recursos del navegador, si solo abres el archivo HTML haciendo doble clic para verlo, se verá bajo el protocolo &quot;file&quot;. Bajo el protocolo &quot;file&quot;, la carga de módulos de JavaScript puede generar errores. Por lo tanto, debes preparar un servidor estático para ver correctamente el componente.</p>
+<p>Si estás usando el editor Visual Studio Code, simplemente puedes instalar un complemento que admita un servidor estático. Recomendamos usar el complemento <a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">Live Server</a>.</p>
+<p>Después de instalar el complemento, simplemente haga clic derecho en el archivo <code>demo.html</code> y seleccione &quot;Abrir con Live Server&quot;. El complemento abrirá automáticamente el archivo en modo de servidor estático.</p>
+<p>Si estás utilizando otro editor, también puedes crear un servidor Nginx o Apache que sea capaz de mostrar HTML estático. De esta manera, podrás visualizar y desarrollar tus componentes de manera adecuada.</p>
 <h2>Crear un componente de botón</h2>
-<p>A continuación, crearemos un componente de botón simple llamado <strong>simple-button</strong> que tendrá un estilo más atractivo que un botón nativo.</p>
-<p>Primero, crea un archivo llamado <code>simple-button.html</code> que utilice la etiqueta <code>&lt;template&gt;</code> y añade el atributo <code>component</code> para identificarlo como un componente.</p>
-<p>A continuación, escribe el código del modelo del componente dentro del elemento <code>&lt;template&gt;</code>. Luego, debajo del contenido de la plantilla, agrega una etiqueta <code>&lt;script&gt;</code> donde incluirás el código JavaScript del componente.</p>
+<p>A continuación, vamos a crear un componente de botón simple llamado <strong>simple-button</strong>, que tendrá un estilo más atractivo que los botones nativos.</p>
+<p>Primero, crea un archivo llamado <code>simple-button.html</code>, utiliza la etiqueta <code>template</code> y agrega el atributo <code>component</code> para identificarlo como un componente.</p>
+<p>Luego, escriba el código de la plantilla del componente dentro de &#39;template&#39;. Luego, debajo del contenido de la plantilla, agregue una etiqueta &#39;script&#39; y coloque el código JavaScript del componente dentro de ella.</p>
 <pre><code class="language-html">&lt;!-- simple-button.html --&gt;
 &lt;template component&gt;
   &lt;style&gt;
@@ -95,31 +102,24 @@
   &lt;/button&gt;
 
   &lt;script&gt;
-    // No utilizar import
-    // import data from &#39;./other/module.mjs&#39;;
-
-    // Nombre del componente que se necesita registrar, si no se define el atributo tag, el nombre del componente registrado será igual al nombre del archivo
-    export const tag = &#39;simple-button&#39;;
-
-    export default async ({load}) =&gt; {
-      // Importar otro módulo
-      // const data = await load(&quot;./other/module.mjs&quot;);
+    export default {
+      tag: &#39;simple-button&#39; // El nombre del componente que se va a registrar. Si no se define el atributo tag, el nombre del componente registrado es el mismo que el nombre del archivo.
     }
   &lt;/script&gt;
 &lt;/template&gt;
 </code></pre>
-<p>Después de haber importado con éxito ofa.js, se registrará automáticamente el componente &#39;load-module&#39;, que es un componente utilizado para referenciar módulos de forma declarativa, similar a la etiqueta script. Este componente carga y procesa los módulos especificados en &#39;src&#39;. En este ejemplo, se carga una plantilla y se registra el componente &#39;simple-button&#39;.</p>
-<p>El componente &#39;load-module&#39; también puede abreviarse como &#39;l-m&#39; para reducir el código.</p>
+<p>Después de la exitosa introducción de ofa.js, se registrará automáticamente el componente <code>load-module</code>, que es un componente utilizado para la referencia declarativa de módulos, similar a una etiqueta de script. Este componente actuará como un proxy para cargar el módulo especificado en <code>src</code> y realizará el procesamiento previo necesario. En este caso, se cargará la plantilla y se registrará el componente simple-button.</p>
+<p><code>load-module</code> componente también se puede abreviar como <code>l-m</code> para reducir la cantidad de código.</p>
 <pre><code class="language-html">&lt;!-- demo.html --&gt;
 &lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
+&lt;html lang=&quot;es&quot;&gt;
   &lt;head&gt;
     &lt;meta charset=&quot;UTF-8&quot; /&gt;
     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
     &lt;title&gt;simple-button&lt;/title&gt;
     &lt;script src=&quot;../../ofa.js&quot;&gt;&lt;/script&gt;
     &lt;!-- &lt;load-module src=&quot;./simple-button.html&quot;&gt;&lt;/load-module&gt; --&gt;
-    &lt;!-- l-m es equivalente a load-module, pero con menos código --&gt;
+    &lt;!-- l-m componente es equivalente a load-module componente, puedes escribir menos código --&gt;
     &lt;l-m src=&quot;./simple-button.html&quot;&gt;&lt;/l-m&gt;
   &lt;/head&gt;
   &lt;body&gt;
@@ -127,13 +127,13 @@
   &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<p>El componente &#39;load-module&#39; es una biblioteca personalizada de carga declarativa que proporciona funciones poderosas para extender y realizar operaciones intermedias en módulos de JavaScript y otros tipos de archivos. Se ha separado como un proyecto independiente y se puede encontrar la documentación de su uso en <a href="https://github.com/kirakiray/drill.js">https://github.com/kirakiray/drill.js</a>.</p>
-<h3>Modo de dos archivos</h3>
-<p>El modo de dos archivos separa la &#39;plantilla estática&#39; y el &#39;código lógico&#39;, lo que hace que el componente sea más claro.</p>
-<p>El código lógico se coloca en un archivo JavaScript que debe incluir la declaración &#39;export const type = $.COMP;&#39; para notificar a la página que se trata de un módulo de componente. En este modo de separación, se pueden utilizar las sintaxis estándar de los módulos ES como &#39;import&#39; para el código del módulo.</p>
-<p>El componente de botón está compuesto por dos archivos:</p>
+<p>El componente <code>load-module</code> es una biblioteca de <strong>cargador declarativo</strong> personalizado que ofrece potentes funcionalidades para ampliar el soporte de varios tipos de archivos o para realizar una gestión intermedia de los módulos de JavaScript. Se ha separado en un proyecto independiente y la documentación detallada de su uso se encuentra en <a href="https://github.com/kirakiray/drill.js">https://github.com/kirakiray/drill.js</a>.</p>
+<h3>Modo de doble archivo</h3>
+<p>El modo de archivos dobles separa la &quot;plantilla estática&quot; y el &quot;código lógico&quot;, lo que hace que los componentes sean más claros.</p>
+<p>El código lógico se coloca en un archivo js, y este archivo js debe tener la declaración <code>export const type = $.COMP;</code> para notificar a la página que se trata de un módulo de componente. En este modo dividido, el código del módulo puede utilizar la sintaxis estándar de los Módulos ES, como <code>import</code>.</p>
+<p>El componente de botón consta de dos archivos:</p>
 <ol>
-<li><strong>simple-button.html</strong>: plantilla y estilo HTML del componente de botón.</li>
+<li><strong>simple-button.html</strong>: Plantilla y estilo HTML del componente de botón.</li>
 </ol>
 <pre><code class="language-html">&lt;!-- simple-button.html --&gt;
 &lt;style&gt;
@@ -165,18 +165,18 @@
 &lt;/button&gt;
 </code></pre>
 <ol start="2">
-<li><strong>simple-button.mjs</strong>: código de registro del componente de botón.</li>
+<li><strong>simple-button.mjs</strong>: Código de registro del componente de botón.</li>
 </ol>
 <pre><code class="language-javascript">// simple-button.mjs
-export const type = $.COMP;
+export const type = $.COMP; // Los módulos de doble archivo deben llevar `export const type = $.COMP`
 
-// Nombre del componente a registrar, cuando no se define la propiedad tag, el nombre del componente registrado será igual al nombre del archivo
+// El nombre del componente a registrar, cuando el atributo tag no está definido, el nombre del componente registrado es el mismo que el nombre del archivo.
 // export const tag = &#39;simple-button&#39;;
 
-// Ruta de la plantilla del componente, cuando no se define, se carga automáticamente el archivo html con el mismo nombre en el directorio actual del módulo
+// La dirección de la plantilla del componente, cuando no está definida, por defecto es el archivo html con el mismo nombre del componente en el mismo directorio que el módulo actual.
 // export const temp = &#39;./simple-button.html&#39;;
 </code></pre>
-<p>En el lugar donde se desea usar este componente, importar este módulo utilizando <code>l-m</code>. A continuación, se muestra un ejemplo de página que utiliza el componente simple-button (modo de dos archivos).</p>
+<p>En el lugar donde se requiere usar este componente, usa <code>l-m</code> para importar este módulo. A continuación se muestra una página de ejemplo que utiliza el botón simple (modo de dos archivos).</p>
 <pre><code class="language-html">&lt;!-- demo.html --&gt;
 &lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -188,7 +188,7 @@ export const type = $.COMP;
     &lt;l-m src=&quot;./simple-button.mjs&quot;&gt;&lt;/l-m&gt; 
   &lt;/head&gt;
   &lt;body&gt;
-    &lt;simple-button&gt;Soy un botón&lt;/simple-button&gt;
+    &lt;simple-button&gt;I am a button&lt;/simple-button&gt;
   &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
@@ -196,9 +196,9 @@ export const type = $.COMP;
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -207,6 +207,119 @@ export const type = $.COMP;
       </template>
     </o-app>
     <div id="loading"></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/init.js" type="module"></script>
+    <div class="body-important other-link"><ul>
+<li><a href="../../cases/index.html">Empezar</a></li>
+<li><a href="../../cases/event.html">Reacción de eventos</a></li>
+<li><a href="../../cases/simple-component.html">Creación y uso de componentes</a></li>
+<li><a href="../../cases/slot.html">Ranuras de componentes</a></li>
+<li><a href="../../cases/render-text.html">Sintaxis de plantillas: renderizado de texto</a></li>
+<li><a href="../../cases/attribute-transmission.html">Transmisión de atributos</a></li>
+<li><a href="../../cases/get-set-comp.html">Obtener y modificar valores de instancia de componente</a></li>
+<li><a href="../../cases/property-transmission.html">Sintaxis de plantillas: transmisión de atributos</a></li>
+<li><a href="../../cases/bind-event.html">Sintaxis de plantillas: vincular eventos</a></li>
+<li><a href="../../cases/nested-component.html">Componentes anidados</a></li>
+<li><a href="../../cases/inject-host.html">Componentes de inyección de host</a></li>
+<li><a href="../../cases/event-passing.html">Transmisión de eventos</a></li>
+<li><a href="../../cases/sync.html">Sintaxis de plantillas: enlace de datos bidireccional</a></li>
+<li><a href="../../cases/condition.html">Componentes de plantilla: renderizado condicional</a></li>
+<li><a href="../../cases/fill.html">Componentes de plantilla: renderizado de relleno</a></li>
+<li><a href="../../cases/fill-temp.html">Renderizado de relleno recursivo</a></li>
+<li><a href="../../cases/life-cycle.html">Ciclo de vida</a></li>
+<li><a href="../../cases/form-data.html">Datos de formulario</a></li>
+<li><a href="../../cases/custom-form-element.html">Componente de formulario personalizado</a></li>
+<li><a href="../../cases/use-page.html">Uso de componentes de página</a></li>
+<li><a href="../../cases/use-app.html">Uso de componentes de aplicación</a></li>
+<li><a href="../../cases/app-config.html">Configuración de parámetros de aplicación</a></li>
+<li><a href="../../cases/app-loading.html">Personalización de carga de la aplicación</a></li>
+<li><a href="../../cases/set404.html">Configuración de la página 404</a></li>
+<li><a href="../../cases/nested-page.html">Páginas anidadas</a></li>
+<li><a href="../../cases/use-hash-router.html">Uso de HashRouter</a></li>
+<li><a href="../../cases/use-scsr.html">Uso de la solución scsr</a></li>
+<li><a href="../../cases/sync-state.html">Sincronización de estado</a></li>
+<li><a href="../../cases/alias.html">Alias</a></li>
+<li><a href="../introduce.html">Introducción</a></li>
+<li><a href="../get-started/index.html">Cómo usar ofa.js</a></li>
+<li><a href="../get-started/hello-world.html">Primer caso</a></li>
+<li><a href="../get-started/elements-and-events.html">Selección de elementos y eventos relacionados</a></li>
+<li><a href="../get-started/basic-concept.html">Concepto básico de instancia</a></li>
+<li><a href="../get-started/common-properties.html">Propiedades y métodos comunes</a></li>
+<li><a href="index.html">Creación y uso</a></li>
+<li><a href="parameter-description.html">Descripción de parámetros</a></li>
+<li><a href="life-cycle.html">Ciclo de vida</a></li>
+<li><a href="web-components.html">Conocimientos generales sobre componentes web</a></li>
+<li><a href="template-syntax.html">Sintaxis de plantillas</a></li>
+<li><a href="../create-app/index.html">Introducción</a></li>
+<li><a href="../create-app/page.html">Uso del componente Page</a></li>
+<li><a href="../create-app/app.html">Uso del componente App</a></li>
+<li><a href="../create-app/subrouting.html">Funcionalidad de subrutas</a></li>
+<li><a href="../create-app/o-router.html">Binding de rutas</a></li>
+<li><a href="../create-app/scsr.html">Esquema SCSR</a></li>
+<li><a href="../others/data-sharing.html">Compartir datos</a></li>
+<li><a href="../others/about-micro-frontend.html">ofa.js y micro frontend</a></li>
+<li><a href="../../api/index.html">Introducción a la API</a></li>
+<li><a href="../../api/instance/dollar.html">$ Método</a></li>
+<li><a href="../../api/instance/all.html">all</a></li>
+<li><a href="../../api/instance/prev.html">prev</a></li>
+<li><a href="../../api/instance/prevs.html">prevs</a></li>
+<li><a href="../../api/instance/next.html">next</a></li>
+<li><a href="../../api/instance/nexts.html">nexts</a></li>
+<li><a href="../../api/instance/siblings.html">siblings</a></li>
+<li><a href="../../api/instance/parent.html">parent</a></li>
+<li><a href="../../api/instance/parents.html">parents</a></li>
+<li><a href="../../api/instance/clone.html">clone</a></li>
+<li><a href="../../api/instance/ele.html">ele</a></li>
+<li><a href="../../api/instance/shadow.html">shadow</a></li>
+<li><a href="../../api/instance/root.html">root</a></li>
+<li><a href="../../api/instance/children.html">Elementos secundarios</a></li>
+<li><a href="../../api/instance/host.html">host</a></li>
+<li><a href="../../api/instance/app.html">app</a></li>
+<li><a href="../../api/operation/array-like.html">Agregar o eliminar nodos secundarios</a></li>
+<li><a href="../../api/operation/before.html">before</a></li>
+<li><a href="../../api/operation/after.html">after</a></li>
+<li><a href="../../api/operation/remove.html">remove</a></li>
+<li><a href="../../api/operation/wrap.html">wrap</a></li>
+<li><a href="../../api/operation/unwrap.html">unwrap</a></li>
+<li><a href="../../api/props/text.html">text</a></li>
+<li><a href="../../api/props/html.html">html</a></li>
+<li><a href="../../api/props/attr.html">attr</a></li>
+<li><a href="../../api/props/css.html">css</a></li>
+<li><a href="../../api/props/style.html">style</a></li>
+<li><a href="../../api/props/class-list.html">classList</a></li>
+<li><a href="../../api/props/data.html">data</a></li>
+<li><a href="../../api/event/on.html">on</a></li>
+<li><a href="../../api/event/one.html">one</a></li>
+<li><a href="../../api/event/emit.html">emit</a></li>
+<li><a href="../../api/event/off.html">off</a></li>
+<li><a href="../../api/temp-syntax/text-render.html">Renderizado de texto</a></li>
+<li><a href="../../api/temp-syntax/class.html">class</a></li>
+<li><a href="../../api/temp-syntax/sync.html">sync</a></li>
+<li><a href="../../api/temp-syntax/condition.html">Renderizado condicional</a></li>
+<li><a href="../../api/temp-syntax/fill.html">Renderizado de listas</a></li>
+<li><a href="../../api/life-cycle/created.html">created</a></li>
+<li><a href="../../api/life-cycle/ready.html">ready</a></li>
+<li><a href="../../api/life-cycle/watch.html">watch</a></li>
+<li><a href="../../api/life-cycle/loaded.html">loaded</a></li>
+<li><a href="../../api/life-cycle/attached.html">attached</a></li>
+<li><a href="../../api/life-cycle/detached.html">detached</a></li>
+<li><a href="../../api/life-cycle/router-change.html">routerChange</a></li>
+<li><a href="../../api/others/app.html">app</a></li>
+<li><a href="../../api/others/page.html">page</a></li>
+<li><a href="../../api/others/box.html">Modelo de caja</a></li>
+<li><a href="../../api/others/form-data.html">formData</a></li>
+<li><a href="../../api/others/tag.html">tag</a></li>
+<li><a href="../../api/others/index.html">índice</a></li>
+<li><a href="../../api/others/is.html">is</a></li>
+<li><a href="../../api/others/refresh.html">refresh</a></li>
+<li><a href="../../api/others/path.html">PATH</a></li>
+<li><a href="../../api/others/extend.html">extend</a></li>
+<li><a href="../../api/others/stanz.html">Características de los datos de instancia</a></li>
+<li><a href="../../../en/index.html">English-index.html</a></li>
+<li><a href="../../../cn/index.html">简体中文-index.html</a></li>
+<li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
+<li><a href="../../../ja/index.html">index.html</a></li>
+<li><a href="../../index.html">española-index.html</a></li>
+
+</ul></div>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/init.js" type="module"></script>
   </body>
 </html>

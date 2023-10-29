@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>组件化常规知识</title>
+    <title>コンポーネント化ルーチン</title>
         <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
@@ -60,7 +60,7 @@
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/github-markdown.css"
         />
-        <article class="markdown-body"><h1>组件化常规知识</h1>
+        <article class="markdown-body"><h1>コンポーネント化ルーチン</h1>
 <p>ofa.js は Web Components テクノロジーをベースにしたラッパーライブラリであり、コンポーネント開発プロセスを簡素化し、加速することを目的としています。複雑な技術の詳細を隠蔽することで、開発者が高品質なコンポーネントとアプリケーションの構築に注力できるようになります。</p>
 <p>コンポーネントをより効果的に開発するために、Web Components の知識を学ぶ必要があります。以下に紹介されている知識は、ofa.js だけでなく、他の Web Components を使用するフレームワークでも同様に役立ちます。</p>
 <h2>Shadow DOM コンテナ</h2>
@@ -71,9 +71,9 @@ const shadowContainer = myComponent.shadow; // コンポーネントの Shadow D
 
 $(&quot;my-component&quot;).shadow.$(&quot;h1&quot;).css.color = &#39;red&#39; // Shadow DOM の h1 を赤色に変更します
 </code></pre>
-<h2>Web Components 中的常用 CSS 选择器</h2>
+<h2>Web Components における一般的なCSSセレクタ</h2>
 <p>Web Componentsは、コンポーネント内の異なる部分を選択してスタイルを適用するための特別なCSSセレクタを提供します。以下は一部の一般的なセレクタです。</p>
-<h3>:host 选择器</h3>
+<h3>:host セレクタ</h3>
 <p>:focusのセレクタは、コンポーネント自体の外部コンテナを選択するために使用されます。このセレクタを使用して、コンポーネントのスタイルを定義することができます。</p>
 <pre><code class="language-css">:host {
   display: block;
@@ -81,7 +81,7 @@ $(&quot;my-component&quot;).shadow.$(&quot;h1&quot;).css.color = &#39;red&#39; /
   padding: 10px;
 }
 </code></pre>
-<h3>::slotted() 选择器</h3>
+<h3>::slotted() ピッカー</h3>
 <p><code>::slotted()</code>セレクタは、スロットされた内容がラップされている要素を選択するために使用されます。このセレクタをコンポーネント内のスタイルで使用して、スロットされたコンテンツにスタイルを適用することができます。</p>
 <pre><code class="language-css">::slotted(p) {
   font-size: 18px;
@@ -260,6 +260,7 @@ $(&quot;my-component&quot;).shadow.$(&quot;h1&quot;).css.color = &#39;red&#39; /
 <li><a href="../../../cn/index.html">简体中文-index.html</a></li>
 <li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
 <li><a href="../../index.html">index.html</a></li>
+<li><a href="../../../es/index.html">española-index.html</a></li>
 
 </ul></div>
     <script src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/init.js" type="module"></script>

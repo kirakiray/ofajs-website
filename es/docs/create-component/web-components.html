@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Encapsulación y Componentización: Conocimientos generales de la componentización</title>
-    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/dist/ofa.min.js"></script>
+    <title>Conocimientos generales de Componentisation</title>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/public.css" />
     <style>
       html,
       body {
@@ -20,6 +20,9 @@
       let configUrl = "../../config.json";
     </script>
     
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/logo.png">
+        <link rel="apple-touch-icon-precomposed" href="/logo.png">
         <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
         <script>
           window.dataLayer = window.dataLayer || [];
@@ -34,9 +37,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -48,26 +51,30 @@
           .markdown-body::after {
             height: 32px;
           }
+          .markdown-body > * {
+            margin-top: 1em;
+            margin-bottom: 1em;
+          }
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/github-markdown.css"
         />
-        <article class="markdown-body"><h1>Encapsulación y Componentización: Conocimientos generales de la componentización</h1>
-<p>ofa.js es una biblioteca de encapsulamiento basada en la tecnología de Web Components, con el objetivo de simplificar y acelerar el proceso de desarrollo de componentes. Al ocultar los detalles técnicos complejos, los desarrolladores pueden centrarse más en la construcción de componentes y aplicaciones de alta calidad.</p>
-<p>Para desarrollar componentes de manera más efectiva, es necesario aprender algunos conceptos de Web Components. Los puntos mencionados a continuación no solo se pueden aplicar en ofa.js, sino que también podrían beneficiarte al utilizar otros frameworks que empleen Web Components.</p>
-<h2>Contenedor Shadow DOM</h2>
-<p>En Web Components, Shadow DOM proporciona un contenedor aislado para encapsular los estilos y la estructura interna de un componente. Esto significa que los estilos y la estructura DOM internos del componente no interferirán con los estilos y estructuras externas, lo que garantiza la previsibilidad y mantenibilidad del componente.</p>
-<p>En ofa.js, cada componente tiene un contenedor Shadow DOM para aislar su contenido interno. El contenido de la plantilla se renderiza en este contenedor. Además, las instancias de componentes obtenidas a través de <code>$</code> también tienen acceso al contenedor Shadow DOM interno a través de la propiedad <code>shadow</code>, lo que permite operar y acceder a los elementos internos del componente.</p>
-<pre><code class="language-javascript">const myComponent = $(&quot;my-component&quot;); // Obtener instancia del componente
+        <article class="markdown-body"><h1>Conocimientos generales de Componentisation</h1>
+<p>ofa.js es una biblioteca de encapsulamiento basada en la tecnología de Componentes Web, con el objetivo de simplificar y acelerar el proceso de desarrollo de componentes. Al ocultar los detalles técnicos complejos, permite a los desarrolladores centrarse en la construcción de componentes y aplicaciones de alta calidad.</p>
+<p>Para desarrollar componentes de manera más efectiva, es necesario aprender algunos conceptos de Web Components. Los puntos de conocimiento mencionados a continuación no solo se pueden aplicar en ofa.js, sino que también te beneficiarán si estás utilizando otros marcos que utilicen Web Components.</p>
+<h2>Contenedores DOM sombra</h2>
+<p>En Web Components, Shadow DOM proporciona un contenedor aislado para encapsular el estilo y la estructura interna del componente. Esto significa que el estilo y la estructura DOM internos del componente no interferirán con el estilo y la estructura externos, lo que garantiza la predictibilidad y mantenibilidad del componente.</p>
+<p>En ofa.js, cada componente tiene un contenedor Shadow DOM que sirve para aislar el contenido interno del componente. El contenido de la plantilla se renderiza dentro de este contenedor. Las instancias de componente obtenidas mediante <code>$</code> también pueden acceder al contenedor Shadow DOM interno utilizando la propiedad <code>shadow</code>, lo cual permite realizar operaciones y acceder a los elementos internos del componente.</p>
+<pre><code class="language-javascript">const myComponent = $(&quot;my-component&quot;); // Obtener instancias de componentes
 const shadowContainer = myComponent.shadow; // Obtener el contenedor Shadow DOM del componente
 
-$(&quot;my-component&quot;).shadow.$(&quot;h1&quot;).css.color = &#39;red&#39; // Cambiar el color de h1 en el Shadow DOM a rojo
+$(&quot;my-component&quot;).shadow.$(&quot;h1&quot;).css.color = &#39;red&#39; // Cambiar h1 de Shadow DOM a color rojo
 </code></pre>
-<h2>Selectores CSS comunes en componentes web</h2>
-<p>Web Components proporciona algunos selectores CSS especiales para seleccionar y dar estilo a diferentes partes del interior del componente. Estos son algunos de los selectores más utilizados:</p>
-<h3>:host recogedor</h3>
-<p>El selector <code>:host</code> se utiliza para seleccionar el contenedor externo del propio componente. El estilo del componente puede definirse a través de este selector.</p>
+<h2>Selectores de CSS comunes en Web Components</h2>
+<p>Web Components proporciona varios selectores CSS especiales para seleccionar y dar estilo a diferentes partes internas del componente. Aquí hay algunos selectores comunes:</p>
+<h3>:host selector</h3>
+<p><code>selector:host</code> se utiliza para seleccionar el contenedor externo del componente. Puede usar este selector para definir el estilo del componente.</p>
 <pre><code class="language-css">:host {
   display: block;
   border: 1px solid black;
@@ -75,54 +82,55 @@ $(&quot;my-component&quot;).shadow.$(&quot;h1&quot;).css.color = &#39;red&#39; /
 }
 </code></pre>
 <h3>Selector ::slotted()</h3>
-<p>El selector <code>::slotted()</code> se utiliza para seleccionar el elemento envuelto por el contenido ranurado. Se puede aplicar estilo al contenido con este selector en los estilos internos del componente.</p>
+<p><code>::slotted()</code> selector se utiliza para seleccionar elementos envueltos por el contenido del slot. Puede usar este selector en estilos internos del componente para aplicar estilos al contenido del slot.</p>
 <pre><code class="language-css">::slotted(p) {
   font-size: 18px;
   color: blue;
 }
 </code></pre>
-<h2>Uso de las ranuras</h2>
-<p>Las ranuras son el mecanismo utilizado en Web Components para incrustar contenido externo dentro de un componente. Las ranuras permiten a los desarrolladores pasar contenido personalizado dentro de los componentes, lo que posibilita una estructura de componentes más flexible.</p>
+<h2>Uso de ranuras (Slot)</h2>
+<p>Las ranuras son mecanismos utilizando en componentes web para incrustar contenido externo dentro de un componente. Las ranuras permiten a los desarrolladores pasar contenido personalizado al interior del componente, lo que permite una estructura de componente más flexible.</p>
 <h3>Ranura única</h3>
-<p>Las ranuras pueden definirse en plantillas de componentes utilizando el elemento <code>&lt;slot&gt;</code>. El contenido entrante externo se inserta dentro de la ranura.</p>
-<pre><code class="language-html">&lt;!-- MyComponent.html --&gt;
+<p>En la plantilla del componente, se puede usar el elemento <code>&lt;slot&gt;</code> para definir ranuras. El contenido proporcionado desde el exterior será insertado dentro de las ranuras.</p>
+<pre><code class="language-html">&lt;!-- my-component.html --&gt;
+...
 &lt;div&gt;
   &lt;h2&gt;&lt;slot&gt;&lt;/slot&gt;&lt;/h2&gt;
 &lt;/div&gt;
+...
 </code></pre>
-<pre><code class="language-html">&lt;!-- use MyComponent --&gt;
+<pre><code class="language-html">&lt;!-- use my-component --&gt;
 &lt;my-component&gt;
   &lt;p&gt;This is a slot content.&lt;/p&gt;
 &lt;/my-component&gt;
 </code></pre>
-<h3>Varias ranuras con nombre</h3>
-<p>Además de los espacios predeterminados, pueden definirse varios espacios con nombre. Las ranuras con nombre permiten a los desarrolladores insertar contenidos diferentes en las distintas ubicaciones de las ranuras.</p>
-<pre><code class="language-html">&lt;!-- MyComponent.html --&gt;
+<h3>Múltiples ranuras con nombre</h3>
+<p>Además de la ranura predeterminada, también se pueden definir varias ranuras con nombres. Las ranuras con nombres permiten a los desarrolladores insertar contenido diferente en diferentes posiciones de ranura.</p>
+<pre><code class="language-html">&lt;!-- my-component.html --&gt;
+...
 &lt;div&gt;
     &lt;header&gt;&lt;slot name=&quot;header&quot;&gt;&lt;/slot&gt;&lt;/header&gt;
     &lt;main&gt;&lt;slot&gt;&lt;/slot&gt;&lt;/main&gt;
     &lt;footer&gt;&lt;slot name=&quot;footer&quot;&gt;&lt;/slot&gt;&lt;/footer&gt;
 &lt;/div&gt;
+...
 </code></pre>
-<pre><code class="language-html">&lt;!-- Utilizando MyComponent --&gt;
+<pre><code class="language-html">&lt;!-- Uso de my-component --&gt;
 &lt;my-component&gt;
-  &lt;div slot=&quot;header&quot;&gt;Contenido de Encabezado&lt;/div&gt;
-  &lt;p&gt;Este es el contenido principal.&lt;/p&gt;
-  &lt;div slot=&quot;footer&quot;&gt;Contenido de Pie de página&lt;/div&gt;
+  &lt;div slot=&quot;header&quot;&gt;Header Content&lt;/div&gt;
+  &lt;p&gt;This is main content.&lt;/p&gt;
+  &lt;div slot=&quot;footer&quot;&gt;Footer Content&lt;/div&gt;
 &lt;/my-component&gt;
 </code></pre>
-<h2>Uso del evento slotchange</h2>
-<p>El evento <code>slotchange</code> se activa cuando el contenido del slot cambia. Puedes utilizar este evento para realizar operaciones relacionadas con el contenido del slot.</p>
-<pre><code class="language-javascript">// custom-component.mjs
-export const type = $.COMP;
-
-export default {
+<h2>El uso del evento slotchange</h2>
+<p>El evento <code>slotchange</code> se activa cuando cambia el contenido del slot. Puedes utilizar este evento para llevar a cabo algunas operaciones relacionadas con el contenido del slot.</p>
+<pre><code class="language-javascript">export default {
   data: {
     count: 0,
   },
   ready() {
     this.shadow.$(&quot;slot&quot;).on(&quot;slotchange&quot;, () =&gt; {
-      console.log(&quot;El contenido del slot ha cambiado&quot;);
+      console.log(&quot;Slot content has changed&quot;);
     });
   },
 };
@@ -131,9 +139,9 @@ export default {
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -142,6 +150,119 @@ export default {
       </template>
     </o-app>
     <div id="loading"></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/init.js" type="module"></script>
+    <div class="body-important other-link"><ul>
+<li><a href="../../cases/index.html">Empezar</a></li>
+<li><a href="../../cases/event.html">Reacción de eventos</a></li>
+<li><a href="../../cases/simple-component.html">Creación y uso de componentes</a></li>
+<li><a href="../../cases/slot.html">Ranuras de componentes</a></li>
+<li><a href="../../cases/render-text.html">Sintaxis de plantillas: renderizado de texto</a></li>
+<li><a href="../../cases/attribute-transmission.html">Transmisión de atributos</a></li>
+<li><a href="../../cases/get-set-comp.html">Obtener y modificar valores de instancia de componente</a></li>
+<li><a href="../../cases/property-transmission.html">Sintaxis de plantillas: transmisión de atributos</a></li>
+<li><a href="../../cases/bind-event.html">Sintaxis de plantillas: vincular eventos</a></li>
+<li><a href="../../cases/nested-component.html">Componentes anidados</a></li>
+<li><a href="../../cases/inject-host.html">Componentes de inyección de host</a></li>
+<li><a href="../../cases/event-passing.html">Transmisión de eventos</a></li>
+<li><a href="../../cases/sync.html">Sintaxis de plantillas: enlace de datos bidireccional</a></li>
+<li><a href="../../cases/condition.html">Componentes de plantilla: renderizado condicional</a></li>
+<li><a href="../../cases/fill.html">Componentes de plantilla: renderizado de relleno</a></li>
+<li><a href="../../cases/fill-temp.html">Renderizado de relleno recursivo</a></li>
+<li><a href="../../cases/life-cycle.html">Ciclo de vida</a></li>
+<li><a href="../../cases/form-data.html">Datos de formulario</a></li>
+<li><a href="../../cases/custom-form-element.html">Componente de formulario personalizado</a></li>
+<li><a href="../../cases/use-page.html">Uso de componentes de página</a></li>
+<li><a href="../../cases/use-app.html">Uso de componentes de aplicación</a></li>
+<li><a href="../../cases/app-config.html">Configuración de parámetros de aplicación</a></li>
+<li><a href="../../cases/app-loading.html">Personalización de carga de la aplicación</a></li>
+<li><a href="../../cases/set404.html">Configuración de la página 404</a></li>
+<li><a href="../../cases/nested-page.html">Páginas anidadas</a></li>
+<li><a href="../../cases/use-hash-router.html">Uso de HashRouter</a></li>
+<li><a href="../../cases/use-scsr.html">Uso de la solución scsr</a></li>
+<li><a href="../../cases/sync-state.html">Sincronización de estado</a></li>
+<li><a href="../../cases/alias.html">Alias</a></li>
+<li><a href="../introduce.html">Introducción</a></li>
+<li><a href="../get-started/index.html">Cómo usar ofa.js</a></li>
+<li><a href="../get-started/hello-world.html">Primer caso</a></li>
+<li><a href="../get-started/elements-and-events.html">Selección de elementos y eventos relacionados</a></li>
+<li><a href="../get-started/basic-concept.html">Concepto básico de instancia</a></li>
+<li><a href="../get-started/common-properties.html">Propiedades y métodos comunes</a></li>
+<li><a href="index.html">Creación y uso</a></li>
+<li><a href="parameter-description.html">Descripción de parámetros</a></li>
+<li><a href="life-cycle.html">Ciclo de vida</a></li>
+<li><a href="web-components.html">Conocimientos generales sobre componentes web</a></li>
+<li><a href="template-syntax.html">Sintaxis de plantillas</a></li>
+<li><a href="../create-app/index.html">Introducción</a></li>
+<li><a href="../create-app/page.html">Uso del componente Page</a></li>
+<li><a href="../create-app/app.html">Uso del componente App</a></li>
+<li><a href="../create-app/subrouting.html">Funcionalidad de subrutas</a></li>
+<li><a href="../create-app/o-router.html">Binding de rutas</a></li>
+<li><a href="../create-app/scsr.html">Esquema SCSR</a></li>
+<li><a href="../others/data-sharing.html">Compartir datos</a></li>
+<li><a href="../others/about-micro-frontend.html">ofa.js y micro frontend</a></li>
+<li><a href="../../api/index.html">Introducción a la API</a></li>
+<li><a href="../../api/instance/dollar.html">$ Método</a></li>
+<li><a href="../../api/instance/all.html">all</a></li>
+<li><a href="../../api/instance/prev.html">prev</a></li>
+<li><a href="../../api/instance/prevs.html">prevs</a></li>
+<li><a href="../../api/instance/next.html">next</a></li>
+<li><a href="../../api/instance/nexts.html">nexts</a></li>
+<li><a href="../../api/instance/siblings.html">siblings</a></li>
+<li><a href="../../api/instance/parent.html">parent</a></li>
+<li><a href="../../api/instance/parents.html">parents</a></li>
+<li><a href="../../api/instance/clone.html">clone</a></li>
+<li><a href="../../api/instance/ele.html">ele</a></li>
+<li><a href="../../api/instance/shadow.html">shadow</a></li>
+<li><a href="../../api/instance/root.html">root</a></li>
+<li><a href="../../api/instance/children.html">Elementos secundarios</a></li>
+<li><a href="../../api/instance/host.html">host</a></li>
+<li><a href="../../api/instance/app.html">app</a></li>
+<li><a href="../../api/operation/array-like.html">Agregar o eliminar nodos secundarios</a></li>
+<li><a href="../../api/operation/before.html">before</a></li>
+<li><a href="../../api/operation/after.html">after</a></li>
+<li><a href="../../api/operation/remove.html">remove</a></li>
+<li><a href="../../api/operation/wrap.html">wrap</a></li>
+<li><a href="../../api/operation/unwrap.html">unwrap</a></li>
+<li><a href="../../api/props/text.html">text</a></li>
+<li><a href="../../api/props/html.html">html</a></li>
+<li><a href="../../api/props/attr.html">attr</a></li>
+<li><a href="../../api/props/css.html">css</a></li>
+<li><a href="../../api/props/style.html">style</a></li>
+<li><a href="../../api/props/class-list.html">classList</a></li>
+<li><a href="../../api/props/data.html">data</a></li>
+<li><a href="../../api/event/on.html">on</a></li>
+<li><a href="../../api/event/one.html">one</a></li>
+<li><a href="../../api/event/emit.html">emit</a></li>
+<li><a href="../../api/event/off.html">off</a></li>
+<li><a href="../../api/temp-syntax/text-render.html">Renderizado de texto</a></li>
+<li><a href="../../api/temp-syntax/class.html">class</a></li>
+<li><a href="../../api/temp-syntax/sync.html">sync</a></li>
+<li><a href="../../api/temp-syntax/condition.html">Renderizado condicional</a></li>
+<li><a href="../../api/temp-syntax/fill.html">Renderizado de listas</a></li>
+<li><a href="../../api/life-cycle/created.html">created</a></li>
+<li><a href="../../api/life-cycle/ready.html">ready</a></li>
+<li><a href="../../api/life-cycle/watch.html">watch</a></li>
+<li><a href="../../api/life-cycle/loaded.html">loaded</a></li>
+<li><a href="../../api/life-cycle/attached.html">attached</a></li>
+<li><a href="../../api/life-cycle/detached.html">detached</a></li>
+<li><a href="../../api/life-cycle/router-change.html">routerChange</a></li>
+<li><a href="../../api/others/app.html">app</a></li>
+<li><a href="../../api/others/page.html">page</a></li>
+<li><a href="../../api/others/box.html">Modelo de caja</a></li>
+<li><a href="../../api/others/form-data.html">formData</a></li>
+<li><a href="../../api/others/tag.html">tag</a></li>
+<li><a href="../../api/others/index.html">índice</a></li>
+<li><a href="../../api/others/is.html">is</a></li>
+<li><a href="../../api/others/refresh.html">refresh</a></li>
+<li><a href="../../api/others/path.html">PATH</a></li>
+<li><a href="../../api/others/extend.html">extend</a></li>
+<li><a href="../../api/others/stanz.html">Características de los datos de instancia</a></li>
+<li><a href="../../../en/index.html">English-index.html</a></li>
+<li><a href="../../../cn/index.html">简体中文-index.html</a></li>
+<li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
+<li><a href="../../../ja/index.html">index.html</a></li>
+<li><a href="../../index.html">española-index.html</a></li>
+
+</ul></div>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/init.js" type="module"></script>
   </body>
 </html>

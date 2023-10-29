@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ofa.js - Framework JavaScript sin empaquetar</title>
+    <meta name="description" content="ofa.js es un nuevo marco para construir interfaces de usuario que se puede usar fácilmente sin un proceso de construcción complicado. Abandona las dependencias de npm, Node.js y webpack, y vuelve a la conveniencia de la era de jQuery.">
+    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
+      type="module"
+    ></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/public.css" />
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+    </style>
+    <script>
+      let configUrl = "config.json";
+    </script>
+    
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/logo.png">
+        <link rel="apple-touch-icon-precomposed" href="/logo.png">
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag("js", new Date());
+
+          gtag("config", "G-7L1TCCJZT6");
+        </script>
+        <script src="/init-sw.js"></script>
+      
+  </head>
+  <body>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/app-config.mjs">
+      <template page>
+        <style>
+          .markdown-body::before,
+          .markdown-body::after {
+            display: block;
+            content: "";
+            height: 1px;
+          }
+          .markdown-body::after {
+            height: 32px;
+          }
+
+          p {
+            margin: 0;
+            padding: 0;
+          }
+        </style>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/github-markdown.css"
+        />
+        <!-- desc: ofa.js es un nuevo marco para construir interfaces de usuario que se puede usar fácilmente sin un proceso de construcción complicado. Abandona las dependencias de npm, Node.js y webpack, y vuelve a la conveniencia de la era de jQuery. -->
+
+<simp-block>
+
+<punch-logo>
+    <img src="../publics/logo.svg" width="100" logo alt="ofa.js" />
+    <h2>ofa.js</h2>
+    <img src="../publics/npm-logo.png" slot="fly" height="40" alt="npm" />
+    <img src="../publics/nodejs-logo.png" slot="fly" height="40" alt="nodejs" />
+    <img src="../publics/webpack-logo.png" slot="fly" height="40" alt="webpack" />
+</punch-logo>
+
+<h2>Framework JavaScript sin empaquetar</h2>
+<h3>Sin curva de aprendizaje, sin npm, sin nodejs, sin webpack, ¡simplemente empieza!</h3>
+<p><a href="./cases/index.html">Tutoriales de casos</a></p>
+<pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+</simp-block>
+
+<simp-block>
+
+<h2>Basado en Web Components</h2>
+<h3>ofa.js está desarrollado en base a Web Components. Estas son las plataformas soportadas y los tiempos que puede experimentar de inmediato</h3>
+<p><support-platforms></support-platforms></p>
+<p><a href="../publics/download/ofajs-start.zip" target="_blank">Descargar proyecto de inicio</a>
+<a href="../publics/download/ofajs-start/index.html" target="_blank">Ver proyecto de inicio en línea</a></p>
+</simp-block>
+
+<simp-block>
+
+<h2>Muy baja barrera de uso</h2>
+<p>A diferencia de otros marcos frontales, el desarrollo de componentes basados en ofa.js no requiere la lectura de extensas guías de inicio. Crea inmediatamente un archivo HTML y experimenta con un componente de &quot;golpe de logotipo&quot;.</p>
+<html-viewer style="width:100%;">
+
+<pre><code>&lt;!-- Introducir ofa.js en el proyecto --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+&lt;!-- Cargar el componente punch-logo desarrollado --&gt;
+&lt;l-m src=&quot;https://kirakiray.github.io/ofa-v4-docs/docs/publics/comps/punch-logo.html&quot;&gt;&lt;/l-m&gt;
+</code></pre>
+<pre><code class="language-html">&lt;!-- Utilización del componente &quot;punch-logo”.  --&gt;
+&lt;punch-logo style=&quot;margin:50px 0 0 100px;&quot;&gt;
+    &lt;img src=&quot;https://kirakiray.github.io/ofa-v4-docs/docs/publics/logo.svg&quot; logo height=&quot;90&quot; /&gt;
+    &lt;h2&gt;No más horas extra&lt;/h2&gt;
+    &lt;p slot=&quot;fly&quot;&gt;Sal del trabajo por mí&lt;/p&gt;
+    &lt;p slot=&quot;fly&quot;&gt;Salir tarde del trabajo&lt;/p&gt;
+    &lt;p slot=&quot;fly&quot;&gt;Horas extra los fines de semana&lt;/p&gt;
+&lt;/punch-logo&gt;
+</code></pre>
+</html-viewer>
+
+</simp-block>
+
+<simp-block>
+
+<h2>Un paso para encapsular el componente, liberarse de los tediosos procesos</h2>
+<p>Los componentes web antiguos implicaban aprender conocimientos complicados, pero ahora solo se necesita un archivo.</p>
+<comp-viewer comp-name="my-switch" max-height="500" style="width:100%;">
+
+<pre><code class="language-html">&lt;template component&gt;
+  &lt;style&gt;
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+      background-color: #ccc;
+      transition: background-color 0.4s;
+      border-radius: 34px;
+      cursor: pointer;
+    }
+
+    .slider {
+      position: absolute;
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: transform 0.4s;
+      border-radius: 50%;
+    }
+
+    .switch.checked {
+      background-color: #2196f3;
+    }
+
+    .switch.checked .slider {
+      transform: translateX(26px);
+    }
+  &lt;/style&gt;
+  &lt;div class=&quot;switch&quot; class:checked=&quot;checked&quot; on:click=&quot;checked = !checked&quot;&gt;
+    &lt;span class=&quot;slider&quot;&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;script&gt;
+    export default {
+      tag: &quot;my-switch&quot;,
+      data: {
+        checked: true,
+      },
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</comp-viewer>
+
+</simp-block>
+
+
+<simp-block>
+
+<h2>Proporciona una variedad de convenientes sintaxis de plantillas</h2>
+<case-switch>
+
+<comp-viewer switch-name="Render Text" comp-name="text-demo" max-height="500" style="width:100%;">
+
+<pre><code class="language-html">&lt;template component&gt;
+  &lt;div&gt;Renderizando texto: {{txt}}&lt;/div&gt;
+  &lt;script&gt;
+    export default {
+      tag: &quot;text-demo&quot;,
+      data: {
+        txt:&quot;Soy txt&quot;
+      },
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</comp-viewer>
+
+<comp-viewer switch-name="Set Properties" comp-name="prop-demo" max-height="500" style="width:100%;">
+
+<pre><code class="language-html">&lt;template component&gt;
+  &lt;div :text=&quot;txt1&quot;&gt;&lt;/div&gt;
+  &lt;div :html=&quot;txt2&quot;&gt;&lt;/div&gt;
+  &lt;script&gt;
+    export default {
+      tag: &quot;prop-demo&quot;,
+      data: {
+        txt1: &quot;&lt;b&gt;I am txt1&lt;/b&gt;&quot;,
+        txt2: &quot;&lt;b&gt;I am txt2&lt;/b&gt;&quot;,
+      },
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</comp-viewer>
+
+
+<comp-viewer switch-name="Sync Data" comp-name="sync-demo" max-height="500" style="width:100%;">
+
+<pre><code class="language-html">&lt;template component&gt;
+  &lt;div&gt;{{txt}}&lt;/div&gt;
+  &lt;input type=&quot;text&quot; sync:value=&quot;txt&quot; /&gt;
+  &lt;script&gt;
+    export default {
+      tag: &quot;sync-demo&quot;,
+      data: {
+        txt:&quot;I am txt&quot;,
+      },
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</comp-viewer>
+
+<comp-viewer switch-name="Bind Event" comp-name="event-demo" max-height="500" style="width:100%;">
+
+<pre><code class="language-html">&lt;template component&gt;
+  &lt;div&gt;count: {{count}}&lt;/div&gt;
+  &lt;button on:click=&quot;count++&quot;&gt;count++&lt;/button&gt;
+  &lt;script&gt;
+    export default {
+      tag: &quot;event-demo&quot;,
+      data: {
+        count: 0
+      },
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</comp-viewer>
+
+<comp-viewer switch-name="Use If" comp-name="if-demo" max-height="500" style="width:100%;">
+
+<pre><code class="language-html">&lt;template component&gt;
+  &lt;x-if :value=&quot;count % 2&quot;&gt;
+    &lt;div style=&quot;color:red&quot;&gt;{{count}}&lt;/div&gt;
+  &lt;/x-if&gt;
+  &lt;x-else&gt;
+    &lt;div style=&quot;color:blue&quot;&gt;{{count}}&lt;/div&gt;
+  &lt;/x-else&gt;
+  &lt;button on:click=&quot;count++&quot;&gt;count++&lt;/button&gt;
+  &lt;script&gt;
+    export default {
+      tag: &quot;if-demo&quot;,
+      data: {
+        count: 0
+      },
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</comp-viewer>
+
+
+<comp-viewer switch-name="Use Fill" comp-name="fill-demo" max-height="500" style="width:100%;">
+
+<pre><code class="language-html">&lt;template component&gt;
+  &lt;ul&gt;
+  &lt;x-fill :value=&quot;lists&quot;&gt;
+    &lt;li&gt;{{$index}} - {{$data.name}}&lt;/li&gt;
+  &lt;/x-fill&gt;
+  &lt;/ul&gt;
+  &lt;script&gt;
+    export default {
+      tag: &quot;fill-demo&quot;,
+      data: {
+        lists:[{name:&quot;One&quot;}, {name:&quot;Two&quot;}, {name:&quot;Three&quot;}]
+      },
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</comp-viewer>
+
+</case-switch>
+
+</simp-block>
+
+<simp-block>
+
+<h2>Alternativas a jQuery</h2>
+<h3>Tener una API similar a jQuery para que sientas la misma conveniencia.</h3>
+<split-code>
+
+<pre><code class="language-javascript">// Código de jQuery
+$(&quot;#target&quot;).html(&quot;algo de código html&quot;); // Establecer html
+$(&quot;#target&quot;).text(&quot;establecer texto&quot;); // Establecer texto
+var ele_text = $(&quot;#target&quot;).text(); // Obtener texto
+var parents = $(&quot;#target&quot;).parents(); // Obtener todos los padres en un arreglo
+var child = $(&quot;#target&quot;).children()[0]; // Obtener el primer elemento hijo
+</code></pre>
+<pre><code class="language-javascript">// ofa.js Code
+$(&quot;#target&quot;).html = &quot;some html code&quot;;  // Set html
+$(&quot;#target&quot;).text = &quot;set text&quot;; // Set text
+var ele_text = $(&quot;#target&quot;).text; // Get text
+var parents = $(&quot;#target&quot;).parents; // Get array of all parent layers
+var child = $(&quot;#target&quot;)[0]; // Get the first child element
+</code></pre>
+</split-code>
+
+</simp-block>
+
+<simp-block>
+
+<h2>Casos de uso</h2>
+<p><a href="https://obook.ofajs.com/">Sistema de creación de documentos en línea más simple, obook.</a></p>
+</simp-block>
+
+<p><l-m src="https://cdn.jsdelivr.net/npm/obook/blocks/simp-block.html"></l-m>
+<l-m src="../publics/comps/punch-logo.html"></l-m>
+<l-m src="../publics/comps/support-platforms.html"></l-m>
+<l-m src="../publics/comps/case-switch.html"></l-m>
+<l-m src="../publics/comps/split-code.html"></l-m></p>
+
+        <script>
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/layouts/header-layout.html";
+
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/page-init.mjs";
+
+          export default async (...args) => {
+            return await pageInit(PATH, args);
+          };
+        </script>
+      </template>
+    </o-app>
+    <div class="body-important other-link"><ul>
+<li><a href="cases/index.html">Empezar</a></li>
+<li><a href="cases/event.html">Reacción de eventos</a></li>
+<li><a href="cases/simple-component.html">Creación y uso de componentes</a></li>
+<li><a href="cases/slot.html">Ranuras de componentes</a></li>
+<li><a href="cases/render-text.html">Sintaxis de plantillas: renderizado de texto</a></li>
+<li><a href="cases/attribute-transmission.html">Transmisión de atributos</a></li>
+<li><a href="cases/get-set-comp.html">Obtener y modificar valores de instancia de componente</a></li>
+<li><a href="cases/property-transmission.html">Sintaxis de plantillas: transmisión de atributos</a></li>
+<li><a href="cases/bind-event.html">Sintaxis de plantillas: vincular eventos</a></li>
+<li><a href="cases/nested-component.html">Componentes anidados</a></li>
+<li><a href="cases/inject-host.html">Componentes de inyección de host</a></li>
+<li><a href="cases/event-passing.html">Transmisión de eventos</a></li>
+<li><a href="cases/sync.html">Sintaxis de plantillas: enlace de datos bidireccional</a></li>
+<li><a href="cases/condition.html">Componentes de plantilla: renderizado condicional</a></li>
+<li><a href="cases/fill.html">Componentes de plantilla: renderizado de relleno</a></li>
+<li><a href="cases/fill-temp.html">Renderizado de relleno recursivo</a></li>
+<li><a href="cases/life-cycle.html">Ciclo de vida</a></li>
+<li><a href="cases/form-data.html">Datos de formulario</a></li>
+<li><a href="cases/custom-form-element.html">Componente de formulario personalizado</a></li>
+<li><a href="cases/use-page.html">Uso de componentes de página</a></li>
+<li><a href="cases/use-app.html">Uso de componentes de aplicación</a></li>
+<li><a href="cases/app-config.html">Configuración de parámetros de aplicación</a></li>
+<li><a href="cases/app-loading.html">Personalización de carga de la aplicación</a></li>
+<li><a href="cases/set404.html">Configuración de la página 404</a></li>
+<li><a href="cases/nested-page.html">Páginas anidadas</a></li>
+<li><a href="cases/use-hash-router.html">Uso de HashRouter</a></li>
+<li><a href="cases/use-scsr.html">Uso de la solución scsr</a></li>
+<li><a href="cases/sync-state.html">Sincronización de estado</a></li>
+<li><a href="cases/alias.html">Alias</a></li>
+<li><a href="docs/introduce.html">Introducción</a></li>
+<li><a href="docs/get-started/index.html">Cómo usar ofa.js</a></li>
+<li><a href="docs/get-started/hello-world.html">Primer caso</a></li>
+<li><a href="docs/get-started/elements-and-events.html">Selección de elementos y eventos relacionados</a></li>
+<li><a href="docs/get-started/basic-concept.html">Concepto básico de instancia</a></li>
+<li><a href="docs/get-started/common-properties.html">Propiedades y métodos comunes</a></li>
+<li><a href="docs/create-component/index.html">Creación y uso</a></li>
+<li><a href="docs/create-component/parameter-description.html">Descripción de parámetros</a></li>
+<li><a href="docs/create-component/life-cycle.html">Ciclo de vida</a></li>
+<li><a href="docs/create-component/web-components.html">Conocimientos generales sobre componentes web</a></li>
+<li><a href="docs/create-component/template-syntax.html">Sintaxis de plantillas</a></li>
+<li><a href="docs/create-app/index.html">Introducción</a></li>
+<li><a href="docs/create-app/page.html">Uso del componente Page</a></li>
+<li><a href="docs/create-app/app.html">Uso del componente App</a></li>
+<li><a href="docs/create-app/subrouting.html">Funcionalidad de subrutas</a></li>
+<li><a href="docs/create-app/o-router.html">Binding de rutas</a></li>
+<li><a href="docs/create-app/scsr.html">Esquema SCSR</a></li>
+<li><a href="docs/others/data-sharing.html">Compartir datos</a></li>
+<li><a href="docs/others/about-micro-frontend.html">ofa.js y micro frontend</a></li>
+<li><a href="api/index.html">Introducción a la API</a></li>
+<li><a href="api/instance/dollar.html">$ Método</a></li>
+<li><a href="api/instance/all.html">all</a></li>
+<li><a href="api/instance/prev.html">prev</a></li>
+<li><a href="api/instance/prevs.html">prevs</a></li>
+<li><a href="api/instance/next.html">next</a></li>
+<li><a href="api/instance/nexts.html">nexts</a></li>
+<li><a href="api/instance/siblings.html">siblings</a></li>
+<li><a href="api/instance/parent.html">parent</a></li>
+<li><a href="api/instance/parents.html">parents</a></li>
+<li><a href="api/instance/clone.html">clone</a></li>
+<li><a href="api/instance/ele.html">ele</a></li>
+<li><a href="api/instance/shadow.html">shadow</a></li>
+<li><a href="api/instance/root.html">root</a></li>
+<li><a href="api/instance/children.html">Elementos secundarios</a></li>
+<li><a href="api/instance/host.html">host</a></li>
+<li><a href="api/instance/app.html">app</a></li>
+<li><a href="api/operation/array-like.html">Agregar o eliminar nodos secundarios</a></li>
+<li><a href="api/operation/before.html">before</a></li>
+<li><a href="api/operation/after.html">after</a></li>
+<li><a href="api/operation/remove.html">remove</a></li>
+<li><a href="api/operation/wrap.html">wrap</a></li>
+<li><a href="api/operation/unwrap.html">unwrap</a></li>
+<li><a href="api/props/text.html">text</a></li>
+<li><a href="api/props/html.html">html</a></li>
+<li><a href="api/props/attr.html">attr</a></li>
+<li><a href="api/props/css.html">css</a></li>
+<li><a href="api/props/style.html">style</a></li>
+<li><a href="api/props/class-list.html">classList</a></li>
+<li><a href="api/props/data.html">data</a></li>
+<li><a href="api/event/on.html">on</a></li>
+<li><a href="api/event/one.html">one</a></li>
+<li><a href="api/event/emit.html">emit</a></li>
+<li><a href="api/event/off.html">off</a></li>
+<li><a href="api/temp-syntax/text-render.html">Renderizado de texto</a></li>
+<li><a href="api/temp-syntax/class.html">class</a></li>
+<li><a href="api/temp-syntax/sync.html">sync</a></li>
+<li><a href="api/temp-syntax/condition.html">Renderizado condicional</a></li>
+<li><a href="api/temp-syntax/fill.html">Renderizado de listas</a></li>
+<li><a href="api/life-cycle/created.html">created</a></li>
+<li><a href="api/life-cycle/ready.html">ready</a></li>
+<li><a href="api/life-cycle/watch.html">watch</a></li>
+<li><a href="api/life-cycle/loaded.html">loaded</a></li>
+<li><a href="api/life-cycle/attached.html">attached</a></li>
+<li><a href="api/life-cycle/detached.html">detached</a></li>
+<li><a href="api/life-cycle/router-change.html">routerChange</a></li>
+<li><a href="api/others/app.html">app</a></li>
+<li><a href="api/others/page.html">page</a></li>
+<li><a href="api/others/box.html">Modelo de caja</a></li>
+<li><a href="api/others/form-data.html">formData</a></li>
+<li><a href="api/others/tag.html">tag</a></li>
+<li><a href="api/others/index.html">índice</a></li>
+<li><a href="api/others/is.html">is</a></li>
+<li><a href="api/others/refresh.html">refresh</a></li>
+<li><a href="api/others/path.html">PATH</a></li>
+<li><a href="api/others/extend.html">extend</a></li>
+<li><a href="api/others/stanz.html">Características de los datos de instancia</a></li>
+<li><a href="../en/index.html">English-index.html</a></li>
+<li><a href="../cn/index.html">简体中文-index.html</a></li>
+<li><a href="../t-cn/index.html">繁体中文-index.html</a></li>
+<li><a href="../ja/index.html">index.html</a></li>
+<li><a href="index.html">española-index.html</a></li>
+
+</ul></div>
+    <div id="loading"></div>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/init.js" type="module"></script>
+  </body>
+</html>

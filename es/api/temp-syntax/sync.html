@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sync</title>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
+      type="module"
+    ></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/public.css" />
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+    </style>
+    <script>
+      let configUrl = "../../config.json";
+    </script>
+    
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/logo.png">
+        <link rel="apple-touch-icon-precomposed" href="/logo.png">
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag("js", new Date());
+
+          gtag("config", "G-7L1TCCJZT6");
+        </script>
+        <script src="/init-sw.js"></script>
+      
+  </head>
+  <body>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/app-config.mjs">
+      <template page>
+        <style>
+          .markdown-body::before,
+          .markdown-body::after {
+            display: block;
+            content: "";
+            height: 1px;
+          }
+          .markdown-body::after {
+            height: 32px;
+          }
+          .markdown-body > * {
+            margin-top: 1em;
+            margin-bottom: 1em;
+          }
+        </style>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/github-markdown.css"
+        />
+        <article class="markdown-body"><h1>sync</h1>
+<p>Vinculación bidireccional de datos de componentes mediante sintaxis de sincronización.</p>
+<comp-viewer comp-name="sync-render">
+
+<pre><code class="language-html">&lt;template component&gt;
+    &lt;input type=&quot;text&quot; sync:value=&quot;txt&quot; /&gt;
+    &lt;br&gt;
+    render txt: {{txt}}
+    &lt;script&gt;
+        export default {
+            tag:&quot;sync-render&quot;,
+            data:{
+                txt:&quot;I am txt&quot;
+            },
+        };
+    &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</comp-viewer>
+
+<p>sync también puede vincularse a las propiedades de instancia de componentes incrustados. Consulta el ejemplo en <a href="../../cases/sync.html">Data binding bidireccional</a>.</p>
+
+    <article-footer></article-footer>
+    </article>
+        <script>
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/layouts/article-layout.html";
+
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/document-page-init.mjs";
+
+          export default async (...args) => {
+            return await pageInit(PATH, args);
+          };
+        </script>
+      </template>
+    </o-app>
+    <div id="loading"></div>
+    <div class="body-important other-link"><ul>
+<li><a href="../../cases/index.html">Empezar</a></li>
+<li><a href="../../cases/event.html">Reacción de eventos</a></li>
+<li><a href="../../cases/simple-component.html">Creación y uso de componentes</a></li>
+<li><a href="../../cases/slot.html">Ranuras de componentes</a></li>
+<li><a href="../../cases/render-text.html">Sintaxis de plantillas: renderizado de texto</a></li>
+<li><a href="../../cases/attribute-transmission.html">Transmisión de atributos</a></li>
+<li><a href="../../cases/get-set-comp.html">Obtener y modificar valores de instancia de componente</a></li>
+<li><a href="../../cases/property-transmission.html">Sintaxis de plantillas: transmisión de atributos</a></li>
+<li><a href="../../cases/bind-event.html">Sintaxis de plantillas: vincular eventos</a></li>
+<li><a href="../../cases/nested-component.html">Componentes anidados</a></li>
+<li><a href="../../cases/inject-host.html">Componentes de inyección de host</a></li>
+<li><a href="../../cases/event-passing.html">Transmisión de eventos</a></li>
+<li><a href="../../cases/sync.html">Sintaxis de plantillas: enlace de datos bidireccional</a></li>
+<li><a href="../../cases/condition.html">Componentes de plantilla: renderizado condicional</a></li>
+<li><a href="../../cases/fill.html">Componentes de plantilla: renderizado de relleno</a></li>
+<li><a href="../../cases/fill-temp.html">Renderizado de relleno recursivo</a></li>
+<li><a href="../../cases/life-cycle.html">Ciclo de vida</a></li>
+<li><a href="../../cases/form-data.html">Datos de formulario</a></li>
+<li><a href="../../cases/custom-form-element.html">Componente de formulario personalizado</a></li>
+<li><a href="../../cases/use-page.html">Uso de componentes de página</a></li>
+<li><a href="../../cases/use-app.html">Uso de componentes de aplicación</a></li>
+<li><a href="../../cases/app-config.html">Configuración de parámetros de aplicación</a></li>
+<li><a href="../../cases/app-loading.html">Personalización de carga de la aplicación</a></li>
+<li><a href="../../cases/set404.html">Configuración de la página 404</a></li>
+<li><a href="../../cases/nested-page.html">Páginas anidadas</a></li>
+<li><a href="../../cases/use-hash-router.html">Uso de HashRouter</a></li>
+<li><a href="../../cases/use-scsr.html">Uso de la solución scsr</a></li>
+<li><a href="../../cases/sync-state.html">Sincronización de estado</a></li>
+<li><a href="../../cases/alias.html">Alias</a></li>
+<li><a href="../../docs/introduce.html">Introducción</a></li>
+<li><a href="../../docs/get-started/index.html">Cómo usar ofa.js</a></li>
+<li><a href="../../docs/get-started/hello-world.html">Primer caso</a></li>
+<li><a href="../../docs/get-started/elements-and-events.html">Selección de elementos y eventos relacionados</a></li>
+<li><a href="../../docs/get-started/basic-concept.html">Concepto básico de instancia</a></li>
+<li><a href="../../docs/get-started/common-properties.html">Propiedades y métodos comunes</a></li>
+<li><a href="../../docs/create-component/index.html">Creación y uso</a></li>
+<li><a href="../../docs/create-component/parameter-description.html">Descripción de parámetros</a></li>
+<li><a href="../../docs/create-component/life-cycle.html">Ciclo de vida</a></li>
+<li><a href="../../docs/create-component/web-components.html">Conocimientos generales sobre componentes web</a></li>
+<li><a href="../../docs/create-component/template-syntax.html">Sintaxis de plantillas</a></li>
+<li><a href="../../docs/create-app/index.html">Introducción</a></li>
+<li><a href="../../docs/create-app/page.html">Uso del componente Page</a></li>
+<li><a href="../../docs/create-app/app.html">Uso del componente App</a></li>
+<li><a href="../../docs/create-app/subrouting.html">Funcionalidad de subrutas</a></li>
+<li><a href="../../docs/create-app/o-router.html">Binding de rutas</a></li>
+<li><a href="../../docs/create-app/scsr.html">Esquema SCSR</a></li>
+<li><a href="../../docs/others/data-sharing.html">Compartir datos</a></li>
+<li><a href="../../docs/others/about-micro-frontend.html">ofa.js y micro frontend</a></li>
+<li><a href="../index.html">Introducción a la API</a></li>
+<li><a href="../instance/dollar.html">$ Método</a></li>
+<li><a href="../instance/all.html">all</a></li>
+<li><a href="../instance/prev.html">prev</a></li>
+<li><a href="../instance/prevs.html">prevs</a></li>
+<li><a href="../instance/next.html">next</a></li>
+<li><a href="../instance/nexts.html">nexts</a></li>
+<li><a href="../instance/siblings.html">siblings</a></li>
+<li><a href="../instance/parent.html">parent</a></li>
+<li><a href="../instance/parents.html">parents</a></li>
+<li><a href="../instance/clone.html">clone</a></li>
+<li><a href="../instance/ele.html">ele</a></li>
+<li><a href="../instance/shadow.html">shadow</a></li>
+<li><a href="../instance/root.html">root</a></li>
+<li><a href="../instance/children.html">Elementos secundarios</a></li>
+<li><a href="../instance/host.html">host</a></li>
+<li><a href="../instance/app.html">app</a></li>
+<li><a href="../operation/array-like.html">Agregar o eliminar nodos secundarios</a></li>
+<li><a href="../operation/before.html">before</a></li>
+<li><a href="../operation/after.html">after</a></li>
+<li><a href="../operation/remove.html">remove</a></li>
+<li><a href="../operation/wrap.html">wrap</a></li>
+<li><a href="../operation/unwrap.html">unwrap</a></li>
+<li><a href="../props/text.html">text</a></li>
+<li><a href="../props/html.html">html</a></li>
+<li><a href="../props/attr.html">attr</a></li>
+<li><a href="../props/css.html">css</a></li>
+<li><a href="../props/style.html">style</a></li>
+<li><a href="../props/class-list.html">classList</a></li>
+<li><a href="../props/data.html">data</a></li>
+<li><a href="../event/on.html">on</a></li>
+<li><a href="../event/one.html">one</a></li>
+<li><a href="../event/emit.html">emit</a></li>
+<li><a href="../event/off.html">off</a></li>
+<li><a href="text-render.html">Renderizado de texto</a></li>
+<li><a href="class.html">class</a></li>
+<li><a href="sync.html">sync</a></li>
+<li><a href="condition.html">Renderizado condicional</a></li>
+<li><a href="fill.html">Renderizado de listas</a></li>
+<li><a href="../life-cycle/created.html">created</a></li>
+<li><a href="../life-cycle/ready.html">ready</a></li>
+<li><a href="../life-cycle/watch.html">watch</a></li>
+<li><a href="../life-cycle/loaded.html">loaded</a></li>
+<li><a href="../life-cycle/attached.html">attached</a></li>
+<li><a href="../life-cycle/detached.html">detached</a></li>
+<li><a href="../life-cycle/router-change.html">routerChange</a></li>
+<li><a href="../others/app.html">app</a></li>
+<li><a href="../others/page.html">page</a></li>
+<li><a href="../others/box.html">Modelo de caja</a></li>
+<li><a href="../others/form-data.html">formData</a></li>
+<li><a href="../others/tag.html">tag</a></li>
+<li><a href="../others/index.html">índice</a></li>
+<li><a href="../others/is.html">is</a></li>
+<li><a href="../others/refresh.html">refresh</a></li>
+<li><a href="../others/path.html">PATH</a></li>
+<li><a href="../others/extend.html">extend</a></li>
+<li><a href="../others/stanz.html">Características de los datos de instancia</a></li>
+<li><a href="../../../en/index.html">English-index.html</a></li>
+<li><a href="../../../cn/index.html">简体中文-index.html</a></li>
+<li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
+<li><a href="../../../ja/index.html">index.html</a></li>
+<li><a href="../../index.html">española-index.html</a></li>
+
+</ul></div>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/init.js" type="module"></script>
+  </body>
+</html>

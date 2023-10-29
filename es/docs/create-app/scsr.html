@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Renderizado de cliente estático (SCSR)</title>
-    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/dist/ofa.min.js"></script>
+    <title>Renderizado estático del cliente (SCSR)</title>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/public.css" />
     <style>
       html,
       body {
@@ -20,6 +20,9 @@
       let configUrl = "../../config.json";
     </script>
     
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/logo.png">
+        <link rel="apple-touch-icon-precomposed" href="/logo.png">
         <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
         <script>
           window.dataLayer = window.dataLayer || [];
@@ -34,9 +37,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -48,22 +51,27 @@
           .markdown-body::after {
             height: 32px;
           }
+          .markdown-body > * {
+            margin-top: 1em;
+            margin-bottom: 1em;
+          }
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/github-markdown.css"
         />
-        <article class="markdown-body"><h1>Renderizado de cliente estático (SCSR)</h1>
-<h2>¿Qué es SCSR?</h2>
-<p>SCSR, cuyo nombre completo es Renderizado de Cliente Estático (Static Client-Side Rendering), es una variante de RSC (Renderizado de Cliente) que, además de ofrecer la experiencia de usuario de RSC, permite que las páginas sean indexadas por los rastreadores web en su estado estático.</p>
+        <article class="markdown-body"><h1>Renderizado estático del cliente (SCSR)</h1>
+<h2>Qué es SCSR?</h2>
+<p>SCSR, cuyo nombre completo es Representación en el Lado del Cliente Estático, se refiere a la representación del lado del cliente en forma estática. La Representación del Lado del Cliente Estático (SCSR) es una variante del CSR (Representación en el Lado del Cliente) que permite que las páginas sean indexadas por los rastreadores web mientras se mantiene la experiencia del usuario del CSR.</p>
 <h2>Cómo utilizar SCSR</h2>
-<p>Puedes utilizar una biblioteca de SCSR de la siguiente manera:</p>
-<pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.0.0/libs/scsr/dist/scsr.min.js&quot;&gt;&lt;/script&gt;
+<p>Puedes hacer referencia a la biblioteca SCSR de la siguiente manera:</p>
+<pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/libs/scsr/dist/scsr.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
-<h2>Cómo funciona SCSR</h2>
-<p>SCSR es un módulo de página que se ejecuta directamente en modo de archivo único, sin necesidad de utilizar la etiqueta <code>o-page</code>, lo que permite renderear en la página. Específicamente, se pone el código de plantilla del módulo de página directamente dentro de <code>o-app</code>.</p>
-<p>A continuación se muestra un ejemplo de SCSR que muestra cómo renderear directamente el contenido del módulo de página en la página:</p>
-<pre><code class="language-html">&lt;!-- home.html --&gt;&lt;!DOCTYPE html&gt;
+<h2>Principio de funcionamiento de SCSR</h2>
+<p>SCSR es un módulo de página que se ejecuta en modo de archivo único sin la necesidad de utilizar la etiqueta <code>o-page</code>, lo que permite la renderización en la página. En pocas palabras, se coloca directamente el código de la plantilla del módulo de la página dentro de <code>o-app</code>.</p>
+<p>El siguiente es un ejemplo de SCSR que muestra cómo renderizar contenido de módulos de página directamente en la página:</p>
+<pre><code class="language-html">&lt;!-- home.html --&gt;
+&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
   &lt;head&gt;
     &lt;meta charset=&quot;UTF-8&quot; /&gt;
@@ -77,10 +85,10 @@
     &lt;o-app src=&quot;./app.mjs&quot;&gt;
       &lt;template page&gt;
         &lt;div class=&quot;container&quot;&gt;
-          &lt;h1 class=&quot;title&quot;&gt;¡Hola, mundo!&lt;/h1&gt;
-          &lt;p class=&quot;subtitle&quot;&gt;Bienvenido a mi página ofa.js.&lt;/p&gt;
+          &lt;h1 class=&quot;title&quot;&gt;Hello, World!&lt;/h1&gt;
+          &lt;p class=&quot;subtitle&quot;&gt;Welcome to my ofa.js page.&lt;/p&gt;
           &lt;div&gt;count =&gt; {{count}}&lt;/div&gt;
-          &lt;a href=&quot;./pages/help.html&quot; olink&gt;IR A AYUDA&lt;/a&gt;
+          &lt;a href=&quot;./pages/help.html&quot; olink&gt;GO TO HELP&lt;/a&gt;
         &lt;/div&gt;
 
         &lt;script&gt;
@@ -95,15 +103,15 @@
   &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<p>A través de SCSR, el contenido dentro de la etiqueta &#39;template&#39; se renderizará directamente en la página, y esta parte del contenido es en realidad el módulo de página en modo de archivo único.</p>
-<p>Continuando con el ejemplo de la página &#39;home.html&#39;, creamos una página &#39;help&#39;:</p>
+<p>Mediante SCSR, el contenido dentro de la etiqueta <code>template</code> se renderizará directamente en la página, y esta parte del contenido es en realidad un módulo de página en modo de archivo único.</p>
+<p>Siguiendo con el ejemplo de la página <code>home.html</code> mencionada anteriormente, creamos una página <code>help</code>:</p>
 <pre><code class="language-html">&lt;!-- pages/help.html --&gt;
 &lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
   &lt;head&gt;
     &lt;meta charset=&quot;UTF-8&quot; /&gt;
     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
-    &lt;title&gt;Ayuda&lt;/title&gt;
+    &lt;title&gt;Help&lt;/title&gt;
     &lt;link rel=&quot;stylesheet&quot; href=&quot;../public.css&quot; /&gt;
     &lt;script src=&quot;../../../ofa.js&quot;&gt;&lt;/script&gt;
     &lt;script src=&quot;../scsr.min.js&quot;&gt;&lt;/script&gt;
@@ -112,8 +120,8 @@
     &lt;o-app src=&quot;../app.mjs&quot;&gt;
       &lt;template page&gt;
         &lt;div class=&quot;container&quot;&gt;
-          &lt;h1 class=&quot;title&quot;&gt;Página de Ayuda&lt;/h1&gt;
-          &lt;button on:click=&quot;back()&quot;&gt;Volver&lt;/button&gt;
+          &lt;h1 class=&quot;title&quot;&gt;Help Page&lt;/h1&gt;
+          &lt;button on:click=&quot;back()&quot;&gt;GO Back&lt;/button&gt;
         &lt;/div&gt;
 
         &lt;script&gt;
@@ -128,20 +136,20 @@
   &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<p>Al hacer clic en &#39;IR A AYUDA&#39; en la página &#39;home.html&#39;, se navegará suavemente a la página &#39;help.html&#39;, logrando un efecto de navegación suave en el renderizado del cliente.</p>
-<h2>Consideraciones</h2>
-<p>Todas las páginas que utilicen el esquema SCSR, excepto el contenido descriptivo de la página (como title, meta:description, keywords) y el contenido de la plantilla de la página, deben mantenerse consistentes para garantizar una experiencia consistente después de la redirección y actualización de la página.</p>
-<h2>Sobre el esquema SSR</h2>
-<p>El esquema actual de SCSR es más similar a un esquema de SSG (Generación de Sitio Estático) ya que renderiza previamente el contenido de la página como contenido estático y luego lo interactúa a través del cliente. ofa.js ya proporciona un enfoque de encapsulación de componentes relativamente independiente, lo que permite a los desarrolladores front-end encapsular componentes y luego combinarlos con esquemas tradicionales de renderizado de páginas en el backend (como Node.js, Go, Java, PHP u otros lenguajes y marcos de sitios web). Los desarrolladores backend pueden utilizar rápidamente estos componentes encapsulados para construir páginas web de alta calidad.</p>
-<p>Planeamos ofrecer en el futuro un esquema completo de SSR (Renderizado en el Lado del Servidor). Este esquema consiste en obtener primero el contenido de la próxima página y luego compararlo con el contenido de la página actual para realizar operaciones dinámicas, como agregar, eliminar y modificar atributos. Sin embargo, es importante tener en cuenta que este esquema de SSR requerirá más tiempo, ya que implica comparaciones y modificaciones de elementos complejos.</p>
-<p>ofa.js es un marco emergente y el autor tiene tiempo limitado debido a otras responsabilidades. Por el momento, el esquema de SSR no ha sido completamente desarrollado. Sin embargo, si ofa.js gana más usuarios en el futuro y hay una demanda destacada de un esquema de SSR, el autor continuará mejorándolo y desarrollándolo. Actualmente, el autor se enfoca en la estabilidad y expansión de las características del marco, y también da la bienvenida a los comentarios y sugerencias de los usuarios para satisfacer mejor sus necesidades en el futuro.</p>
+<p>Después de hacer clic en &quot;IR A AYUDA&quot; en la página <code>home.html</code>, se realizará una transición suave a la página <code>help.html</code>, lo que logra un efecto de transición suave en el renderizado del lado del cliente.</p>
+<h2>Nota:</h2>
+<p>Todos los recursos referenciados en las páginas que utilizan el esquema SCSR, con excepción del contenido descriptivo de la página (como el título, meta descripción y palabras clave) y del contenido del plantilla de la página, deben mantenerse consistentes para garantizar una experiencia uniforme después de la navegación y actualización de la página.</p>
+<h2>Acerca de los esquemas SSR</h2>
+<p>El actual esquema de SCSR es en realidad más similar a un esquema de SSG (Generación de Sitio Estático), ya que renderiza las páginas como contenido estático de antemano y luego se interactúa con ellas mediante el cliente. ofa.js ya proporciona un esquema de envoltura de componentes relativamente independiente, lo que permite a los desarrolladores de frontend envolver los componentes y luego combinarlos con esquemas de renderizado de páginas tradicionales en el backend (como Node.js, Go, Java, PHP, etc.), lo que permite a los desarrolladores de backend utilizar rápidamente estos componentes envueltos para construir páginas web de alta calidad.</p>
+<p>Planeamos ofrecer en el futuro una solución completa de SSR (Renderizado en el Lado del Servidor). El principio de esta solución es obtener el contenido de la siguiente página y compararlo con el contenido de la página actual para realizar operaciones dinámicas como agregar, eliminar y modificar atributos. Sin embargo, hay que tener en cuenta que este plan de SSR puede ser bastante demorado debido a las complicadas operaciones de comparación y modificación de elementos.</p>
+<p>ofa.js es un marco en desarrollo y el autor tiene limitaciones de tiempo debido a sus otras responsabilidades. Aún no ha completado completamente la solución SSR para ofa.js. Sin embargo, si en el futuro ofa.js obtiene más usuarios y surge una fuerte demanda de una solución SSR, el autor continuará mejorando y desarrollando esta solución. Por ahora, el autor se centrará en la estabilidad y la expansión de las funciones del marco. También se agradece el feedback y las sugerencias de los usuarios para satisfacer mejor sus necesidades en el futuro.</p>
 
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -150,6 +158,119 @@
       </template>
     </o-app>
     <div id="loading"></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/init.js" type="module"></script>
+    <div class="body-important other-link"><ul>
+<li><a href="../../cases/index.html">Empezar</a></li>
+<li><a href="../../cases/event.html">Reacción de eventos</a></li>
+<li><a href="../../cases/simple-component.html">Creación y uso de componentes</a></li>
+<li><a href="../../cases/slot.html">Ranuras de componentes</a></li>
+<li><a href="../../cases/render-text.html">Sintaxis de plantillas: renderizado de texto</a></li>
+<li><a href="../../cases/attribute-transmission.html">Transmisión de atributos</a></li>
+<li><a href="../../cases/get-set-comp.html">Obtener y modificar valores de instancia de componente</a></li>
+<li><a href="../../cases/property-transmission.html">Sintaxis de plantillas: transmisión de atributos</a></li>
+<li><a href="../../cases/bind-event.html">Sintaxis de plantillas: vincular eventos</a></li>
+<li><a href="../../cases/nested-component.html">Componentes anidados</a></li>
+<li><a href="../../cases/inject-host.html">Componentes de inyección de host</a></li>
+<li><a href="../../cases/event-passing.html">Transmisión de eventos</a></li>
+<li><a href="../../cases/sync.html">Sintaxis de plantillas: enlace de datos bidireccional</a></li>
+<li><a href="../../cases/condition.html">Componentes de plantilla: renderizado condicional</a></li>
+<li><a href="../../cases/fill.html">Componentes de plantilla: renderizado de relleno</a></li>
+<li><a href="../../cases/fill-temp.html">Renderizado de relleno recursivo</a></li>
+<li><a href="../../cases/life-cycle.html">Ciclo de vida</a></li>
+<li><a href="../../cases/form-data.html">Datos de formulario</a></li>
+<li><a href="../../cases/custom-form-element.html">Componente de formulario personalizado</a></li>
+<li><a href="../../cases/use-page.html">Uso de componentes de página</a></li>
+<li><a href="../../cases/use-app.html">Uso de componentes de aplicación</a></li>
+<li><a href="../../cases/app-config.html">Configuración de parámetros de aplicación</a></li>
+<li><a href="../../cases/app-loading.html">Personalización de carga de la aplicación</a></li>
+<li><a href="../../cases/set404.html">Configuración de la página 404</a></li>
+<li><a href="../../cases/nested-page.html">Páginas anidadas</a></li>
+<li><a href="../../cases/use-hash-router.html">Uso de HashRouter</a></li>
+<li><a href="../../cases/use-scsr.html">Uso de la solución scsr</a></li>
+<li><a href="../../cases/sync-state.html">Sincronización de estado</a></li>
+<li><a href="../../cases/alias.html">Alias</a></li>
+<li><a href="../introduce.html">Introducción</a></li>
+<li><a href="../get-started/index.html">Cómo usar ofa.js</a></li>
+<li><a href="../get-started/hello-world.html">Primer caso</a></li>
+<li><a href="../get-started/elements-and-events.html">Selección de elementos y eventos relacionados</a></li>
+<li><a href="../get-started/basic-concept.html">Concepto básico de instancia</a></li>
+<li><a href="../get-started/common-properties.html">Propiedades y métodos comunes</a></li>
+<li><a href="../create-component/index.html">Creación y uso</a></li>
+<li><a href="../create-component/parameter-description.html">Descripción de parámetros</a></li>
+<li><a href="../create-component/life-cycle.html">Ciclo de vida</a></li>
+<li><a href="../create-component/web-components.html">Conocimientos generales sobre componentes web</a></li>
+<li><a href="../create-component/template-syntax.html">Sintaxis de plantillas</a></li>
+<li><a href="index.html">Introducción</a></li>
+<li><a href="page.html">Uso del componente Page</a></li>
+<li><a href="app.html">Uso del componente App</a></li>
+<li><a href="subrouting.html">Funcionalidad de subrutas</a></li>
+<li><a href="o-router.html">Binding de rutas</a></li>
+<li><a href="scsr.html">Esquema SCSR</a></li>
+<li><a href="../others/data-sharing.html">Compartir datos</a></li>
+<li><a href="../others/about-micro-frontend.html">ofa.js y micro frontend</a></li>
+<li><a href="../../api/index.html">Introducción a la API</a></li>
+<li><a href="../../api/instance/dollar.html">$ Método</a></li>
+<li><a href="../../api/instance/all.html">all</a></li>
+<li><a href="../../api/instance/prev.html">prev</a></li>
+<li><a href="../../api/instance/prevs.html">prevs</a></li>
+<li><a href="../../api/instance/next.html">next</a></li>
+<li><a href="../../api/instance/nexts.html">nexts</a></li>
+<li><a href="../../api/instance/siblings.html">siblings</a></li>
+<li><a href="../../api/instance/parent.html">parent</a></li>
+<li><a href="../../api/instance/parents.html">parents</a></li>
+<li><a href="../../api/instance/clone.html">clone</a></li>
+<li><a href="../../api/instance/ele.html">ele</a></li>
+<li><a href="../../api/instance/shadow.html">shadow</a></li>
+<li><a href="../../api/instance/root.html">root</a></li>
+<li><a href="../../api/instance/children.html">Elementos secundarios</a></li>
+<li><a href="../../api/instance/host.html">host</a></li>
+<li><a href="../../api/instance/app.html">app</a></li>
+<li><a href="../../api/operation/array-like.html">Agregar o eliminar nodos secundarios</a></li>
+<li><a href="../../api/operation/before.html">before</a></li>
+<li><a href="../../api/operation/after.html">after</a></li>
+<li><a href="../../api/operation/remove.html">remove</a></li>
+<li><a href="../../api/operation/wrap.html">wrap</a></li>
+<li><a href="../../api/operation/unwrap.html">unwrap</a></li>
+<li><a href="../../api/props/text.html">text</a></li>
+<li><a href="../../api/props/html.html">html</a></li>
+<li><a href="../../api/props/attr.html">attr</a></li>
+<li><a href="../../api/props/css.html">css</a></li>
+<li><a href="../../api/props/style.html">style</a></li>
+<li><a href="../../api/props/class-list.html">classList</a></li>
+<li><a href="../../api/props/data.html">data</a></li>
+<li><a href="../../api/event/on.html">on</a></li>
+<li><a href="../../api/event/one.html">one</a></li>
+<li><a href="../../api/event/emit.html">emit</a></li>
+<li><a href="../../api/event/off.html">off</a></li>
+<li><a href="../../api/temp-syntax/text-render.html">Renderizado de texto</a></li>
+<li><a href="../../api/temp-syntax/class.html">class</a></li>
+<li><a href="../../api/temp-syntax/sync.html">sync</a></li>
+<li><a href="../../api/temp-syntax/condition.html">Renderizado condicional</a></li>
+<li><a href="../../api/temp-syntax/fill.html">Renderizado de listas</a></li>
+<li><a href="../../api/life-cycle/created.html">created</a></li>
+<li><a href="../../api/life-cycle/ready.html">ready</a></li>
+<li><a href="../../api/life-cycle/watch.html">watch</a></li>
+<li><a href="../../api/life-cycle/loaded.html">loaded</a></li>
+<li><a href="../../api/life-cycle/attached.html">attached</a></li>
+<li><a href="../../api/life-cycle/detached.html">detached</a></li>
+<li><a href="../../api/life-cycle/router-change.html">routerChange</a></li>
+<li><a href="../../api/others/app.html">app</a></li>
+<li><a href="../../api/others/page.html">page</a></li>
+<li><a href="../../api/others/box.html">Modelo de caja</a></li>
+<li><a href="../../api/others/form-data.html">formData</a></li>
+<li><a href="../../api/others/tag.html">tag</a></li>
+<li><a href="../../api/others/index.html">índice</a></li>
+<li><a href="../../api/others/is.html">is</a></li>
+<li><a href="../../api/others/refresh.html">refresh</a></li>
+<li><a href="../../api/others/path.html">PATH</a></li>
+<li><a href="../../api/others/extend.html">extend</a></li>
+<li><a href="../../api/others/stanz.html">Características de los datos de instancia</a></li>
+<li><a href="../../../en/index.html">English-index.html</a></li>
+<li><a href="../../../cn/index.html">简体中文-index.html</a></li>
+<li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
+<li><a href="../../../ja/index.html">index.html</a></li>
+<li><a href="../../index.html">española-index.html</a></li>
+
+</ul></div>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/init.js" type="module"></script>
   </body>
 </html>

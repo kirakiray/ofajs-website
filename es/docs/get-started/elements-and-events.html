@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Obtener elementos y eventos relacionados</title>
-    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/dist/ofa.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.16/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/public.css" />
     <style>
       html,
       body {
@@ -20,6 +20,9 @@
       let configUrl = "../../config.json";
     </script>
     
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/logo.png">
+        <link rel="apple-touch-icon-precomposed" href="/logo.png">
         <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
         <script>
           window.dataLayer = window.dataLayer || [];
@@ -34,9 +37,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -48,180 +51,226 @@
           .markdown-body::after {
             height: 32px;
           }
+          .markdown-body > * {
+            margin-top: 1em;
+            margin-bottom: 1em;
+          }
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/github-markdown.css"
         />
         <article class="markdown-body"><h1>Obtener elementos y eventos relacionados</h1>
-<p>Esta sección tiene como objetivo fortalecer la comprensión del contenido de la sección anterior, incluyendo la selección de elementos y la vinculación de eventos.</p>
-<h2>Selección de elementos</h2>
-<p>En las secciones anteriores, hemos aprendido la forma de obtener un elemento específico globalmente usando el símbolo $. A continuación, presentaremos otras formas de obtener elementos.</p>
-<h3>Buscar un elemento dentro de otro elemento</h3>
-<h4>Uso de <code>$(&quot;xxx&quot;).$(&#39;xxxx&#39;)</code></h4>
-<p><code>$(&quot;xxx&quot;).$(&#39;xxxx&#39;)</code> es una forma de seleccionar un elemento padre y luego buscar elementos hijos que cumplan cierta condición dentro de ese padre. En este caso, <code>$(&quot;xxx&quot;)</code> selecciona un elemento padre y luego se utiliza <code>$(&#39;xxxx&#39;)</code> para buscar elementos hijos que cumplan la condición dentro de ese padre.</p>
+<p>Este capítulo tiene como objetivo reforzar la comprensión del contenido del capítulo anterior, incluyendo la selección de elementos y la vinculación de eventos.</p>
+<h2>Seleccionar elementos</h2>
+<p>En los capítulos anteriores, hemos aprendido cómo obtener un elemento global utilizando el símbolo $. A continuación, describiremos otros métodos para obtener elementos.</p>
+<h3>Encontrar un elemento desde dentro de un elemento</h3>
+<h4>Utilice <code>$(&quot;xxx&quot;). $(&#39;xxxx&#39;)</code> de la siguiente manera</h4>
+<p><code>$(&quot;xxx&quot;).$(&#39;xxxx&#39;)</code> es una forma de seleccionar un elemento padre y luego buscar elementos hijos que cumplan con ciertas condiciones. En este caso, <code>$(&quot;xxx&quot;)</code> selecciona un elemento padre y luego utiliza <code>$(&#39;xxxx&#39;)</code> para buscar elementos hijos que cumplan con ciertas condiciones.</p>
 <h4>Ejemplo</h4>
+<html-viewer>
+
+<pre><code>&lt;!-- Importe ofa.js en su proyecto --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
 <pre><code class="language-html">&lt;div class=&quot;parent&quot;&gt;
-  &lt;p&gt;Hola Mundo&lt;/p&gt;
+  &lt;p&gt;Hello World&lt;/p&gt;
   &lt;div class=&quot;child&quot;&gt;
-    &lt;span&gt;Este es un elemento hijo&lt;/span&gt;
+    &lt;span&gt;This is a child element&lt;/span&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;script&gt;
-  // Seleccionar el elemento padre y buscar el elemento hijo
+  // Selecciona el elemento padre y busca los hijos
   const parentElement = $(&quot;.parent&quot;);
   const childElement = parentElement.$(&quot;.child&quot;);
 
-  // Modificar el contenido de texto del elemento hijo
-  childElement.text = &quot;Elemento hijo modificado&quot;;
+  // Modificar el contenido del texto de un elemento hijo
+  childElement.text = &quot;Modified child element&quot;;
 &lt;/script&gt;
 </code></pre>
-<p>En el ejemplo anterior, primero se selecciona el elemento padre con la clase <code>parent</code> usando <code>$(&quot;.parent&quot;)</code>, luego se busca el elemento hijo con la clase <code>child</code> dentro de este padre usando <code>$(&quot;.child&quot;)</code>. Luego se modifica el contenido de texto del elemento hijo a &quot;Elemento hijo modificado&quot;.</p>
-<h3>Uso de <code>$(&#39;xxx xxxx&#39;)</code></h3>
-<p><code>$(&#39;xxx xxxx&#39;)</code> permite buscar los elementos que cumplan con la segunda condición del selector en todo el alcance global, y luego buscar los elementos que cumplan con la primera condición del selector dentro de estos elementos. Esta forma permite encontrar directamente los elementos hijos que cumplan con la condición en un solo paso.</p>
+</html-viewer>
+
+<p>En el ejemplo anterior, primero selecciona el elemento padre con la clase &quot;parent&quot; utilizando <code>$(&quot;.parent&quot;)</code>. Luego, busca dentro de ese elemento padre los elementos hijos con la clase &quot;child&quot; utilizando <code>$(&quot;.child&quot;)</code>. Luego modifica el contenido de texto de esos elementos hijos a &quot;Elemento hijo modificado&quot;.</p>
+<h3>Utilizar el enfoque <code>$(&#39;xxx xxxx&#39;)</code>.</h3>
+<p><code>$(&#39;xxx xxxx&#39;)</code> es buscar los elementos que cumplan con la segunda condición del selector en el ámbito global, y luego buscar los elementos que cumplan con la primera condición del selector dentro de estos elementos. Esta forma permite encontrar directamente los subelementos que cumplan con la condición de manera más eficiente.</p>
 <h4>Ejemplo</h4>
+<html-viewer>
+
+<pre><code>&lt;!-- Importe ofa.js en su proyecto --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
 <pre><code class="language-html">&lt;div class=&quot;parent&quot;&gt;
-  &lt;p&gt;Hola Mundo&lt;/p&gt;
+  &lt;p&gt;Hello World&lt;/p&gt;
   &lt;div class=&quot;child&quot;&gt;
-    &lt;span&gt;Este es un elemento hijo&lt;/span&gt;
+    &lt;span&gt;This is a child element&lt;/span&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;script&gt;
-  // Buscar directamente los elementos hijos que cumplan con la condición
+  // Encontrar directamente los subelementos que cumplen las condiciones
   const childElement = $(&#39;div .child&#39;);
 
-  // Modificar el contenido de texto del elemento hijo
-  childElement.text = &quot;Elemento hijo modificado&quot;;
+  // Modificar el contenido del texto de un elemento hijo
+  childElement.text = &quot;Modified child element&quot;;
 &lt;/script&gt;
 </code></pre>
-<p>En el ejemplo anterior, se usa directamente <code>$(&#39;div .child&#39;)</code> para encontrar el elemento hijo con la clase <code>child</code> y se modifica su contenido de texto a &quot;Elemento hijo modificado&quot;.</p>
-<h3>Seleccionar varios elementos</h3>
-<h4>Usar <code>$.all(&#39;xxx&#39;)</code> para buscar elementos globales</h4>
-<p>El método <code>$.all(&#39;xxx&#39;)</code> se utiliza para buscar todos los elementos que cumplan la condición del selector en la página, y devolverlos como una colección de elementos. Esto permite seleccionar varios elementos en la página para operaciones en lote.</p>
+</html-viewer>
+
+<p>En el ejemplo anterior, se utiliza directamente <code>$(&#39;div .child&#39;)</code> para buscar los elementos secundarios con la clase <code>child</code> y se modifica el contenido de texto de los elementos secundarios a &quot;Elemento hijo modificado&quot;.</p>
+<h3>No es posible traducir el texto.</h3>
+<h4>Utiliza <code>$.all(&#39;xxx&#39;)</code> para buscar elementos globales.</h4>
+<p><code>$.all(&#39;xxx&#39;)</code> método se utiliza para buscar todos los elementos en la página que cumplan con la condición del selector, y los devuelve como una colección de elementos. Esto permite seleccionar varios elementos en la página para realizar operaciones en lote.</p>
 <h4>Ejemplo</h4>
-<pre><code class="language-html">&lt;p&gt;Párrafo 1&lt;/p&gt;
-&lt;p&gt;Párrafo 2&lt;/p&gt;
-&lt;p&gt;Párrafo 3&lt;/p&gt;
+<html-viewer>
+
+<pre><code>&lt;!-- Importe ofa.js en su proyecto --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<pre><code class="language-html">&lt;p&gt;Paragraph 1&lt;/p&gt;
+&lt;p&gt;Paragraph 2&lt;/p&gt;
+&lt;p&gt;Paragraph 3&lt;/p&gt;
 &lt;script&gt;
-  // Buscar todos los elementos de etiqueta p
+  // Buscar todos los elementos de la etiqueta p
   const allParagraphs = $.all(&quot;p&quot;);
 
-  // Modificar el contenido de texto de todos los elementos de etiqueta p
+  // Modificar el contenido del texto de todos los elementos de la etiqueta p
   allParagraphs.forEach((paragraph, index) =&gt; {
-    paragraph.text = `Párrafo Modificado ${index + 1}`;
+    paragraph.text = `Modified Paragraph ${index + 1}`;
   });
 &lt;/script&gt;
 </code></pre>
-<p>En el ejemplo anterior, se utiliza <code>$.all(&quot;p&quot;)</code> para buscar todos los elementos de etiqueta <code>p</code> en la página, y se realiza una operación en lote modificando su contenido de texto a &quot;Párrafo Modificado 1&quot;, &quot;Párrafo Modificado 2&quot; y &quot;Párrafo Modificado 3&quot;.</p>
-<h3>Buscar todos los elementos que cumplan la condición dentro de un elemento</h3>
-<p>Además de buscar elementos a nivel global, también se puede buscar todos los elementos que cumplan la condición dentro de un elemento específico, utilizando la siguiente sintaxis: <code>$(&#39;xxx&#39;).all(&#39;xxxx&#39;)</code>.</p>
+</html-viewer>
+
+<p>En el ejemplo anterior, se utiliza <code>$.all(&quot;p&quot;)</code> para encontrar todos los elementos de etiqueta <code>p</code> en la página y realizar operaciones en lote en ellos. Se modifica el contenido del texto como &quot;Párrafo Modificado 1&quot;, &quot;Párrafo Modificado 2&quot; y &quot;Párrafo Modificado 3&quot;.</p>
+<h3>Buscar todos los elementos que cumplan con las condiciones dentro de un elemento</h3>
+<p>Además de poder buscar elementos a nivel global, también puedes buscar todos los elementos hijos que cumplan con una determinada condición dentro de un elemento específico, utilizando el siguiente formato: <code>$(&#39;xxx&#39;).all(&#39;xxxx&#39;)</code>.</p>
 <h4>Ejemplo</h4>
+<html-viewer>
+
+<pre><code>&lt;!-- Importe ofa.js en su proyecto --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
 <pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
   &lt;p&gt;Hola Mundo&lt;/p&gt;
-  &lt;div class=&quot;item&quot;&gt;Item 1&lt;/div&gt;
-  &lt;div class=&quot;item&quot;&gt;Item 2&lt;/div&gt;
-  &lt;div class=&quot;item&quot;&gt;Item 3&lt;/div&gt;
+  &lt;div class=&quot;item&quot;&gt;Elemento 1&lt;/div&gt;
+  &lt;div class=&quot;item&quot;&gt;Elemento 2&lt;/div&gt;
+  &lt;div class=&quot;item&quot;&gt;Elemento 3&lt;/div&gt;
 &lt;/div&gt;
 &lt;script&gt;
-  // Buscar todos los elementos hijos con la clase &quot;item&quot; dentro del contenedor
+  // Busca todos los elementos hijos del contenedor con la clase &quot;item&quot;.
   const container = $(&quot;.container&quot;);
   const items = container.all(&quot;.item&quot;);
 
-  // Modificar el contenido de texto de todos los elementos hijos
+  // Modificar el contenido del texto de todos los elementos hijos
   items.forEach((item, index) =&gt; {
     item.text = `Elemento Modificado ${index + 1}`;
   });
 &lt;/script&gt;
 </code></pre>
-<p>En el ejemplo anterior, primero se utiliza <code>$(&quot;.container&quot;)</code> para buscar elementos con la clase <code>container</code>, luego se utiliza <code>.all(&quot;.item&quot;)</code> para buscar todos los elementos secundarios con la clase <code>item</code> dentro de ese contenedor y se les realiza una operación en lote para modificar su contenido de texto a &quot;Elemento Modificado 1&quot;, &quot;Elemento Modificado 2&quot; y &quot;Elemento Modificado 3&quot;.</p>
+</html-viewer>
+
+<p>En el ejemplo anterior, primero se utiliza <code>$(&quot;.container&quot;)</code> para encontrar los elementos con la clase <code>container</code>, luego se utiliza <code>.all(&quot;.item&quot;)</code> para encontrar todos los elementos secundarios con la clase <code>item</code> dentro de ese contenedor y se realiza una operación en lote en ellos, modificando su contenido de texto a &quot;Modified Item 1&quot;, &quot;Modified Item 2&quot; y &quot;Modified Item 3&quot;.</p>
 <h2>Eventos</h2>
-<p>Anteriormente se ha explicado cómo usar el método <code>on</code> para vincular eventos. A continuación, se presentan algunos métodos relacionados con eventos;</p>
-<h3>Documentación del uso del método off</h3>
-<p>El método <code>off</code> se utiliza para eliminar los controladores de eventos vinculados a través del método <code>on</code>. Cuando no se necesita más un controlador de eventos para un evento en particular, se puede utilizar el método <code>off</code> para eliminarlo del elemento y evitar la ejecución repetida o las fugas de memoria.</p>
-<h4>Sintaxis</h4>
+<p>Ya hemos hablado sobre cómo usar <code>on</code> para enlazar eventos. A continuación, se presentarán algunos métodos relacionados con eventos.</p>
+<h3>Documentación sobre el uso del método off</h3>
+<p>El método <code>off</code> se utiliza para eliminar las funciones de manejo de eventos vinculadas mediante el método <code>on</code>. Cuando ya no se necesita una función de manejo de eventos para un determinado evento, se puede utilizar el método <code>off</code> para eliminarla del elemento, evitando así ejecuciones duplicadas o pérdidas de memoria.</p>
+<h4>sintaxis</h4>
 <pre><code class="language-javascript">$(selector).off(eventName, eventHandler);
 </code></pre>
 <ul>
-<li><code>selector</code>: Selector para el elemento donde se eliminará el controlador de eventos. </li>
-<li><code>eventName</code>: Nombre del evento que se eliminará. </li>
-<li><code>eventHandler</code>: Controlador de eventos que se eliminará.</li>
+<li><code>selector</code>: Selector del elemento al que se quiere remover el manejador de eventos.</li>
+<li><code>eventName</code>: Nombre del evento que se desea remover.</li>
+<li><code>eventHandler</code>: Función de manejo de eventos que se desea remover.</li>
 </ul>
 <h4>Ejemplo</h4>
+<html-viewer>
+
+<pre><code>&lt;!-- Importe ofa.js en su proyecto --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
 <pre><code class="language-html">&lt;button id=&quot;btn&quot;&gt;Haz clic&lt;/button&gt;
 &lt;script&gt;
   const handleClick = () =&gt; {
     alert(&quot;¡Botón clicado!&quot;);
   };
 
-  // Vincular el controlador de eventos para hacer clic
+  // Vincula la función de manejo de eventos de clic
   $(&quot;#btn&quot;).on(&quot;click&quot;, handleClick);
 
-  // Eliminar el controlador de eventos de hacer clic después de 5 segundos
+  // Quita la función de manejo de eventos de clic después de 5 segundos
   setTimeout(() =&gt; {
     $(&quot;#btn&quot;).off(&quot;click&quot;, handleClick);
   }, 5000);
 &lt;/script&gt;
 </code></pre>
-<p>En el ejemplo anterior, al hacer clic en el botón, aparecerá un cuadro de diálogo con el mensaje &quot;¡Botón clicado!&quot;. Sin embargo, después de 5 segundos, el controlador de eventos de hacer clic se elimina mediante el método <code>off</code>, por lo que al hacer clic nuevamente en el botón no se mostrará el cuadro de diálogo.</p>
-<h3>Documentación del uso del método one</h3>
-<p>El método <code>one</code> se utiliza para vincular un controlador de eventos que solo se ejecutará una vez cuando se active el evento por primera vez. Después de ejecutarse una vez, el controlador de eventos se eliminará automáticamente para evitar activaciones repetidas.</p>
-<h4>Sintaxis</h4>
+</html-viewer>
+
+<p>En el ejemplo anterior, cuando se hace clic en el botón, aparecerá un cuadro de diálogo que muestra &quot;¡Botón pulsado!&quot;. Sin embargo, después de 5 segundos, se eliminó la función de manejo de eventos de clic mediante el método <code>off</code>, por lo que al hacer clic en el botón nuevamente, no se activará el cuadro de diálogo.</p>
+<h3>Documentación de uso del método one</h3>
+<p>El método <code>one</code> se utiliza para vincular una función de manejo de eventos, pero esta función solo se ejecutará una vez cuando se desencadene el evento por primera vez. Después de ejecutarse una vez, la función de manejo de eventos se eliminará automáticamente para evitar desencadenamientos repetidos.</p>
+<h4>sintaxis</h4>
 <pre><code class="language-javascript">$(selector).one(eventName, eventHandler);
 </code></pre>
 <ul>
-<li><code>selector</code>: Selecciona el elemento al que se desea vincular la función de manejo del evento.</li>
-<li><code>eventName</code>: Nombre del evento que se desea vincular.</li>
-<li><code>eventHandler</code>: Función de manejo del evento a ejecutar.</li>
+<li><code>selector</code>: Selecciona el elemento en el que se va a asociar la función de manejo de eventos.</li>
+<li><code>eventName</code>: Nombre del evento que se va a asociar.</li>
+<li><code>eventHandler</code>: Función de manejo de eventos que se va a ejecutar.</li>
 </ul>
 <h4>Ejemplo</h4>
-<pre><code class="language-html">&lt;button id=&quot;btn&quot;&gt;Haz click una vez&lt;/button&gt;
+<html-viewer>
+
+<pre><code>&lt;!-- Importe ofa.js en su proyecto --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<pre><code class="language-html">&lt;button id=&quot;btn&quot;&gt;Haz clic una vez&lt;/button&gt;
 &lt;script&gt;
-  // Vincula la función de manejo del evento de clic, pero solo se ejecutará una vez
+  // Vincula una función de manejo de eventos al hacer clic, pero solo se ejecutará una vez
   $(&quot;#btn&quot;).one(&quot;click&quot;, () =&gt; {
     alert(&quot;¡Botón clickeado una vez!&quot;);
   });
 &lt;/script&gt;
 </code></pre>
-<p>En el ejemplo anterior, cuando se hace clic en el botón, se muestra una ventana emergente con el mensaje &quot;¡Botón clickeado una vez!&quot;. Sin embargo, después del primer clic, la función de manejo del evento se eliminará, por lo que los siguientes clics en el botón no mostrarán la ventana emergente.</p>
-<h3>Documentación sobre el uso del método emit</h3>
-<p>El método <code>emit</code> se utiliza para activar manualmente eventos específicos vinculados a un elemento. A través del método <code>emit</code>, se puede ejecutar la función de manejo del evento sin realizar ninguna acción real.</p>
-<h4>Sintaxis</h4>
+</html-viewer>
+
+<p>En el ejemplo anterior, cuando se hace clic en el botón, se mostrará un cuadro de diálogo que dice &quot;¡Botón clicado una vez!&quot;. Pero después del primer clic, se eliminará la función de manejo de eventos, por lo que los clics posteriores en el botón no volverán a mostrar el cuadro de diálogo.</p>
+<h3>Documentación del uso del método emit</h3>
+<p>El método <code>emit</code> se utiliza para activar manualmente eventos específicos vinculados a un elemento. Mediante el método <code>emit</code>, se puede activar la ejecución de las funciones de manejo de eventos sin realizar ninguna operación actualmente.</p>
+<h4>sintaxis</h4>
 <pre><code class="language-javascript">$(selector).emit(eventName);
 </code></pre>
 <ul>
-<li><code>selector</code>: Selecciona el elemento en el que se desea activar el evento.</li>
-<li><code>eventName</code>: Nombre del evento que se desea activar.</li>
+<li><code>selector</code>: Elige el elemento que quieres que desencadene el evento.</li>
+<li><code>eventName</code>: Nombre del evento que quieres desencadenar.</li>
 </ul>
 <h4>Ejemplo</h4>
-<pre><code class="language-html">&lt;button id=&quot;btn&quot;&gt;Haz click&lt;/button&gt;
+<pre><code class="language-html">&lt;button id=&quot;btn&quot;&gt;Click Me&lt;/button&gt;
 &lt;script&gt;
-  // Vincula la función de manejo del evento de clic
+  // Vincular el controlador de eventos de clic
   $(&quot;#btn&quot;).on(&quot;click&quot;, () =&gt; {
-    alert(&quot;¡Botón clickeado!&quot;);
+    alert(&quot;Button clicked!&quot;);
   });
 
-  // Activa manualmente el evento de clic del botón usando el método emit
+  // Activar el evento de clic del botón mediante el método emit
   $(&quot;#btn&quot;).emit(&quot;click&quot;);
 &lt;/script&gt;
 </code></pre>
-<p>En el ejemplo anterior, se activa manualmente el evento de clic del botón usando el método <code>emit</code>, lo que resulta en una ventana emergente que muestra el mensaje &quot;¡Botón clickeado!&quot;, aunque no se haya hecho clic en el botón físicamente.</p>
-<p>Nota: El uso del método <code>emit</code> no simula un clic de mouse u otros eventos reales, solo llama directamente a la función de manejo del evento vinculada. Por lo tanto, si deseas ejecutar un evento en situaciones específicas, puedes utilizar el método <code>emit</code>.</p>
-<p>Cuando hayas enlazado un evento, a veces puedes querer detener la propagación del evento (burbujeo) o cancelar el comportamiento predeterminado del evento. A continuación, se muestra cómo evitar la propagación y cancelar eventos predeterminados después de la activación del evento.</p>
-<h3>Detener la propagación del evento</h3>
-<p>La propagación del evento se refiere a cuando se activa un evento en un elemento y se propaga hacia arriba a lo largo del árbol del DOM, activando secuencialmente eventos del mismo tipo en elementos padres. Si deseas detener la propagación después de manejar un evento en un elemento específico, puedes utilizar el método <code>event.stopPropagation()</code>.</p>
+<p>En el ejemplo anterior, se activó manualmente el evento de clic del botón mediante el método <code>emit</code>, lo que mostrará un cuadro de diálogo con el mensaje &quot;¡Botón clickeado!&quot;, aunque en realidad no se hizo clic en el botón.</p>
+<p>Ten en cuenta que el uso del método <code>emit</code> no simula un clic de ratón u otros eventos reales, sino que llama directamente a la función de manejo de eventos asociada. Por lo tanto, si deseas ejecutar un evento en casos específicos, puedes utilizar el método <code>emit</code>.</p>
+<p>Cuando has vinculado un evento, a veces es posible que desees detener la propagación del evento (burbujeo) o cancelar la acción predeterminada del evento. A continuación se explicará cómo evitar la propagación y cancelar la acción predeterminada después de que se haya desencadenado el evento.</p>
+<h3>Deshabilita el burbujeo de eventos</h3>
+<p>La propagación de eventos se refiere a cuando se desencadena un evento en un elemento, se propaga hacia arriba a lo largo del árbol DOM y activa sucesivamente eventos del mismo tipo en los elementos padre. Si deseas detener la propagación después de manipular el evento en un elemento específico, puedes usar el método <code>event.stopPropagation()</code>.</p>
 <p>Código de ejemplo:</p>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
   &lt;meta charset=&quot;UTF-8&quot;&gt;
   &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-  &lt;title&gt;Detener la propagación del evento&lt;/title&gt;
+  &lt;title&gt;Stop Event Bubbling&lt;/title&gt;
   &lt;script src=&quot;../ofa.js&quot;&gt;&lt;/script&gt;
 &lt;/head&gt;
 &lt;body&gt;
   &lt;div id=&quot;outer&quot;&gt;
     &lt;div id=&quot;inner&quot;&gt;
-      &lt;button id=&quot;btn&quot;&gt;Haz clic&lt;/button&gt;
+      &lt;button id=&quot;btn&quot;&gt;Click Me&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 
@@ -230,38 +279,38 @@
     const innerDiv = $(&#39;#inner&#39;);
 
     btn.on(&#39;click&#39;, (event) =&gt; {
-      alert(&#39;¡Botón pulsado!&#39;);
-      event.stopPropagation(); // Detener la propagación del evento
+      alert(&#39;Button Clicked!&#39;);
+      event.stopPropagation(); // Bloqueo del burbujeo de eventos
     });
 
     innerDiv.on(&#39;click&#39;, () =&gt; {
-      alert(&#39;¡Div interno pulsado!&#39;);
+      alert(&#39;Inner Div Clicked!&#39;);
     });
 
     $(&#39;#outer&#39;).on(&#39;click&#39;, () =&gt; {
-      alert(&#39;¡Div externo pulsado!&#39;);
+      alert(&#39;Outer Div Clicked!&#39;);
     });
   &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<p>En el ejemplo anterior, cuando haces clic en el botón &quot;Haz clic&quot;, se muestra &quot;¡Botón pulsado!&quot;, pero no se activa &quot;¡Div interno pulsado!&quot; y &quot;¡Div externo pulsado!&quot;. Esto se debe a que hemos llamado a <code>event.stopPropagation()</code> en el controlador de eventos de clic del botón, lo que evita la propagación del evento.</p>
-<h3>Cancelar el comportamiento predeterminado del evento</h3>
-<p>Algunos elementos tienen un comportamiento predeterminado cuando se activa un evento. Por ejemplo, hacer clic en un botón de envío enviará el formulario, hacer clic en un enlace redirigirá a la dirección del enlace, etc. Si deseas evitar el comportamiento predeterminado de un evento, puedes usar el método <code>event.preventDefault()</code>.</p>
+<p>En el ejemplo anterior, cuando haces clic en el botón &quot;Click Me&quot;, se mostrará &quot;Button Clicked!&quot;, pero no se activarán &quot;Inner Div Clicked!&quot; y &quot;Outer Div Clicked!&quot;. Esto se debe a que llamamos a <code>event.stopPropagation()</code> en el controlador del evento de clic del botón, lo que impide que el evento se propague más allá.</p>
+<h3>Cancelar el comportamiento predeterminado de un evento</h3>
+<p>Algunos eventos en ciertos elementos tienen un comportamiento predeterminado cuando se activan. Por ejemplo, hacer clic en un botón de envío provocará el envío del formulario, hacer clic en un enlace redireccionará a la dirección del enlace, etc. Si desea evitar el comportamiento predeterminado de un evento, puede utilizar el método <code>event.preventDefault()</code>.</p>
 <p>Código de ejemplo:</p>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
   &lt;meta charset=&quot;UTF-8&quot;&gt;
   &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-  &lt;title&gt;Prevenir Comportamiento Predeterminado de Evento&lt;/title&gt;
+  &lt;title&gt;Prevent Default Event&lt;/title&gt;
   &lt;script src=&quot;../ofa.js&quot;&gt;&lt;/script&gt;
 &lt;/head&gt;
 &lt;body&gt;
   &lt;form id=&quot;myForm&quot;&gt;
-    &lt;label for=&quot;name&quot;&gt;Nombre:&lt;/label&gt;
+    &lt;label for=&quot;name&quot;&gt;Name:&lt;/label&gt;
     &lt;input type=&quot;text&quot; id=&quot;name&quot; /&gt;
-    &lt;button id=&quot;submitBtn&quot;&gt;Enviar&lt;/button&gt;
+    &lt;button id=&quot;submitBtn&quot;&gt;Submit&lt;/button&gt;
   &lt;/form&gt;
 
   &lt;script&gt;
@@ -269,26 +318,26 @@
     const submitBtn = $(&#39;#submitBtn&#39;);
 
     submitBtn.on(&#39;click&#39;, (event) =&gt; {
-      event.preventDefault(); // Cancelar el comportamiento predeterminado del evento
+      event.preventDefault(); // Anular el comportamiento por defecto de un evento
       const name = $(&#39;#name&#39;).value;
-      alert(`¡Hola, ${name}! Envío del formulario prevenido.`);
+      alert(`Hello, ${name}! Form submission prevented.`);
     });
 
     form.on(&#39;submit&#39;, () =&gt; {
-      alert(&#39;¡Formulario enviado!&#39;);
+      alert(&#39;Form Submitted!&#39;);
     });
   &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<p>En el ejemplo anterior, cuando haces clic en el botón de envío &quot;Enviar&quot;, mostrará &quot;¡Hola, {name}! Envío del formulario prevenido.&quot;, pero no mostrará la alerta &quot;¡Formulario enviado!&quot;. Esto se debe a que llamamos a <code>event.preventDefault()</code> en el controlador de eventos del clic del botón de envío, lo que evita el comportamiento predeterminado de envío del formulario.</p>
+<p>En el ejemplo anterior, cuando haces clic en el botón de envío &quot;Submit&quot;, se mostrará &quot;Hello, {name}! Form submission prevented.&quot;, pero no se activará la alerta &quot;Form Submitted!&quot;. Esto se debe a que en el controlador del evento de clic del botón de envío se llama a <code>event.preventDefault()</code>, lo cual evita el comportamiento de envío predeterminado del formulario.</p>
 
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -297,6 +346,119 @@
       </template>
     </o-app>
     <div id="loading"></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.14/statics/init.js" type="module"></script>
+    <div class="body-important other-link"><ul>
+<li><a href="../../cases/index.html">Empezar</a></li>
+<li><a href="../../cases/event.html">Reacción de eventos</a></li>
+<li><a href="../../cases/simple-component.html">Creación y uso de componentes</a></li>
+<li><a href="../../cases/slot.html">Ranuras de componentes</a></li>
+<li><a href="../../cases/render-text.html">Sintaxis de plantillas: renderizado de texto</a></li>
+<li><a href="../../cases/attribute-transmission.html">Transmisión de atributos</a></li>
+<li><a href="../../cases/get-set-comp.html">Obtener y modificar valores de instancia de componente</a></li>
+<li><a href="../../cases/property-transmission.html">Sintaxis de plantillas: transmisión de atributos</a></li>
+<li><a href="../../cases/bind-event.html">Sintaxis de plantillas: vincular eventos</a></li>
+<li><a href="../../cases/nested-component.html">Componentes anidados</a></li>
+<li><a href="../../cases/inject-host.html">Componentes de inyección de host</a></li>
+<li><a href="../../cases/event-passing.html">Transmisión de eventos</a></li>
+<li><a href="../../cases/sync.html">Sintaxis de plantillas: enlace de datos bidireccional</a></li>
+<li><a href="../../cases/condition.html">Componentes de plantilla: renderizado condicional</a></li>
+<li><a href="../../cases/fill.html">Componentes de plantilla: renderizado de relleno</a></li>
+<li><a href="../../cases/fill-temp.html">Renderizado de relleno recursivo</a></li>
+<li><a href="../../cases/life-cycle.html">Ciclo de vida</a></li>
+<li><a href="../../cases/form-data.html">Datos de formulario</a></li>
+<li><a href="../../cases/custom-form-element.html">Componente de formulario personalizado</a></li>
+<li><a href="../../cases/use-page.html">Uso de componentes de página</a></li>
+<li><a href="../../cases/use-app.html">Uso de componentes de aplicación</a></li>
+<li><a href="../../cases/app-config.html">Configuración de parámetros de aplicación</a></li>
+<li><a href="../../cases/app-loading.html">Personalización de carga de la aplicación</a></li>
+<li><a href="../../cases/set404.html">Configuración de la página 404</a></li>
+<li><a href="../../cases/nested-page.html">Páginas anidadas</a></li>
+<li><a href="../../cases/use-hash-router.html">Uso de HashRouter</a></li>
+<li><a href="../../cases/use-scsr.html">Uso de la solución scsr</a></li>
+<li><a href="../../cases/sync-state.html">Sincronización de estado</a></li>
+<li><a href="../../cases/alias.html">Alias</a></li>
+<li><a href="../introduce.html">Introducción</a></li>
+<li><a href="index.html">Cómo usar ofa.js</a></li>
+<li><a href="hello-world.html">Primer caso</a></li>
+<li><a href="elements-and-events.html">Selección de elementos y eventos relacionados</a></li>
+<li><a href="basic-concept.html">Concepto básico de instancia</a></li>
+<li><a href="common-properties.html">Propiedades y métodos comunes</a></li>
+<li><a href="../create-component/index.html">Creación y uso</a></li>
+<li><a href="../create-component/parameter-description.html">Descripción de parámetros</a></li>
+<li><a href="../create-component/life-cycle.html">Ciclo de vida</a></li>
+<li><a href="../create-component/web-components.html">Conocimientos generales sobre componentes web</a></li>
+<li><a href="../create-component/template-syntax.html">Sintaxis de plantillas</a></li>
+<li><a href="../create-app/index.html">Introducción</a></li>
+<li><a href="../create-app/page.html">Uso del componente Page</a></li>
+<li><a href="../create-app/app.html">Uso del componente App</a></li>
+<li><a href="../create-app/subrouting.html">Funcionalidad de subrutas</a></li>
+<li><a href="../create-app/o-router.html">Binding de rutas</a></li>
+<li><a href="../create-app/scsr.html">Esquema SCSR</a></li>
+<li><a href="../others/data-sharing.html">Compartir datos</a></li>
+<li><a href="../others/about-micro-frontend.html">ofa.js y micro frontend</a></li>
+<li><a href="../../api/index.html">Introducción a la API</a></li>
+<li><a href="../../api/instance/dollar.html">$ Método</a></li>
+<li><a href="../../api/instance/all.html">all</a></li>
+<li><a href="../../api/instance/prev.html">prev</a></li>
+<li><a href="../../api/instance/prevs.html">prevs</a></li>
+<li><a href="../../api/instance/next.html">next</a></li>
+<li><a href="../../api/instance/nexts.html">nexts</a></li>
+<li><a href="../../api/instance/siblings.html">siblings</a></li>
+<li><a href="../../api/instance/parent.html">parent</a></li>
+<li><a href="../../api/instance/parents.html">parents</a></li>
+<li><a href="../../api/instance/clone.html">clone</a></li>
+<li><a href="../../api/instance/ele.html">ele</a></li>
+<li><a href="../../api/instance/shadow.html">shadow</a></li>
+<li><a href="../../api/instance/root.html">root</a></li>
+<li><a href="../../api/instance/children.html">Elementos secundarios</a></li>
+<li><a href="../../api/instance/host.html">host</a></li>
+<li><a href="../../api/instance/app.html">app</a></li>
+<li><a href="../../api/operation/array-like.html">Agregar o eliminar nodos secundarios</a></li>
+<li><a href="../../api/operation/before.html">before</a></li>
+<li><a href="../../api/operation/after.html">after</a></li>
+<li><a href="../../api/operation/remove.html">remove</a></li>
+<li><a href="../../api/operation/wrap.html">wrap</a></li>
+<li><a href="../../api/operation/unwrap.html">unwrap</a></li>
+<li><a href="../../api/props/text.html">text</a></li>
+<li><a href="../../api/props/html.html">html</a></li>
+<li><a href="../../api/props/attr.html">attr</a></li>
+<li><a href="../../api/props/css.html">css</a></li>
+<li><a href="../../api/props/style.html">style</a></li>
+<li><a href="../../api/props/class-list.html">classList</a></li>
+<li><a href="../../api/props/data.html">data</a></li>
+<li><a href="../../api/event/on.html">on</a></li>
+<li><a href="../../api/event/one.html">one</a></li>
+<li><a href="../../api/event/emit.html">emit</a></li>
+<li><a href="../../api/event/off.html">off</a></li>
+<li><a href="../../api/temp-syntax/text-render.html">Renderizado de texto</a></li>
+<li><a href="../../api/temp-syntax/class.html">class</a></li>
+<li><a href="../../api/temp-syntax/sync.html">sync</a></li>
+<li><a href="../../api/temp-syntax/condition.html">Renderizado condicional</a></li>
+<li><a href="../../api/temp-syntax/fill.html">Renderizado de listas</a></li>
+<li><a href="../../api/life-cycle/created.html">created</a></li>
+<li><a href="../../api/life-cycle/ready.html">ready</a></li>
+<li><a href="../../api/life-cycle/watch.html">watch</a></li>
+<li><a href="../../api/life-cycle/loaded.html">loaded</a></li>
+<li><a href="../../api/life-cycle/attached.html">attached</a></li>
+<li><a href="../../api/life-cycle/detached.html">detached</a></li>
+<li><a href="../../api/life-cycle/router-change.html">routerChange</a></li>
+<li><a href="../../api/others/app.html">app</a></li>
+<li><a href="../../api/others/page.html">page</a></li>
+<li><a href="../../api/others/box.html">Modelo de caja</a></li>
+<li><a href="../../api/others/form-data.html">formData</a></li>
+<li><a href="../../api/others/tag.html">tag</a></li>
+<li><a href="../../api/others/index.html">índice</a></li>
+<li><a href="../../api/others/is.html">is</a></li>
+<li><a href="../../api/others/refresh.html">refresh</a></li>
+<li><a href="../../api/others/path.html">PATH</a></li>
+<li><a href="../../api/others/extend.html">extend</a></li>
+<li><a href="../../api/others/stanz.html">Características de los datos de instancia</a></li>
+<li><a href="../../../en/index.html">English-index.html</a></li>
+<li><a href="../../../cn/index.html">简体中文-index.html</a></li>
+<li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
+<li><a href="../../../ja/index.html">index.html</a></li>
+<li><a href="../../index.html">española-index.html</a></li>
+
+</ul></div>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/init.js" type="module"></script>
   </body>
 </html>
