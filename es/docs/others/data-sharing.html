@@ -172,7 +172,7 @@ export const data = $.stanz({
 
       return {
         data: {
-        //   obj: data // ❌ Esta operación es incorrecta, ajuste de datos directamente, fuga de memoria
+        //   obj: data // ❌ Esta operación es incorrecta, establece los datos directamente y no puede recuperar la memoria provocando fugas
           obj: {},
         },
         ready() {
@@ -309,6 +309,7 @@ export const data = $.stanz({
 <li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
 <li><a href="../../../ja/index.html">index.html</a></li>
 <li><a href="../../index.html">española-index.html</a></li>
+<li><a href="../../../ko/index.html">index.html</a></li>
 
 </ul></div>
     <script src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/init.js" type="module"></script>

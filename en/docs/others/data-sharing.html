@@ -172,11 +172,11 @@ export const data = $.stanz({
 
       return {
         data: {
-        //   obj: data // ❌ This operation is wrong, setting data directly cannot be recycled
+        //   obj: data // ❌ This operation is incorrect, directly setting data will cause memory leakage
           obj: {},
         },
         ready() {
-          this.obj = data; // ❌ Setting in the ready lifecycle cannot determine when to clear, which may cause memory leaks. The safest method is to set it in the attached lifecycle and delete it after detached
+          this.obj = data; // ❌ Setting in ready lifecycle, cannot determine when to clear, may cause memory leaks. The safest way is to set in attached lifecycle and delete after detached
         },
       };
     }
@@ -309,6 +309,7 @@ export const data = $.stanz({
 <li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
 <li><a href="../../../ja/index.html">index.html</a></li>
 <li><a href="../../../es/index.html">española-index.html</a></li>
+<li><a href="../../../ko/index.html">index.html</a></li>
 
 </ul></div>
     <script src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/init.js" type="module"></script>

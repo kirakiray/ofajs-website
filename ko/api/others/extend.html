@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>extend</title>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
+      type="module"
+    ></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/public.css" />
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+    </style>
+    <script>
+      let configUrl = "../../config.json";
+    </script>
+    
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/logo.png">
+        <link rel="apple-touch-icon-precomposed" href="/logo.png">
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag("js", new Date());
+
+          gtag("config", "G-7L1TCCJZT6");
+        </script>
+        <script src="/init-sw.js"></script>
+      
+  </head>
+  <body>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/app-config.mjs">
+      <template page>
+        <style>
+          .markdown-body::before,
+          .markdown-body::after {
+            display: block;
+            content: "";
+            height: 1px;
+          }
+          .markdown-body::after {
+            height: 32px;
+          }
+          .markdown-body > * {
+            margin-top: 1em;
+            margin-bottom: 1em;
+          }
+        </style>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/github-markdown.css"
+        />
+        <article class="markdown-body"><h1>extend</h1>
+<p>extend는 인스턴스의 속성이나 메서드를 확장하는 고차 함수입니다.</p>
+<html-viewer>
+
+<pre><code class="language-html">&lt;!-- ofa.js를 프로젝트에 추가하십시오 --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<pre><code class="language-html">&lt;ul&gt;
+    &lt;li&gt;I am 1&lt;/li&gt;
+    &lt;li id=&quot;target&quot;&gt;I am target&lt;/li&gt;
+    &lt;li&gt;I am 3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div id=&quot;logger&quot;&gt;logger&lt;/div&gt;
+
+&lt;script&gt;
+  const target = $(&quot;#target&quot;);
+  
+  target.extend({
+    get good(){
+      return &quot;ofa.js is good&quot;;
+    },
+    say(){
+      return &#39;mother fxxker&#39;;
+    }
+  });
+   
+  setTimeout(() =&gt; {
+    const target = $(&quot;#target&quot;);
+    $(&quot;#logger&quot;).html = `
+    good : ${target.good} &lt;br&gt;
+    say() : ${target.say()}
+    `;
+  }, 500);
+&lt;/script&gt;
+</code></pre>
+</html-viewer>
+
+<h2>$ 하위 항목 확장</h2>
+<p>fn.extend를 통해 jQuery와 유사하게 기본 인스턴스의 속성이나 메소드를 확장할 수 있습니다. fn에서 확장한 속성이나 메소드는 모든 인스턴스에 적용됩니다.</p>
+<html-viewer>
+
+<pre><code class="language-html">&lt;!-- ofa.js를 프로젝트에 추가하십시오 --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<pre><code class="language-html">&lt;ul&gt;
+    &lt;li&gt;I am 1&lt;/li&gt;
+    &lt;li id=&quot;target&quot;&gt;I am target&lt;/li&gt;
+    &lt;li&gt;I am 3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div id=&quot;logger&quot;&gt;logger&lt;/div&gt;
+
+&lt;script&gt;
+  const target = $(&quot;#target&quot;);
+  
+  $.fn.extend({
+    get good(){
+      return &quot;ofa.js is good&quot;;
+    },
+    say(){
+      return &#39;mother fxxker&#39;;
+    }
+  });
+   
+  setTimeout(() =&gt; {
+    $(&quot;#logger&quot;).html = `
+    target good : ${$(&quot;#target&quot;).good} &lt;br&gt;
+    logger say() : ${$(&quot;#logger&quot;).say()}
+    `;
+  }, 500);
+&lt;/script&gt;
+</code></pre>
+</html-viewer>
+    <article-footer></article-footer>
+    </article>
+        <script>
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/layouts/article-layout.html";
+
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/document-page-init.mjs";
+
+          export default async (...args) => {
+            return await pageInit(PATH, args);
+          };
+        </script>
+      </template>
+    </o-app>
+    <div id="loading"></div>
+    <div class="body-important other-link"><ul>
+<li><a href="../../cases/index.html">시작</a></li>
+<li><a href="../../cases/event.html">이벤트 응답</a></li>
+<li><a href="../../cases/simple-component.html">컴포넌트 생성 및 사용</a></li>
+<li><a href="../../cases/slot.html">컴포넌트 슬롯</a></li>
+<li><a href="../../cases/render-text.html">템플릿 언어: 텍스트 렌더링</a></li>
+<li><a href="../../cases/attribute-transmission.html">속성 전달</a></li>
+<li><a href="../../cases/get-set-comp.html">컴포넌트 인스턴스 값 가져오기 및 변경하기</a></li>
+<li><a href="../../cases/property-transmission.html">템플릿 언어: 속성 전달</a></li>
+<li><a href="../../cases/bind-event.html">템플릿 언어: 이벤트 바인딩</a></li>
+<li><a href="../../cases/nested-component.html">중첩 컴포넌트</a></li>
+<li><a href="../../cases/inject-host.html">inject-host 컴포넌트</a></li>
+<li><a href="../../cases/event-passing.html">이벤트 전달</a></li>
+<li><a href="../../cases/sync.html">템플릿 언어: 양방향 데이터 바인딩</a></li>
+<li><a href="../../cases/condition.html">템플릿 컴포넌트: 조건부 렌더링</a></li>
+<li><a href="../../cases/fill.html">템플릿 컴포넌트: 채우기 렌더링</a></li>
+<li><a href="../../cases/fill-temp.html">재귀 채우기 렌더링</a></li>
+<li><a href="../../cases/life-cycle.html">라이프사이클</a></li>
+<li><a href="../../cases/form-data.html">폼 데이터</a></li>
+<li><a href="../../cases/custom-form-element.html">사용자 정의 폼 컴포넌트</a></li>
+<li><a href="../../cases/use-page.html">페이지 컴포넌트 사용</a></li>
+<li><a href="../../cases/use-app.html">앱 컴포넌트 사용</a></li>
+<li><a href="../../cases/app-config.html">앱 구성 설정</a></li>
+<li><a href="../../cases/app-loading.html">앱에 대한 맞춤형 로딩 설정</a></li>
+<li><a href="../../cases/set404.html">404 페이지 설정</a></li>
+<li><a href="../../cases/nested-page.html">중첩 페이지</a></li>
+<li><a href="../../cases/use-hash-router.html">HashRouter 사용</a></li>
+<li><a href="../../cases/use-scsr.html">scsr 방식 사용</a></li>
+<li><a href="../../cases/sync-state.html">상태 동기화</a></li>
+<li><a href="../../cases/alias.html">별칭</a></li>
+<li><a href="../../docs/introduce.html">소개</a></li>
+<li><a href="../../docs/get-started/index.html">ofa.js 사용 방법</a></li>
+<li><a href="../../docs/get-started/hello-world.html">첫 번째 예제</a></li>
+<li><a href="../../docs/get-started/elements-and-events.html">요소 선택 및 이벤트 처리</a></li>
+<li><a href="../../docs/get-started/basic-concept.html">인스턴스 기본 개념</a></li>
+<li><a href="../../docs/get-started/common-properties.html">일반적인 속성 및 메서드</a></li>
+<li><a href="../../docs/create-component/index.html">제작 및 사용</a></li>
+<li><a href="../../docs/create-component/parameter-description.html">매개변수 설명</a></li>
+<li><a href="../../docs/create-component/life-cycle.html">라이프사이클</a></li>
+<li><a href="../../docs/create-component/web-components.html">컴포넌트 기본 지식</a></li>
+<li><a href="../../docs/create-component/template-syntax.html">템플릿 문법</a></li>
+<li><a href="../../docs/create-app/index.html">소개</a></li>
+<li><a href="../../docs/create-app/page.html">Page 컴포넌트 사용</a></li>
+<li><a href="../../docs/create-app/app.html">App 컴포넌트 사용</a></li>
+<li><a href="../../docs/create-app/subrouting.html">하위 라우팅 기능</a></li>
+<li><a href="../../docs/create-app/o-router.html">라우팅 바인딩</a></li>
+<li><a href="../../docs/create-app/scsr.html">SCSR 솔루션</a></li>
+<li><a href="../../docs/others/data-sharing.html">데이터 공유</a></li>
+<li><a href="../../docs/others/about-micro-frontend.html">ofa.js와 마이크로 프론트엔드</a></li>
+<li><a href="../index.html">API 소개</a></li>
+<li><a href="../instance/dollar.html">$ 메소드</a></li>
+<li><a href="../instance/all.html">all</a></li>
+<li><a href="../instance/prev.html">prev</a></li>
+<li><a href="../instance/prevs.html">prevs</a></li>
+<li><a href="../instance/next.html">next</a></li>
+<li><a href="../instance/nexts.html">nexts</a></li>
+<li><a href="../instance/siblings.html">siblings</a></li>
+<li><a href="../instance/parent.html">parent</a></li>
+<li><a href="../instance/parents.html">parents</a></li>
+<li><a href="../instance/clone.html">clone</a></li>
+<li><a href="../instance/ele.html">ele</a></li>
+<li><a href="../instance/shadow.html">shadow</a></li>
+<li><a href="../instance/root.html">root</a></li>
+<li><a href="../instance/children.html">자식 요소</a></li>
+<li><a href="../instance/host.html">host</a></li>
+<li><a href="../instance/app.html">app</a></li>
+<li><a href="../operation/array-like.html">자식 노드 추가 또는 삭제</a></li>
+<li><a href="../operation/before.html">before</a></li>
+<li><a href="../operation/after.html">after</a></li>
+<li><a href="../operation/remove.html">remove</a></li>
+<li><a href="../operation/wrap.html">wrap</a></li>
+<li><a href="../operation/unwrap.html">unwrap</a></li>
+<li><a href="../props/text.html">text</a></li>
+<li><a href="../props/html.html">html</a></li>
+<li><a href="../props/attr.html">attr</a></li>
+<li><a href="../props/css.html">css</a></li>
+<li><a href="../props/style.html">style</a></li>
+<li><a href="../props/class-list.html">classList</a></li>
+<li><a href="../props/data.html">data</a></li>
+<li><a href="../event/on.html">on</a></li>
+<li><a href="../event/one.html">one</a></li>
+<li><a href="../event/emit.html">emit</a></li>
+<li><a href="../event/off.html">off</a></li>
+<li><a href="../temp-syntax/text-render.html">텍스트 렌더링</a></li>
+<li><a href="../temp-syntax/class.html">class</a></li>
+<li><a href="../temp-syntax/sync.html">sync</a></li>
+<li><a href="../temp-syntax/condition.html">조건 렌더링</a></li>
+<li><a href="../temp-syntax/fill.html">리스트 렌더링</a></li>
+<li><a href="../life-cycle/created.html">created</a></li>
+<li><a href="../life-cycle/ready.html">ready</a></li>
+<li><a href="../life-cycle/watch.html">watch</a></li>
+<li><a href="../life-cycle/loaded.html">loaded</a></li>
+<li><a href="../life-cycle/attached.html">attached</a></li>
+<li><a href="../life-cycle/detached.html">detached</a></li>
+<li><a href="../life-cycle/router-change.html">routerChange</a></li>
+<li><a href="app.html">app</a></li>
+<li><a href="page.html">page</a></li>
+<li><a href="box.html">박스 모델</a></li>
+<li><a href="form-data.html">formData</a></li>
+<li><a href="tag.html">tag</a></li>
+<li><a href="index.html">index</a></li>
+<li><a href="is.html">is</a></li>
+<li><a href="refresh.html">refresh</a></li>
+<li><a href="path.html">PATH</a></li>
+<li><a href="extend.html">extend</a></li>
+<li><a href="stanz.html">인스턴스 데이터 특징</a></li>
+<li><a href="../../../en/index.html">English-index.html</a></li>
+<li><a href="../../../cn/index.html">简体中文-index.html</a></li>
+<li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
+<li><a href="../../../ja/index.html">index.html</a></li>
+<li><a href="../../../es/index.html">española-index.html</a></li>
+<li><a href="../../index.html">index.html</a></li>
+
+</ul></div>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/init.js" type="module"></script>
+  </body>
+</html>

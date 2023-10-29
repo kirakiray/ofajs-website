@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>formData</title>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
+      type="module"
+    ></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/public.css" />
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+    </style>
+    <script>
+      let configUrl = "../../config.json";
+    </script>
+    
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/logo.png">
+        <link rel="apple-touch-icon-precomposed" href="/logo.png">
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag("js", new Date());
+
+          gtag("config", "G-7L1TCCJZT6");
+        </script>
+        <script src="/init-sw.js"></script>
+      
+  </head>
+  <body>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/app-config.mjs">
+      <template page>
+        <style>
+          .markdown-body::before,
+          .markdown-body::after {
+            display: block;
+            content: "";
+            height: 1px;
+          }
+          .markdown-body::after {
+            height: 32px;
+          }
+          .markdown-body > * {
+            margin-top: 1em;
+            margin-bottom: 1em;
+          }
+        </style>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/github-markdown.css"
+        />
+        <article class="markdown-body"><h1>formData</h1>
+<p><code>formData</code> 메소드는 폼 요소와 바인딩된 개체 데이터를 생성하여 폼 요소의 처리를 더 간단하고 효율적으로 만들어줍니다. 이 메소드는 대상 요소 내의 모든 폼 요소의 값을 포함하는 개체를 생성하며, 이 개체는 폼 요소의 변경 사항을 실시간으로 반영합니다.</p>
+<p>아래 예시에서는 <code>formData</code> 메서드를 사용하여 양식 요소와 바인딩된 객체 데이터를 생성하는 방법을 보여줍니다.</p>
+<html-viewer>
+
+<pre><code class="language-html">&lt;!-- 프로젝트에 ofa.js 가져오기 --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<pre><code class="language-html">&lt;form id=&quot;myForm&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;username&quot; value=&quot;John Doe&quot; /&gt;
+  &lt;div&gt;
+    sex:
+    &lt;label&gt;
+      man
+      &lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;man&quot; /&gt;
+    &lt;/label&gt;
+    &lt;label&gt;
+      woman
+      &lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;woman&quot; /&gt;
+    &lt;/label&gt;
+  &lt;/div&gt;
+  &lt;textarea name=&quot;message&quot;&gt;Hello World!&lt;/textarea&gt;
+&lt;/form&gt;
+&lt;br /&gt;
+&lt;div id=&quot;logger&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+  const data = $(&quot;#myForm&quot;).formData();
+
+  $(&quot;#logger&quot;).text = data;
+  data.watch(() =&gt; {
+    $(&quot;#logger&quot;).text = data;
+  });
+&lt;/script&gt;
+</code></pre>
+</html-viewer>
+
+<p>이 예제에서는 텍스트 입력 상자, 라디오 버튼 및 텍스트 영역이 포함된 양식을 생성하고 <code>formData</code> 메서드를 사용하여 이러한 양식 요소의 값을 포함하는 <code>data</code> 객체를 만듭니다. 우리는 또한 <code>watch</code> 메서드를 사용하여 데이터의 변경을 모니터링하고 데이터를 실시간으로 페이지에 표시합니다. 사용자가 양식 요소의 값을 수정할 때 <code>data</code> 객체가 업데이트되어 데이터 처리가 매우 간단하고 효율적이게 됩니다.</p>
+<h2>양방향 데이터 바인딩</h2>
+<p>생성 된 객체 데이터는 역으로 바인딩할 수 ​​있습니다. 이는 객체의 속성을 수정 할 때 관련 양식 요소 값도 자동으로 업데이트됨을 의미합니다. 이것은 양식 데이터를 처리 할 때 매우 유용하며 쉽게 양방향 데이터 바인딩을 구현할 수 있습니다.</p>
+<p>아래의 예제에서는 <code>formData</code> 메소드로 생성된 객체 데이터를 사용하는 방법과 양방향 데이터 바인딩을 하는 방법을 보여줍니다.</p>
+<html-viewer>
+
+<pre><code class="language-html">&lt;!-- 프로젝트에 ofa.js 가져오기 --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<pre><code class="language-html">&lt;form id=&quot;myForm&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;username&quot; value=&quot;John Doe&quot; /&gt;
+  &lt;div&gt;
+    sex:
+    &lt;label&gt;
+      man
+      &lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;man&quot; /&gt;
+    &lt;/label&gt;
+    &lt;label&gt;
+      woman
+      &lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;woman&quot; /&gt;
+    &lt;/label&gt;
+  &lt;/div&gt;
+  &lt;textarea name=&quot;message&quot;&gt;Hello World!&lt;/textarea&gt;
+&lt;/form&gt;
+&lt;br /&gt;
+&lt;div id=&quot;logger&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+  const data = $(&quot;#myForm&quot;).formData();
+
+  setTimeout(()=&gt;{
+    data.username = &quot;Yao&quot;;
+    data.sex = &quot;man&quot;;
+    data.message = &quot;ofa.js is good!&quot;;
+  },1000);
+&lt;/script&gt;
+</code></pre>
+</html-viewer>
+
+<p>이 예제에서는 먼저 텍스트 입력 상자, 라디오 버튼 및 텍스트 영역이 포함된 폼을 만들었고, <code>formData</code> 메서드를 사용하여 데이터 객체 <code>data</code>를 생성했습니다. 그런 다음 <code>data</code> 객체의 속성을 수정함으로써 양방향 데이터 바인딩, 즉 폼 요소의 값이 객체의 속성 변경과 자동으로 업데이트되는 기능을 구현했습니다. 이러한 양방향 데이터 바인딩 기능은 폼 데이터와의 상호 작용을 더 편리하게 만듭니다.</p>
+<h2>특정 폼 모니터링</h2>
+<p><code>formData()</code> 메서드는 기본적으로 대상 요소 내의 모든 <code>input</code>、<code>select</code> 및 <code>textarea</code> 요소를 감지합니다. 그러나 특정한 폼 요소만 감지하려면 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors">CSS 선택자</a>를 전달하여 구현할 수 있습니다.</p>
+<p>이 아래 예제에서는 CSS 선택기를 전달하여 특정한 양식 요소를 감시하는 방법을 보여줍니다.</p>
+<html-viewer>
+
+<pre><code class="language-html">&lt;!-- 프로젝트에 ofa.js 가져오기 --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<pre><code class="language-html">&lt;form id=&quot;myForm&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;username&quot; value=&quot;John Doe&quot; class=&quot;use-it&quot; /&gt;
+  &lt;div&gt;
+    sex:
+    &lt;label&gt;
+      man
+      &lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;man&quot; class=&quot;use-it&quot; /&gt;
+    &lt;/label&gt;
+    &lt;label&gt;
+      woman
+      &lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;woman&quot; class=&quot;use-it&quot; /&gt;
+    &lt;/label&gt;
+  &lt;/div&gt;
+  &lt;textarea name=&quot;message&quot;&gt;이 양식 요소는 바인딩되지 않습니다.&lt;/textarea&gt;
+&lt;/form&gt;
+&lt;br /&gt;
+&lt;div id=&quot;logger&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+  const data = $(&quot;#myForm&quot;).formData(&quot;.use-it&quot;);
+
+  $(&quot;#logger&quot;).text = data;
+  data.watch(() =&gt; {
+    $(&quot;#logger&quot;).text = data;
+  });
+&lt;/script&gt;
+</code></pre>
+</html-viewer>
+
+<p>여기 예시에서는 &quot;class&quot;가 &quot;use-it&quot;인 양식 요소만 감시하도록 하려고 하기 때문에 <code>&quot;.use-it&quot;</code>을 <code>formData()</code> 메소드에 매개변수로 전달합니다. 이렇게 하면 해당 클래스 이름이 있는 양식 요소만 감시되고 생성된 데이터 객체에 포함됩니다. 이는 양식 요소를 선택적으로 감시하여 양식 데이터를 더 정확하게 관리하는 데 매우 유용합니다.</p>
+<h2>사용자 정의 양식</h2>
+<p>사용자 정의 폼 컴포넌트를 사용하려면 사용자 정의 컴포넌트에 <strong>value 속성</strong>을 추가하고 <strong>name 특성</strong>을 설정하기만 하면 됩니다.</p>
+<p>아래 예시에서는 &quot;custom-input&quot;이라는 사용자 정의 폼 컴포넌트를 생성합니다. 이 컴포넌트는 편집 가능한 텍스트 상자로, 텍스트가 변경될 때 마다 <code>value</code> 속성을 실시간으로 업데이트합니다.</p>
+<comp-viewer comp-name="custom-input">
+
+<pre><code>&lt;div id=&quot;myForm&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;username&quot; value=&quot;John Doe&quot; /&gt;
+  &lt;custom-input name=&quot;message&quot;&gt;&lt;/custom-input&gt;
+  &lt;div id=&quot;logger&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  const data = $(&quot;#myForm&quot;).formData(&quot;input,custom-input&quot;);
+  $(&quot;#logger&quot;).text = data;
+  data.watch(() =&gt; {
+    $(&quot;#logger&quot;).text = data;
+  });
+&lt;/script&gt;
+</code></pre>
+<pre><code class="language-html">&lt;template component&gt;
+  &lt;style&gt;
+    :host{
+      display: block;
+    }
+    .editor {
+      display: inline-block;
+      min-width: 200px;
+      line-height: 30px;
+      height: 30px;
+      border: #aaa solid 1px;
+      border-radius: 4px;
+      padding: 4px;
+      font-size: 14px;
+    }
+  &lt;/style&gt;
+  &lt;div
+    class=&quot;editor&quot;
+    contenteditable=&quot;plaintext-only&quot;
+    :text=&quot;value&quot;
+    on:input=&quot;changeText&quot;
+  &gt;&lt;/div&gt;
+  &lt;script&gt;
+    export default {
+      tag:&quot;custom-input&quot;,
+      attrs: {
+        name: &quot;&quot;,
+      },
+      data: {
+        value: &quot;Default txt&quot;,
+      },
+      proto: {
+        changeText(e) {
+          this.value = $(e.target).text;
+        },
+      },
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</comp-viewer>
+
+<p>사용자 정의 양식 컴포넌트를 사용할 때는 해당 컴포넌트를 양식에 추가하고 필요한 &#39;name&#39; 속성을 설정하기만 하면됩니다.</p>
+<pre><code class="language-html">&lt;div id=&quot;myForm&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;username&quot; value=&quot;John Doe&quot; /&gt;
+  &lt;custom-input name=&quot;message&quot;&gt;&lt;/custom-input&gt;
+  &lt;div id=&quot;logger&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  const data = $(&quot;#myForm&quot;).formData(&quot;input,custom-input&quot;);
+  $(&quot;#logger&quot;).text = data;
+  data.watch(() =&gt; {
+    $(&quot;#logger&quot;).text = data;
+  });
+&lt;/script&gt;
+</code></pre>
+<p>이전 예제에서는 <code>&lt;custom-input&gt;</code> 요소를 추가하고 <code>name</code> 속성을 설정하여 사용자 지정 폼 컴포넌트를 사용했습니다. 그런 다음 <code>formData()</code> 메서드를 사용하여 입력 요소와 사용자 지정 컴포넌트의 값을 모니터링하여 실시간으로 양식 데이터를 가져오고 처리합니다. 이 방법을 사용하면 사용자 지정 폼 컴포넌트를 포함하여 양식을 쉽게 확장하여 특정 요구 사항을 충족할 수 있습니다.</p>
+<h2>컴포넌트나 페이지 내에서 양식 데이터 사용하기</h2>
+<p>가끔은 컴포넌트나 페이지에서 양식 데이터를 사용해야하며, &#39;ready&#39; 주기 수명이 생성되어 컴포넌트에 바인딩되어야합니다.</p>
+<p>아래 예제에서는 사용자 정의 컴포넌트 내에서 양식 데이터를 사용하는 방법을 보여줍니다. 이 컴포넌트에는 텍스트 입력 상자가 포함되어 있으며, 내용을 입력할 때마다 데이터가 로그에 실시간으로 업데이트됩니다.</p>
+<comp-viewer comp-name="custom-input">
+
+<pre><code class="language-html">&lt;template component&gt;
+  &lt;style&gt;
+    :host{
+      display: block;
+    }
+  &lt;/style&gt;
+  &lt;input type=&quot;text&quot; name=&quot;username&quot; value=&quot;John Doe&quot; /&gt;
+  &lt;div&gt;{{logtext}}&lt;/div&gt;
+  &lt;script&gt;
+    export default {
+      tag:&quot;custom-input&quot;,
+      data: {
+        fdata:{},
+        logtext: &quot;&quot;
+      },
+      watch:{
+        fdata(data){
+          if(data){
+            this.logtext = JSON.stringify(data);
+          }
+        }
+      },
+      ready(){
+        this.fdata = this.shadow.formData();
+      }
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</comp-viewer>
+
+<p><code>ready</code> 라이프사이클 주기를 통해 컴포넌트가 준비되면 <code>this.shadow.formData()</code> 메서드를 사용하여 폼 데이터 객체 <code>fdata</code>를 생성했습니다. 그런 다음 <code>fdata</code>의 변경 사항을 감시하기 위해 <code>watch</code>를 사용하여 데이터가 변경될 때 JSON 문자열로 변환하고 <code>logtext</code>를 업데이트하여 폼 데이터를 실시간으로 표시하는 기능을 구현했습니다.</p>
+
+    <article-footer></article-footer>
+    </article>
+        <script>
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/layouts/article-layout.html";
+
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/document-page-init.mjs";
+
+          export default async (...args) => {
+            return await pageInit(PATH, args);
+          };
+        </script>
+      </template>
+    </o-app>
+    <div id="loading"></div>
+    <div class="body-important other-link"><ul>
+<li><a href="../../cases/index.html">시작</a></li>
+<li><a href="../../cases/event.html">이벤트 응답</a></li>
+<li><a href="../../cases/simple-component.html">컴포넌트 생성 및 사용</a></li>
+<li><a href="../../cases/slot.html">컴포넌트 슬롯</a></li>
+<li><a href="../../cases/render-text.html">템플릿 언어: 텍스트 렌더링</a></li>
+<li><a href="../../cases/attribute-transmission.html">속성 전달</a></li>
+<li><a href="../../cases/get-set-comp.html">컴포넌트 인스턴스 값 가져오기 및 변경하기</a></li>
+<li><a href="../../cases/property-transmission.html">템플릿 언어: 속성 전달</a></li>
+<li><a href="../../cases/bind-event.html">템플릿 언어: 이벤트 바인딩</a></li>
+<li><a href="../../cases/nested-component.html">중첩 컴포넌트</a></li>
+<li><a href="../../cases/inject-host.html">inject-host 컴포넌트</a></li>
+<li><a href="../../cases/event-passing.html">이벤트 전달</a></li>
+<li><a href="../../cases/sync.html">템플릿 언어: 양방향 데이터 바인딩</a></li>
+<li><a href="../../cases/condition.html">템플릿 컴포넌트: 조건부 렌더링</a></li>
+<li><a href="../../cases/fill.html">템플릿 컴포넌트: 채우기 렌더링</a></li>
+<li><a href="../../cases/fill-temp.html">재귀 채우기 렌더링</a></li>
+<li><a href="../../cases/life-cycle.html">라이프사이클</a></li>
+<li><a href="../../cases/form-data.html">폼 데이터</a></li>
+<li><a href="../../cases/custom-form-element.html">사용자 정의 폼 컴포넌트</a></li>
+<li><a href="../../cases/use-page.html">페이지 컴포넌트 사용</a></li>
+<li><a href="../../cases/use-app.html">앱 컴포넌트 사용</a></li>
+<li><a href="../../cases/app-config.html">앱 구성 설정</a></li>
+<li><a href="../../cases/app-loading.html">앱에 대한 맞춤형 로딩 설정</a></li>
+<li><a href="../../cases/set404.html">404 페이지 설정</a></li>
+<li><a href="../../cases/nested-page.html">중첩 페이지</a></li>
+<li><a href="../../cases/use-hash-router.html">HashRouter 사용</a></li>
+<li><a href="../../cases/use-scsr.html">scsr 방식 사용</a></li>
+<li><a href="../../cases/sync-state.html">상태 동기화</a></li>
+<li><a href="../../cases/alias.html">별칭</a></li>
+<li><a href="../../docs/introduce.html">소개</a></li>
+<li><a href="../../docs/get-started/index.html">ofa.js 사용 방법</a></li>
+<li><a href="../../docs/get-started/hello-world.html">첫 번째 예제</a></li>
+<li><a href="../../docs/get-started/elements-and-events.html">요소 선택 및 이벤트 처리</a></li>
+<li><a href="../../docs/get-started/basic-concept.html">인스턴스 기본 개념</a></li>
+<li><a href="../../docs/get-started/common-properties.html">일반적인 속성 및 메서드</a></li>
+<li><a href="../../docs/create-component/index.html">제작 및 사용</a></li>
+<li><a href="../../docs/create-component/parameter-description.html">매개변수 설명</a></li>
+<li><a href="../../docs/create-component/life-cycle.html">라이프사이클</a></li>
+<li><a href="../../docs/create-component/web-components.html">컴포넌트 기본 지식</a></li>
+<li><a href="../../docs/create-component/template-syntax.html">템플릿 문법</a></li>
+<li><a href="../../docs/create-app/index.html">소개</a></li>
+<li><a href="../../docs/create-app/page.html">Page 컴포넌트 사용</a></li>
+<li><a href="../../docs/create-app/app.html">App 컴포넌트 사용</a></li>
+<li><a href="../../docs/create-app/subrouting.html">하위 라우팅 기능</a></li>
+<li><a href="../../docs/create-app/o-router.html">라우팅 바인딩</a></li>
+<li><a href="../../docs/create-app/scsr.html">SCSR 솔루션</a></li>
+<li><a href="../../docs/others/data-sharing.html">데이터 공유</a></li>
+<li><a href="../../docs/others/about-micro-frontend.html">ofa.js와 마이크로 프론트엔드</a></li>
+<li><a href="../index.html">API 소개</a></li>
+<li><a href="../instance/dollar.html">$ 메소드</a></li>
+<li><a href="../instance/all.html">all</a></li>
+<li><a href="../instance/prev.html">prev</a></li>
+<li><a href="../instance/prevs.html">prevs</a></li>
+<li><a href="../instance/next.html">next</a></li>
+<li><a href="../instance/nexts.html">nexts</a></li>
+<li><a href="../instance/siblings.html">siblings</a></li>
+<li><a href="../instance/parent.html">parent</a></li>
+<li><a href="../instance/parents.html">parents</a></li>
+<li><a href="../instance/clone.html">clone</a></li>
+<li><a href="../instance/ele.html">ele</a></li>
+<li><a href="../instance/shadow.html">shadow</a></li>
+<li><a href="../instance/root.html">root</a></li>
+<li><a href="../instance/children.html">자식 요소</a></li>
+<li><a href="../instance/host.html">host</a></li>
+<li><a href="../instance/app.html">app</a></li>
+<li><a href="../operation/array-like.html">자식 노드 추가 또는 삭제</a></li>
+<li><a href="../operation/before.html">before</a></li>
+<li><a href="../operation/after.html">after</a></li>
+<li><a href="../operation/remove.html">remove</a></li>
+<li><a href="../operation/wrap.html">wrap</a></li>
+<li><a href="../operation/unwrap.html">unwrap</a></li>
+<li><a href="../props/text.html">text</a></li>
+<li><a href="../props/html.html">html</a></li>
+<li><a href="../props/attr.html">attr</a></li>
+<li><a href="../props/css.html">css</a></li>
+<li><a href="../props/style.html">style</a></li>
+<li><a href="../props/class-list.html">classList</a></li>
+<li><a href="../props/data.html">data</a></li>
+<li><a href="../event/on.html">on</a></li>
+<li><a href="../event/one.html">one</a></li>
+<li><a href="../event/emit.html">emit</a></li>
+<li><a href="../event/off.html">off</a></li>
+<li><a href="../temp-syntax/text-render.html">텍스트 렌더링</a></li>
+<li><a href="../temp-syntax/class.html">class</a></li>
+<li><a href="../temp-syntax/sync.html">sync</a></li>
+<li><a href="../temp-syntax/condition.html">조건 렌더링</a></li>
+<li><a href="../temp-syntax/fill.html">리스트 렌더링</a></li>
+<li><a href="../life-cycle/created.html">created</a></li>
+<li><a href="../life-cycle/ready.html">ready</a></li>
+<li><a href="../life-cycle/watch.html">watch</a></li>
+<li><a href="../life-cycle/loaded.html">loaded</a></li>
+<li><a href="../life-cycle/attached.html">attached</a></li>
+<li><a href="../life-cycle/detached.html">detached</a></li>
+<li><a href="../life-cycle/router-change.html">routerChange</a></li>
+<li><a href="app.html">app</a></li>
+<li><a href="page.html">page</a></li>
+<li><a href="box.html">박스 모델</a></li>
+<li><a href="form-data.html">formData</a></li>
+<li><a href="tag.html">tag</a></li>
+<li><a href="index.html">index</a></li>
+<li><a href="is.html">is</a></li>
+<li><a href="refresh.html">refresh</a></li>
+<li><a href="path.html">PATH</a></li>
+<li><a href="extend.html">extend</a></li>
+<li><a href="stanz.html">인스턴스 데이터 특징</a></li>
+<li><a href="../../../en/index.html">English-index.html</a></li>
+<li><a href="../../../cn/index.html">简体中文-index.html</a></li>
+<li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
+<li><a href="../../../ja/index.html">index.html</a></li>
+<li><a href="../../../es/index.html">española-index.html</a></li>
+<li><a href="../../index.html">index.html</a></li>
+
+</ul></div>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/init.js" type="module"></script>
+  </body>
+</html>

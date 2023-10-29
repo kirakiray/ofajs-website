@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실례 데이터 특징</title>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
+      type="module"
+    ></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/public.css" />
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+    </style>
+    <script>
+      let configUrl = "../../config.json";
+    </script>
+    
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/logo.png">
+        <link rel="apple-touch-icon-precomposed" href="/logo.png">
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag("js", new Date());
+
+          gtag("config", "G-7L1TCCJZT6");
+        </script>
+        <script src="/init-sw.js"></script>
+      
+  </head>
+  <body>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/app-config.mjs">
+      <template page>
+        <style>
+          .markdown-body::before,
+          .markdown-body::after {
+            display: block;
+            content: "";
+            height: 1px;
+          }
+          .markdown-body::after {
+            height: 32px;
+          }
+          .markdown-body > * {
+            margin-top: 1em;
+            margin-bottom: 1em;
+          }
+        </style>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/github-markdown.css"
+        />
+        <article class="markdown-body"><h1>실례 데이터 특징</h1>
+<p><code>$</code>로 가져오거나 생성한 인스턴스 객체는 <a href="https://github.com/kirakiray/stanz">stanz</a>의 데이터 특성을 완벽하게 가지고 있으며 <code>$</code> 인스턴스는 <a href="https://github.com/kirakiray/stanz">stanz</a>에서 상속됩니다. 이는 <code>stanz</code>가 제공하는 데이터 조작 방법과 특성을 활용하여 인스턴스 객체의 데이터를 조작하고 모니터링할 수 있다는 것을 의미합니다.</p>
+<blockquote>
+<p>아래는 일반 요소를 사용한 예제입니다. 일반적으로 사용자 정의 컴포넌트는 이미 등록된 데이터를 가지고 있기 때문에 일반 요소는 보통 태그 정보만 포함하고 있어서 데모에 더 적합합니다.</p>
+</blockquote>
+<h2>watch</h2>
+<p>사례는 <code>watch</code> 메서드를 통해 값의 변경을 감시 할 수 있습니다. 객체의 하위 객체의 값을 변경하더라도 객체의 <code>watch</code> 메서드에서 변경 사항을 감지 할 수 있습니다.</p>
+<p>아래는 <code>$</code> 인스턴스와 <code>watch</code> 메소드를 사용하는 방법을 보여주는 예제입니다.</p>
+<html-viewer>
+
+<pre><code>&lt;!-- ofa.js 프로젝트에 가져오기 --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<pre><code class="language-html">&lt;div id=&quot;target&quot;&gt;&lt;/div&gt;
+&lt;br /&gt;
+&lt;div id=&quot;logger&quot; style=&quot;border: #aaa solid 1px; padding: 8px&quot;&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  const target = $(&quot;#target&quot;);
+  $(&quot;#logger&quot;).text = target;
+  target.watch(() =&gt; {
+    $(&quot;#logger&quot;).text = target;
+  });
+
+  setTimeout(() =&gt; {
+    target.aaa = &quot;I am aaa&quot;;
+  }, 600);
+  setTimeout(() =&gt; {
+    target.bbb = {
+      child: {
+        val: &quot;I am bbb child val&quot;,
+      },
+    };
+  }, 1200);
+  setTimeout(() =&gt; {
+    target.bbb.child.val = &quot;change bbb child val&quot;;
+  }, 1800);
+&lt;/script&gt;
+</code></pre>
+</html-viewer>
+
+<p>이 예제에서는 먼저 <code>$</code> 인스턴스 객체 <code>target</code>을 생성한 다음 <code>watch</code> 메소드를 사용하여 해당 객체의 변경 사항을 감시합니다. 예를 들어 <code>target.bbb.child.val</code>의 값을 변경하더라도 <code>watch</code> 메소드에서 이러한 변경 사항을 감시하고 <code>logger</code> 요소의 내용을 업데이트합니다. 이는 <code>$</code> 인스턴스 객체의 강력한 기능을 보여주며 객체의 변경 사항을 쉽게 모니터링 할 수 있도록합니다.</p>
+<h2>watchTick</h2>
+<p><code>watchTick</code>와 <code>watch</code> 메서드는 기능적으로 유사하지만, <code>watchTick</code>은 내부적으로 스로틀링 작업을 수행하여 단일 스레드에서 한번 실행되므로, 일부 성능 요구사항이 더 높은 경우 데이터 변경을 더 효과적으로 감시할 수 있습니다.</p>
+<p>아래는 <code>$</code> 인스턴스의 <code>watchTick</code> 메서드를 사용하는 방법을 보여주는 예제입니다.</p>
+<html-viewer>
+
+<pre><code>&lt;!-- ofa.js 프로젝트에 가져오기 --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<pre><code class="language-html">&lt;div id=&quot;target&quot;&gt;&lt;/div&gt;
+&lt;br /&gt;
+&lt;div id=&quot;logger1&quot; style=&quot;border: blue solid 1px; margin: 8px&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;logger2&quot; style=&quot;border: red solid 1px; margin: 8px&quot;&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  const target = $(&quot;#target&quot;);
+  let count1 = 0;
+  target.watch(() =&gt; {
+    count1++;
+    $(&quot;#logger1&quot;).text = &#39;watch 리스너가 실행된 횟수입니다:&#39; + count1;
+  });
+
+  let count2 = 0;
+  target.watchTick(()=&gt;{
+    count2++;
+    $(&quot;#logger2&quot;).text = &#39;watchTick 리스너가 실행된 횟수입니다:&#39; + count2;
+  });
+
+  setTimeout(() =&gt; {
+    target.aaa = &quot;I am aaa&quot;;
+    target.bbb = &quot;I am bbb&quot;;
+    target.ccc = &quot;I am ccc&quot;;
+  }, 1000);
+&lt;/script&gt;
+</code></pre>
+</html-viewer>
+
+<p>이 예제에서 우리는 먼저 <code>$</code> 인스턴스 객체 <code>target</code>을 생성합니다. 그런 다음 <code>watch</code> 메서드와 <code>watchTick</code> 메서드를 사용하여 객체의 변경 사항을 모니터링합니다. <code>watch</code> 메서드는 데이터가 변경될 때 즉시 실행되고, <code>watchTick</code> 메서드는 단일 스레드에서 한 번 실행되므로 모니터링 작업의 빈도를 제한할 수 있습니다. 데이터의 변경 사항을 모니터링하기 위해 <code>watch</code> 또는 <code>watchTick</code> 메서드를 선택할 수 있습니다.</p>
+<h2>unwatch</h2>
+<p><code>unwatch</code> 메서드는 데이터의 감시를 취소하는 데 사용됩니다. 이전에 등록된 <code>watch</code> 또는 <code>watchTick</code> 감시를 취소할 수 있습니다.</p>
+<p>아래는 <code>$</code> 인스턴스의 <code>unwatch</code> 메서드를 사용하는 방법을 보여주는 예제입니다.</p>
+<html-viewer>
+
+<pre><code>&lt;!-- ofa.js 프로젝트에 가져오기 --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<pre><code class="language-html">&lt;div id=&quot;target&quot;&gt;&lt;/div&gt;
+&lt;br /&gt;
+&lt;div id=&quot;logger1&quot; style=&quot;border: blue solid 1px; margin: 8px&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;logger2&quot; style=&quot;border: red solid 1px; margin: 8px&quot;&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  const target = $(&quot;#target&quot;);
+  const tid1 = target.watch(() =&gt; {
+    $(&quot;#logger1&quot;).text = JSON.stringify(target);
+  });
+
+  const tid2 = target.watchTick(()=&gt;{
+    $(&quot;#logger2&quot;).text = JSON.stringify(target);
+  });
+
+  setTimeout(() =&gt; {
+    target.aaa = &quot;I am aaa&quot;;
+    // 듣기 비활성화
+    target.unwatch(tid1);
+    target.unwatch(tid2);
+  }, 500);
+  setTimeout(() =&gt; {
+    target.bbb = &quot;I am aaa&quot;; // 위에 등록된 기능은 비활성화되었으므로 트리거되지 않습니다.
+  }, 1000);
+&lt;/script&gt;
+</code></pre>
+</html-viewer>
+
+<p>이 예시에서는 먼저 <code>$</code> 인스턴스 오브젝트 <code>target</code>을 생성한 다음 <code>watch</code> 메소드와 <code>watchTick</code> 메소드를 사용하여 두 개의 리스너를 등록합니다. 그런 다음 <code>unwatch</code> 메소드를 사용하여 이전에 저장한 리스너 ID <code>tid1</code>과 <code>tid2</code>를 전달하여 이 두 개의 리스너를 해제합니다. 이는 첫 번째 <code>setTimeout</code>에서의 속성 변경이 리스너를 트리거하지 않음을 의미합니다. 왜냐하면 리스너가 해제되었기 때문입니다.</p>
+<h2>감시되지 않는 값</h2>
+<p><code>$</code> 인스턴스에서는 <code>_</code>로 시작하는 속성 이름은 <code>watch</code> 또는 <code>watchTick</code> 메서드에 의해 감시되지 않을 것임을 나타냅니다. 일부 임시 또는 개인 속성에 대한 이러한 속성은 감시를 트리거하지 않고 자유롭게 변경할 수 있습니다.</p>
+<p>아래는 어떻게 밑줄로 시작하는 속성 값을 사용하여 감시되지 않는지 보여주는 예제입니다.</p>
+<html-viewer>
+
+<pre><code>&lt;!-- ofa.js 프로젝트에 가져오기 --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<pre><code class="language-html">&lt;div id=&quot;target&quot;&gt;&lt;/div&gt;
+&lt;br /&gt;
+&lt;div id=&quot;logger&quot; style=&quot;border: #aaa solid 1px; padding: 8px&quot;&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  const target = $(&quot;#target&quot;);
+  $(&quot;#logger&quot;).text = target;
+
+  // watch 메서드를 사용하여 속성 값 변경을 수신합니다.
+  target.watch(() =&gt; {
+    $(&quot;#logger&quot;).text = target;
+  });
+
+  setTimeout(() =&gt; {
+    // 이 속성의 값은 리스너를 트리거하지 않습니다.
+    target._aaa = &quot;I am aaa&quot;;
+  }, 600);
+
+  setTimeout(() =&gt; {
+    // _aaa 속성 값을 변경해도 리스너는 여전히 트리거되지 않습니다.
+    target._aaa = &quot;change aaa&quot;;
+  }, 1200);
+&lt;/script&gt;
+</code></pre>
+</html-viewer>
+
+<p>이 예제에서는 <code>$</code> 인스턴스 객체 <code>target</code>을 만들고, <code>watch</code> 메소드를 사용하여 속성 값의 변경을 감시합니다. <code>setTimeout</code> 내에서 <code>_aaa</code> 속성 값을 변경하려고 시도하지만, 이 변경은 감시를 트리거하지 않습니다. 이는 감시를 트리거하지 않고 속성 값을 업데이트해야하는 경우에 매우 유용합니다.</p>
+<h2>기본 기능</h2>
+<p>인스턴스에 설정된 객체 데이터는 Stanz 인스턴스로 변환되며, 이러한 Stanz 인스턴스는 감지 할 수 있습니다.</p>
+<pre><code class="language-javascript">const obj = {
+  val: &quot;I am obj&quot;
+};
+
+$(&quot;#target&quot;).obj = obj;
+console.log($(&quot;#target&quot;).obj.val === obj.val); // =&gt; true
+console.log($(&quot;#target&quot;).obj === obj); // =&gt; false
+</code></pre>
+<p>우리는 <code>$.stanz</code>를 사용하여 인스턴스에 바인딩되지 않은 Stanz 데이터를 생성할 수도 있습니다.</p>
+<pre><code class="language-javascript">const data = $.stanz({
+  val: &quot;I am val&quot;
+});
+
+data.watch(() =&gt; {
+  console.log(data.val); // =&gt; change val
+});
+
+data.val = &quot;change val&quot;;
+</code></pre>
+<p>이 예제는 객체 데이터를 Stanz 인스턴스로 설정하여 듣기 위한 기본적인 특징을 보여줍니다.</p>
+<p>자세한 기능은 <a href="https://github.com/kirakiray/stanz">stanz</a>을 참조하십시오.</p>
+
+    <article-footer></article-footer>
+    </article>
+        <script>
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/layouts/article-layout.html";
+
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/document-page-init.mjs";
+
+          export default async (...args) => {
+            return await pageInit(PATH, args);
+          };
+        </script>
+      </template>
+    </o-app>
+    <div id="loading"></div>
+    <div class="body-important other-link"><ul>
+<li><a href="../../cases/index.html">시작</a></li>
+<li><a href="../../cases/event.html">이벤트 응답</a></li>
+<li><a href="../../cases/simple-component.html">컴포넌트 생성 및 사용</a></li>
+<li><a href="../../cases/slot.html">컴포넌트 슬롯</a></li>
+<li><a href="../../cases/render-text.html">템플릿 언어: 텍스트 렌더링</a></li>
+<li><a href="../../cases/attribute-transmission.html">속성 전달</a></li>
+<li><a href="../../cases/get-set-comp.html">컴포넌트 인스턴스 값 가져오기 및 변경하기</a></li>
+<li><a href="../../cases/property-transmission.html">템플릿 언어: 속성 전달</a></li>
+<li><a href="../../cases/bind-event.html">템플릿 언어: 이벤트 바인딩</a></li>
+<li><a href="../../cases/nested-component.html">중첩 컴포넌트</a></li>
+<li><a href="../../cases/inject-host.html">inject-host 컴포넌트</a></li>
+<li><a href="../../cases/event-passing.html">이벤트 전달</a></li>
+<li><a href="../../cases/sync.html">템플릿 언어: 양방향 데이터 바인딩</a></li>
+<li><a href="../../cases/condition.html">템플릿 컴포넌트: 조건부 렌더링</a></li>
+<li><a href="../../cases/fill.html">템플릿 컴포넌트: 채우기 렌더링</a></li>
+<li><a href="../../cases/fill-temp.html">재귀 채우기 렌더링</a></li>
+<li><a href="../../cases/life-cycle.html">라이프사이클</a></li>
+<li><a href="../../cases/form-data.html">폼 데이터</a></li>
+<li><a href="../../cases/custom-form-element.html">사용자 정의 폼 컴포넌트</a></li>
+<li><a href="../../cases/use-page.html">페이지 컴포넌트 사용</a></li>
+<li><a href="../../cases/use-app.html">앱 컴포넌트 사용</a></li>
+<li><a href="../../cases/app-config.html">앱 구성 설정</a></li>
+<li><a href="../../cases/app-loading.html">앱에 대한 맞춤형 로딩 설정</a></li>
+<li><a href="../../cases/set404.html">404 페이지 설정</a></li>
+<li><a href="../../cases/nested-page.html">중첩 페이지</a></li>
+<li><a href="../../cases/use-hash-router.html">HashRouter 사용</a></li>
+<li><a href="../../cases/use-scsr.html">scsr 방식 사용</a></li>
+<li><a href="../../cases/sync-state.html">상태 동기화</a></li>
+<li><a href="../../cases/alias.html">별칭</a></li>
+<li><a href="../../docs/introduce.html">소개</a></li>
+<li><a href="../../docs/get-started/index.html">ofa.js 사용 방법</a></li>
+<li><a href="../../docs/get-started/hello-world.html">첫 번째 예제</a></li>
+<li><a href="../../docs/get-started/elements-and-events.html">요소 선택 및 이벤트 처리</a></li>
+<li><a href="../../docs/get-started/basic-concept.html">인스턴스 기본 개념</a></li>
+<li><a href="../../docs/get-started/common-properties.html">일반적인 속성 및 메서드</a></li>
+<li><a href="../../docs/create-component/index.html">제작 및 사용</a></li>
+<li><a href="../../docs/create-component/parameter-description.html">매개변수 설명</a></li>
+<li><a href="../../docs/create-component/life-cycle.html">라이프사이클</a></li>
+<li><a href="../../docs/create-component/web-components.html">컴포넌트 기본 지식</a></li>
+<li><a href="../../docs/create-component/template-syntax.html">템플릿 문법</a></li>
+<li><a href="../../docs/create-app/index.html">소개</a></li>
+<li><a href="../../docs/create-app/page.html">Page 컴포넌트 사용</a></li>
+<li><a href="../../docs/create-app/app.html">App 컴포넌트 사용</a></li>
+<li><a href="../../docs/create-app/subrouting.html">하위 라우팅 기능</a></li>
+<li><a href="../../docs/create-app/o-router.html">라우팅 바인딩</a></li>
+<li><a href="../../docs/create-app/scsr.html">SCSR 솔루션</a></li>
+<li><a href="../../docs/others/data-sharing.html">데이터 공유</a></li>
+<li><a href="../../docs/others/about-micro-frontend.html">ofa.js와 마이크로 프론트엔드</a></li>
+<li><a href="../index.html">API 소개</a></li>
+<li><a href="../instance/dollar.html">$ 메소드</a></li>
+<li><a href="../instance/all.html">all</a></li>
+<li><a href="../instance/prev.html">prev</a></li>
+<li><a href="../instance/prevs.html">prevs</a></li>
+<li><a href="../instance/next.html">next</a></li>
+<li><a href="../instance/nexts.html">nexts</a></li>
+<li><a href="../instance/siblings.html">siblings</a></li>
+<li><a href="../instance/parent.html">parent</a></li>
+<li><a href="../instance/parents.html">parents</a></li>
+<li><a href="../instance/clone.html">clone</a></li>
+<li><a href="../instance/ele.html">ele</a></li>
+<li><a href="../instance/shadow.html">shadow</a></li>
+<li><a href="../instance/root.html">root</a></li>
+<li><a href="../instance/children.html">자식 요소</a></li>
+<li><a href="../instance/host.html">host</a></li>
+<li><a href="../instance/app.html">app</a></li>
+<li><a href="../operation/array-like.html">자식 노드 추가 또는 삭제</a></li>
+<li><a href="../operation/before.html">before</a></li>
+<li><a href="../operation/after.html">after</a></li>
+<li><a href="../operation/remove.html">remove</a></li>
+<li><a href="../operation/wrap.html">wrap</a></li>
+<li><a href="../operation/unwrap.html">unwrap</a></li>
+<li><a href="../props/text.html">text</a></li>
+<li><a href="../props/html.html">html</a></li>
+<li><a href="../props/attr.html">attr</a></li>
+<li><a href="../props/css.html">css</a></li>
+<li><a href="../props/style.html">style</a></li>
+<li><a href="../props/class-list.html">classList</a></li>
+<li><a href="../props/data.html">data</a></li>
+<li><a href="../event/on.html">on</a></li>
+<li><a href="../event/one.html">one</a></li>
+<li><a href="../event/emit.html">emit</a></li>
+<li><a href="../event/off.html">off</a></li>
+<li><a href="../temp-syntax/text-render.html">텍스트 렌더링</a></li>
+<li><a href="../temp-syntax/class.html">class</a></li>
+<li><a href="../temp-syntax/sync.html">sync</a></li>
+<li><a href="../temp-syntax/condition.html">조건 렌더링</a></li>
+<li><a href="../temp-syntax/fill.html">리스트 렌더링</a></li>
+<li><a href="../life-cycle/created.html">created</a></li>
+<li><a href="../life-cycle/ready.html">ready</a></li>
+<li><a href="../life-cycle/watch.html">watch</a></li>
+<li><a href="../life-cycle/loaded.html">loaded</a></li>
+<li><a href="../life-cycle/attached.html">attached</a></li>
+<li><a href="../life-cycle/detached.html">detached</a></li>
+<li><a href="../life-cycle/router-change.html">routerChange</a></li>
+<li><a href="app.html">app</a></li>
+<li><a href="page.html">page</a></li>
+<li><a href="box.html">박스 모델</a></li>
+<li><a href="form-data.html">formData</a></li>
+<li><a href="tag.html">tag</a></li>
+<li><a href="index.html">index</a></li>
+<li><a href="is.html">is</a></li>
+<li><a href="refresh.html">refresh</a></li>
+<li><a href="path.html">PATH</a></li>
+<li><a href="extend.html">extend</a></li>
+<li><a href="stanz.html">인스턴스 데이터 특징</a></li>
+<li><a href="../../../en/index.html">English-index.html</a></li>
+<li><a href="../../../cn/index.html">简体中文-index.html</a></li>
+<li><a href="../../../ja/index.html">index.html</a></li>
+<li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
+<li><a href="../../../es/index.html">española-index.html</a></li>
+<li><a href="../../index.html">index.html</a></li>
+
+</ul></div>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/init.js" type="module"></script>
+  </body>
+</html>

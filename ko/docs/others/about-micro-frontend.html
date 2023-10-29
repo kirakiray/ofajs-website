@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>마이크로 프론트 엔드에 대해</title>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
+      type="module"
+    ></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/public.css" />
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+    </style>
+    <script>
+      let configUrl = "../../config.json";
+    </script>
+    
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/logo.png">
+        <link rel="apple-touch-icon-precomposed" href="/logo.png">
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag("js", new Date());
+
+          gtag("config", "G-7L1TCCJZT6");
+        </script>
+        <script src="/init-sw.js"></script>
+      
+  </head>
+  <body>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/app-config.mjs">
+      <template page>
+        <style>
+          .markdown-body::before,
+          .markdown-body::after {
+            display: block;
+            content: "";
+            height: 1px;
+          }
+          .markdown-body::after {
+            height: 32px;
+          }
+          .markdown-body > * {
+            margin-top: 1em;
+            margin-bottom: 1em;
+          }
+        </style>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/github-markdown.css"
+        />
+        <article class="markdown-body"><h1>마이크로 프론트 엔드에 대해</h1>
+<p>마이크로 프론트엔드는 프론트엔드 아키텍처 패턴으로, 팀이 대규모이고 복잡한 프론트엔드 애플리케이션을 더 잘 구축하고 유지할 수 있도록 돕습니다. 이는 마이크로서비스 아키텍처의 개념을 차용하여 프론트엔드 애플리케이션을 더 작은 독립적인 부분으로 분리하며, 각 부분은 서로 다른 팀에서 개발, 테스트 및 배포할 수 있습니다.</p>
+<p>전통적인 단일 프론트 엔드 응용 프로그램은 계속해서 확장되면서 유지 및 확장이 어려워질 수 있습니다. 마이크로 프론트 엔드의 목표는 응용 프로그램을 더 작고 관리 가능한 모듈로 분할하여 개발 팀이 이러한 모듈을 독립적으로 개발하고 배포할 수 있도록하여 팀의 효율성과 응용 프로그램의 유지 보수성을 향상시키는 것입니다.</p>
+<p>ofa.js는 마이크로 프론트 엔드의 특성을 갖춘 기본적으로 개발된 프레임워크입니다. 다른 프레임워크와의 차이점은 ofa.js를 기반으로 개발된 컴포넌트, 페이지 및 애플리케이션을 사전 컴파일할 필요가 없다는 것입니다. React, Vue, Angular 등의 일부 프레임워크와 달리 이들은 노드.js 환경에서 빌드를 수행하여 클라이언트용 코드를 생성해야 합니다. 그러나 ofa.js의 개발 코드는 추가적인 빌드 단계 없이 정적 서버에 직접 배치할 수 있으며, 실시간으로 확인, 사용 및 실행할 수 있습니다.</p>
+<p><strong>ofa.js</strong>는 마이크로 프론트엔드를 따르는 특징을 가지고 있습니다.</p>
+<ol>
+<li><p><strong>독립적인 배포</strong>: 각 구성요소와 페이지는 독립적으로 개발, 테스트 및 배포할 수 있어 팀이 새로운 기능을 신속하게 출시하고 문제를 해결할 수 있게 합니다.</p>
+</li>
+<li><p><strong>통합</strong>: <strong>ofa.js</strong>로 개발된 애플리케이션은 다양한 모듈을 함께 조합할 수 있습니다. 이는 애플리케이션, 페이지, 구성 요소 등의 방법으로 조합을 공유할 수 있습니다.</p>
+</li>
+<li><p><strong>독립된 팀</strong>: 각 프론트엔드 모듈(구성 요소/페이지/애플리케이션)은 독립된 팀에 의해 개발과 유지보수가 가능하여 팀의 자율성과 혁신을 장려합니다.</p>
+</li>
+<li><p><strong>공유 자원</strong>: <strong>ofa.js</strong> 프로젝트에서는 일관성과 효율성을 보장하기 위해 스타일, 구성 요소, 페이지 등과 같이 일부 공유 자원이 존재합니다.</p>
+</li>
+<li><p><strong>요구에 따른 로딩</strong>: <strong>ofa.js</strong>의 애플리케이션은 필요에 따라 모듈을 로딩하여 애플리케이션의 성능과 로딩 속도를 향상시킬 수 있습니다.</p>
+</li>
+</ol>
+<p><strong>ofa.js</strong>는 직접적으로 Vue 및 React와 같은 프레임워크로 개발된 컴포넌트를 사용할 수 없지만, <strong>ofa.js</strong>로 개발된 컴포넌트는 Vue 및 React에서 사용할 수 있으므로 다양한 기술 스택 개발자에게 더 큰 유연성과 확장성을 제공합니다.</p>
+<p>Vue에서 웹 컴포넌트 사용:</p>
+<ul>
+<li><a href="https://github.com/vuejs/vue-web-component-wrapper">Vue 웹 컴포넌트 래퍼</a></li>
+<li><a href="https://vuejs.org/v2/cookbook/packaging-sfc-for-npm.html#Using-with-vue-custom-element">Vue와 웹 컴포넌트 통합하기</a></li>
+<li><a href="https://www.robinwieruch.de/vue-web-components">Vue에서 웹 컴포넌트 사용하는 방법</a></li>
+</ul>
+<p>React에서 Web Components를 사용하는 방법:</p>
+<ul>
+<li><a href="https://reactjs.org/docs/web-components.html">React와 함께 Web Components 사용하기</a></li>
+<li><a href="https://alligator.io/react/using-web-components-in-react/">React에서 Web Components 사용하기</a></li>
+<li><a href="https://blog.bitsrc.io/integrating-web-components-in-react-17a52a6a28e4">Web Components를 React에 통합하기</a></li>
+</ul>
+
+    <article-footer></article-footer>
+    </article>
+        <script>
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/layouts/article-layout.html";
+
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/document-page-init.mjs";
+
+          export default async (...args) => {
+            return await pageInit(PATH, args);
+          };
+        </script>
+      </template>
+    </o-app>
+    <div id="loading"></div>
+    <div class="body-important other-link"><ul>
+<li><a href="../../cases/index.html">시작</a></li>
+<li><a href="../../cases/event.html">이벤트 응답</a></li>
+<li><a href="../../cases/simple-component.html">컴포넌트 생성 및 사용</a></li>
+<li><a href="../../cases/slot.html">컴포넌트 슬롯</a></li>
+<li><a href="../../cases/render-text.html">템플릿 언어: 텍스트 렌더링</a></li>
+<li><a href="../../cases/attribute-transmission.html">속성 전달</a></li>
+<li><a href="../../cases/get-set-comp.html">컴포넌트 인스턴스 값 가져오기 및 변경하기</a></li>
+<li><a href="../../cases/property-transmission.html">템플릿 언어: 속성 전달</a></li>
+<li><a href="../../cases/bind-event.html">템플릿 언어: 이벤트 바인딩</a></li>
+<li><a href="../../cases/nested-component.html">중첩 컴포넌트</a></li>
+<li><a href="../../cases/inject-host.html">inject-host 컴포넌트</a></li>
+<li><a href="../../cases/event-passing.html">이벤트 전달</a></li>
+<li><a href="../../cases/sync.html">템플릿 언어: 양방향 데이터 바인딩</a></li>
+<li><a href="../../cases/condition.html">템플릿 컴포넌트: 조건부 렌더링</a></li>
+<li><a href="../../cases/fill.html">템플릿 컴포넌트: 채우기 렌더링</a></li>
+<li><a href="../../cases/fill-temp.html">재귀 채우기 렌더링</a></li>
+<li><a href="../../cases/life-cycle.html">라이프사이클</a></li>
+<li><a href="../../cases/form-data.html">폼 데이터</a></li>
+<li><a href="../../cases/custom-form-element.html">사용자 정의 폼 컴포넌트</a></li>
+<li><a href="../../cases/use-page.html">페이지 컴포넌트 사용</a></li>
+<li><a href="../../cases/use-app.html">앱 컴포넌트 사용</a></li>
+<li><a href="../../cases/app-config.html">앱 구성 설정</a></li>
+<li><a href="../../cases/app-loading.html">앱에 대한 맞춤형 로딩 설정</a></li>
+<li><a href="../../cases/set404.html">404 페이지 설정</a></li>
+<li><a href="../../cases/nested-page.html">중첩 페이지</a></li>
+<li><a href="../../cases/use-hash-router.html">HashRouter 사용</a></li>
+<li><a href="../../cases/use-scsr.html">scsr 방식 사용</a></li>
+<li><a href="../../cases/sync-state.html">상태 동기화</a></li>
+<li><a href="../../cases/alias.html">별칭</a></li>
+<li><a href="../introduce.html">소개</a></li>
+<li><a href="../get-started/index.html">ofa.js 사용 방법</a></li>
+<li><a href="../get-started/hello-world.html">첫 번째 예제</a></li>
+<li><a href="../get-started/elements-and-events.html">요소 선택 및 이벤트 처리</a></li>
+<li><a href="../get-started/basic-concept.html">인스턴스 기본 개념</a></li>
+<li><a href="../get-started/common-properties.html">일반적인 속성 및 메서드</a></li>
+<li><a href="../create-component/index.html">제작 및 사용</a></li>
+<li><a href="../create-component/parameter-description.html">매개변수 설명</a></li>
+<li><a href="../create-component/life-cycle.html">라이프사이클</a></li>
+<li><a href="../create-component/web-components.html">컴포넌트 기본 지식</a></li>
+<li><a href="../create-component/template-syntax.html">템플릿 문법</a></li>
+<li><a href="../create-app/index.html">소개</a></li>
+<li><a href="../create-app/page.html">Page 컴포넌트 사용</a></li>
+<li><a href="../create-app/app.html">App 컴포넌트 사용</a></li>
+<li><a href="../create-app/subrouting.html">하위 라우팅 기능</a></li>
+<li><a href="../create-app/o-router.html">라우팅 바인딩</a></li>
+<li><a href="../create-app/scsr.html">SCSR 솔루션</a></li>
+<li><a href="data-sharing.html">데이터 공유</a></li>
+<li><a href="about-micro-frontend.html">ofa.js와 마이크로 프론트엔드</a></li>
+<li><a href="../../api/index.html">API 소개</a></li>
+<li><a href="../../api/instance/dollar.html">$ 메소드</a></li>
+<li><a href="../../api/instance/all.html">all</a></li>
+<li><a href="../../api/instance/prev.html">prev</a></li>
+<li><a href="../../api/instance/prevs.html">prevs</a></li>
+<li><a href="../../api/instance/next.html">next</a></li>
+<li><a href="../../api/instance/nexts.html">nexts</a></li>
+<li><a href="../../api/instance/siblings.html">siblings</a></li>
+<li><a href="../../api/instance/parent.html">parent</a></li>
+<li><a href="../../api/instance/parents.html">parents</a></li>
+<li><a href="../../api/instance/clone.html">clone</a></li>
+<li><a href="../../api/instance/ele.html">ele</a></li>
+<li><a href="../../api/instance/shadow.html">shadow</a></li>
+<li><a href="../../api/instance/root.html">root</a></li>
+<li><a href="../../api/instance/children.html">자식 요소</a></li>
+<li><a href="../../api/instance/host.html">host</a></li>
+<li><a href="../../api/instance/app.html">app</a></li>
+<li><a href="../../api/operation/array-like.html">자식 노드 추가 또는 삭제</a></li>
+<li><a href="../../api/operation/before.html">before</a></li>
+<li><a href="../../api/operation/after.html">after</a></li>
+<li><a href="../../api/operation/remove.html">remove</a></li>
+<li><a href="../../api/operation/wrap.html">wrap</a></li>
+<li><a href="../../api/operation/unwrap.html">unwrap</a></li>
+<li><a href="../../api/props/text.html">text</a></li>
+<li><a href="../../api/props/html.html">html</a></li>
+<li><a href="../../api/props/attr.html">attr</a></li>
+<li><a href="../../api/props/css.html">css</a></li>
+<li><a href="../../api/props/style.html">style</a></li>
+<li><a href="../../api/props/class-list.html">classList</a></li>
+<li><a href="../../api/props/data.html">data</a></li>
+<li><a href="../../api/event/on.html">on</a></li>
+<li><a href="../../api/event/one.html">one</a></li>
+<li><a href="../../api/event/emit.html">emit</a></li>
+<li><a href="../../api/event/off.html">off</a></li>
+<li><a href="../../api/temp-syntax/text-render.html">텍스트 렌더링</a></li>
+<li><a href="../../api/temp-syntax/class.html">class</a></li>
+<li><a href="../../api/temp-syntax/sync.html">sync</a></li>
+<li><a href="../../api/temp-syntax/condition.html">조건 렌더링</a></li>
+<li><a href="../../api/temp-syntax/fill.html">리스트 렌더링</a></li>
+<li><a href="../../api/life-cycle/created.html">created</a></li>
+<li><a href="../../api/life-cycle/ready.html">ready</a></li>
+<li><a href="../../api/life-cycle/watch.html">watch</a></li>
+<li><a href="../../api/life-cycle/loaded.html">loaded</a></li>
+<li><a href="../../api/life-cycle/attached.html">attached</a></li>
+<li><a href="../../api/life-cycle/detached.html">detached</a></li>
+<li><a href="../../api/life-cycle/router-change.html">routerChange</a></li>
+<li><a href="../../api/others/app.html">app</a></li>
+<li><a href="../../api/others/page.html">page</a></li>
+<li><a href="../../api/others/box.html">박스 모델</a></li>
+<li><a href="../../api/others/form-data.html">formData</a></li>
+<li><a href="../../api/others/tag.html">tag</a></li>
+<li><a href="../../api/others/index.html">index</a></li>
+<li><a href="../../api/others/is.html">is</a></li>
+<li><a href="../../api/others/refresh.html">refresh</a></li>
+<li><a href="../../api/others/path.html">PATH</a></li>
+<li><a href="../../api/others/extend.html">extend</a></li>
+<li><a href="../../api/others/stanz.html">인스턴스 데이터 특징</a></li>
+<li><a href="../../../en/index.html">English-index.html</a></li>
+<li><a href="../../../cn/index.html">简体中文-index.html</a></li>
+<li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
+<li><a href="../../../ja/index.html">index.html</a></li>
+<li><a href="../../../es/index.html">española-index.html</a></li>
+<li><a href="../../index.html">index.html</a></li>
+
+</ul></div>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/init.js" type="module"></script>
+  </body>
+</html>

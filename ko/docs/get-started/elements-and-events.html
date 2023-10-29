@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>요소 및 이벤트 가져오기</title>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
+      type="module"
+    ></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/public.css" />
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+    </style>
+    <script>
+      let configUrl = "../../config.json";
+    </script>
+    
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/logo.png">
+        <link rel="apple-touch-icon-precomposed" href="/logo.png">
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L1TCCJZT6"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag("js", new Date());
+
+          gtag("config", "G-7L1TCCJZT6");
+        </script>
+        <script src="/init-sw.js"></script>
+      
+  </head>
+  <body>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/app-config.mjs">
+      <template page>
+        <style>
+          .markdown-body::before,
+          .markdown-body::after {
+            display: block;
+            content: "";
+            height: 1px;
+          }
+          .markdown-body::after {
+            height: 32px;
+          }
+          .markdown-body > * {
+            margin-top: 1em;
+            margin-bottom: 1em;
+          }
+        </style>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/github-markdown.css"
+        />
+        <article class="markdown-body"><h1>요소 및 이벤트 가져오기</h1>
+<p>이 절은 이전 장의 내용을 강화하기 위해 요소 선택과 이벤트 바인딩을 포함합니다.</p>
+<h2>선택 요소</h2>
+<p>이전 장에서는 전역에서 요소를 얻는 방법으로 $ 기호를 사용하는 방법을 알아보았습니다. 이제 우리는 요소를 얻는 다른 방법을 소개하겠습니다.</p>
+<h3>원소 내에서 특정 원소를 찾습니다.</h3>
+<h4><code>$(&quot;xxx&quot;).$(&#39;xxxx&#39;)</code> 방식 사용</h4>
+<p><code>$(&quot;xxx&quot;).$(&#39;xxxx&#39;)</code>는 먼저 부모 요소를 선택한 다음 해당 부모 요소 내에서 조건을 충족하는 자식 요소를 찾는 방식입니다. 여기서 <code>$(&quot;xxx&quot;)</code>는 부모 요소를 선택하고, 그 후에 <code>$(&#39;xxxx&#39;)</code>을 사용하여 해당 부모 요소 내에서 조건을 충족하는 자식 요소를 찾습니다.</p>
+<h4>예시</h4>
+<html-viewer>
+
+<pre><code>&lt;!-- ofa.js 프로젝트에 가져오기 --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<pre><code class="language-html">&lt;div class=&quot;parent&quot;&gt;
+  &lt;p&gt;Hello World&lt;/p&gt;
+  &lt;div class=&quot;child&quot;&gt;
+    &lt;span&gt;This is a child element&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  // 부모 요소를 선택하고 자식을 찾습니다.
+  const parentElement = $(&quot;.parent&quot;);
+  const childElement = parentElement.$(&quot;.child&quot;);
+
+  // 하위 요소의 텍스트 콘텐츠 수정
+  childElement.text = &quot;Modified child element&quot;;
+&lt;/script&gt;
+</code></pre>
+</html-viewer>
+
+<p>위의 예제에서는 먼저 <code>.parent</code> 클래스를 가진 부모 요소를 선택한 다음, 해당 부모 요소 내에서 <code>.child</code> 클래스를 가진 자식 요소를 찾기 위해 <code>.child</code>를 사용하였습니다. 그런 다음 자식 요소의 텍스트 내용을 &quot;수정된 자식 요소&quot;로 변경하였습니다.</p>
+<h3><code>$(&#39;xxx xxxx&#39;)</code> 사용하기</h3>
+<p><code>$(&#39;xxx xxxx&#39;)</code>은 전역 범위에서 두 번째 선택자 조건에 맞는 요소를 찾은 다음, 이러한 요소 내에서 첫 번째 선택자 조건에 맞는 요소를 찾는 것입니다. 이 방법을 통해 조건에 맞는 하위 요소를 한 번에 찾을 수 있습니다.</p>
+<h4>예시</h4>
+<html-viewer>
+
+<pre><code>&lt;!-- ofa.js 프로젝트에 가져오기 --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<pre><code class="language-html">&lt;div class=&quot;parent&quot;&gt;
+  &lt;p&gt;Hello World&lt;/p&gt;
+  &lt;div class=&quot;child&quot;&gt;
+    &lt;span&gt;This is a child element&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  // 조건에 맞는 자식 요소 직접 찾기
+  const childElement = $(&#39;div .child&#39;);
+
+  // 자식 요소의 텍스트 내용 수정하기
+  childElement.text = &quot;수정된 자식 요소&quot;;
+&lt;/script&gt;
+</code></pre>
+</html-viewer>
+
+<p>위의 예에서는 <code>$ (&#39;div .child&#39;)</code>를 직접 사용하여 <code>child</code> 클래스를 가진 하위 요소를 찾고 하위 요소의 텍스트 내용을 &quot;수정된 자식 요소&quot;로 변경했습니다.</p>
+<h3>여러 요소 선택</h3>
+<h4>전역 요소를 찾기 위해 <code>$.all(&#39;xxx&#39;)</code>를 사용합니다.</h4>
+<p><code>$.all(&#39;xxx&#39;)</code> 메서드는 선택자 조건에 해당하는 페이지의 모든 요소를 찾아서 요소의 컬렉션으로 반환합니다. 이렇게 하면 페이지의 여러 요소를 일괄적으로 선택하여 작업할 수 있습니다.</p>
+<h4>예시</h4>
+<html-viewer>
+
+<pre><code>&lt;!-- ofa.js 프로젝트에 가져오기 --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<pre><code class="language-html">&lt;p&gt;단락 1&lt;/p&gt;
+&lt;p&gt;단락 2&lt;/p&gt;
+&lt;p&gt;단락 3&lt;/p&gt;
+&lt;script&gt;
+  // 모든 p 태그 요소 찾기
+  const allParagraphs = $.all(&quot;p&quot;);
+
+  // 모든 p 태그 요소의 텍스트 내용 수정
+  allParagraphs.forEach((paragraph, index) =&gt; {
+    paragraph.text = `수정된 단락 ${index + 1}`;
+  });
+&lt;/script&gt;
+</code></pre>
+</html-viewer>
+
+<p>위의 예제에서는 <code>$ .all(&quot;p&quot;)</code>를 사용하여 페이지에서 모든 <code>p</code> 태그 요소를 찾고 일괄 작업을 수행하여 텍스트 내용을 &quot;수정된 단락 1&quot;, &quot;수정된 단락 2&quot; 및 &quot;수정된 단락 3&quot;으로 변경했습니다.</p>
+<h3>요소 내에서 조건을 만족하는 모든 요소 찾기</h3>
+<p>전역 범위를 검색할 뿐만 아니라 특정 요소 내에서 조건에 맞는 모든 하위 요소를 찾을 수도 있습니다. 사용 방법은 다음과 같습니다: <code>$(&#39;xxx&#39;).all(&#39;xxxx&#39;)</code>.</p>
+<h4>예시</h4>
+<html-viewer>
+
+<pre><code>&lt;!-- ofa.js 프로젝트에 가져오기 --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+  &lt;p&gt;안녕하세요 세계&lt;/p&gt;
+  &lt;div class=&quot;item&quot;&gt;품목 1&lt;/div&gt;
+  &lt;div class=&quot;item&quot;&gt;품목 2&lt;/div&gt;
+  &lt;div class=&quot;item&quot;&gt;품목 3&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  // &quot;item&quot; 클래스를 가진 컨테이너에서 모든 하위 요소를 찾습니다.
+  const container = $(&quot;.container&quot;);
+  const items = container.all(&quot;.item&quot;);
+
+  // 모든 자식 요소의 텍스트 내용 변경
+  items.forEach((item, index) =&gt; {
+    item.text = `수정된 품목 ${index + 1}`;
+  });
+&lt;/script&gt;
+</code></pre>
+</html-viewer>
+
+<p>위의 예제에서는 먼저 <code>$(&quot;.container&quot;)</code>를 사용하여 <code>container</code> 클래스를 가진 요소를 찾은 다음, 해당 컨테이너 내에서 <code>item</code> 클래스를 가진 모든 자식 요소를 <code>.all(&quot;.item&quot;)</code>을 통해 찾고, 이들에 대해 일괄 작업을 수행하여 텍스트 내용을 &quot;Modified Item 1&quot;, &quot;Modified Item 2&quot; 및 &quot;Modified Item 3&quot;으로 수정하였습니다.</p>
+<h2>사건</h2>
+<p>앞에서 이미 <code>on</code> 이벤트 바인딩의 사용법을 설명했으며, 이어서 몇 가지 이벤트 관련 메서드를 소개하겠습니다.</p>
+<h3>off 메소드 사용 문서</h3>
+<p><code>off</code> 메서드는 <code>on</code> 메서드로 바인딩된 이벤트 처리 함수를 제거하는 데 사용됩니다. 특정 이벤트의 처리 함수가 더 이상 필요하지 않을 때, 중복 실행 또는 메모리 누수를 방지하기 위해 <code>off</code> 메서드를 사용하여 해당 함수를 요소에서 제거할 수 있습니다.</p>
+<h4>못번역합니다.</h4>
+<pre><code class="language-javascript">$(selector).off(eventName, eventHandler);
+</code></pre>
+<p>selector: 이벤트 처리 함수를 제거할 요소를 선택합니다.
+eventName: 제거할 이벤트 이름을 지정합니다.
+eventHandler: 제거할 이벤트 처리 함수를 지정합니다.</p>
+<h4>예시</h4>
+<html-viewer>
+
+<pre><code>&lt;!-- ofa.js 프로젝트에 가져오기 --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<pre><code class="language-html">&lt;button id=&quot;btn&quot;&gt;나를 클릭하세요&lt;/button&gt;
+&lt;script&gt;
+  const handleClick = () =&gt; {
+    alert(&quot;버튼이 클릭되었습니다!&quot;);
+  };
+
+  // 클릭 이벤트 핸들러를 바인딩합니다.
+  $(&quot;#btn&quot;).on(&quot;click&quot;, handleClick);
+
+  // 5초 후에 클릭 이벤트 핸들러를 제거합니다.
+  setTimeout(() =&gt; {
+    $(&quot;#btn&quot;).off(&quot;click&quot;, handleClick);
+  }, 5000);
+&lt;/script&gt;
+</code></pre>
+</html-viewer>
+
+<p>팝업 창에는 &quot;버튼이 클릭되었습니다!&quot;라는 메시지가 표시되지만, <code>off</code> 메소드를 사용하여 클릭 이벤트 핸들러가 5초 후에 제거되므로 버튼을 다시 클릭하면 팝업 창이 표시되지 않습니다.</p>
+<h3>one 메서드 사용 설명서</h3>
+<p><code>one</code> 메서드는 이벤트 처리 함수를 바인딩하는 데 사용되지만 해당 처리 함수는 이벤트를 처음으로 트리거할 때만 한 번 실행됩니다. 한 번 실행된 후에는 이벤트 처리 함수가 자동으로 제거되어 중복 트리거를 방지합니다.</p>
+<h4>못번역합니다.</h4>
+<pre><code class="language-javascript">$(selector).one(eventName, eventHandler);
+</code></pre>
+<ul>
+<li><code>선택자</code>: 이벤트 처리 함수를 바인딩할 요소를 선택합니다.</li>
+<li><code>이벤트 이름</code>: 바인딩할 이벤트의 이름입니다.</li>
+<li><code>이벤트 핸들러</code>: 실행할 이벤트 처리 함수입니다.</li>
+</ul>
+<h4>예시</h4>
+<html-viewer>
+
+<pre><code>&lt;!-- ofa.js 프로젝트에 가져오기 --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<pre><code class="language-html">&lt;button id=&quot;btn&quot;&gt;Click Me Once&lt;/button&gt;
+&lt;script&gt;
+  // 클릭 이벤트 처리 함수를 한 번만 실행하지만 바인딩한다.
+  $(&quot;#btn&quot;).one(&quot;click&quot;, () =&gt; {
+    alert(&quot;버튼을 한 번 클릭했습니다!&quot;);
+  });
+&lt;/script&gt;
+</code></pre>
+</html-viewer>
+
+<p>위의 예제에서 버튼을 클릭하면 &quot;Button clicked once!&quot;라는 대화 상자가 표시됩니다. 그러나 처음 클릭 한 후에는 이벤트 처리 함수가 제거되므로 이후에 버튼을 클릭해도 대화 상자가 더 이상 표시되지 않습니다.</p>
+<h3>emit 메서드 사용 문서</h3>
+<p><code>emit</code> 메서드는 바인딩된 특정 이벤트를 수동으로 트리거하는 데 사용됩니다. <code>emit</code> 메서드를 사용하여 실제 조작 없이 이벤트 처리 함수를 실행할 수 있습니다.</p>
+<h4>못번역합니다.</h4>
+<pre><code class="language-javascript">$(selector).emit(eventName);
+</code></pre>
+<p>선택한 요소에서 이벤트를 발생시키기 위한 선택자입니다.</p>
+<ul>
+<li>발생시킬 이벤트의 이름입니다.</li>
+</ul>
+<h4>예시</h4>
+<pre><code class="language-html">&lt;button id=&quot;btn&quot;&gt;Click Me&lt;/button&gt;
+&lt;script&gt;
+  // 클릭 이벤트 핸들러 바인딩
+  $(&quot;#btn&quot;).on(&quot;click&quot;, () =&gt; {
+    alert(&quot;Button clicked!&quot;);
+  });
+
+  // emit 메서드를 통해 버튼 클릭 이벤트 트리거하기
+  $(&quot;#btn&quot;).emit(&quot;click&quot;);
+&lt;/script&gt;
+</code></pre>
+<p>이전 예제에서 <code>emit</code> 메소드를 사용하여 버튼의 클릭 이벤트를 수동으로 트리거했습니다. 이로 인해 &quot;Button clicked!&quot;라는 대화 상자가 나타나지만 실제로 버튼을 클릭하지는 않습니다.</p>
+<p>주의 ：<code>emit</code> 메서드는 마우스 클릭이나 다른 실제 이벤트를 모방하지 않으며, 바인딩된 이벤트 처리 함수를 직접 호출합니다. 따라서 특정 상황에서 이벤트를 실행하려면 <code>emit</code> 메서드를 사용할 수 있습니다.</p>
+<p>당신이 이벤트를 바인딩한 후에, 때로는 이벤트의 계속 전파(버블링)를 막거나 이벤트의 기본 동작을 취소하고 싶을 수도 있습니다. 아래에는 이벤트 트리거 후에 버블링을 중단하고 기본 이벤트를 취소하는 방법에 대해 설명되어 있습니다.</p>
+<h3>이벤트 버블링 금지</h3>
+<p>이벤트 버블링은 요소에서 이벤트가 발생하면 DOM 트리를 따라 위로 버블 형식으로 전파되어 부모 요소의 동일한 종류의 이벤트를 차례로 발생시킵니다. 특정 요소에서 이벤트를 처리하고 이벤트 버블링을 계속 방지하려면 <code>event.stopPropagation()</code> 메소드를 사용할 수 있습니다.</p>
+<p>예제 코드:</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ko&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;Stop Event Bubbling&lt;/title&gt;
+  &lt;script src=&quot;../ofa.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div id=&quot;outer&quot;&gt;
+    &lt;div id=&quot;inner&quot;&gt;
+      &lt;button id=&quot;btn&quot;&gt;Click Me&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;script&gt;
+    const btn = $(&#39;#btn&#39;);
+    const innerDiv = $(&#39;#inner&#39;);
+
+    btn.on(&#39;click&#39;, (event) =&gt; {
+      alert(&#39;Button Clicked!&#39;);
+      event.stopPropagation(); // 이벤트 버블링 중단
+    });
+
+    innerDiv.on(&#39;click&#39;, () =&gt; {
+      alert(&#39;Inner Div Clicked!&#39;);
+    });
+
+    $(&#39;#outer&#39;).on(&#39;click&#39;, () =&gt; {
+      alert(&#39;Outer Div Clicked!&#39;);
+    });
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>위의 예에서 &quot;Click Me&quot; 버튼을 클릭하면 &quot;Button Clicked!&quot;이 표시되지만 &quot;Inner Div Clicked!&quot; 및 &quot;Outer Div Clicked!&quot; 이벤트가 트리거되지 않습니다. 이는 버튼 클릭 이벤트 처리기에서 <code>event.stopPropagation()</code>을 호출하여 이벤트 전파를 차단했기 때문입니다.</p>
+<h3>기본 동작 취소 이벤트</h3>
+<p>클릭한 대상에 따라 일부 요소는 기본 동작이 발생합니다. 예를 들어, 제출 버튼을 클릭하면 양식이 제출되고 링크를 클릭하면 해당 링크로 이동합니다. 이벤트의 기본 동작을 중단하려면 <code>event.preventDefault()</code> 메서드를 사용할 수 있습니다.</p>
+<p>예제 코드:</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ko&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;기본 이벤트 방지&lt;/title&gt;
+  &lt;script src=&quot;../ofa.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;form id=&quot;myForm&quot;&gt;
+    &lt;label for=&quot;name&quot;&gt;이름:&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;name&quot; /&gt;
+    &lt;button id=&quot;submitBtn&quot;&gt;전송&lt;/button&gt;
+  &lt;/form&gt;
+
+  &lt;script&gt;
+    const form = $(&#39;#myForm&#39;);
+    const submitBtn = $(&#39;#submitBtn&#39;);
+
+    submitBtn.on(&#39;click&#39;, (event) =&gt; {
+      event.preventDefault(); // 이벤트의 기본 동작을 취소
+      const name = $(&#39;#name&#39;).value;
+      alert(`안녕하세요, ${name}님! 폼 제출이 방지되었습니다.`);
+    });
+
+    form.on(&#39;submit&#39;, () =&gt; {
+      alert(&#39;폼 제출됨!&#39;);
+    });
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>위의 예시에서 &quot;제출&quot; 버튼을 클릭하면 &quot;안녕하세요, {name}! 양식 제출이 방지되었습니다.&quot;라는 메시지가 표시되지만 &quot;양식 제출되었습니다!&quot; 경고가 트리거되지 않습니다. 이것은 우리가 제출 버튼의 클릭 이벤트 핸들러에서 <code>event.preventDefault()</code>를 호출하여 양식의 기본 제출 동작을 막았기 때문입니다.</p>
+
+    <article-footer></article-footer>
+    </article>
+        <script>
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/layouts/article-layout.html";
+
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/document-page-init.mjs";
+
+          export default async (...args) => {
+            return await pageInit(PATH, args);
+          };
+        </script>
+      </template>
+    </o-app>
+    <div id="loading"></div>
+    <div class="body-important other-link"><ul>
+<li><a href="../../cases/index.html">시작</a></li>
+<li><a href="../../cases/event.html">이벤트 응답</a></li>
+<li><a href="../../cases/simple-component.html">컴포넌트 생성 및 사용</a></li>
+<li><a href="../../cases/slot.html">컴포넌트 슬롯</a></li>
+<li><a href="../../cases/render-text.html">템플릿 언어: 텍스트 렌더링</a></li>
+<li><a href="../../cases/attribute-transmission.html">속성 전달</a></li>
+<li><a href="../../cases/get-set-comp.html">컴포넌트 인스턴스 값 가져오기 및 변경하기</a></li>
+<li><a href="../../cases/property-transmission.html">템플릿 언어: 속성 전달</a></li>
+<li><a href="../../cases/bind-event.html">템플릿 언어: 이벤트 바인딩</a></li>
+<li><a href="../../cases/nested-component.html">중첩 컴포넌트</a></li>
+<li><a href="../../cases/inject-host.html">inject-host 컴포넌트</a></li>
+<li><a href="../../cases/event-passing.html">이벤트 전달</a></li>
+<li><a href="../../cases/sync.html">템플릿 언어: 양방향 데이터 바인딩</a></li>
+<li><a href="../../cases/condition.html">템플릿 컴포넌트: 조건부 렌더링</a></li>
+<li><a href="../../cases/fill.html">템플릿 컴포넌트: 채우기 렌더링</a></li>
+<li><a href="../../cases/fill-temp.html">재귀 채우기 렌더링</a></li>
+<li><a href="../../cases/life-cycle.html">라이프사이클</a></li>
+<li><a href="../../cases/form-data.html">폼 데이터</a></li>
+<li><a href="../../cases/custom-form-element.html">사용자 정의 폼 컴포넌트</a></li>
+<li><a href="../../cases/use-page.html">페이지 컴포넌트 사용</a></li>
+<li><a href="../../cases/use-app.html">앱 컴포넌트 사용</a></li>
+<li><a href="../../cases/app-config.html">앱 구성 설정</a></li>
+<li><a href="../../cases/app-loading.html">앱에 대한 맞춤형 로딩 설정</a></li>
+<li><a href="../../cases/set404.html">404 페이지 설정</a></li>
+<li><a href="../../cases/nested-page.html">중첩 페이지</a></li>
+<li><a href="../../cases/use-hash-router.html">HashRouter 사용</a></li>
+<li><a href="../../cases/use-scsr.html">scsr 방식 사용</a></li>
+<li><a href="../../cases/sync-state.html">상태 동기화</a></li>
+<li><a href="../../cases/alias.html">별칭</a></li>
+<li><a href="../introduce.html">소개</a></li>
+<li><a href="index.html">ofa.js 사용 방법</a></li>
+<li><a href="hello-world.html">첫 번째 예제</a></li>
+<li><a href="elements-and-events.html">요소 선택 및 이벤트 처리</a></li>
+<li><a href="basic-concept.html">인스턴스 기본 개념</a></li>
+<li><a href="common-properties.html">일반적인 속성 및 메서드</a></li>
+<li><a href="../create-component/index.html">제작 및 사용</a></li>
+<li><a href="../create-component/parameter-description.html">매개변수 설명</a></li>
+<li><a href="../create-component/life-cycle.html">라이프사이클</a></li>
+<li><a href="../create-component/web-components.html">컴포넌트 기본 지식</a></li>
+<li><a href="../create-component/template-syntax.html">템플릿 문법</a></li>
+<li><a href="../create-app/index.html">소개</a></li>
+<li><a href="../create-app/page.html">Page 컴포넌트 사용</a></li>
+<li><a href="../create-app/app.html">App 컴포넌트 사용</a></li>
+<li><a href="../create-app/subrouting.html">하위 라우팅 기능</a></li>
+<li><a href="../create-app/o-router.html">라우팅 바인딩</a></li>
+<li><a href="../create-app/scsr.html">SCSR 솔루션</a></li>
+<li><a href="../others/data-sharing.html">데이터 공유</a></li>
+<li><a href="../others/about-micro-frontend.html">ofa.js와 마이크로 프론트엔드</a></li>
+<li><a href="../../api/index.html">API 소개</a></li>
+<li><a href="../../api/instance/dollar.html">$ 메소드</a></li>
+<li><a href="../../api/instance/all.html">all</a></li>
+<li><a href="../../api/instance/prev.html">prev</a></li>
+<li><a href="../../api/instance/prevs.html">prevs</a></li>
+<li><a href="../../api/instance/next.html">next</a></li>
+<li><a href="../../api/instance/nexts.html">nexts</a></li>
+<li><a href="../../api/instance/siblings.html">siblings</a></li>
+<li><a href="../../api/instance/parent.html">parent</a></li>
+<li><a href="../../api/instance/parents.html">parents</a></li>
+<li><a href="../../api/instance/clone.html">clone</a></li>
+<li><a href="../../api/instance/ele.html">ele</a></li>
+<li><a href="../../api/instance/shadow.html">shadow</a></li>
+<li><a href="../../api/instance/root.html">root</a></li>
+<li><a href="../../api/instance/children.html">자식 요소</a></li>
+<li><a href="../../api/instance/host.html">host</a></li>
+<li><a href="../../api/instance/app.html">app</a></li>
+<li><a href="../../api/operation/array-like.html">자식 노드 추가 또는 삭제</a></li>
+<li><a href="../../api/operation/before.html">before</a></li>
+<li><a href="../../api/operation/after.html">after</a></li>
+<li><a href="../../api/operation/remove.html">remove</a></li>
+<li><a href="../../api/operation/wrap.html">wrap</a></li>
+<li><a href="../../api/operation/unwrap.html">unwrap</a></li>
+<li><a href="../../api/props/text.html">text</a></li>
+<li><a href="../../api/props/html.html">html</a></li>
+<li><a href="../../api/props/attr.html">attr</a></li>
+<li><a href="../../api/props/css.html">css</a></li>
+<li><a href="../../api/props/style.html">style</a></li>
+<li><a href="../../api/props/class-list.html">classList</a></li>
+<li><a href="../../api/props/data.html">data</a></li>
+<li><a href="../../api/event/on.html">on</a></li>
+<li><a href="../../api/event/one.html">one</a></li>
+<li><a href="../../api/event/emit.html">emit</a></li>
+<li><a href="../../api/event/off.html">off</a></li>
+<li><a href="../../api/temp-syntax/text-render.html">텍스트 렌더링</a></li>
+<li><a href="../../api/temp-syntax/class.html">class</a></li>
+<li><a href="../../api/temp-syntax/sync.html">sync</a></li>
+<li><a href="../../api/temp-syntax/condition.html">조건 렌더링</a></li>
+<li><a href="../../api/temp-syntax/fill.html">리스트 렌더링</a></li>
+<li><a href="../../api/life-cycle/created.html">created</a></li>
+<li><a href="../../api/life-cycle/ready.html">ready</a></li>
+<li><a href="../../api/life-cycle/watch.html">watch</a></li>
+<li><a href="../../api/life-cycle/loaded.html">loaded</a></li>
+<li><a href="../../api/life-cycle/attached.html">attached</a></li>
+<li><a href="../../api/life-cycle/detached.html">detached</a></li>
+<li><a href="../../api/life-cycle/router-change.html">routerChange</a></li>
+<li><a href="../../api/others/app.html">app</a></li>
+<li><a href="../../api/others/page.html">page</a></li>
+<li><a href="../../api/others/box.html">박스 모델</a></li>
+<li><a href="../../api/others/form-data.html">formData</a></li>
+<li><a href="../../api/others/tag.html">tag</a></li>
+<li><a href="../../api/others/index.html">index</a></li>
+<li><a href="../../api/others/is.html">is</a></li>
+<li><a href="../../api/others/refresh.html">refresh</a></li>
+<li><a href="../../api/others/path.html">PATH</a></li>
+<li><a href="../../api/others/extend.html">extend</a></li>
+<li><a href="../../api/others/stanz.html">인스턴스 데이터 특징</a></li>
+<li><a href="../../../en/index.html">English-index.html</a></li>
+<li><a href="../../../cn/index.html">简体中文-index.html</a></li>
+<li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
+<li><a href="../../../ja/index.html">index.html</a></li>
+<li><a href="../../../es/index.html">española-index.html</a></li>
+<li><a href="../../index.html">index.html</a></li>
+
+</ul></div>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/init.js" type="module"></script>
+  </body>
+</html>
