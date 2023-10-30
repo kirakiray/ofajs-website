@@ -9,7 +9,7 @@
       src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.39/statics/css/public.css" />
     <style>
       html,
       body {
@@ -37,9 +37,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.39/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.39/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.39/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -58,14 +58,14 @@
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.39/statics/css/github-markdown.css"
         />
         <article class="markdown-body"><h1>静态客户端渲染(SCSR)</h1>
 <h2>什么是 SCSR？</h2>
 <p>SCSR 全名 Static Client-Side Rendering，称为静态客户端渲染；静态客户端渲染（SCSR）是 CSR（Client-Side Rendering）的一种变种，它在保留了 CSR 用户体验的基础上，还能够让页面在静态状态下被爬虫获取。</p>
 <h2>如何使用 SCSR</h2>
 <p>你可以通过以下方式引用 SCSR 库：</p>
-<pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/libs/scsr/dist/scsr.min.js&quot;&gt;&lt;/script&gt;
+<pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/dist/scsr.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <h2>SCSR 的工作原理</h2>
 <p>SCSR 是通过直接运行单文件模式的页面模块，而无需使用 <code>o-page</code> 标签，从而实现在页面上进行渲染。具体来说，就是将页面模块的模板代码直接放在 <code>o-app</code> 内。</p>
@@ -146,9 +146,9 @@
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.39/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.39/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -271,6 +271,6 @@
 <li><a href="../../../ko/index.html">index.html</a></li>
 
 </ul></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/init.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.39/statics/init.js" type="module"></script>
   </body>
 </html>

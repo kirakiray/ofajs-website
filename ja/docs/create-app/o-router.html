@@ -9,7 +9,7 @@
       src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.39/statics/css/public.css" />
     <style>
       html,
       body {
@@ -37,9 +37,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.39/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.39/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.39/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -58,13 +58,13 @@
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.39/statics/css/github-markdown.css"
         />
         <article class="markdown-body"><h1>o-routerコンポーネントの使用</h1>
 <p><code>o-router</code> コンポーネントは、<code>o-app</code> 内のルートを現在のブラウザのタブにバインドするためのコンポーネントです。これを使用すると、ページのルートと表示をより簡単に管理することができます。</p>
-<h2>引用 o-router コンポーネントをする</h2>
+<h2>加载 o-router 组件</h2>
 <p>まず、ページで <code>o-router</code> コンポーネントを参照する必要があります。以下の方法で <code>router.mjs</code> ファイルを参照することができます：</p>
-<pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/libs/router/dist/router.min.js&quot;&gt;&lt;/script&gt;
+<pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/router/dist/router.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <h2>o-router コンポーネントの使用</h2>
 <p>使用 <code>o-router</code> 组件は、<code>o-app</code> コンポーネントの外側にラップすることで実現されます。これにより、アプリ内のルーターが現在のブラウザータブにバインドされます。</p>
@@ -75,17 +75,17 @@
 <h2>fix-body 属性</h2>
 <p><code>o-router</code>コンポーネントは、<code>fix-body</code>属性を提供しており、この属性を設定すると、コンポーネントは自動的に<code>&lt;html&gt;</code>タグにスタイルを追加し、アプリケーションのサイズをページ全体と同じにして、アプリケーションの内容をウィンドウ全体で表示します。</p>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;ja&quot;&gt;
+&lt;html lang=&quot;jp&quot;&gt;
   &lt;head&gt;
     &lt;meta charset=&quot;UTF-8&quot; /&gt;
     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
-    &lt;title&gt;routerテスト&lt;/title&gt;
+    &lt;title&gt;router test&lt;/title&gt;
     &lt;script src=&quot;ofa.js&quot;&gt;&lt;/script&gt;
-    &lt;!-- o-routerコンポーネントを参照する --&gt;
-    &lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.25/libs/router/dist/router.min.js&quot;&gt;&lt;/script&gt;
+    &lt;!-- ローカル o-router コンポーネントを読み込む --&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/router/dist/router.min.js&quot;&gt;&lt;/script&gt;
   &lt;/head&gt;
   &lt;body&gt;
-    &lt;!-- o-routerコンポーネントを使用し、fix-body属性を設定する --&gt;
+    &lt;!-- o-router コンポーネントを使用し、fix-body 属性を設定 --&gt;
     &lt;o-router fix-body&gt; 
       &lt;o-app src=&quot;app-config.mjs&quot;&gt;&lt;/o-app&gt;
     &lt;/o-router&gt;
@@ -96,9 +96,9 @@
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.39/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.39/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -213,14 +213,14 @@
 <li><a href="../../api/others/path.html">PATH</a></li>
 <li><a href="../../api/others/extend.html">extend</a></li>
 <li><a href="../../api/others/stanz.html">インスタンスデータの特徴</a></li>
+<li><a href="../../../en/index.html">English-index.html</a></li>
 <li><a href="../../../cn/index.html">简体中文-index.html</a></li>
 <li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
-<li><a href="../../../en/index.html">English-index.html</a></li>
 <li><a href="../../index.html">index.html</a></li>
 <li><a href="../../../es/index.html">española-index.html</a></li>
 <li><a href="../../../ko/index.html">index.html</a></li>
 
 </ul></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.37/statics/init.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.39/statics/init.js" type="module"></script>
   </body>
 </html>
