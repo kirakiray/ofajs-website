@@ -132,6 +132,145 @@
 &lt;/script&gt;
 </code></pre>
 </html-viewer>
+
+<h2>扩展模板语法</h2>
+<p>通过 <code>extend</code> 扩展属性或函数，可以增加模板语法的功能，甚至为组件提供专属的模板语法糖。但需要注意的是，尽量<strong>不要使用</strong>非官方的模板语法，因为它们会给使用者带来一定的学习成本，并且大量非官方模板语法糖会降低开发体验。</p>
+<h3>扩展属性</h3>
+<p>你可以通过扩展属性，在模板中使用 <code>:</code> 来进行设置。下面我们将扩展一个 <code>red</code> 属性，当 <code>red</code> 为 <code>true</code> 时，字体颜色变为红色：</p>
+<pre><code class="language-javascript">$.fn.extend({
+  set red(bool){
+    if(bool){
+      this.css.color = &quot;red&quot;;
+    }else{
+      this.css.color = &#39;&#39;;
+    }
+  }
+});
+</code></pre>
+<comp-viewer comp-name="temp-one">
+
+<pre><code>&lt;script&gt;
+$.fn.extend({
+  set red(bool){
+    if(bool){
+      this.css.color = &quot;red&quot;;
+    }else{
+      this.css.color = &#39;&#39;;
+    }
+  }
+});
+&lt;/script&gt;
+&lt;temp-one&gt;&lt;/temp-one&gt;
+</code></pre>
+<pre><code class="language-html">&lt;template component&gt;
+  &lt;button on:click=&quot;addCount&quot;&gt;Add Count&lt;/button&gt;
+  &lt;div :red=&quot;count % 3&quot;&gt;{{count}}&lt;/div&gt;
+  &lt;script&gt;
+    export default {
+      tag: &quot;temp-one&quot;,
+      data: {
+        count: 0
+      },
+      proto:{
+        addCount(){
+          this.count++;
+        },
+      }
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</comp-viewer>
+
+<p>在这个示例中，我们为模板语法添加了一个 <code>red</code> 属性，当 <code>count % 3</code> 不为 0 时，字体颜色将变为红色。</p>
+<h3>扩展方法</h3>
+<p>你还可以通过 <code>extend</code> 扩展方法，使其在模板语法中可用。方法名称就是冒号前的部分。在这里，我们扩展了一个 <code>color</code> 模板语法，后面跟着的参数将被传递给定义的扩展方法。</p>
+<p>此处设置了 <code>always</code> 属性为 <code>true</code>，表示在组件每次需要刷新界面的时机时，都会调用这个定义好的方法。如果不设置 <code>always</code>，那么这个模板语法函数只会运行一次。</p>
+<p>其中，<code>options</code> 提供了更多的参数，可以帮助你开发更具定制性的模板语法；</p>
+<pre><code class="language-javascript">$.fn.extend({
+  color(color, func, options){
+    const bool = func();
+    // console.log(bool,options);
+    if(bool){
+      this.css.color = color;
+    }else{
+      this.css.color = &#39;&#39;;
+    }
+  }
+});
+
+$.fn.color.always = true;
+</code></pre>
+<comp-viewer comp-name="temp-two">
+
+<pre><code>&lt;script&gt;
+$.fn.extend({
+  color(color, func, options){
+    const bool = func();
+    console.log(bool,options);
+    if(bool){
+      this.css.color = color;
+    }else{
+      this.css.color = &#39;&#39;;
+    }
+  }
+}); 
+
+$.fn.color.always = true;
+&lt;/script&gt;
+&lt;temp-two&gt;&lt;/temp-two&gt;
+</code></pre>
+<pre><code class="language-html">&lt;template component&gt;
+  &lt;button on:click=&quot;addCount&quot; color:blue=&quot;count % 3&quot;&gt;Add Count&lt;/button&gt;
+  &lt;div color:red=&quot;!(count % 3)&quot;&gt;{{count}}&lt;/div&gt;
+  &lt;script&gt;
+    export default {
+      tag: &quot;temp-two&quot;,
+      data: {
+        count: 0
+      },
+      proto:{
+        addCount(){
+          this.count++;
+        },
+      }
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</comp-viewer>
+
+<h2>模板语法原理</h2>
+<p>到目前为止，你应该已经能够理解，ofa.js 上的许多模板语法实际上是通过 <code>extend</code> 扩展出来的：</p>
+<ul>
+<li><code>class</code>、<code>attr</code> 方法每次刷新视图都会运行</li>
+<li><code>on</code>、<code>one</code> 这种函数绑定只会运行一次</li>
+</ul>
+<p>你可以查看下面的示例来更好地理解 ofa.js 的模板渲染原理：</p>
+<comp-viewer comp-name="temp-three">
+
+<pre><code class="language-html">&lt;template component&gt;
+  &lt;div&gt;class always =&gt; {{classalways}}&lt;/div&gt;
+  &lt;div&gt;attr always =&gt; {{attralways}}&lt;/div&gt;
+  &lt;div&gt;on always =&gt; {{onalways}}&lt;/div&gt;
+  &lt;script&gt;
+    export default {
+      tag: &quot;temp-three&quot;,
+      data: {
+        classalways:&quot;&quot;,
+        attralways:&quot;&quot;,
+        onalways:&quot;&quot;
+      },
+      ready(){
+        this.classalways = $.fn.class.always;
+        this.attralways = $.fn.attr.always;
+        this.onalways = !!$.fn.on.always;
+      }
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</comp-viewer>
     <article-footer></article-footer>
     </article>
         <script>

@@ -132,6 +132,145 @@
 &lt;/script&gt;
 </code></pre>
 </html-viewer>
+
+<h2>拡張テンプレートの文法</h2>
+<p><code>extend</code> 属性や関数を使用することで、テンプレートの文法を追加したり、コンポーネントに独自のテンプレートのシンタックスシュガーを提供したりすることができます。ただし、非公式のテンプレート言語を使用することは避けるべきです。非公式のテンプレート言語は学習コストを増やし、開発体験を低下させる可能性があるためです。</p>
+<h3>拡張プロパティ</h3>
+<p>あなたは、テンプレート内で <code>:</code> を使用して属性を拡張することができます。以下では、<code>red</code> 属性を追加して、<code>red</code>が <code>true</code> の場合にフォントの色を赤に変更します。</p>
+<pre><code class="language-javascript">$.fn.extend({
+  set red(bool){
+    if(bool){
+      this.css.color = &quot;red&quot;;
+    }else{
+      this.css.color = &#39;&#39;;
+    }
+  }
+});
+</code></pre>
+<comp-viewer comp-name="temp-one">
+
+<pre><code>&lt;script&gt;
+$.fn.extend({
+  set red(bool){
+    if(bool){
+      this.css.color = &quot;red&quot;;
+    }else{
+      this.css.color = &#39;&#39;;
+    }
+  }
+});
+&lt;/script&gt;
+&lt;temp-one&gt;&lt;/temp-one&gt;
+</code></pre>
+<pre><code class="language-html">&lt;template component&gt;
+  &lt;button on:click=&quot;addCount&quot;&gt;Add Count&lt;/button&gt;
+  &lt;div :red=&quot;count % 3&quot;&gt;{{count}}&lt;/div&gt;
+  &lt;script&gt;
+    export default {
+      tag: &quot;temp-one&quot;,
+      data: {
+        count: 0
+      },
+      proto:{
+        addCount(){
+          this.count++;
+        },
+      }
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</comp-viewer>
+
+<p>この例では、テンプレートの文法に <code>red</code> 属性を追加しました。<code>count % 3</code> が 0 でない場合、フォントの色が赤色になります。</p>
+<h3>拡張機能テンプレート</h3>
+<p>extendメソッドを使用して、テンプレートの構文で利用できるようにすることもできます。メソッド名はコロンの前の部分です。ここでは、<code>color</code>テンプレート構文を拡張しました。後に続くパラメータは定義された拡張メソッドに渡されます。</p>
+<p>ここでは、<code>always</code> 属性が <code>true</code> に設定されており、コンポーネントが画面を更新するタイミングで常にこの定義されたメソッドが呼び出されることを意味します。<code>always</code> を設定しない場合、このテンプレートの関数は一度だけ実行されます。</p>
+<p>optionsを使用すると、よりカスタマイズ性の高いテンプレート構文を開発することができます。</p>
+<pre><code class="language-javascript">$.fn.extend({
+  color(color, func, options){
+    const bool = func();
+    // console.log(bool,options);
+    if(bool){
+      this.css.color = color;
+    }else{
+      this.css.color = &#39;&#39;;
+    }
+  }
+});
+
+$.fn.color.always = true;
+</code></pre>
+<comp-viewer comp-name="temp-two">
+
+<pre><code>&lt;script&gt;
+$.fn.extend({
+  color(color, func, options){
+    const bool = func();
+    console.log(bool,options);
+    if(bool){
+      this.css.color = color;
+    }else{
+      this.css.color = &#39;&#39;;
+    }
+  }
+}); 
+
+$.fn.color.always = true;
+&lt;/script&gt;
+&lt;temp-two&gt;&lt;/temp-two&gt;
+</code></pre>
+<pre><code class="language-html">&lt;template component&gt;
+  &lt;button on:click=&quot;addCount&quot; color:blue=&quot;count % 3&quot;&gt;Add Count&lt;/button&gt;
+  &lt;div color:red=&quot;!(count % 3)&quot;&gt;{{count}}&lt;/div&gt;
+  &lt;script&gt;
+    export default {
+      tag: &quot;temp-two&quot;,
+      data: {
+        count: 0
+      },
+      proto:{
+        addCount(){
+          this.count++;
+        },
+      }
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</comp-viewer>
+
+<h2>テンプレート構文の原理</h2>
+<p>現時点では、多くのテンプレート構文が <code>extend</code> を使って拡張されていることが、あなたには理解できているはずです。</p>
+<ul>
+<li><code>class</code>、<code>attr</code> メソッドはビューを更新するたびに実行されます。</li>
+<li><code>on</code>、<code>one</code> という関数バインディングは一度だけ実行されます。</li>
+</ul>
+<p>以下は、ofa.jsのテンプレート・レンダリングの原則をよりよく理解するために使用できる例です：</p>
+<comp-viewer comp-name="temp-three">
+
+<pre><code class="language-html">&lt;template component&gt;
+  &lt;div&gt;class always =&gt; {{classalways}}&lt;/div&gt;
+  &lt;div&gt;attr always =&gt; {{attralways}}&lt;/div&gt;
+  &lt;div&gt;on always =&gt; {{onalways}}&lt;/div&gt;
+  &lt;script&gt;
+    export default {
+      tag: &quot;temp-three&quot;,
+      data: {
+        classalways:&quot;&quot;,
+        attralways:&quot;&quot;,
+        onalways:&quot;&quot;
+      },
+      ready(){
+        this.classalways = $.fn.class.always;
+        this.attralways = $.fn.attr.always;
+        this.onalways = !!$.fn.on.always;
+      }
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</comp-viewer>
     <article-footer></article-footer>
     </article>
         <script>

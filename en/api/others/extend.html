@@ -132,6 +132,145 @@
 &lt;/script&gt;
 </code></pre>
 </html-viewer>
+
+<h2>Extended Template Syntax</h2>
+<p>By extending properties or functions through <code>extend</code>, you can enhance the functionality of template syntax and even provide exclusive template syntax for components. However, it should be noted that it is recommended <strong>not to use</strong> unofficial template syntax because they can be difficult for users to learn, and a large number of unofficial template syntax can degrade the development experience.</p>
+<h3>Extended Properties</h3>
+<p>You can use <code>:</code> in templates to set extended attributes. Here we will extend a <code>red</code> attribute, and when <code>red</code> is <code>true</code>, the font color becomes red.</p>
+<pre><code class="language-javascript">$.fn.extend({
+  set red(bool){
+    if(bool){
+      this.css.color = &quot;red&quot;;
+    }else{
+      this.css.color = &#39;&#39;;
+    }
+  }
+});
+</code></pre>
+<comp-viewer comp-name="temp-one">
+
+<pre><code>&lt;script&gt;
+$.fn.extend({
+  set red(bool){
+    if(bool){
+      this.css.color = &quot;red&quot;;
+    }else{
+      this.css.color = &#39;&#39;;
+    }
+  }
+});
+&lt;/script&gt;
+&lt;temp-one&gt;&lt;/temp-one&gt;
+</code></pre>
+<pre><code class="language-html">&lt;template component&gt;
+  &lt;button on:click=&quot;addCount&quot;&gt;Add Count&lt;/button&gt;
+  &lt;div :red=&quot;count % 3&quot;&gt;{{count}}&lt;/div&gt;
+  &lt;script&gt;
+    export default {
+      tag: &quot;temp-one&quot;,
+      data: {
+        count: 0
+      },
+      proto:{
+        addCount(){
+          this.count++;
+        },
+      }
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</comp-viewer>
+
+<p>In this example, we added a <code>red</code> attribute to the template syntax, and when <code>count % 3</code> is not equal to 0, the font color will turn red.</p>
+<h3>Extended Methods</h3>
+<p>You can also use the <code>extend</code> extension method to make it available in template syntax. The method name is the part before the colon. Here, we extended a <code>color</code> template syntax, and the arguments following it will be passed to the defined extension method.</p>
+<p>This sets the <code>always</code> attribute to <code>true</code>, which means that every time the component needs to refresh the interface, this defined method will be called. If <code>always</code> is not set, the template syntax function will only run once.</p>
+<p>The <code>options</code> provides additional parameters that can help you develop more customized template syntax.</p>
+<pre><code class="language-javascript">$.fn.extend({
+  color(color, func, options){
+    const bool = func();
+    // console.log(bool,options);
+    if(bool){
+      this.css.color = color;
+    }else{
+      this.css.color = &#39;&#39;;
+    }
+  }
+});
+
+$.fn.color.always = true;
+</code></pre>
+<comp-viewer comp-name="temp-two">
+
+<pre><code>&lt;script&gt;
+$.fn.extend({
+  color(color, func, options){
+    const bool = func();
+    console.log(bool,options);
+    if(bool){
+      this.css.color = color;
+    }else{
+      this.css.color = &#39;&#39;;
+    }
+  }
+}); 
+
+$.fn.color.always = true;
+&lt;/script&gt;
+&lt;temp-two&gt;&lt;/temp-two&gt;
+</code></pre>
+<pre><code class="language-html">&lt;template component&gt;
+  &lt;button on:click=&quot;addCount&quot; color:blue=&quot;count % 3&quot;&gt;Add Count&lt;/button&gt;
+  &lt;div color:red=&quot;!(count % 3)&quot;&gt;{{count}}&lt;/div&gt;
+  &lt;script&gt;
+    export default {
+      tag: &quot;temp-two&quot;,
+      data: {
+        count: 0
+      },
+      proto:{
+        addCount(){
+          this.count++;
+        },
+      }
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</comp-viewer>
+
+<h2>Template Syntax Principles</h2>
+<p>So far, you should have been able to understand that many template syntaxes on ofa.js are actually extended through <code>extend</code>.</p>
+<ul>
+<li>The <code>class</code> and <code>attr</code> methods will be executed every time the view is refreshed.</li>
+<li>Functions like <code>on</code> and <code>one</code> bindings will only be executed once.</li>
+</ul>
+<p>You can refer to the example below to better understand the template rendering principle of ofa.js:</p>
+<comp-viewer comp-name="temp-three">
+
+<pre><code class="language-html">&lt;template component&gt;
+  &lt;div&gt;class always =&gt; {{classalways}}&lt;/div&gt;
+  &lt;div&gt;attr always =&gt; {{attralways}}&lt;/div&gt;
+  &lt;div&gt;on always =&gt; {{onalways}}&lt;/div&gt;
+  &lt;script&gt;
+    export default {
+      tag: &quot;temp-three&quot;,
+      data: {
+        classalways:&quot;&quot;,
+        attralways:&quot;&quot;,
+        onalways:&quot;&quot;
+      },
+      ready(){
+        this.classalways = $.fn.class.always;
+        this.attralways = $.fn.attr.always;
+        this.onalways = !!$.fn.on.always;
+      }
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</comp-viewer>
     <article-footer></article-footer>
     </article>
         <script>

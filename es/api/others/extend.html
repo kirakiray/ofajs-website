@@ -132,6 +132,145 @@
 &lt;/script&gt;
 </code></pre>
 </html-viewer>
+
+<h2>Expansión de la sintaxis de las plantillas</h2>
+<p>A través de la extensión de propiedades o funciones mediante <code>extend</code>, se puede mejorar la funcionalidad de la sintaxis del modelo e incluso proporcionar azúcar sintáctica exclusiva para componentes. Sin embargo, es importante tener en cuenta que se debe evitar el uso de sintaxis de modelo no oficial, ya que esto puede generar un costo de aprendizaje para los usuarios y un deterioro en la experiencia de desarrollo.</p>
+<h3>Propiedades de extensión</h3>
+<p>Puedes configurar una extensión en la plantilla usando <code>:</code>. A continuación, vamos a crear una extensión llamada <code>red</code>, que cambiará el color de la fuente a rojo cuando <code>red</code> sea igual a <code>true</code>.</p>
+<pre><code class="language-javascript">$.fn.extend({
+  set red(bool){
+    if(bool){
+      this.css.color = &quot;red&quot;;
+    }else{
+      this.css.color = &#39;&#39;;
+    }
+  }
+});
+</code></pre>
+<comp-viewer comp-name="temp-one">
+
+<pre><code>&lt;script&gt;
+$.fn.extend({
+  set red(bool){
+    if(bool){
+      this.css.color = &quot;red&quot;;
+    }else{
+      this.css.color = &#39;&#39;;
+    }
+  }
+});
+&lt;/script&gt;
+&lt;temp-one&gt;&lt;/temp-one&gt;
+</code></pre>
+<pre><code class="language-html">&lt;template component&gt;
+  &lt;button on:click=&quot;addCount&quot;&gt;Add Count&lt;/button&gt;
+  &lt;div :red=&quot;count % 3&quot;&gt;{{count}}&lt;/div&gt;
+  &lt;script&gt;
+    export default {
+      tag: &quot;temp-one&quot;,
+      data: {
+        count: 0
+      },
+      proto:{
+        addCount(){
+          this.count++;
+        },
+      }
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</comp-viewer>
+
+<p>En este ejemplo, hemos agregado un atributo <code>red</code> a la sintaxis de la plantilla, y cuando <code>count % 3</code> no es igual a 0, el color de fuente se pondrá rojo.</p>
+<h3>Métodos ampliados</h3>
+<p>Puedes extender el método &#39;extend&#39; para hacerlo disponible en la sintaxis de la plantilla. El nombre del método es la parte antes de los dos puntos. Aquí estamos extendiendo la sintaxis de la plantilla &#39;color&#39;, y los argumentos seguidos después se pasarán al método de extensión definido.</p>
+<p>Este lugar tiene el atributo &#39;always&#39; establecido en &#39;true&#39;, lo que significa que cada vez que el componente necesita refrescar la interfaz, se llamará a este método definido. Si no se establece &#39;always&#39;, entonces esta función de sintaxis de plantilla solo se ejecutará una vez.</p>
+<p>Entre ellos, <code>options</code> proporciona más parámetros que pueden ayudarte a desarrollar una sintaxis de plantilla más personalizada.</p>
+<pre><code class="language-javascript">$.fn.extend({
+  color(color, func, options){
+    const bool = func();
+    // console.log(bool,options);
+    if(bool){
+      this.css.color = color;
+    }else{
+      this.css.color = &#39;&#39;;
+    }
+  }
+});
+
+$.fn.color.always = true;
+</code></pre>
+<comp-viewer comp-name="temp-two">
+
+<pre><code>&lt;script&gt;
+$.fn.extend({
+  color(color, func, options){
+    const bool = func();
+    console.log(bool,options);
+    if(bool){
+      this.css.color = color;
+    }else{
+      this.css.color = &#39;&#39;;
+    }
+  }
+}); 
+
+$.fn.color.always = true;
+&lt;/script&gt;
+&lt;temp-two&gt;&lt;/temp-two&gt;
+</code></pre>
+<pre><code class="language-html">&lt;template component&gt;
+  &lt;button on:click=&quot;addCount&quot; color:blue=&quot;count % 3&quot;&gt;Add Count&lt;/button&gt;
+  &lt;div color:red=&quot;!(count % 3)&quot;&gt;{{count}}&lt;/div&gt;
+  &lt;script&gt;
+    export default {
+      tag: &quot;temp-two&quot;,
+      data: {
+        count: 0
+      },
+      proto:{
+        addCount(){
+          this.count++;
+        },
+      }
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</comp-viewer>
+
+<h2>Principios de sintaxis de plantillas</h2>
+<p>Hasta ahora, deberías poder entender que muchas de las sintaxis de plantillas en ofa.js se extienden mediante <code>extend</code>:</p>
+<ul>
+<li>Los métodos <code>class</code> y <code>attr</code> se ejecutan cada vez que se actualiza la vista.</li>
+<li>Las funciones de enlace <code>on</code> y <code>one</code> solo se ejecutan una vez.</li>
+</ul>
+<p>Puedes echar un vistazo a los ejemplos siguientes para comprender mejor el principio de renderizado de plantillas en ofa.js.</p>
+<comp-viewer comp-name="temp-three">
+
+<pre><code class="language-html">&lt;template component&gt;
+  &lt;div&gt;class always =&gt; {{classalways}}&lt;/div&gt;
+  &lt;div&gt;attr always =&gt; {{attralways}}&lt;/div&gt;
+  &lt;div&gt;on always =&gt; {{onalways}}&lt;/div&gt;
+  &lt;script&gt;
+    export default {
+      tag: &quot;temp-three&quot;,
+      data: {
+        classalways:&quot;&quot;,
+        attralways:&quot;&quot;,
+        onalways:&quot;&quot;
+      },
+      ready(){
+        this.classalways = $.fn.class.always;
+        this.attralways = $.fn.attr.always;
+        this.onalways = !!$.fn.on.always;
+      }
+    };
+  &lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</comp-viewer>
     <article-footer></article-footer>
     </article>
         <script>
