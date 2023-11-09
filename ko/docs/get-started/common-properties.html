@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>일반적으로 사용되는 속성 또는 메소드</title>
-        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.32/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.32/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.39/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.41/statics/css/public.css" />
     <style>
       html,
       body {
@@ -37,9 +37,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.39/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.39/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.39/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.41/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.41/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.41/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -58,29 +58,29 @@
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.39/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.41/statics/css/github-markdown.css"
         />
         <article class="markdown-body"><h1>일반적으로 사용되는 속성 또는 메소드</h1>
 <p>이 <code>%</code> 인스턴스에서는 요소를 선택하는 선택자 외에도, 요소의 조작과 찾기를 도와주는 일부 일반적인 기능이 제공됩니다.</p>
 <p>조금만 살펴봐주세요. 필요할 때 언제든 API 문서를 참고하실 수 있습니다.</p>
 <h2>열에 대한 자주 사용하는 속성</h2>
 <ul>
-<li><a href="./others/tag.html">tag</a>：대상의 태그 이름 가져오기</li>
-<li><a href="./instance/ele.html">ele</a>：인스턴스의 실제 원시 요소 가져오기</li>
-<li><a href="./others/index.html">index</a>：대상 요소의 부모 요소 내에서의 순서 가져오기</li>
-<li><a href="../../api/props/text.html">text</a>：대상 요소의 텍스트 가져오기 또는 설정하기</li>
-<li><a href="../../api/props/html.html">html</a>：대상 요소의 HTML 코드 가져오기 또는 설정하기</li>
-<li><a href="../../api/props/css.html">css</a>：대상 요소의 스타일 가져오기 또는 설정하기</li>
-<li><a href="../../api/props/style.html">style</a>：대상 요소의 원시 스타일 가져오기</li>
-<li><a href="../../api/props/class-list.html">classList</a>：대상 요소의 원시 class 목록 가져오기</li>
-<li><a href="../../api/props/data.html">data</a>：대상 요소의 원시 데이터 세트 가져오기</li>
+<li><a href="../../api/others/tag.html">tag</a>: 대상의 태그 이름 가져오기</li>
+<li><a href="../../api/instance/ele.html">ele</a>: 인스턴스의 실제 원시 요소 가져오기</li>
+<li><a href="../../api/others/index.html">index</a>: 대상 요소가 부모 요소 내에서의 순서 가져오기</li>
+<li><a href="../../api/props/text.html">text</a>: 대상 요소의 텍스트 가져오기 또는 설정하기</li>
+<li><a href="../../api/props/html.html">html</a>: 대상 요소의 HTML 코드 가져오기 또는 설정하기</li>
+<li><a href="../../api/props/css.html">css</a>: 대상 요소의 스타일 가져오기 또는 설정하기</li>
+<li><a href="../../api/props/style.html">style</a>: 대상 요소의 원시 스타일 가져오기</li>
+<li><a href="../../api/props/class-list.html">classList</a>: 대상 요소의 원시 class 목록 가져오기</li>
+<li><a href="../../api/props/data.html">data</a>: 대상 요소의 원시 데이터 집합 가져오기</li>
 </ul>
 <h3>노드 조작</h3>
 <ul>
-<li><a href="./operation/before.html">before</a>：대상 인스턴스 앞에 요소 추가</li>
-<li><a href="./operation/after.html">after</a>：대상 인스턴스 뒤에 요소 추가</li>
-<li><a href="./operation/remove.html">remove</a>：대상 요소 삭제</li>
-<li><a href="../../api/props/attr.html">attr</a>：대상 요소의 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/attributes">attributes</a> 가져오기 또는 설정하기</li>
+<li><a href="../../api/operation/before.html">before</a>：대상 인스턴스의 앞에 요소 추가</li>
+<li><a href="../../api/operation/after.html">after</a>：대상 인스턴스의 뒤에 요소 추가</li>
+<li><a href="../../api/operation/remove.html">remove</a>：대상 요소 삭제</li>
+<li><a href="../../api/props/attr.html">attr</a>：대상 요소의 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/attributes">attributes</a>를 가져오거나 설정</li>
 </ul>
 <h2>중요한 기능</h2>
 <ul>
@@ -91,9 +91,9 @@
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.39/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.41/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.39/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.41/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -216,6 +216,6 @@
 <li><a href="../../index.html">index.html</a></li>
 
 </ul></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.39/statics/init.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.41/statics/init.js" type="module"></script>
   </body>
 </html>

@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>よく使用するプロパティまたはメソッド</title>
-        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.32/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.32/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.39/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.41/statics/css/public.css" />
     <style>
       html,
       body {
@@ -37,9 +37,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.39/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.39/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.39/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.41/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.41/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.41/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -58,29 +58,29 @@
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.39/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.41/statics/css/github-markdown.css"
         />
         <article class="markdown-body"><h1>よく使用するプロパティまたはメソッド</h1>
 <p>「<code>$</code>」の例では、要素を選択する以外にも、要素の操作や検索を容易にするためのいくつかの便利な方法が提供されています。</p>
 <p>ちょっと見ておくと、必要な場合にはいつでも API ドキュメントを参照できます。</p>
 <h2>常用の属性</h2>
 <ul>
-<li><a href="./others/tag.html">tag</a>：目標のタグ名を取得します</li>
-<li><a href="./instance/ele.html">ele</a>：インスタンスの実際のネイティブ要素を取得します</li>
-<li><a href="./others/index.html">index</a>：対象要素の親要素内での順序を取得します</li>
-<li><a href="../../api/props/text.html">text</a>：対象要素のテキストを取得または設定します</li>
-<li><a href="../../api/props/html.html">html</a>：対象要素のHTMLコードを取得または設定します</li>
-<li><a href="../../api/props/css.html">css</a>：対象要素のスタイルを取得または設定します</li>
-<li><a href="../../api/props/style.html">style</a>：対象要素のネイティブスタイルを取得します</li>
-<li><a href="../../api/props/class-list.html">classList</a>：対象要素のネイティブクラスリストを取得します</li>
-<li><a href="../../api/props/data.html">data</a>：対象要素のネイティブデータセットを取得します</li>
+<li><a href="../../api/others/tag.html">tag</a>：目標のタグ名を取得します</li>
+<li><a href="../../api/instance/ele.html">ele</a>：インスタンスの実際のネイティブ要素を取得します</li>
+<li><a href="../../api/others/index.html">index</a>：ターゲット要素が親要素内での順序を取得します</li>
+<li><a href="../../api/props/text.html">text</a>：ターゲット要素のテキストを取得または設定します</li>
+<li><a href="../../api/props/html.html">html</a>：ターゲット要素のHTMLコードを取得または設定します</li>
+<li><a href="../../api/props/css.html">css</a>：ターゲット要素のスタイルを取得または設定します</li>
+<li><a href="../../api/props/style.html">style</a>：ターゲット要素のネイティブスタイルを取得します</li>
+<li><a href="../../api/props/class-list.html">classList</a>：ターゲット要素のネイティブクラスリストを取得します</li>
+<li><a href="../../api/props/data.html">data</a>：ターゲット要素のネイティブデータセットを取得します</li>
 </ul>
 <h3>ノードの操作</h3>
 <ul>
-<li><a href="./operation/before.html">before</a>：ターゲットインスタンスの前に要素を追加する</li>
-<li><a href="./operation/after.html">after</a>：ターゲットインスタンスの後ろに要素を追加する</li>
-<li><a href="./operation/remove.html">remove</a>：ターゲット要素を削除する</li>
-<li><a href="../../api/props/attr.html">attr</a>：ターゲット要素の<a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/attributes">attributes</a>を取得または設定する</li>
+<li><a href="../../api/operation/before.html">before</a>：ターゲットインスタンスの前に要素を追加します</li>
+<li><a href="../../api/operation/after.html">after</a>：ターゲットインスタンスの後に要素を追加します</li>
+<li><a href="../../api/operation/remove.html">remove</a>：ターゲット要素を削除します</li>
+<li><a href="../../api/props/attr.html">attr</a>：ターゲット要素の<a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/attributes">attributes</a>を取得または設定します</li>
 </ul>
 <h2>重要な機能</h2>
 <ul>
@@ -91,9 +91,9 @@
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.39/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.41/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.39/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.41/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -216,6 +216,6 @@
 <li><a href="../../../ko/index.html">index.html</a></li>
 
 </ul></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.39/statics/init.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.41/statics/init.js" type="module"></script>
   </body>
 </html>
