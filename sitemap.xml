@@ -126,6 +126,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ofajs.com/en/cases/multi-nested.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ofajs.com/en/cases/use-hash-router.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -652,6 +657,11 @@
   </url>
   <url>
     <loc>https://ofajs.com/cn/cases/nested-page.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ofajs.com/cn/cases/multi-nested.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1186,6 +1196,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ofajs.com/t-cn/cases/multi-nested.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ofajs.com/t-cn/cases/use-hash-router.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -1712,6 +1727,11 @@
   </url>
   <url>
     <loc>https://ofajs.com/ja/cases/nested-page.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ofajs.com/ja/cases/multi-nested.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2246,6 +2266,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ofajs.com/es/cases/multi-nested.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ofajs.com/es/cases/use-hash-router.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -2772,6 +2797,11 @@
   </url>
   <url>
     <loc>https://ofajs.com/ko/cases/nested-page.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ofajs.com/ko/cases/multi-nested.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
