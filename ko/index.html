@@ -96,16 +96,16 @@
 <p>다른 프런트엔드 프레임워크와 달리 ofa.js를 기반으로 개발된 컴포넌트를 개발하는 데 복잡한 시작 가이드를 읽을 필요가 없습니다. HTML 파일을 즉시 만들어 &quot;로고 펀치 아웃&quot; 컴포넌트를 체험해 보세요.</p>
 <html-viewer style="width:100%;">
 
-<pre><code>&lt;!-- ofa.js 프로젝트로 로드 --&gt;
+<pre><code class="language-Korean">&lt;!-- ofa.js 프로젝트로 임포트 --&gt;
 &lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
-&lt;!-- 개발된 punch-logo 컴포넌트로 로드 --&gt;
-&lt;l-m src=&quot;https://kirakiray.github.io/ofa-v4-docs/docs/publics/comps/punch-logo.html&quot;&gt;&lt;/l-m&gt;
+&lt;!-- 개발한 punch-logo 컴포넌트 로드 --&gt;
+&lt;l-m src=&quot;https://ofajs.github.io/ofa-v4-docs/docs/publics/comps/punch-logo.html&quot;&gt;&lt;/l-m&gt;
 </code></pre>
-<pre><code class="language-html">&lt;!-- punch-logo 구성 요소 사용 --&gt;
+<pre><code class="language-html">&lt;!-- punch-logo 컴포넌트 사용 --&gt;
 &lt;punch-logo style=&quot;margin:50px 0 0 100px;&quot;&gt;
-    &lt;img src=&quot;https://kirakiray.github.io/ofa-v4-docs/docs/publics/logo.svg&quot; logo height=&quot;90&quot; /&gt;
-    &lt;h2&gt;야근하지 않을게요&lt;/h2&gt;
-    &lt;p slot=&quot;fly&quot;&gt;퇴근해주세요&lt;/p&gt;
+    &lt;img src=&quot;https://ofajs.github.io/ofa-v4-docs/docs/publics/logo.svg&quot; logo height=&quot;90&quot; /&gt;
+    &lt;h2&gt;야근 끝&lt;/h2&gt;
+    &lt;p slot=&quot;fly&quot;&gt;퇴근 시간&lt;/p&gt;
     &lt;p slot=&quot;fly&quot;&gt;나중에 퇴근&lt;/p&gt;
     &lt;p slot=&quot;fly&quot;&gt;주말에 야근&lt;/p&gt;
 &lt;/punch-logo&gt;
