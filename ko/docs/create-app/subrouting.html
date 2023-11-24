@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>서브 라우팅 모드</title>
-        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.32/dist/ofa.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.37/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.32/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.37/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.41/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/css/public.css" />
     <style>
       html,
       body {
@@ -37,9 +37,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.41/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.41/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.41/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -58,7 +58,7 @@
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.41/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/css/github-markdown.css"
         />
         <article class="markdown-body"><h1>서브 라우팅 모드</h1>
 <p>ofa.js에서는 서브 라우팅을 몇 가지 프론트엔드 프레임워크와 다르게 설정합니다. ofa.js는 더 직관적인 방식을 사용하여 페이지 모듈에 부모 페이지를 설정하여 컨테이너로 사용하여 서브 라우팅 요구 사항을 충족시킵니다.</p>
@@ -108,9 +108,9 @@ export const routerChange = (current, type) =&gt; {
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.41/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.41/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -234,6 +234,6 @@ export const routerChange = (current, type) =&gt; {
 <li><a href="../../index.html">index.html</a></li>
 
 </ul></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.41/statics/init.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/init.js" type="module"></script>
   </body>
 </html>
