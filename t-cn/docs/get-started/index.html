@@ -64,7 +64,7 @@
 <h2>如何使用</h2>
 <h3>直接引用</h3>
 <p>你可以通過 CDN 的地址直接將 ofa.js 引用到你的頁面上：</p>
-<pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.js&quot;&gt;&lt;/script&gt;
+<pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.40/dist/ofa.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <h3>通過 npm 安裝</h3>
 <p>首先，在你的項目中安裝 ofa.js：</p>
@@ -78,6 +78,11 @@ require(&quot;ofa.js&quot;); // cmd
 <h3>使用</h3>
 <p>在引用資源後，ofa.js 將在全局作用域上設置一個 <code>$</code> 屬性，所有的功能都在 <code>$</code> 上，後面的教程會詳細講解其用法；</p>
 <p>通常情況下，我們建議采用直接引用的方式添加 ofa.js，而使用 npm 的方式則用於與類似 React 和 Vue 等框架進行兼容。</p>
+<h3>調試模式</h3>
+<p>你可以通過在引用 ofa.js 的 script 標簽上添加 <code>debug</code> 屬性來開啟調試模式。在調試模式下，加載的組件模塊或頁面模塊將啟用 sourceMap 功能，允許你直接從源文件進行調試。</p>
+<pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot; debug&gt;&lt;/script&gt;
+</code></pre>
+<p>開啟調試模式後，你將能夠更方便地追蹤和調試你的組件代碼。這對於開發過程中的錯誤排查和代碼調試非常有幫助。</p>
 
     <article-footer></article-footer>
     </article>
@@ -143,6 +148,7 @@ require(&quot;ofa.js&quot;); // cmd
 <li><a href="../create-app/scsr.html">SCSR方案</a></li>
 <li><a href="../others/data-sharing.html">數據共享</a></li>
 <li><a href="../others/about-micro-frontend.html">ofa.js和微前端</a></li>
+<li><a href="../others/coexist-with-jquery.html">和jQuery共存</a></li>
 <li><a href="../../api/index.html">API介紹</a></li>
 <li><a href="../../api/instance/dollar.html">$ 方法</a></li>
 <li><a href="../../api/instance/all.html">all</a></li>
@@ -199,6 +205,7 @@ require(&quot;ofa.js&quot;); // cmd
 <li><a href="../../api/others/refresh.html">refresh</a></li>
 <li><a href="../../api/others/path.html">PATH</a></li>
 <li><a href="../../api/others/extend.html">extend</a></li>
+<li><a href="../../api/others/version.html">version</a></li>
 <li><a href="../../api/others/stanz.html">實例數據特征</a></li>
 <li><a href="../../../en/index.html">English-index.html</a></li>
 <li><a href="../../../cn/index.html">简体中文-index.html</a></li>

@@ -64,7 +64,7 @@
 <p>El componente <code>o-router</code> es un componente usado para vincular las rutas dentro de <code>o-app</code> a la pestaña del navegador actual. Este componente te ayuda a gestionar las rutas de página y la visualización de una manera más conveniente.</p>
 <h2>Carga del componente o-router</h2>
 <p>En primer lugar, debes agregar el componente <code>o-router</code> en tu página. Puedes hacerlo importando el archivo <code>router.mjs</code> de la siguiente manera:</p>
-<pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/router/dist/router.min.js&quot;&gt;&lt;/script&gt;
+<pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.40/libs/router/dist/router.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <h2>Uso del componente o-router</h2>
 <p>Para utilizar el componente <code>o-router</code>, debe envolverlo fuera del componente <code>o-app</code>. De esta manera, se puede enlazar la ruta dentro de la aplicación a la pestaña actual del navegador.</p>
@@ -81,11 +81,11 @@
     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
     &lt;title&gt;router test&lt;/title&gt;
     &lt;script src=&quot;ofa.js&quot;&gt;&lt;/script&gt;
-    &lt;!-- Carga el componente o-router. --&gt;
-    &lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/libs/router/dist/router.min.js&quot;&gt;&lt;/script&gt;
+    &lt;!-- Cargar componente del enrutador --&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.40/libs/router/dist/router.min.js&quot;&gt;&lt;/script&gt;
   &lt;/head&gt;
   &lt;body&gt;
-    &lt;!-- Utiliza el componente o-router y establece la propiedad fix-body --&gt;
+    &lt;!-- Utilice el componente o-router y establezca el atributo fix-body --&gt;
     &lt;o-router fix-body&gt; 
       &lt;o-app src=&quot;app-config.mjs&quot;&gt;&lt;/o-app&gt;
     &lt;/o-router&gt;
@@ -140,23 +140,24 @@
 <li><a href="../../cases/alias.html">Alias</a></li>
 <li><a href="../introduce.html">Introducción</a></li>
 <li><a href="../get-started/index.html">Cómo usar ofa.js</a></li>
-<li><a href="../get-started/hello-world.html">Primer caso</a></li>
-<li><a href="../get-started/elements-and-events.html">Selección de elementos y eventos relacionados</a></li>
-<li><a href="../get-started/basic-concept.html">Concepto básico de instancia</a></li>
+<li><a href="../get-started/hello-world.html">Primer ejemplo</a></li>
+<li><a href="../get-started/elements-and-events.html">Seleccionar elementos y eventos relacionados</a></li>
+<li><a href="../get-started/basic-concept.html">Conceptos básicos de instancias</a></li>
 <li><a href="../get-started/common-properties.html">Propiedades y métodos comunes</a></li>
 <li><a href="../create-component/index.html">Creación y uso</a></li>
 <li><a href="../create-component/parameter-description.html">Descripción de parámetros</a></li>
 <li><a href="../create-component/life-cycle.html">Ciclo de vida</a></li>
-<li><a href="../create-component/web-components.html">Conocimientos generales sobre componentes web</a></li>
+<li><a href="../create-component/web-components.html">Conocimientos generales de componentes web</a></li>
 <li><a href="../create-component/template-syntax.html">Sintaxis de plantillas</a></li>
 <li><a href="index.html">Introducción</a></li>
 <li><a href="page.html">Uso del componente Page</a></li>
 <li><a href="app.html">Uso del componente App</a></li>
 <li><a href="subrouting.html">Funcionalidad de subrutas</a></li>
-<li><a href="o-router.html">Binding de rutas</a></li>
+<li><a href="o-router.html">Vinculación de rutas</a></li>
 <li><a href="scsr.html">Esquema SCSR</a></li>
 <li><a href="../others/data-sharing.html">Compartir datos</a></li>
-<li><a href="../others/about-micro-frontend.html">ofa.js y micro frontend</a></li>
+<li><a href="../others/about-micro-frontend.html">ofa.js y micro frontends</a></li>
+<li><a href="../others/coexist-with-jquery.html">Convivencia con jQuery</a></li>
 <li><a href="../../api/index.html">Introducción a la API</a></li>
 <li><a href="../../api/instance/dollar.html">$ Método</a></li>
 <li><a href="../../api/instance/all.html">all</a></li>
@@ -171,10 +172,10 @@
 <li><a href="../../api/instance/ele.html">ele</a></li>
 <li><a href="../../api/instance/shadow.html">shadow</a></li>
 <li><a href="../../api/instance/root.html">root</a></li>
-<li><a href="../../api/instance/children.html">Elementos secundarios</a></li>
+<li><a href="../../api/instance/children.html">elementos secundarios</a></li>
 <li><a href="../../api/instance/host.html">host</a></li>
 <li><a href="../../api/instance/app.html">app</a></li>
-<li><a href="../../api/operation/array-like.html">Agregar o eliminar nodos secundarios</a></li>
+<li><a href="../../api/operation/array-like.html">Agregar o eliminar nodos hijos</a></li>
 <li><a href="../../api/operation/before.html">before</a></li>
 <li><a href="../../api/operation/after.html">after</a></li>
 <li><a href="../../api/operation/remove.html">remove</a></li>
@@ -208,12 +209,13 @@
 <li><a href="../../api/others/box.html">Modelo de caja</a></li>
 <li><a href="../../api/others/form-data.html">formData</a></li>
 <li><a href="../../api/others/tag.html">tag</a></li>
-<li><a href="../../api/others/index.html">índice</a></li>
+<li><a href="../../api/others/index.html">index</a></li>
 <li><a href="../../api/others/is.html">is</a></li>
 <li><a href="../../api/others/refresh.html">refresh</a></li>
 <li><a href="../../api/others/path.html">PATH</a></li>
 <li><a href="../../api/others/extend.html">extend</a></li>
-<li><a href="../../api/others/stanz.html">Características de los datos de instancia</a></li>
+<li><a href="../../api/others/version.html">version</a></li>
+<li><a href="../../api/others/stanz.html">Características de los datos de la instancia</a></li>
 <li><a href="../../../en/index.html">English-index.html</a></li>
 <li><a href="../../../cn/index.html">简体中文-index.html</a></li>
 <li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>

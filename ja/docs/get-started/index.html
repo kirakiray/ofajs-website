@@ -64,7 +64,7 @@
 <h2>使い方</h2>
 <h3>直接見積もり</h3>
 <p>CDNのアドレスを使用して直接ofa.jsをページにインポートすることができます。</p>
-<pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.js&quot;&gt;&lt;/script&gt;
+<pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.40/dist/ofa.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <h3>npm経由でインストールする</h3>
 <p>まず、プロジェクトに ofa.js をインストールします。</p>
@@ -78,6 +78,11 @@ require(&quot;ofa.js&quot;); // cmd
 <h3>使い方</h3>
 <p>資源の引用の後、ofa.js はグローバルスコープに <code>$</code> のプロパティを設定します。すべての機能は <code>$</code> 上にあり、後のチュートリアルでその使用法を詳しく説明します。</p>
 <p>通常の場合は、直接引用する方法で ofa.js を追加することをお勧めしますが、React や Vue などのフレームワークとの互換性を確保する場合には、npm を使用する方法が適しています。</p>
+<h3>デバッグモード</h3>
+<p>ofa.jsのscriptタグに<code>debug</code>属性を追加することで、デバッグモードを有効にすることができます。デバッグモードでは、ロードされたコンポーネントモジュールやページモジュールにソースマップ機能が有効になり、ソースファイルから直接デバッグすることができます。</p>
+<pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot; debug&gt;&lt;/script&gt;
+</code></pre>
+<p>デバッグモードを有効にすると、コンポーネントのコードをより簡単に追跡およびデバッグできます。これは、開発プロセスでのエラーのトラブルシューティングやコードのデバッグに非常に役立ちます。</p>
 
     <article-footer></article-footer>
     </article>
@@ -126,14 +131,14 @@ require(&quot;ofa.js&quot;); // cmd
 <li><a href="../../cases/alias.html">エイリアス</a></li>
 <li><a href="../introduce.html">紹介</a></li>
 <li><a href="index.html">ofa.jsの使い方</a></li>
-<li><a href="hello-world.html">最初の例</a></li>
+<li><a href="hello-world.html">最初のサンプル</a></li>
 <li><a href="elements-and-events.html">要素とイベントの選択</a></li>
 <li><a href="basic-concept.html">基本的な概念</a></li>
 <li><a href="common-properties.html">一般的なプロパティとメソッド</a></li>
 <li><a href="../create-component/index.html">作成と使用</a></li>
 <li><a href="../create-component/parameter-description.html">パラメータの説明</a></li>
 <li><a href="../create-component/life-cycle.html">ライフサイクル</a></li>
-<li><a href="../create-component/web-components.html">ウェブコンポーネントの基本知識</a></li>
+<li><a href="../create-component/web-components.html">Webコンポーネントの基本知識</a></li>
 <li><a href="../create-component/template-syntax.html">テンプレート構文</a></li>
 <li><a href="../create-app/index.html">紹介</a></li>
 <li><a href="../create-app/page.html">Pageコンポーネントの使用</a></li>
@@ -143,8 +148,9 @@ require(&quot;ofa.js&quot;); // cmd
 <li><a href="../create-app/scsr.html">SCSRソリューション</a></li>
 <li><a href="../others/data-sharing.html">データ共有</a></li>
 <li><a href="../others/about-micro-frontend.html">ofa.jsとマイクロフロントエンド</a></li>
+<li><a href="../others/coexist-with-jquery.html">jQueryとの共存</a></li>
 <li><a href="../../api/index.html">APIの紹介</a></li>
-<li><a href="../../api/instance/dollar.html">$メソッド</a></li>
+<li><a href="../../api/instance/dollar.html">$ メソッド</a></li>
 <li><a href="../../api/instance/all.html">all</a></li>
 <li><a href="../../api/instance/prev.html">prev</a></li>
 <li><a href="../../api/instance/prevs.html">prevs</a></li>
@@ -199,6 +205,7 @@ require(&quot;ofa.js&quot;); // cmd
 <li><a href="../../api/others/refresh.html">refresh</a></li>
 <li><a href="../../api/others/path.html">PATH</a></li>
 <li><a href="../../api/others/extend.html">extend</a></li>
+<li><a href="../../api/others/version.html">version</a></li>
 <li><a href="../../api/others/stanz.html">インスタンスデータの特徴</a></li>
 <li><a href="../../../en/index.html">English-index.html</a></li>
 <li><a href="../../../cn/index.html">简体中文-index.html</a></li>

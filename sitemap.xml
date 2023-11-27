@@ -246,6 +246,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ofajs.com/en/docs/others/coexist-with-jquery.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ofajs.com/en/api/index.html</loc>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
@@ -526,6 +531,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ofajs.com/en/api/others/version.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ofajs.com/en/api/others/stanz.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -777,6 +787,11 @@
   </url>
   <url>
     <loc>https://ofajs.com/cn/docs/others/about-micro-frontend.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ofajs.com/cn/docs/others/coexist-with-jquery.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1061,6 +1076,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ofajs.com/cn/api/others/version.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ofajs.com/cn/api/others/stanz.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -1312,6 +1332,11 @@
   </url>
   <url>
     <loc>https://ofajs.com/t-cn/docs/others/about-micro-frontend.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ofajs.com/t-cn/docs/others/coexist-with-jquery.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1596,6 +1621,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ofajs.com/t-cn/api/others/version.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ofajs.com/t-cn/api/others/stanz.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -1847,6 +1877,11 @@
   </url>
   <url>
     <loc>https://ofajs.com/ja/docs/others/about-micro-frontend.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ofajs.com/ja/docs/others/coexist-with-jquery.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2131,6 +2166,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ofajs.com/ja/api/others/version.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ofajs.com/ja/api/others/stanz.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -2382,6 +2422,11 @@
   </url>
   <url>
     <loc>https://ofajs.com/es/docs/others/about-micro-frontend.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ofajs.com/es/docs/others/coexist-with-jquery.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2666,6 +2711,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ofajs.com/es/api/others/version.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ofajs.com/es/api/others/stanz.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -2917,6 +2967,11 @@
   </url>
   <url>
     <loc>https://ofajs.com/ko/docs/others/about-micro-frontend.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ofajs.com/ko/docs/others/coexist-with-jquery.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3197,6 +3252,11 @@
   </url>
   <url>
     <loc>https://ofajs.com/ko/api/others/extend.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ofajs.com/ko/api/others/version.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>

@@ -64,7 +64,7 @@
 <h2>How to Use</h2>
 <h3>Direct Quote</h3>
 <p>You can directly reference ofa.js to your page by using the CDN address: </p>
-<pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.29/dist/ofa.js&quot;&gt;&lt;/script&gt;
+<pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.40/dist/ofa.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <h3>Install via npm</h3>
 <p>First, install ofa.js in your project: </p>
@@ -78,6 +78,11 @@ require(&quot;ofa.js&quot;); // cmd
 <h3>Use</h3>
 <p>After referencing the resource, ofa.js will set a <code>$</code> property on the global scope, and all functionalities are accessed through <code>$</code>. Its usage will be explained in detail in the following tutorials.</p>
 <p>Usually, we recommend using the direct injection method to add ofa.js, while the npm method is used for compatibility with frameworks such as React and Vue.</p>
+<h3>Debug Mode</h3>
+<p>You can enable debugging mode by adding the <code>debug</code> attribute to the script tag that references ofa.js. In debugging mode, the loaded component modules or page modules will enable sourceMap functionality, allowing you to debug directly from the source file.</p>
+<pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js/dist/ofa.min.js&quot; debug&gt;&lt;/script&gt;
+</code></pre>
+<p>By enabling debug mode, you will be able to track and debug your component code more conveniently. This is very helpful for troubleshooting errors and debugging code during the development process.</p>
 
     <article-footer></article-footer>
     </article>
@@ -126,23 +131,24 @@ require(&quot;ofa.js&quot;); // cmd
 <li><a href="../../cases/alias.html">Aliases</a></li>
 <li><a href="../introduce.html">Introduction</a></li>
 <li><a href="index.html">How to use ofa.js</a></li>
-<li><a href="hello-world.html">First case</a></li>
-<li><a href="elements-and-events.html">Selection of elements and events</a></li>
-<li><a href="basic-concept.html">Basic concepts of instances</a></li>
-<li><a href="common-properties.html">Common properties and methods</a></li>
-<li><a href="../create-component/index.html">Making and using components</a></li>
-<li><a href="../create-component/parameter-description.html">Parameter description</a></li>
+<li><a href="hello-world.html">First Example</a></li>
+<li><a href="elements-and-events.html">Selecting Elements and Handling Events</a></li>
+<li><a href="basic-concept.html">Basic Concepts of Instances</a></li>
+<li><a href="common-properties.html">Common Properties and Methods</a></li>
+<li><a href="../create-component/index.html">Production and Usage</a></li>
+<li><a href="../create-component/parameter-description.html">Parameter Description</a></li>
 <li><a href="../create-component/life-cycle.html">Lifecycle</a></li>
-<li><a href="../create-component/web-components.html">General knowledge of componentization</a></li>
-<li><a href="../create-component/template-syntax.html">Template syntax</a></li>
+<li><a href="../create-component/web-components.html">General Knowledge of Componentization</a></li>
+<li><a href="../create-component/template-syntax.html">Template Syntax</a></li>
 <li><a href="../create-app/index.html">Introduction</a></li>
-<li><a href="../create-app/page.html">Using the Page component</a></li>
-<li><a href="../create-app/app.html">Using the App component</a></li>
-<li><a href="../create-app/subrouting.html">Sub-routing functionality</a></li>
-<li><a href="../create-app/o-router.html">Route binding</a></li>
-<li><a href="../create-app/scsr.html">SCSR scheme</a></li>
-<li><a href="../others/data-sharing.html">Data sharing</a></li>
-<li><a href="../others/about-micro-frontend.html">ofa.js and micro-frontends</a></li>
+<li><a href="../create-app/page.html">Using the Page Component</a></li>
+<li><a href="../create-app/app.html">Using the App Component</a></li>
+<li><a href="../create-app/subrouting.html">Subrouting</a></li>
+<li><a href="../create-app/o-router.html">Route Binding</a></li>
+<li><a href="../create-app/scsr.html">SCSR Solution</a></li>
+<li><a href="../others/data-sharing.html">Data Sharing</a></li>
+<li><a href="../others/about-micro-frontend.html">ofa.js and Micro Frontends</a></li>
+<li><a href="../others/coexist-with-jquery.html">Coexistence with jQuery</a></li>
 <li><a href="../../api/index.html">API Introduction</a></li>
 <li><a href="../../api/instance/dollar.html">$ Method</a></li>
 <li><a href="../../api/instance/all.html">all</a></li>
@@ -160,7 +166,7 @@ require(&quot;ofa.js&quot;); // cmd
 <li><a href="../../api/instance/children.html">Child Elements</a></li>
 <li><a href="../../api/instance/host.html">host</a></li>
 <li><a href="../../api/instance/app.html">app</a></li>
-<li><a href="../../api/operation/array-like.html">Add or delete child nodes</a></li>
+<li><a href="../../api/operation/array-like.html">Add or Remove Child Nodes</a></li>
 <li><a href="../../api/operation/before.html">before</a></li>
 <li><a href="../../api/operation/after.html">after</a></li>
 <li><a href="../../api/operation/remove.html">remove</a></li>
@@ -177,11 +183,11 @@ require(&quot;ofa.js&quot;); // cmd
 <li><a href="../../api/event/one.html">one</a></li>
 <li><a href="../../api/event/emit.html">emit</a></li>
 <li><a href="../../api/event/off.html">off</a></li>
-<li><a href="../../api/temp-syntax/text-render.html">Text rendering</a></li>
+<li><a href="../../api/temp-syntax/text-render.html">Text Rendering</a></li>
 <li><a href="../../api/temp-syntax/class.html">class</a></li>
 <li><a href="../../api/temp-syntax/sync.html">sync</a></li>
-<li><a href="../../api/temp-syntax/condition.html">Conditional rendering</a></li>
-<li><a href="../../api/temp-syntax/fill.html">List rendering</a></li>
+<li><a href="../../api/temp-syntax/condition.html">Conditional Rendering</a></li>
+<li><a href="../../api/temp-syntax/fill.html">List Rendering</a></li>
 <li><a href="../../api/life-cycle/created.html">created</a></li>
 <li><a href="../../api/life-cycle/ready.html">ready</a></li>
 <li><a href="../../api/life-cycle/watch.html">watch</a></li>
@@ -191,7 +197,7 @@ require(&quot;ofa.js&quot;); // cmd
 <li><a href="../../api/life-cycle/router-change.html">routerChange</a></li>
 <li><a href="../../api/others/app.html">app</a></li>
 <li><a href="../../api/others/page.html">page</a></li>
-<li><a href="../../api/others/box.html">Box model</a></li>
+<li><a href="../../api/others/box.html">Box Model</a></li>
 <li><a href="../../api/others/form-data.html">formData</a></li>
 <li><a href="../../api/others/tag.html">tag</a></li>
 <li><a href="../../api/others/index.html">index</a></li>
@@ -199,7 +205,8 @@ require(&quot;ofa.js&quot;); // cmd
 <li><a href="../../api/others/refresh.html">refresh</a></li>
 <li><a href="../../api/others/path.html">PATH</a></li>
 <li><a href="../../api/others/extend.html">extend</a></li>
-<li><a href="../../api/others/stanz.html">Instance data characteristics</a></li>
+<li><a href="../../api/others/version.html">version</a></li>
+<li><a href="../../api/others/stanz.html">Instance Data Features</a></li>
 <li><a href="../../index.html">English-index.html</a></li>
 <li><a href="../../../cn/index.html">简体中文-index.html</a></li>
 <li><a href="../../../t-cn/index.html">繁体中文-index.html</a></li>
