@@ -64,10 +64,10 @@
 <p>El renderizado condicional se consigue a través de tres componentes condicionales:</p>
 <h2>x-if</h2>
 <p>El componente principal <code>x-if</code> es un componente de condición que requiere establecer un valor <code>value</code>. Si se cumple la condición del valor <code>value</code>, mostrará el contenido envuelto.</p>
-<h2>x-if-else</h2>
-<p><code>x-if-else</code> puede seguir a <code>x-if</code> o <code>x-if-else</code> y necesita establecer el valor <code>value</code>. Si el componente de condición anterior no se cumple y su propio valor <code>value</code> es verdadero, se mostrará el contenido envuelto.</p>
+<h2>x-else-if</h2>
+<p><code>x-else-if</code> puede seguir a <code>x-if</code> o <code>x-else-if</code> y necesita establecer el valor <code>value</code>. Si el componente de condición anterior no se cumple y su propio valor <code>value</code> es verdadero, se mostrará el contenido envuelto.</p>
 <h2>x-else</h2>
-<p><code>x-else</code> se puede agregar después de <code>x-if</code> o <code>x-if-else</code>, al final. Si ninguna de las condiciones anteriores se cumple, mostrará el contenido definido por sí mismo. No es necesario establecer un valor <code>value</code>.</p>
+<p><code>x-else</code> se puede agregar después de <code>x-if</code> o <code>x-else-if</code>, al final. Si ninguna de las condiciones anteriores se cumple, mostrará el contenido definido por sí mismo. No es necesario establecer un valor <code>value</code>.</p>
 <h2>Ejemplo</h2>
 <comp-viewer comp-name="text-render">
 
@@ -94,7 +94,7 @@
 </code></pre>
 </comp-viewer>
 
-<p>En el ejemplo, se utilizan estos componentes de renderizado condicional para seleccionar el contenido a mostrar según el valor de <code>count</code>. Cuando <code>count</code> es divisible por 3, se cumple la condición <code>x-if</code> y se muestra el texto en rojo; cuando <code>(count + 1)</code> es divisible por 3, se cumple la condición <code>x-if-else</code> y se muestra el texto en verde; de lo contrario, se muestra el texto en azul.</p>
+<p>En el ejemplo, se utilizan estos componentes de renderizado condicional para seleccionar el contenido a mostrar según el valor de <code>count</code>. Cuando <code>count</code> es divisible por 3, se cumple la condición <code>x-if</code> y se muestra el texto en rojo; cuando <code>(count + 1)</code> es divisible por 3, se cumple la condición <code>x-else-if</code> y se muestra el texto en verde; de lo contrario, se muestra el texto en azul.</p>
 
     <article-footer></article-footer>
     </article>

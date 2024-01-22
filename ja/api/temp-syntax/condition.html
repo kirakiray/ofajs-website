@@ -64,10 +64,10 @@
 <p>条件レンダリングは、3つの条件コンポーネントによって実現されます：</p>
 <h2>x-if</h2>
 <p><code>x-if</code> は主要な条件文コンポーネントであり、<code>value</code> の値を設定する必要があります。<code>value</code> の条件が満たされる場合、それに包まれた内容が表示されます。</p>
-<h2>x-if-else</h2>
-<p><code>x-if-else</code> は <code>x-if</code> または <code>x-if-else</code> の後に続けることができ、<code>value</code> 値を設定する必要があります。前の条件のコンポーネントが満たされず、自分自身の <code>value</code> が true の場合、包括している内容が表示されます。</p>
+<h2>x-else-if</h2>
+<p><code>x-else-if</code> は <code>x-if</code> または <code>x-else-if</code> の後に続けることができ、<code>value</code> 値を設定する必要があります。前の条件のコンポーネントが満たされず、自分自身の <code>value</code> が true の場合、包括している内容が表示されます。</p>
 <h2>x-else</h2>
-<p><code>x-else</code> は <code>x-if</code> または <code>x-if-else</code> の後に続けることができ、最後に配置されます。前の条件がすべて満たされない場合、自身の内容が表示されます。<code>value</code> の設定は必要ありません。</p>
+<p><code>x-else</code> は <code>x-if</code> または <code>x-else-if</code> の後に続けることができ、最後に配置されます。前の条件がすべて満たされない場合、自身の内容が表示されます。<code>value</code> の設定は必要ありません。</p>
 <h2>サンプル</h2>
 <comp-viewer comp-name="text-render">
 
@@ -94,7 +94,7 @@
 </code></pre>
 </comp-viewer>
 
-<p>この例では、これらの条件に基づいてコンポーネントをレンダリングし、<code>count</code> の値に応じて表示するコンテンツを選択します。<code>count</code> が3で割り切れる場合、<code>x-if</code> 条件が満たされ、赤いテキストが表示されます。 <code>(count + 1)</code> が3で割り切れる場合、<code>x-if-else</code> 条件が満たされ、緑色のテキストが表示されます。それ以外の場合、青いテキストが表示されます。</p>
+<p>この例では、これらの条件に基づいてコンポーネントをレンダリングし、<code>count</code> の値に応じて表示するコンテンツを選択します。<code>count</code> が3で割り切れる場合、<code>x-if</code> 条件が満たされ、赤いテキストが表示されます。 <code>(count + 1)</code> が3で割り切れる場合、<code>x-else-if</code> 条件が満たされ、緑色のテキストが表示されます。それ以外の場合、青いテキストが表示されます。</p>
 
     <article-footer></article-footer>
     </article>

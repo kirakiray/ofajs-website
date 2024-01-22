@@ -64,10 +64,10 @@
 <p>條件渲染是通過三個條件組件來實現的：</p>
 <h2>x-if</h2>
 <p><code>x-if</code> 是主要的判斷組件，需要設置 <code>value</code> 值。如果 <code>value</code> 的條件滿足，它會顯示包裹的內容。</p>
-<h2>x-if-else</h2>
-<p><code>x-if-else</code> 可以跟在 <code>x-if</code> 或 <code>x-if-else</code> 後面，需要設置 <code>value</code> 值。如果前面的條件組件不滿足，且自身的 <code>value</code> 為 true，它會顯示包裹的內容。</p>
+<h2>x-else-if</h2>
+<p><code>x-else-if</code> 可以跟在 <code>x-if</code> 或 <code>x-else-if</code> 後面，需要設置 <code>value</code> 值。如果前面的條件組件不滿足，且自身的 <code>value</code> 為 true，它會顯示包裹的內容。</p>
 <h2>x-else</h2>
-<p><code>x-else</code> 可以跟在 <code>x-if</code> 或 <code>x-if-else</code> 後面，放在最後。如果前面的條件都不滿足，它會顯示自身包裹的內容。不需要設置 <code>value</code> 值。</p>
+<p><code>x-else</code> 可以跟在 <code>x-if</code> 或 <code>x-else-if</code> 後面，放在最後。如果前面的條件都不滿足，它會顯示自身包裹的內容。不需要設置 <code>value</code> 值。</p>
 <h2>示例</h2>
 <comp-viewer comp-name="text-render">
 
@@ -94,7 +94,7 @@
 </code></pre>
 </comp-viewer>
 
-<p>在示例中，使用了這些條件渲染組件來根據 <code>count</code> 的值選擇要顯示的內容。當 <code>count</code> 能被 3 整除時，<code>x-if</code> 條件滿足，顯示紅色的文本；當 <code>(count + 1)</code> 能被 3 整除時，<code>x-if-else</code> 條件滿足，顯示綠色的文本；否則，顯示藍色的文本。</p>
+<p>在示例中，使用了這些條件渲染組件來根據 <code>count</code> 的值選擇要顯示的內容。當 <code>count</code> 能被 3 整除時，<code>x-if</code> 條件滿足，顯示紅色的文本；當 <code>(count + 1)</code> 能被 3 整除時，<code>x-else-if</code> 條件滿足，顯示綠色的文本；否則，顯示藍色的文本。</p>
 
     <article-footer></article-footer>
     </article>
