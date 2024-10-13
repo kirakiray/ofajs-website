@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>o-router 組件的使用</title>
-        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.20/dist/ofa.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.20/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/css/public.css" />
     <style>
       html,
       body {
@@ -37,9 +37,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -58,13 +58,13 @@
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/css/github-markdown.css"
         />
         <article class="markdown-body"><h1>o-router 組件的使用</h1>
 <p><code>o-router</code> 組件是一個用於將 <code>o-app</code> 內的路由綁定到當前瀏覽器標簽頁的組件，它能夠幫助你更方便地管理頁面路由和展示。</p>
 <h2>加載 o-router 組件</h2>
 <p>首先，你需要在頁面中引用 <code>o-router</code> 組件。你可以通過以下方式引用 <code>router.mjs</code> 文件：</p>
-<pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.20/libs/router/dist/router.min.js&quot;&gt;&lt;/script&gt;
+<pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/libs/router/dist/router.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <h2>使用 o-router 組件</h2>
 <p>使用 <code>o-router</code> 組件是通過將其包裹在 <code>o-app</code> 組件外部來實現的。這樣可以將應用內的路由綁定到當前瀏覽器標簽上。</p>
@@ -82,7 +82,7 @@
     &lt;title&gt;router test&lt;/title&gt;
     &lt;script src=&quot;ofa.js&quot;&gt;&lt;/script&gt;
     &lt;!-- 加載 o-router 組件 --&gt;
-    &lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.20/libs/router/dist/router.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/libs/router/dist/router.min.js&quot;&gt;&lt;/script&gt;
   &lt;/head&gt;
   &lt;body&gt;
     &lt;!-- 使用 o-router 組件，並設置 fix-body 屬性 --&gt;
@@ -96,9 +96,9 @@
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -224,6 +224,6 @@
 <li><a href="../../../ko/index.html">index.html</a></li>
 
 </ul></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/init.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/init.js" type="module"></script>
   </body>
 </html>

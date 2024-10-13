@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>alias</title>
-        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.20/dist/ofa.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.20/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/css/public.css" />
     <style>
       html,
       body {
@@ -37,9 +37,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -58,14 +58,14 @@
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/css/github-markdown.css"
         />
         <article class="markdown-body"><h1>alias</h1>
 <p>通過設置別名（alias），使用者能夠更方便地使用共享的資源，特別適用於使跨域名的共享組件更方便地享用同一版本的資源。</p>
 <p>在這個示例中，我們通過 <code>lm.config</code> 方法設置了別名，將 <code>@obook</code> 別名映射到 <code>https://cdn.jsdelivr.net/npm/obook</code>。現在，當我們使用 <code>@obook</code> 作為前綴時，它將自動映射到指定的 URL。</p>
 <html-viewer>
 
-<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.20/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <pre><code class="language-html">&lt;script&gt;
   lm.config({
@@ -117,9 +117,9 @@ lm.config({
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -245,6 +245,6 @@ lm.config({
 <li><a href="../../ko/index.html">index.html</a></li>
 
 </ul></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/init.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/init.js" type="module"></script>
   </body>
 </html>

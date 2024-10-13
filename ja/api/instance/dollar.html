@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>$</title>
-        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.20/dist/ofa.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.20/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/css/public.css" />
     <style>
       html,
       body {
@@ -37,9 +37,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -58,7 +58,7 @@
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/css/github-markdown.css"
         />
         <article class="markdown-body"><h1>$</h1>
 <p><code>$</code>メソッドは<code>ofa.js</code>の中心的な関数で、DOM要素のインスタンスを操作するために使用されます。以下では、<code>$</code>の主な役割について紹介します。</p>
@@ -66,7 +66,7 @@
 <p>メソッドを使うと、<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors">cssセレクタ</a>にマッチするページ上の要素の最初のインスタンスを取得し、それを操作することができます。 以下はその例です：</p>
 <html-viewer>
 
-<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.20/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <pre><code class="language-html">&lt;div id=&quot;target1&quot;&gt;target 1 text&lt;/div&gt;
 
@@ -83,7 +83,7 @@
 <p>インスタンスも <code>$</code> メソッドを持っており、インスタンス上の <code>$</code> メソッドを使用して、要素インスタンスの最初の条件に一致する子要素のインスタンスを取得できます。</p>
 <html-viewer>
 
-<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.20/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <pre><code class="language-html">&lt;div id=&quot;target1&quot;&gt;
   &lt;h3&gt;target&lt;/h3&gt;
@@ -101,7 +101,7 @@
 <p>元素インスタンスを直接他の場所に挿入しないでください。この操作は元の要素に影響を与える可能性があります。コピーを作成する必要がある場合は、<a href="./clone.html">clone</a>メソッドを使用してください。</p>
 <html-viewer>
 
-<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.20/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <pre><code class="language-html">&lt;div id=&quot;pos1&quot; style=&quot;border:red solid 1px;&quot;&gt;
   &lt;h3&gt;position 1&lt;/h3&gt;
@@ -140,7 +140,7 @@ const $ele = $(ele);
 <p><code>$</code> 関数を使用して、文字列から新しい要素インスタンスを作成することができます。以下のようになります：</p>
 <html-viewer>
 
-<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.20/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <pre><code class="language-html">&lt;div id=&quot;target1&quot;&gt;
   &lt;b&gt;target1:&lt;/b&gt;
@@ -158,7 +158,7 @@ const $ele = $(ele);
 <p>あなたは<code>$</code>関数を使用して、オブジェクトを介して新しい要素のインスタンスを生成することもできます。以下はその例です。</p>
 <html-viewer>
 
-<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.20/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <pre><code class="language-html">&lt;div id=&quot;target1&quot;&gt;
   &lt;b&gt;target1:&lt;/b&gt;
@@ -183,9 +183,9 @@ const $ele = $(ele);
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -311,6 +311,6 @@ const $ele = $(ele);
 <li><a href="../../../ko/index.html">index.html</a></li>
 
 </ul></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/init.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/init.js" type="module"></script>
   </body>
 </html>

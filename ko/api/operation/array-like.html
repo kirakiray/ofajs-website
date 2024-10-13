@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>자식 요소 추가 또는 제거하기</title>
-        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.20/dist/ofa.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.20/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/css/public.css" />
     <style>
       html,
       body {
@@ -37,9 +37,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/app-config.mjs">
       <template page>
         <style>
           .markdown-body::before,
@@ -58,7 +58,7 @@
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/css/github-markdown.css"
         />
         <article class="markdown-body"><h1>자식 요소 추가 또는 제거하기</h1>
 <p>요소 인스턴스는 배열과 유사한 특성을 가지며 노드를 추가하거나 제거하는 데 필요한 몇 가지 배열 메서드를 사용할 수 있습니다. <code>push</code>, <code>unshift</code>, <code>pop</code>, <code>shift</code>, <code>splice</code> 메서드를 사용할 때 내부에서 자동으로 <a href="../instance/dollar.html">$ 메서드</a>의 초기화 작업이 수행되므로 구체적인 요소 문자열이나 개체를 직접 작성할 수 있습니다.</p>
@@ -68,7 +68,7 @@
 <p>끝에 자식 요소를 추가합니다.</p>
 <html-viewer>
 
-<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.20/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <pre><code class="language-html">&lt;ul&gt;
     &lt;li&gt;I am 1&lt;/li&gt;
@@ -88,7 +88,7 @@
 <p>배열의 시작에 하위 요소를 추가합니다. 다음은 예입니다:</p>
 <html-viewer>
 
-<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.20/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <pre><code class="language-html">&lt;ul&gt;
     &lt;li&gt;I am 1&lt;/li&gt;
@@ -108,7 +108,7 @@
 <p>바로 앞의 요소를 제거하세요.</p>
 <html-viewer>
 
-<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.20/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <pre><code class="language-html">&lt;ul&gt;
     &lt;li&gt;I am 1&lt;/li&gt;
@@ -128,7 +128,7 @@
 <p>리스트의 첫 번째 원소를 삭제하십시오.</p>
 <html-viewer>
 
-<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.20/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <pre><code class="language-html">&lt;ul&gt;
     &lt;li&gt;I am 1&lt;/li&gt;
@@ -148,7 +148,7 @@
 <p>기존 하위 요소를 삭제하거나 대체하거나 새로운 하위 요소를 추가할 수 있습니다. 이는 배열의 <code>splice</code> 메소드와 유사한 방식으로 사용됩니다. 다음은 예시입니다.</p>
 <html-viewer>
 
-<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.20/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <pre><code class="language-html">&lt;ul&gt;
     &lt;li&gt;I am 1&lt;/li&gt;
@@ -166,9 +166,9 @@ $(&quot;ul&quot;).splice(1, 2, `&lt;li style=&quot;color:green;&quot;&gt;new li 
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(PATH, args);
@@ -294,6 +294,6 @@ $(&quot;ul&quot;).splice(1, 2, `&lt;li style=&quot;color:green;&quot;&gt;new li 
 <li><a href="../../index.html">index.html</a></li>
 
 </ul></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/init.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/init.js" type="module"></script>
   </body>
 </html>
