@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ofa.js - No-build MVVM JavaScript framework</title>
     <meta name="description" content="ofa.js is a new framework for building user interfaces. It can be easily used by directly referencing it, without the need for a complicated building process. It eliminates the dependencies on npm, Node.js, and webpack, and brings back the convenience of the jQuery era.">
-    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.37/dist/ofa.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.3.37/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/css/public.css" />
     <style>
       html,
       body {
@@ -38,13 +38,16 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/app-config.mjs">
       <template page>
         <style>
+          :host {
+            display: block;
+          }
           .markdown-body::before,
-          .markdown-body::after {
+          .markdown-body::after{
             display: block;
             content: "";
             height: 1px;
@@ -60,7 +63,7 @@
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/css/github-markdown.css"
         />
         <!-- desc: ofa.js is a new framework for building user interfaces. It can be easily used by directly referencing it, without the need for a complicated building process. It eliminates the dependencies on npm, Node.js, and webpack, and brings back the convenience of the jQuery era. -->
 
@@ -328,12 +331,12 @@ var child = $(&quot;#target&quot;)[0]; // Get the first child element
 <l-m src="../publics/comps/split-code.html"></l-m></p>
 
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/layouts/header-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/layouts/header-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/page-init.mjs";
 
           export default async (...args) => {
-            return await pageInit(PATH, args);
+            return await pageInit(args[0].url, args);
           };
         </script>
       </template>
@@ -456,6 +459,6 @@ var child = $(&quot;#target&quot;)[0]; // Get the first child element
 
 </ul></div>
     <div id="loading"></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.42/statics/init.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/init.js" type="module"></script>
   </body>
 </html>
