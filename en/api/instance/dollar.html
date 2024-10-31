@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>$</title>
-        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.26/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.26/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.44/statics/css/public.css" />
     <style>
       html,
       body {
@@ -37,9 +37,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.44/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.44/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.44/statics/app-config.mjs">
       <template page>
         <style>
           :host {
@@ -61,7 +61,7 @@
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.44/statics/css/github-markdown.css"
         />
         <article class="markdown-body"><h1>$</h1>
 <p>The <code>$</code> method is a core function in <code>ofa.js</code> that is used to manipulate instances of DOM elements. Below will introduce the main functions of <code>$</code>:</p>
@@ -69,7 +69,7 @@
 <p>Through the <code>$</code> method, you can get the first element instance on the page that matches the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors">CSS selector</a> and manipulate it. Here is an example:</p>
 <html-viewer>
 
-<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.26/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <pre><code class="language-html">&lt;div id=&quot;target1&quot;&gt;target 1 text&lt;/div&gt;
 
@@ -86,7 +86,7 @@
 <p>Instances also have the <code>$</code> method, which allows you to retrieve the first child element instance that matches a certain condition by calling the <code>$</code> method on the instance.</p>
 <html-viewer>
 
-<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.26/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <pre><code class="language-html">&lt;div id=&quot;target1&quot;&gt;
   &lt;h3&gt;target&lt;/h3&gt;
@@ -104,7 +104,7 @@
 <p>Please do not directly insert the acquired element instance into other places, as this operation will affect the original element. If you need to create a copy, you can use the <a href="./clone.html">clone</a> method.</p>
 <html-viewer>
 
-<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.26/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <pre><code class="language-html">&lt;div id=&quot;pos1&quot; style=&quot;border:red solid 1px;&quot;&gt;
   &lt;h3&gt;position 1&lt;/h3&gt;
@@ -143,7 +143,7 @@ const $ele = $(ele);
 <p>You can use the <code>$</code> function to create new element instances from strings, as shown below:</p>
 <html-viewer>
 
-<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.26/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <pre><code class="language-html">&lt;div id=&quot;target1&quot;&gt;
   &lt;b&gt;target1:&lt;/b&gt;
@@ -161,7 +161,7 @@ const $ele = $(ele);
 <p>You can also use the <code>$</code> function to generate new element instances through object-oriented approach, as shown below:</p>
 <html-viewer>
 
-<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.26/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <pre><code class="language-html">&lt;div id=&quot;target1&quot;&gt;
   &lt;b&gt;target1:&lt;/b&gt;
@@ -186,9 +186,9 @@ const $ele = $(ele);
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.44/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.44/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(args[0].url, args);
@@ -314,6 +314,6 @@ const $ele = $(ele);
 <li><a href="../../../ko/index.html">index.html</a></li>
 
 </ul></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/init.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.44/statics/init.js" type="module"></script>
   </body>
 </html>

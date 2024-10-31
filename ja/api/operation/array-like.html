@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>子要素の追加または削除</title>
-        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.26/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.26/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.44/statics/css/public.css" />
     <style>
       html,
       body {
@@ -37,9 +37,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.44/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.44/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.44/statics/app-config.mjs">
       <template page>
         <style>
           :host {
@@ -61,7 +61,7 @@
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.44/statics/css/github-markdown.css"
         />
         <article class="markdown-body"><h1>子要素の追加または削除</h1>
 <p>元素のインスタンスは配列のような特性を持っており、ノードの追加や削除は配列の操作メソッドを使用するだけで行うことができます。<code>push</code>、<code>unshift</code>、<code>pop</code>、<code>shift</code>、<code>splice</code>メソッドを使用する場合、内部で<a href="../instance/dollar.html">$メソッド</a>の初期化操作が自動的に実行されまので、具体的な要素の文字列やオブジェクトを直接記入することができます。</p>
@@ -71,7 +71,7 @@
 <p>要素の末尾に子要素を追加します。</p>
 <html-viewer>
 
-<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.26/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <pre><code class="language-html">&lt;ul&gt;
     &lt;li&gt;I am 1&lt;/li&gt;
@@ -91,7 +91,7 @@
 <p>配列の先頭に子要素を追加します。以下は例です：</p>
 <html-viewer>
 
-<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.26/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <pre><code class="language-html">&lt;ul&gt;
     &lt;li&gt;I am 1&lt;/li&gt;
@@ -111,7 +111,7 @@
 <p>リストから要素を削除します。</p>
 <html-viewer>
 
-<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.26/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <pre><code class="language-html">&lt;ul&gt;
     &lt;li&gt;I am 1&lt;/li&gt;
@@ -131,7 +131,7 @@
 <p>配列の先頭からサブ要素を削除します。</p>
 <html-viewer>
 
-<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.26/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <pre><code class="language-html">&lt;ul&gt;
     &lt;li&gt;I am 1&lt;/li&gt;
@@ -151,7 +151,7 @@
 <p>子要素を削除または置換することもできますし、新しい子要素を追加することもできます。これは配列の <code>splice</code> メソッドと似たような方法で使用されます。以下は例です。</p>
 <html-viewer>
 
-<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.26/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <pre><code class="language-html">&lt;ul&gt;
     &lt;li&gt;I am 1&lt;/li&gt;
@@ -169,9 +169,9 @@ $(&quot;ul&quot;).splice(1, 2, `&lt;li style=&quot;color:green;&quot;&gt;new li 
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.44/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.44/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(args[0].url, args);
@@ -297,6 +297,6 @@ $(&quot;ul&quot;).splice(1, 2, `&lt;li style=&quot;color:green;&quot;&gt;new li 
 <li><a href="../../../ko/index.html">index.html</a></li>
 
 </ul></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/init.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.44/statics/init.js" type="module"></script>
   </body>
 </html>

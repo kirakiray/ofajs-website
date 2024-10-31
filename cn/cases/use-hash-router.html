@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>使用 hash router</title>
-        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.26/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.26/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.44/statics/css/public.css" />
     <style>
       html,
       body {
@@ -37,9 +37,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.44/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.44/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.44/statics/app-config.mjs">
       <template page>
         <style>
           :host {
@@ -61,7 +61,7 @@
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.44/statics/css/github-markdown.css"
         />
         <exm-article><article class="markdown-body"><template is="exm-article">
 <a href="../../publics/examples/use-hash-router/demo.html" preview></a>
@@ -73,7 +73,7 @@
 <h1>使用 hash router</h1>
 <p>只需使用 o-router 组件，即可将 app 组件内的路由与当前网页关联起来。一旦页面与路由绑定，即使进行页面刷新，也能保持页面的路由状态。</p>
 <p>在这个示例中，请点击  <span style='font-family: "iconfont"'>&#xe7cb;</span>  按钮，以新页面的方式打开并尝试。</p>
-<pre><code class="language-html">&lt;l-m src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/libs/router/dist/router.min.mjs&quot;&gt;&lt;/l-m&gt;
+<pre><code class="language-html">&lt;l-m src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.26/libs/router/dist/router.min.mjs&quot;&gt;&lt;/l-m&gt;
 &lt;o-router fix-body&gt;
   &lt;o-app src=&quot;./app-config.mjs&quot;&gt;&lt;/o-app&gt;
 &lt;/o-router&gt;
@@ -82,9 +82,9 @@
     <article-footer></article-footer>
     </article></exm-article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.44/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.44/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(args[0].url, args);
@@ -210,6 +210,6 @@
 <li><a href="../../ko/index.html">index.html</a></li>
 
 </ul></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/init.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.44/statics/init.js" type="module"></script>
   </body>
 </html>

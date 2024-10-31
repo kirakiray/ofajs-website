@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>添加或刪除子元素</title>
-        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.26/dist/ofa.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/libs/scsr/scsr.mjs"
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.26/libs/scsr/scsr.mjs"
       type="module"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/css/public.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/obook@2.1.44/statics/css/public.css" />
     <style>
       html,
       body {
@@ -37,9 +37,9 @@
       
   </head>
   <body>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/comps/doc-container.html"></l-m>
-    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/comps/doc-header/doc-header.html"></l-m>
-    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/app-config.mjs">
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.44/statics/comps/doc-container.html"></l-m>
+    <l-m src="https://cdn.jsdelivr.net/npm/obook@2.1.44/statics/comps/doc-header/doc-header.html"></l-m>
+    <o-app src="https://cdn.jsdelivr.net/npm/obook@2.1.44/statics/app-config.mjs">
       <template page>
         <style>
           :host {
@@ -61,7 +61,7 @@
         </style>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/css/github-markdown.css"
+          href="https://cdn.jsdelivr.net/npm/obook@2.1.44/statics/css/github-markdown.css"
         />
         <article class="markdown-body"><h1>添加或刪除子元素</h1>
 <p>元素實例擁有類似數組的特性，添加或刪除節點只需要使用數組那幾個操作方法即可；其中使用 <code>push</code>、<code>unshift</code>、<code>pop</code>、<code>shift</code>、<code>splice</code> 方法時，內部會自動執行 <a href="../instance/dollar.html">$ 方法</a> 的初始化操作，所以可以直接填寫具體的元素字符串或對象。</p>
@@ -71,7 +71,7 @@
 <p>從末尾添加子元素。</p>
 <html-viewer>
 
-<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.26/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <pre><code class="language-html">&lt;ul&gt;
     &lt;li&gt;I am 1&lt;/li&gt;
@@ -91,7 +91,7 @@
 <p>在數組的開頭添加子元素。下面是一個示例：</p>
 <html-viewer>
 
-<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.26/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <pre><code class="language-html">&lt;ul&gt;
     &lt;li&gt;I am 1&lt;/li&gt;
@@ -111,7 +111,7 @@
 <p>從末尾刪除子元素。</p>
 <html-viewer>
 
-<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.26/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <pre><code class="language-html">&lt;ul&gt;
     &lt;li&gt;I am 1&lt;/li&gt;
@@ -131,7 +131,7 @@
 <p>在數組的開頭刪除子元素。</p>
 <html-viewer>
 
-<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.26/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <pre><code class="language-html">&lt;ul&gt;
     &lt;li&gt;I am 1&lt;/li&gt;
@@ -151,7 +151,7 @@
 <p>可以刪除或替換現有子元素，也可以添加新子元素。其使用方式與數組的 <code>splice</code> 方法相似。下面是一個示例：</p>
 <html-viewer>
 
-<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.21/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.5.26/dist/ofa.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <pre><code class="language-html">&lt;ul&gt;
     &lt;li&gt;I am 1&lt;/li&gt;
@@ -169,9 +169,9 @@ $(&quot;ul&quot;).splice(1, 2, `&lt;li style=&quot;color:green;&quot;&gt;new li 
     <article-footer></article-footer>
     </article>
         <script>
-          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/layouts/article-layout.html";
+          export const parent = "https://cdn.jsdelivr.net/npm/obook@2.1.44/statics/layouts/article-layout.html";
 
-          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/document-page-init.mjs";
+          import pageInit from "https://cdn.jsdelivr.net/npm/obook@2.1.44/statics/document-page-init.mjs";
 
           export default async (...args) => {
             return await pageInit(args[0].url, args);
@@ -297,6 +297,6 @@ $(&quot;ul&quot;).splice(1, 2, `&lt;li style=&quot;color:green;&quot;&gt;new li 
 <li><a href="../../../ko/index.html">index.html</a></li>
 
 </ul></div>
-    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.43/statics/init.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/obook@2.1.44/statics/init.js" type="module"></script>
   </body>
 </html>
